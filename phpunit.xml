@@ -23,6 +23,7 @@
         </whitelist>
     </filter>
     <php>
+        <server name="APP_KEY" value="base64:T1fsxcp1GJJUqgU8EjNR+PWS5HL0YukNHJcQw0DQLKE="/>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
