@@ -1,0 +1,3 @@
+[submodule "resources/gameforest"]
+	path = resources/gameforest
+	url = git@github.com:abenevaut/gameforest.git
