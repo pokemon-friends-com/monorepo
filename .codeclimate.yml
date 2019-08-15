@@ -1,0 +1,32 @@
+version: "2"
+
+plugins:
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: "php"
+      standard: "PSR2"
+  phpmd:
+    enabled: true
+    config:
+      file_extensions:
+        - php
+      rulesets: "unusedcode,codesize"
+  nodesecurity:
+    enabled: true
+  eslint:
+    enabled: true
+    channel: "eslint-5"
+    extensions:
+      - .js
+  csslint:
+    enabled: true
+exclude_patterns:
+  - bootstrap
+  - database
+  - laradock
+  - node_modules
+  - public
+  - routes
+  - storage
+  - vendor
