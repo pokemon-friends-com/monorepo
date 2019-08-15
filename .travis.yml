@@ -10,6 +10,7 @@ addons:
   hosts:
     - www.obsession.city.local
   ssh_known_hosts:
+    - deploy.eu2.frbit.com
     - github.com
 
 cache:
@@ -39,6 +40,12 @@ matrix:
     - php: 7.4
 
 before_install:
+  - chmod 777 scripts/*.sh
+  - bash scripts/decrypt_travis_enc_files.sh
+  - eval "$(ssh-agent -s)"
+  - chmod 600 /tmp/deploy_rsa
+  - ssh-add /tmp/deploy_rsa
+  - git submodule update --init resources/gameforest
   - |
     if [[ "$CODECLIMATE" = "on" ]]; then
       curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
