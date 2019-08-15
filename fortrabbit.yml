@@ -1,0 +1,7 @@
+version: 2
+composer:
+  prefer-source: false
+  prefer-dist: true
+  no-dev: true
+  optimize-autoloader: true
+  classmap-authoritative: true
