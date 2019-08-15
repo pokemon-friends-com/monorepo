@@ -11,5 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix
+    .js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
+    .copy('resources/gameforest/dist/css', 'public/css')
+    .copy('resources/gameforest/dist/js', 'public/js')
+    .copy('resources/gameforest/dist/fonts', 'public/fonts')
+;

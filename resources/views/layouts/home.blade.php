@@ -9,19 +9,18 @@
     <!-- Scripts -->
     <script src="{{ asset('js/theme.min.js') }}" defer></script>
     <script src="{{ asset('js/vendor.js') }}" defer></script>
-{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
     <link href="{{ asset('css/theme.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="fixed-navbar sticky-footer">
+<body class="fixed-navbar">
 <div class="site">
     @include('layouts.partials.header')
     <div class="site-content" role="main">
         @yield('content')
     </div>
     <!-- end .site-content -->
-    @include('layouts.partials.footer')
 </div>
 <!-- end .site -->
 <!-- js: vendor -->

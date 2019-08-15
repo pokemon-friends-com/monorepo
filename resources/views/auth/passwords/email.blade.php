@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    <nav class="bg-white border-bottom" aria-label="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blank page</li>
+            </ol>
+        </div>
+    </nav>
+    <section>
+        <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -44,4 +54,7 @@
         </div>
     </div>
 </div>
+
+    </section>
+
 @endsection
