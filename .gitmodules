@@ -4,3 +4,9 @@
 [submodule "laradock"]
 	path = laradock
 	url = https://github.com/Laradock/laradock.git
+[submodule "resources/clip"]
+	path = resources/clip
+	url = git@github.com:abenevaut/clip.git
+[submodule "resources/pages"]
+	path = resources/pages
+	url = git@github.com:revoxltd/pages.git

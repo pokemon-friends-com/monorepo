@@ -1,0 +1,3 @@
+*
+!.gitignore
+!apache2/sites/default.apache.conf.example

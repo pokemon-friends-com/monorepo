@@ -4,12 +4,16 @@
 /public/css
 /public/js
 /public/fonts
+/public/img
+/public/ico
+/public/plugins
 /public/mix-manifest.json
 /storage/*.key
 /vendor
 .env
 .env.backup
 .phpunit.result.cache
+_ide_helper.php
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -18,3 +22,6 @@ yarn-error.log
 deploy_rsa
 deploy_rsa.pub
 .sentryclirc
+travis.tar
+.nyc_output
+public/sitemap.xml

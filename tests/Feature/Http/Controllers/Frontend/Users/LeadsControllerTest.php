@@ -1,0 +1,160 @@
+<?php namespace Tests\Feature\Http\Controllers\Frontend;
+
+use obsession\Domain\Users\Leads\Events\LeadCreatedEvent;
+use obsession\Domain\Users\Leads\Lead;
+use obsession\Domain\Users\Leads\Notifications\HandshakeMailToConfirmReceptionToSender;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
+
+class LeadsControllerTest extends TestCase
+{
+
+    use DatabaseMigrations;
+
+    public function testIndex()
+    {
+        $this
+            ->get('/contact')
+            ->assertStatus(200);
+    }
+
+    public function testStoreWithEmptyForm()
+    {
+        $lead = factory(Lead::class)->raw();
+        Event::fake();
+        Notification::fake();
+        $this
+            ->call('POST', '/contact', [
+                'civility' => $lead['civility'],
+                'first_name' => '',
+                'last_name' => '',
+                'email' => '',
+                'subject' => '',
+                'message' => '',
+                'g-recaptcha-response' => ''
+            ], [], [], ['HTTP_REFERER' => '/contact'])
+            ->assertStatus(302)
+            ->assertRedirect('/contact');
+        $this
+            ->get('/contact')
+            ->assertStatus(200)
+            ->assertSee('Le champ prénom est obligatoire.')
+            ->assertSee('Le champ nom est obligatoire.')
+            ->assertSee('Le champ courriel est obligatoire.')
+            ->assertSee('Le champ sujet est obligatoire.')
+            ->assertSee('Le champ message est obligatoire.');
+        Event::assertNotDispatched(LeadCreatedEvent::class);
+        Notification::assertTimesSent(0, HandshakeMailToConfirmReceptionToSender::class);
+        $this->assertDatabaseMissing('users_leads', $lead);
+    }
+
+    public function testStoreWithBadEmail()
+    {
+        $lead = factory(Lead::class)->raw();
+        Event::fake();
+        Notification::fake();
+        $this
+            ->call('POST', '/contact', [
+                'civility' => $lead['civility'],
+                'first_name' => $lead['first_name'],
+                'last_name' => $lead['last_name'],
+                'email' => $this->faker->text,
+                'subject' => $this->faker->text,
+                'message' => $this->faker->text,
+                'g-recaptcha-response' => ''
+            ], [], [], ['HTTP_REFERER' => '/contact'])
+            ->assertStatus(302)
+            ->assertRedirect('/contact');
+        $this
+            ->get('/contact')
+            ->assertStatus(200)
+            ->assertSee('Le champ courriel doit être une adresse email valide.');
+        Event::assertNotDispatched(LeadCreatedEvent::class);
+        Notification::assertTimesSent(0, HandshakeMailToConfirmReceptionToSender::class);
+        $this->assertDatabaseMissing('users_leads', $lead);
+    }
+
+    public function testStoreWithAnonymous()
+    {
+        $lead = factory(Lead::class)->raw();
+        Event::fake();
+        Notification::fake();
+        $this
+            ->post('/contact', [
+                'civility' => $lead['civility'],
+                'first_name' => $lead['first_name'],
+                'last_name' => $lead['last_name'],
+                'email' => $lead['email'],
+                'subject' => $this->faker->text,
+                'message' => $this->faker->text,
+                'g-recaptcha-response' => ''
+            ])
+            ->assertStatus(302)
+            ->assertRedirect('/contact');
+        Event::assertDispatched(LeadCreatedEvent::class);
+        Notification::assertTimesSent(1, HandshakeMailToConfirmReceptionToSender::class);
+        $this->assertDatabaseHas('users_leads', $lead);
+    }
+
+    public function testStoreWithAdministrator()
+    {
+        $user = $this->actingAsAdministrator();
+        $lead = factory(Lead::class)->create([
+            'user_id' => $user->id,
+            'civility' => $user->civility,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'email' => $user->email,
+        ]);
+        Event::fake();
+        Notification::fake();
+        $this
+            ->assertAuthenticated()
+            ->post('/contact', [
+                'civility' => $lead['civility'],
+                'first_name' => $lead['first_name'],
+                'last_name' => $lead['last_name'],
+                'email' => $lead['email'],
+                'subject' => $this->faker->text,
+                'message' => $this->faker->text,
+                'g-recaptcha-response' => ''
+            ])
+            ->assertStatus(302)
+            ->assertRedirect('/contact');
+        Event::assertNotDispatched(LeadCreatedEvent::class);
+        Notification::assertTimesSent(1, HandshakeMailToConfirmReceptionToSender::class);
+    }
+
+    public function testStoreWithCustomer()
+    {
+        $user = $this->actingAsCustomer();
+        $lead = factory(Lead::class)->create([
+            'user_id' => $user->id,
+            'civility' => $user->civility,
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'email' => $user->email,
+        ]);
+        Event::fake();
+        Notification::fake();
+        $this
+            ->assertAuthenticated()
+            ->post('/contact', [
+                'civility' => $lead['civility'],
+                'first_name' => $lead['first_name'],
+                'last_name' => $lead['last_name'],
+                'email' => $lead['email'],
+                'subject' => $this->faker->text,
+                'message' => $this->faker->text,
+                'g-recaptcha-response' => ''
+            ])
+            ->assertStatus(302)
+            ->assertRedirect('/contact');
+        Event::assertNotDispatched(LeadCreatedEvent::class);
+        Notification::assertTimesSent(1, HandshakeMailToConfirmReceptionToSender::class);
+    }
+}

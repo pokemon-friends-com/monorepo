@@ -1,91 +1,100 @@
-@extends('layouts.app')
+@extends('layouts.gameforest.landings')
 
 @section('content')
-
-    <nav class="bg-white border-bottom" aria-label="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blank page</li>
-            </ol>
-        </div>
-    </nav>
     <section>
         <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">{{ trans('auth.register') }}</div>
+                        <div class="card-body">
+                            <p class="semi-bold no-margin">{{ trans('auth.register_baseline') }}</p>
+                            {!! Form::open(['route' => ['register'], 'method' => 'POST']) !!}
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group form-group-default required">
+                                        <label class="control-label">{{ trans('users.civility') }}</label>
+                                        <select name="civility" id="civility" class="form-control">
+                                            @foreach ($civilities as $key => $trans)
+                                                <option value="{{ $key }}" @if (Auth::check() && $key === Auth::user()->civility) selected="selected" @endif>{{ $trans }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <div class="col-sm-4">
+                                    <div class="form-group form-group-default required">
+                                        <label class="control-label">{{ trans('users.first_name') }}</label>
+                                        <input type="text" name="first_name" class="form-control" placeholder="{{ trans('users.first_name') }}" value="{{ old('first_name', Auth::check() ? Auth::user()->first_name : '') }}"/>
+                                        @if ($errors && $errors->has('first_name'))
+                                            <span class="error">{{ $errors->first('first_name') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+
+                                <div class="col-sm-4">
+                                    <div class="form-group form-group-default required">
+                                        <label class="control-label">{{ trans('users.last_name') }}</label>
+                                        <input type="text" name="last_name" class="form-control" placeholder="{{ trans('users.last_name') }}" value="{{ old('last_name', Auth::check() ? Auth::user()->last_name : '') }}"/>
+                                        @if ($errors && $errors->has('last_name'))
+                                            <span class="error">{{ $errors->first('last_name') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group form-group-default required">
+                                <label class="control-label">{{ trans('users.email') }}</label>
+                                <input type="text" name="email" class="form-control" placeholder="{{ trans('users.email') }}" value="{{ old('email', Auth::check() ? Auth::user()->email : '') }}"/>
+                                @if ($errors && $errors->has('email'))
+                                    <span class="error">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <div class="row">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label class="control-label">{{ trans('users.password') }}</label>
+                                        <input type="password" name="password" class="form-control" placeholder="{{ trans('users.password') }}"/>
+                                        @if ($errors && $errors->has('password'))
+                                            <span class="error">{{ $errors->first('password') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <div class="form-group form-group-default required">
+                                        <label class="control-label">{{ trans('users.password_confirmation') }}</label>
+                                        <input type="password" name="password_confirmation" class="form-control" placeholder="{{ trans('users.password_confirmation') }}"/>
+                                        @if ($errors && $errors->has('password_confirmation'))
+                                            <span class="error">{{ $errors->first('password_confirmation') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+
+                            <div class="sm-p-t-10 clearfix">
+                                <p class="pull-left small hint-text m-t-10 font-arial">{{ trans('leads.certify') }}</p>
+                                <input type="submit" value="{{ trans('leads.send') }}" name="submit" class="btn btn-primary font-montserrat all-caps fs-12 pull-right xs-pull-left" />
                             </div>
-                        </div>
+                            <div class="clearfix"></div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
+
+                            {!! Form::close() !!}
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
     </section>
-
 @endsection

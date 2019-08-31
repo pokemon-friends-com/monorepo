@@ -12,7 +12,6 @@
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
-
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
@@ -25,11 +24,17 @@
     <php>
         <server name="APP_KEY" value="base64:T1fsxcp1GJJUqgU8EjNR+PWS5HL0YukNHJcQw0DQLKE="/>
         <server name="APP_ENV" value="testing"/>
+        <server name="APP_LOCALE" value="en"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
-        <server name="CACHE_DRIVER" value="array"/>
-        <server name="MAIL_DRIVER" value="array"/>
-        <server name="QUEUE_CONNECTION" value="sync"/>
-        <server name="SESSION_DRIVER" value="array"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="MAIL_DRIVER" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="REDIS_CLIENT" value="mock"/>
+        <env name="SCOUT_DRIVER" value="null"/>
+        <env name="BROADCAST_DRIVER" value="null"/>
     </php>
     <logging>
         <log type="coverage-clover" target="coverage/clover.xml"/>

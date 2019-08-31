@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.gameforest.landings')
 
 @section('content')
 
     <nav class="bg-white border-bottom" aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blank page</li>
+                <li class="breadcrumb-item"><a href="{{ route('login') }}">{{ trans('auth.login') }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ trans('auth.passwords_email') }}</li>
             </ol>
         </div>
     </nav>
