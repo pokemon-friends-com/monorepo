@@ -42,9 +42,9 @@
             "authors": [
                 {
                     "name": "Abraham Williams",
-                    "role": "Developer",
                     "email": "abraham@abrah.am",
-                    "homepage": "https://abrah.am"
+                    "homepage": "https://abrah.am",
+                    "role": "Developer"
                 }
             ],
             "description": "The most popular PHP library for use with the Twitter OAuth REST API.",
@@ -1409,9 +1409,9 @@
             "authors": [
                 {
                     "name": "Christoph Rumpel",
-                    "role": "Developer",
                     "email": "c.rumpel@kabsi.at",
-                    "homepage": "https://christoph-rumpel.com"
+                    "homepage": "https://christoph-rumpel.com",
+                    "role": "Developer"
                 }
             ],
             "description": "This package makes it easy to send notifications via Twitter with Laravel",
@@ -2074,9 +2074,9 @@
             "authors": [
                 {
                     "name": "Phil Sturgeon",
-                    "role": "Developer",
                     "email": "me@philsturgeon.uk",
-                    "homepage": "http://philsturgeon.uk/"
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
                 }
             ],
             "description": "Handle the output of complex data structures ready for API output.",
@@ -3316,27 +3316,27 @@
         },
         {
             "name": "prettus/l5-repository",
-            "version": "2.6.32",
+            "version": "2.6.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andersao/l5-repository.git",
-                "reference": "f6ebfffee80a38e1d2dcf479e70b1a9ead397c24"
+                "reference": "c4f56cffbd23d61e16d2a8a9df0c651037313b54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/f6ebfffee80a38e1d2dcf479e70b1a9ead397c24",
-                "reference": "f6ebfffee80a38e1d2dcf479e70b1a9ead397c24",
+                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/c4f56cffbd23d61e16d2a8a9df0c651037313b54",
+                "reference": "c4f56cffbd23d61e16d2a8a9df0c651037313b54",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "~5.0",
-                "illuminate/console": "~5.0",
-                "illuminate/database": "~5.0",
-                "illuminate/filesystem": "~5.0",
-                "illuminate/http": "~5.0",
-                "illuminate/pagination": "~5.0",
-                "illuminate/support": "~5.0",
-                "prettus/laravel-validation": "1.1.*"
+                "illuminate/config": "~5.0|~6.0",
+                "illuminate/console": "~5.0|~6.0",
+                "illuminate/database": "~5.0|~6.0",
+                "illuminate/filesystem": "~5.0|~6.0",
+                "illuminate/http": "~5.0|~6.0",
+                "illuminate/pagination": "~5.0|~6.0",
+                "illuminate/support": "~5.0|~6.0",
+                "prettus/laravel-validation": "~1.1|~1.2"
             },
             "suggest": {
                 "league/fractal": "Required to use the Fractal Presenter (0.12.*).",
@@ -3363,11 +3363,13 @@
             "authors": [
                 {
                     "name": "Anderson Andrade",
-                    "role": "Developer",
-                    "email": "contato@andersonandra.de"
+                    "email": "contato@andersonandra.de",
+                    "homepage": "http://andersonandra.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Laravel 5 - Repositories to  the database layer",
+            "homepage": "http://andersao.github.io/l5-repository",
             "keywords": [
                 "cache",
                 "eloquent",
@@ -3375,25 +3377,25 @@
                 "model",
                 "repository"
             ],
-            "time": "2018-01-27T15:53:20+00:00"
+            "time": "2019-09-11T14:09:40+00:00"
         },
         {
             "name": "prettus/laravel-validation",
-            "version": "1.1.5",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andersao/laravel-validator.git",
-                "reference": "d9eb401fb3518a890b117e83bd25a4109fcdb704"
+                "reference": "5ffa053baae31d11fa34da013b940d85c99ba253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andersao/laravel-validator/zipball/d9eb401fb3518a890b117e83bd25a4109fcdb704",
-                "reference": "d9eb401fb3518a890b117e83bd25a4109fcdb704",
+                "url": "https://api.github.com/repos/andersao/laravel-validator/zipball/5ffa053baae31d11fa34da013b940d85c99ba253",
+                "reference": "5ffa053baae31d11fa34da013b940d85c99ba253",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.4",
-                "illuminate/validation": "~5.4",
+                "illuminate/support": "~5.4|^6.0",
+                "illuminate/validation": "~5.4|^6.0",
                 "php": ">=5.4.0"
             },
             "type": "library",
@@ -3406,16 +3408,19 @@
             "authors": [
                 {
                     "name": "Anderson Andrade",
-                    "email": "contato@andersonandra.de"
+                    "email": "contato@andersonandra.de",
+                    "homepage": "http://andersonandra.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Laravel Validation Service",
+            "homepage": "http://andersao.github.io/laravel-validation",
             "keywords": [
                 "laravel",
                 "service",
                 "validation"
             ],
-            "time": "2017-08-28T23:28:32+00:00"
+            "time": "2019-09-11T12:19:42+00:00"
         },
         {
             "name": "psr/cache",
@@ -4561,9 +4566,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "A Laravel package to backup your application",
@@ -4642,9 +4647,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://murze.be"
+                    "homepage": "https://murze.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Associate files with Eloquent models",
@@ -4707,9 +4712,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Create and generate sitemaps with ease",
@@ -4754,9 +4759,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Convert a pdf to an image",
@@ -4804,9 +4809,9 @@
             "authors": [
                 {
                     "name": "Brent Roose",
-                    "role": "Developer",
                     "email": "brent@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Determine if a page may be crawled from robots.txt and robots meta tags",
@@ -4850,9 +4855,9 @@
             "authors": [
                 {
                     "name": "Alex Vanderbist",
-                    "role": "Developer",
                     "email": "alex@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Easily create, use and destroy temporary directories",
@@ -6497,8 +6502,8 @@
             "authors": [
                 {
                     "name": "Tijs Verkoyen",
-                    "role": "Developer",
-                    "email": "css_to_inline_styles@verkoyen.eu"
+                    "email": "css_to_inline_styles@verkoyen.eu",
+                    "role": "Developer"
                 }
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
@@ -6869,9 +6874,9 @@
             "authors": [
                 {
                     "name": "Marcel Pociot",
-                    "role": "Developer",
                     "email": "marcel@beyondco.de",
-                    "homepage": "https://beyondco.de"
+                    "homepage": "https://beyondco.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Symfony Var-Dump Server for Laravel",
@@ -7516,8 +7521,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -8074,18 +8079,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -8121,18 +8126,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -8403,8 +8408,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -8454,8 +8459,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -8496,8 +8501,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -8545,8 +8550,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -8675,8 +8680,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -9252,8 +9257,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -9295,8 +9300,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
