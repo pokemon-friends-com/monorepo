@@ -293,21 +293,21 @@
         },
         {
             "name": "barryvdh/laravel-elfinder",
-            "version": "v0.4.2",
+            "version": "v0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-elfinder.git",
-                "reference": "e403d5cdfa117fcd5baa63ed6b0d493e048e2d0e"
+                "reference": "5ffc5da61b6e434c20c57bd7479829b7dcc8dab5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/e403d5cdfa117fcd5baa63ed6b0d493e048e2d0e",
-                "reference": "e403d5cdfa117fcd5baa63ed6b0d493e048e2d0e",
+                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/5ffc5da61b6e434c20c57bd7479829b7dcc8dab5",
+                "reference": "5ffc5da61b6e434c20c57bd7479829b7dcc8dab5",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/elfinder-flysystem-driver": "^0.2",
-                "illuminate/support": "5.5.x|5.6.x|5.7.x|5.8.x",
+                "illuminate/support": "5.5.x|5.6.x|5.7.x|5.8.x|6.x",
                 "league/flysystem": "^1.0",
                 "league/flysystem-cached-adapter": "^1.0",
                 "php": ">=7.0",
@@ -346,7 +346,7 @@
                 "laravel",
                 "tinymce"
             ],
-            "time": "2019-02-26T20:36:33+00:00"
+            "time": "2019-09-03T20:16:06+00:00"
         },
         {
             "name": "clue/stream-filter",
