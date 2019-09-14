@@ -1,7 +1,7 @@
 <?php namespace obsession\Http\Controllers\Backend\Users;
 
 use League\Csv\Writer;
-use obsession\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent;
+use Illuminate\Support\Facades\Auth;
 use obsession\Domain\Users\Users\User;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use obsession\Http\Request\Backend\Users\Users\
@@ -40,7 +40,7 @@ class UsersController extends ControllerAbstract
      */
     public function index(UsersFiltersFormRequest $request)
     {
-        $users = $this->r_users->getUsersPaginated();
+        $users = $this->r_users->getPaginatedUsers();
 
         return view('backend.users.users.index', ['users' => $users]);
     }
@@ -169,7 +169,7 @@ class UsersController extends ControllerAbstract
      */
     public function destroy($id)
     {
-        if ($this->r_users->isUserDeletingHisAccount(\Auth::user(), $id)) {
+        if ($this->r_users->isUserDeletingHisAccount(Auth::user(), $id)) {
             return redirect(route('backend.users.index'));
         }
 

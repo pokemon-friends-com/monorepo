@@ -264,7 +264,7 @@ class UsersRepositoryEloquentTest extends TestCase
     {
         factory(User::class)->times(30)->create();
 
-        $users = $this->r_users->getUsersPaginated();
+        $users = $this->r_users->getPaginatedUsers();
         $this->assertEquals(10, $users['meta']['pagination']['per_page']);
         $this->assertEquals(30, $users['meta']['pagination']['total']);
         $this->assertEquals(10, count($users['data']));

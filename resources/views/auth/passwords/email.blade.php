@@ -5,7 +5,7 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('login') }}">{{ trans('auth.login') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('auth.passwords_email') }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ trans('auth.forgot_password') }}</li>
             </ol>
         </div>
     </nav>
@@ -21,7 +21,7 @@
 
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">{{ trans('auth.passwords_email') }}</div>
+                        <div class="card-header">{{ trans('auth.forgot_password') }}</div>
                         <div class="card-body">
                             {!! Form::open(['route' => ['password.email'], 'method' => 'POST']) !!}
 

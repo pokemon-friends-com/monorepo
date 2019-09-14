@@ -1,7 +1,7 @@
 <?php namespace obsession\Domain\Files\Medias\UrlGenerator;
 
 use Spatie\MediaLibrary\UrlGenerator\LocalUrlGenerator;
-use obsession\App\Traits\SecurityHashTrait;
+use obsession\Infrastructure\Contracts\Traits\SecurityHashTrait;
 
 class PrivateStorageUrlGenerator extends LocalUrlGenerator
 {

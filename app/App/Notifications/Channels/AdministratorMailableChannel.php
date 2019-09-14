@@ -1,6 +1,9 @@
 <?php namespace obsession\App\Notifications\Channels;
 
-use Illuminate\Notifications\Notification;
+use obsession\Infrastructure\{
+    Contracts\Notifications\Notification,
+    Interfaces\App\Notifications\Channels\MailableChannelInterface
+};
 
 class AdministratorMailableChannel implements MailableChannelInterface
 {
@@ -9,7 +12,7 @@ class AdministratorMailableChannel implements MailableChannelInterface
      * Send the given notification.
      *
      * @param  mixed $notifiable
-     * @param  \Illuminate\Notifications\Notification $notification
+     * @param  Notification $notification
      *
      * @return void
      */

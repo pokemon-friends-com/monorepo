@@ -14,7 +14,7 @@ class AllowOnlyAjaxRequests
      */
     public function handle($request, Closure $next)
     {
-        if (app()->environment('production') && !$request->ajax()) {
+        if (!$request->ajax()) {
             return response(trans('errors.405_title'), 405);
         }
 

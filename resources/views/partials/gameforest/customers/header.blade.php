@@ -12,7 +12,6 @@
                     </li>
                 </ul>
             </div>
-            <!-- end .navbar-collapse -->
             <ul class="navbar-nav navbar-right flex-row d-flex align-items-center">
 {{--                <li class="nav-item">--}}
 {{--                    <a class="nav-link" href="{{ route('login') }}">--}}
@@ -21,8 +20,6 @@
 {{--                    </a>--}}
 {{--                </li>--}}
             </ul>
-            <!-- end .navbar-nav -->
         </div>
     </nav>
 </header>
-<!-- end .site-header -->

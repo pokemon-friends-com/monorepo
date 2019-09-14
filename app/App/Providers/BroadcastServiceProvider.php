@@ -1,7 +1,9 @@
 <?php namespace obsession\App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Broadcast;
+use Illuminate\{
+    Support\Facades\Broadcast,
+    Support\ServiceProvider
+};
 
 class BroadcastServiceProvider extends ServiceProvider
 {

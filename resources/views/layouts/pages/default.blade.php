@@ -5,7 +5,7 @@
 </head>
 <body class="fixed-header dashboard">
 @include('partials.pages.default.sidebar')
-<div class="page-container ">
+<div id="obsessioncity" class="page-container ">
     @include('partials.pages.default.header')
     <div class="page-content-wrapper ">
         <div class="content sm-gutter">

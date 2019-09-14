@@ -38,7 +38,7 @@ class LoginControllerTest extends TestCase
         $this
             ->post('/login', [
                 'email' => $user->email,
-                'password' => $this->getDefaultPassword(),
+                'password' => $this->getDefaultPasswordBcrypted(),
             ])
             ->assertStatus(302)
             ->assertRedirect('/');
@@ -57,7 +57,7 @@ class LoginControllerTest extends TestCase
         $this
             ->post('/login', [
                 'email' => $user->email,
-                'password' => $this->getDefaultPassword(),
+                'password' => $this->getDefaultPasswordBcrypted(),
             ])
             ->assertStatus(302)
             ->assertRedirect('/');
@@ -76,7 +76,7 @@ class LoginControllerTest extends TestCase
         $this
             ->post('/login', [
                 'email' => $user->email,
-                'password' => $this->getDefaultPassword(),
+                'password' => $this->getDefaultPasswordBcrypted(),
             ])
             ->assertStatus(302)
             ->assertRedirect('/');

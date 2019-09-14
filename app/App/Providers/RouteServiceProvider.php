@@ -1,7 +1,9 @@
 <?php namespace obsession\App\Providers;
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\{
+    Foundation\Support\Providers\RouteServiceProvider as ServiceProvider,
+    Support\Facades\Route
+};
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -32,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        $this->mapAjaxRoutes();
         $this->mapApiRoutes();
         $this->mapWebRoutes();
     }
@@ -48,21 +51,32 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web_auth.php'));
-        Route::middleware('ajax')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web_ajax.php'));
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web_frontend.php'));
+
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web_backend.php'));
+
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web_frontend.php'));
+
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web_customer.php'));
-        Route::middleware('web')
+    }
+
+    /**
+     * Define the "ajax" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapAjaxRoutes()
+    {
+        Route::middleware('ajax')
             ->namespace($this->namespace)
-            ->group(base_path('routes/web_webhook.php'));
+            ->group(base_path('routes/ajax.php'));
     }
 
     /**

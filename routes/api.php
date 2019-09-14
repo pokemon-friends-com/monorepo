@@ -13,3 +13,29 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group(
+    [
+        'prefix' => 'oauth',
+        'namespace' => 'OAuth',
+    ],
+    function () {
+        Route::post('login', 'LoginController@login');
+        Route::post('register', 'RegisterController@register');
+        Route::group(
+            [
+                'middleware' => 'auth:api'
+            ],
+            function () {
+                Route::get('logout', 'LoginController@logout');
+            });
+    });
+
+Route::group(
+    [
+        'prefix' => 'v1',
+        'namespace' => 'Api\V1',
+        'middleware' => 'auth:api'
+    ],
+    function () {
+        Route::get('user', 'UserController@user');
+    });

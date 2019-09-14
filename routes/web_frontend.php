@@ -30,8 +30,7 @@ Route::group(
             Route::get('files/media/{hash}', ['as' => 'medias.document.media', 'uses' => 'MediasController@media']);
             Route::get('files/document/{path}', ['as' => 'medias.document.path', 'uses' => 'MediasController@document'])
                 ->where('path', '.+');
-            Route::get('files/thumbnail/{path}',
-                ['as' => 'medias.document.thumbnail', 'uses' => 'MediasController@thumbnail'])
+            Route::get('files/thumbnail/{path}', ['as' => 'medias.document.thumbnail', 'uses' => 'MediasController@thumbnail'])
                 ->where('path', '.+');
         });
 

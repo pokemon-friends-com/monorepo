@@ -1,10 +1,12 @@
 <?php namespace obsession\App\Providers;
 
-use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\{
+    Foundation\Support\Providers\EventServiceProvider as ServiceProvider,
+    Support\Facades\Event
+};
 use obsession\App\Listeners\{
-    Users\AuthEventsListener,
-    Users\UsersEventsListener
+    AuthEventsListener,
+    UsersEventsListener
 };
 
 class EventServiceProvider extends ServiceProvider
@@ -15,8 +17,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [
-    ];
+    protected $listen = [];
 
     /**
      * The subscriber classes to register.

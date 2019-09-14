@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \obsession\Http\Middleware\VerifyCsrfToken::class,
+            \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \obsession\Http\Middleware\Locale::class,
             \obsession\Http\Middleware\TimeZones::class,
@@ -53,15 +54,16 @@ class Kernel extends HttpKernel
             \obsession\Http\Middleware\TimeZones::class,
         ],
         'api' => [
+            \Barryvdh\Cors\HandleCors::class,
             'throttle:60,1',
-            'bindings',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         UserRolesInterface::ROLE_ADMINISTRATOR => [
-            'auth',
+            \Illuminate\Auth\Middleware\Authenticate::class,
             'role:' => UserRolesInterface::ROLE_ADMINISTRATOR,
         ],
         UserRolesInterface::ROLE_CUSTOMER => [
-            'auth',
+            \Illuminate\Auth\Middleware\Authenticate::class,
             'role:' => UserRolesInterface::ROLE_CUSTOMER,
         ],
     ];
@@ -81,5 +83,6 @@ class Kernel extends HttpKernel
         'guest' => \obsession\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \obsession\Http\Middleware\AuthenticatedUserHasRole::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class,
     ];
 }

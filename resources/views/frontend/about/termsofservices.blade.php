@@ -21,7 +21,7 @@
                             <h2>La socièté</h2>
 
                             <div class="row">
-                                <div class="col-sm-5 text-right sm-text-left">
+                                <div class="col-sm-5 text-right">
                                     <p>Socièté</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
@@ -32,9 +32,8 @@
                                 </div>
                             </div>
 
-
                             <div class="row">
-                                <div class="col-sm-5 text-right sm-text-left">
+                                <div class="col-sm-5 text-right">
                                     <p>Coordonnées</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
@@ -43,9 +42,8 @@
                                 </div>
                             </div>
 
-
                             <div class="row">
-                                <div class="col-sm-5 text-right sm-text-left">
+                                <div class="col-sm-5 text-right">
                                     <p>Le site</p>
                                     www.obsession.city
                                 </div>
@@ -56,9 +54,8 @@
                                 </div>
                             </div>
 
-
                             <div class="row">
-                                <div class="col-sm-5 text-right sm-text-left">
+                                <div class="col-sm-5 text-right">
                                     <p>Hébergement</p>
                                     www.fortrabbit.com
                                 </div>
@@ -75,7 +72,7 @@
                             <h2>Définitions</h2>
 
                             <div class="row">
-                                <div class="col-sm-5 text-right sm-text-left">
+                                <div class="col-sm-5 text-right">
                                     <p>Utilitaires de tracking</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
@@ -86,7 +83,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-5 text-right sm-text-left">
+                                <div class="col-sm-5 text-right">
                                     <p>Les cookies</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
@@ -97,7 +94,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-5 text-right sm-text-left">
+                                <div class="col-sm-5 text-right">
                                     <p>Google Analytics</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">

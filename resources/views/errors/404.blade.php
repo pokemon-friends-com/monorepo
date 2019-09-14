@@ -1,4 +1,4 @@
-@extends('layouts.gameforest.errors')
+@extends('layouts.gameforest.landings')
 @section('title', trans('errors.404_title'))
 
 @section('content')

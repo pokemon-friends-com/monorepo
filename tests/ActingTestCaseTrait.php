@@ -13,7 +13,12 @@ trait ActingTestCaseTrait
 
     protected function getDefaultPassword()
     {
-        return bcrypt('secret');
+        return 'secret';
+    }
+
+    protected function getDefaultPasswordBcrypted()
+    {
+        return bcrypt($this->getDefaultPassword());
     }
 
     /**
@@ -23,7 +28,9 @@ trait ActingTestCaseTrait
      */
     protected function actingAsAdministrator()
     {
-        $administrator = factory(User::class)->states(User::ROLE_ADMINISTRATOR)->create();
+        $administrator = factory(User::class)
+            ->states(User::ROLE_ADMINISTRATOR)
+            ->create();
         factory(Profile::class)->create(['user_id' => $administrator->id]);
         $this->actingAs($administrator);
 
@@ -37,7 +44,9 @@ trait ActingTestCaseTrait
      */
     protected function actingAsCustomer()
     {
-        $customer = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
+        $customer = factory(User::class)
+            ->states(User::ROLE_CUSTOMER)
+            ->create();
         factory(Profile::class)->create(['user_id' => $customer->id]);
         $this->actingAs($customer);
 

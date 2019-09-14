@@ -29,7 +29,7 @@ Route::group(
             // Authentication routes
             Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
             Route::post('login', 'LoginController@login');
-            // OAuth Routes
+            // OAuth providers routes
             Route::get('login/{provider}', ['as' => 'login_provider', 'uses' => 'LoginController@redirectToProvider']);
             Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback');
             // Logout

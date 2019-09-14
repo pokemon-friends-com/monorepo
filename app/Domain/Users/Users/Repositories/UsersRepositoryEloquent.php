@@ -1,12 +1,12 @@
 <?php namespace obsession\Domain\Users\Users\Repositories;
 
+use Illuminate\Support\Facades\Validator;
 use obsession\Infrastructure\Contracts\
 {
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use obsession\Domain\Users\Users\
-{
+use obsession\Domain\Users\Users\{
     Repositories\UsersRepositoryInterface,
     User,
     Criterias\EmailLikeCriteria,
@@ -269,6 +269,24 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     }
 
     /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    public function registrationValidator(array $data)
+    {
+        return Validator::make($data, [
+            'civility' => 'required|in:' . User::CIVILITY_MADAM . ',' . User::CIVILITY_MISS . ',' . User::CIVILITY_MISTER,
+            'first_name' => 'required|max:100',
+            'last_name' => 'required|max:100',
+            'email' => 'required|email|max:80|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ]);
+    }
+
+    /**
      * @return User
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
@@ -302,11 +320,46 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      * @return array
      * @throws \Exception
      */
-    public function getUsersPaginated(): array
+    public function getPaginatedUsers(): array
     {
         return $this
             ->with(['lead'])
             ->setPresenter(new UsersListPresenter())
+            ->paginate();
+    }
+
+    /**
+     * @param RequestAbstract $request
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getPaginatedAndFilteredUsers(RequestAbstract $request)
+    {
+        return $this
+            ->with(['lead'])
+            ->setPresenter(new UsersListPresenter())
+            ->scopeQuery(function ($model) use ($request) {
+                return $model
+                    ->where(function ($query) use ($request) {
+                        if ($request->has('user_id')) {
+                            $query->where('id', '=', $request->get('user_id'));
+                        }
+
+                        if ($request->has('users_ids')) {
+                            $query->whereIn('id', $request->get('users_ids'));
+                        }
+
+                        if ($request->has('term')) {
+                            $query->where(function ($query) use ($request) {
+                                $query
+                                    ->where('last_name', 'LIKE', '%'.$request->get('term').'%')
+                                    ->orWhere('first_name', 'LIKE', '%'.$request->get('term').'%')
+                                    ->orWhere('email', 'LIKE', '%'.$request->get('term').'%');
+                            });
+                        }
+                    });
+            })
             ->paginate();
     }
 
@@ -337,75 +390,31 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
 
             return true;
         }
+
         return false;
     }
 
     /**
      * @param RequestAbstract $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return array
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function ajaxIndexJson(RequestAbstract $request)
+    public function isUserEmailExists(RequestAbstract $request)
     {
-        if (
-            \Gate::allows(User::ROLE_CUSTOMER, \Auth::user())
-            || \Gate::allows(User::ROLE_ADMINISTRATOR, \Auth::user())
-        ) {
-            return abort(403);
-        }
-
-        $data = $this
-            ->setPresenter(new UsersListPresenter())
+        $data = ['data' => ['count' => 0]];
+        $data['data']['count'] = $this
+            ->skipPresenter()
+            ->filterByEmail($request->get('email'))
+            ->filterByUniqueIdDifferentThan($request->get('not_user_id'))
             ->scopeQuery(function ($model) use ($request) {
-                return $model
-                    ->where(function ($query) use ($request) {
-
-                        if ($request->has('user_id')) {
-                            $query->where('id', '=', $request->get('user_id'));
-                        }
-
-                        if ($request->has('users_ids')) {
-                            $query->whereIn('id', $request->get('users_ids'));
-                        }
-
-                        if ($request->has('term')) {
-                            $query->where(function ($query) use ($request) {
-                                $query
-                                    ->where('last_name', 'LIKE', '%'.$request->get('term').'%')
-                                    ->orWhere('first_name', 'LIKE', '%'.$request->get('term').'%')
-                                    ->orWhere('email', 'LIKE', '%'.$request->get('term').'%');
-                            });
-                        }
-                    });
+                // we need to return trashed items because email field is
+                // unique. Like this, we make sure to do not validate an
+                // email already existing for a soft deleted user.
+                return $model->withTrashed();
             })
-            ->paginate();
+            ->count();
 
-        return response()->json($data);
-    }
-
-    /**
-     * @param RequestAbstract $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function ajaxCheckUserEmailJson(RequestAbstract $request)
-    {
-        try {
-            $data['data']['count'] = $this
-                ->skipPresenter()
-                ->filterByEmail($request->get('email'))
-                ->filterByUniqueIdDifferentThan($request->get('not_user_id'))
-                ->scopeQuery(function ($model) use ($request) {
-                    // we need to return trashed items because email field is
-                    // unique. Like this, we make sure to do not validate an
-                    // email already existing for a soft deleted user.
-                    return $model->withTrashed();
-                })
-                ->count();
-        } catch (\Prettus\Repository\Exceptions\RepositoryException $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return response()->json($data);
+        return $data;
     }
 }

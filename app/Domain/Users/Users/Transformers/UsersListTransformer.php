@@ -1,6 +1,4 @@
-<?php
-
-namespace obsession\Domain\Users\Users\Transformers;
+<?php namespace obsession\Domain\Users\Users\Transformers;
 
 use obsession\Infrastructure\Contracts\Transformers\TransformerAbstract;
 use obsession\Domain\Users\Users\User;
@@ -25,14 +23,14 @@ class UsersListTransformer extends TransformerAbstract
             'civility_name' => $model->civility_name,
             'civility' => [
                 'key' => $model->civility,
-                'trans' => trans('users.civility.'.$model->civility),
+                'trans' => trans('users.civility.' . $model->civility),
             ],
             'first_name' => $model->first_name,
             'last_name' => $model->last_name,
             'email' => $model->email,
             'role' => [
                 'key' => $model->role,
-                'trans' => trans('users.role.'.$model->role),
+                'trans' => trans('users.role.' . $model->role),
             ],
             'lead' => [
                 'is_lead' => false,

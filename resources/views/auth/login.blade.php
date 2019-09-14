@@ -13,9 +13,6 @@
                             {!! Form::open(['route' => ['login'], 'method' => 'POST']) !!}
 
 
-                                @csrf
-
-
                                 <input type="text" name="email" class="form-control mb-2" placeholder="{{ trans('users.email') }}" value="{{ old('email') }}"/>
                                 @if ($errors && $errors->has('email'))
                                     <div class="error mb-2">{{ $errors->first('email') }}</div>
@@ -38,7 +35,7 @@
 
 
                             {!! Form::close() !!}
-                            <div class="separator mt-4"><span>{{ trans('auth.forgot_password') }}</span></div>
+                            <div class="separator mt-4"><span>{{ trans('auth.forgot_password_header') }}</span></div>
                             @if (Route::has('password.request'))
                                 <a class="btn btn-default btn-block" href="{{ route('password.request') }}">
                                     {{ trans('auth.forgot_password') }}

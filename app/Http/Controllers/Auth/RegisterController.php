@@ -1,6 +1,5 @@
 <?php namespace obsession\Http\Controllers\Auth;
 
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
@@ -62,13 +61,7 @@ class RegisterController extends ControllerAbstract
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'civility' => 'required|in:' . User::CIVILITY_MADAM . ',' . User::CIVILITY_MISS . ',' . User::CIVILITY_MISTER,
-            'first_name' => 'required|max:100',
-            'last_name' => 'required|max:100',
-            'email' => 'required|email|max:80|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return $this->r_users->registrationValidator($data);
     }
 
     /**

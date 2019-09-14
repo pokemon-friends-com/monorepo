@@ -20,7 +20,12 @@ return [
     'login' => 'Se connecter',
     'remember_me' => 'Se souvenir de moi',
 
-    'forgot_password' => 'Mot de passe oublié'
+    'forgot_password_header' => 'Vous-avez oublié votre mot de passe ?',
+    'forgot_password' => 'Changer votre mot de passe',
+
+    'password_reset_title' => 'Mettre à jour votre mot de passe',
+    'password_reset_text' => 'Cliquer sur le bouton ci-dessous, puis compléter le formulaire de mise à jour de mot de passe.',
+    'password_reset_footer_link' => 'Si votre boite mail ne vous permet pas de cliquer sur le bouton ci-dessus pour mettre à jour votre mot de passe,<br/>copier ce lien directement dans votre navigateur :',
 
 ];
 

@@ -15,20 +15,6 @@
     @endif
 
     <script type="text/javascript" charset="utf-8">
-		/**
-		 * Overwrite app.js custom AJAX initialisation
-		 */
-		$.ajaxSetup({
-			headers: {
-				'X-CSRF-TOKEN': abenevaut.token
-			},
-			beforeSend: function(xhr, options) {
-				if (!('<?= route("backend.files.connector") ?>' === options.url.split('?')[0])) {
-					options.url = abenevaut.ajax_domain + options.url;
-                }
-				return true;
-			}
-		});
         // Documentation for client options:
         // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
         $(document).ready(function () {

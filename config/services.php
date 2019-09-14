@@ -34,4 +34,9 @@ return [
 //        'secret' => env('SPARKPOST_SECRET'),
 //    ],
 
+    'github' => [
+        'url' => 'https://github.com/obsession-city',
+        'changelog' => 'https://github.com/obsession-city/www/milestones?state=closed',
+    ],
+
 ];

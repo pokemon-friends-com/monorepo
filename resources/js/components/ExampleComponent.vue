@@ -17,7 +17,11 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+
+        	console.log('Component mounted.');
+
+            axios.get('api/v1/user').then(response => {});
+            axios.get('ajax/timezones').then(response => {});
         }
     }
 </script>

@@ -1,5 +1,8 @@
 <?php namespace obsession\Http\Controllers\Ajax\Users;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use obsession\Domain\Users\Users\User;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use obsession\Http\Request\Ajax\Users\
 {
@@ -33,7 +36,16 @@ class UsersController extends ControllerAbstract
      */
     public function index(UsersAjaxList $request)
     {
-        return $this->r_users->ajaxIndexJson($request);
+        if (
+            Gate::allows(User::ROLE_CUSTOMER, Auth::user())
+            || Gate::allows(User::ROLE_ADMINISTRATOR, Auth::user())
+        ) {
+            return abort(403);
+        }
+
+        $users = $this->r_users->getPaginatedAndFilteredUsers($request);
+
+        return response()->json($users);
     }
 
     /**
@@ -43,8 +55,16 @@ class UsersController extends ControllerAbstract
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function ajaxCheckUserEmail(CheckUserEmailFormRequest $request)
+    public function checkUserEmail(CheckUserEmailFormRequest $request)
     {
-        return $this->r_users->ajaxCheckUserEmailJson($request);
+        $data = [];
+
+        try {
+            $data = $this->r_users->isUserEmailExists($request);
+        } catch (\Prettus\Repository\Exceptions\RepositoryException $exception) {
+            app('sentry')->captureException($exception);
+        }
+
+        return response()->json($data);
     }
 }

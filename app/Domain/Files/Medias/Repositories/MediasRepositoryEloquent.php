@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\
     Response
 };
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use obsession\App\Traits\SecurityHashTrait;
 use obsession\Infrastructure\Contracts\
 {
     Request\RequestAbstract,
-    Repositories\RepositoryEloquentAbstract
+    Repositories\RepositoryEloquentAbstract,
+    Traits\SecurityHashTrait
 };
 use obsession\Domain\Files\Medias\
 {

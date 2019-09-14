@@ -1,5 +1,9 @@
 @extends('layouts.gameforest.landings')
 
+@section('title')
+    {{ $metadata['title'] }}
+@endsection
+
 @section('content')
     <nav class="bg-white border-bottom" aria-label="breadcrumb">
         <div class="container">

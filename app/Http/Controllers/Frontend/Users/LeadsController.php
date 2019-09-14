@@ -30,7 +30,7 @@ class LeadsController extends ControllerAbstract
     {
         return view('frontend.users.leads.index', [
             'metadata' => [
-                'title' => 'Get in touch',
+                'title' => trans('leads.contacts'),
             ],
             'civilities' => $this->r_leads->getCivilities()
         ]);

@@ -1,6 +1,9 @@
 <?php namespace obsession\App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Support\Facades\URL,
+    Support\ServiceProvider
+};
 use Barryvdh\{
     Debugbar\ServiceProvider as DebugbarServiceProvider,
     LaravelIdeHelper\IdeHelperServiceProvider
@@ -18,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->environment('production')) {
-            \URL::forceScheme('https');
+            URL::forceScheme('https');
         }
     }
 
@@ -32,10 +35,8 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local')) {
             $this->app->register(IdeHelperServiceProvider::class);
             $this->app->register(DebugbarServiceProvider::class);
-        } else {
-            if ($this->app->environment('production')) {
-                $this->app->register(SentryServiceProvider::class);
-            }
+        } elseif ($this->app->environment('production')) {
+            $this->app->register(SentryServiceProvider::class);
         }
     }
 }

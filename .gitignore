@@ -6,6 +6,7 @@
 /public/fonts
 /public/img
 /public/ico
+/public/packages
 /public/plugins
 /public/mix-manifest.json
 /storage/*.key

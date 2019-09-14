@@ -19,7 +19,7 @@ class ProfilesListTransformer extends TransformerAbstract
             'id' => (int)$model->id,
             'family_situation' => [
                 'key' => $model->family_situation,
-                'trans' => trans('profiles.family_situation.'.$model->family_situation),
+                'trans' => trans('profiles.family_situation.' . $model->family_situation),
             ],
             'maiden_name' => $model->maiden_name,
             'birth_date' => is_null($model->birth_date_carbon)

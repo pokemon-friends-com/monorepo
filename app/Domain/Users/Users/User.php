@@ -1,6 +1,7 @@
 <?php namespace obsession\Domain\Users\Users;
 
 use Lab404\Impersonate\Models\Impersonate;
+use Laravel\Passport\HasApiTokens;
 use obsession\Infrastructure\
 {
     Interfaces\Domain\Users\Users\HandshakableInterface,
@@ -29,6 +30,7 @@ use obsession\Domain\Users\
 class User extends AuthenticatableModelAbstract implements UserCivilitiesInterface, UserRolesInterface, LocalesInterface, TimeZonesInterface, HandshakableInterface
 {
 
+    use HasApiTokens;
     use Notifiable;
     use IdentifiableTrait;
     use SoftDeletes;

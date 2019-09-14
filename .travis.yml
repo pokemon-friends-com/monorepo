@@ -71,6 +71,7 @@ before_script:
   - travis_retry npm run pages
   - bash scripts/prepare_pages_assets.sh
   - travis_retry npm run prod
+  - php artisan elfinder:publish
 
 script:
   - vendor/bin/phpunit

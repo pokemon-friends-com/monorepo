@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature\Http\Controllers\Auth;
 
+use obsession\Domain\Users\Users\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -8,7 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class RegisterControllerTest extends TestCase
 {
 
-    use WithoutMiddleware;
+    use DatabaseMigrations;
 
     /**
      * A basic test example.
@@ -18,7 +19,26 @@ class RegisterControllerTest extends TestCase
     public function testIfRegisterIsCorrectlyDisplayed()
     {
         $this
-            ->get('/')
+            ->get('/register')
             ->assertStatus(200);
+    }
+
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testRegistration()
+    {
+        $user = factory(User::class)->states(User::ROLE_CUSTOMER)->make();
+
+        $this
+            ->post('/register', $user->toArray() + [
+                    'password' => $this->getDefaultPassword(),
+                    'password_confirmation' => $this->getDefaultPassword()
+                ]
+            )
+            ->assertStatus(302)
+            ->assertRedirect('/dashboard');
     }
 }

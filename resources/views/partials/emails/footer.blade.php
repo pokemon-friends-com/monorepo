@@ -103,7 +103,7 @@
                                                     <tr>
                                                         <td valign="top" style="font-family: 'Open Sans', Arial, sans-serif; font-size:13px; color:#999999; line-height:20px;">
                                                             <p>
-                                                                {{ trans('frontend/home.baseline') }}
+                                                                {{ trans('global.baseline') }}
                                                             </p>
                                                             <p>
                                                                 <a href="{{ route('frontend.contact.index') }}">{{ trans('leads.contact_form') }}</a>
