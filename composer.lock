@@ -8267,27 +8267,27 @@
         },
         {
             "name": "josiasmontag/laravel-redis-mock",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/josiasmontag/laravel-redis-mock.git",
-                "reference": "67123c596cccdaffec8c3106fe0f15f3e4fd8608"
+                "reference": "8417635a1f8d102b759661566876acd63733048a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/josiasmontag/laravel-redis-mock/zipball/67123c596cccdaffec8c3106fe0f15f3e4fd8608",
-                "reference": "67123c596cccdaffec8c3106fe0f15f3e4fd8608",
+                "url": "https://api.github.com/repos/josiasmontag/laravel-redis-mock/zipball/8417635a1f8d102b759661566876acd63733048a",
+                "reference": "8417635a1f8d102b759661566876acd63733048a",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^5.8.30",
+                "laravel/framework": "^5.8.30|^6.0",
                 "m6web/redis-mock": "^4.2",
                 "php": ">=7.1.0",
                 "predis/predis": "^1.1"
             },
             "require-dev": {
-                "orchestra/testbench": "^3.5.0",
-                "phpunit/phpunit": "6.2|^7.0"
+                "orchestra/testbench": "~3.8.0|^4.0",
+                "phpunit/phpunit": "^7.0|^8.0"
             },
             "type": "library",
             "extra": {
@@ -8320,7 +8320,7 @@
                 "localization",
                 "php"
             ],
-            "time": "2019-08-02T12:20:08+00:00"
+            "time": "2019-09-03T22:54:55+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
