@@ -4865,16 +4865,16 @@
         },
         {
             "name": "spatie/crawler",
-            "version": "4.6.2",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "27100cc01200755b056525c1b6aa29b2e2eff6c4"
+                "reference": "95f41803b3021cd44315a142143c9f101b9208e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/27100cc01200755b056525c1b6aa29b2e2eff6c4",
-                "reference": "27100cc01200755b056525c1b6aa29b2e2eff6c4",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/95f41803b3021cd44315a142143c9f101b9208e8",
+                "reference": "95f41803b3021cd44315a142143c9f101b9208e8",
                 "shasum": ""
             },
             "require": {
@@ -4885,7 +4885,7 @@
                 "spatie/browsershot": "^3.14",
                 "spatie/robots-txt": "^1.0.1",
                 "symfony/dom-crawler": "^4.0",
-                "tightenco/collect": "^5.6"
+                "tightenco/collect": "^5.6|^6.0"
             },
             "require-dev": {
                 "larapack/dd": "^1.1",
@@ -4920,7 +4920,7 @@
                 "spatie",
                 "website"
             ],
-            "time": "2019-08-08T06:51:22+00:00"
+            "time": "2019-09-10T07:55:54+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -5236,26 +5236,26 @@
         },
         {
             "name": "spatie/laravel-sitemap",
-            "version": "5.3.0",
+            "version": "5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sitemap.git",
-                "reference": "1bd689d14e807c3e6b739b89922a3475c3535ece"
+                "reference": "68925d21cfc363ba80644dee755523d941b422c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/1bd689d14e807c3e6b739b89922a3475c3535ece",
-                "reference": "1bd689d14e807c3e6b739b89922a3475c3535ece",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/68925d21cfc363ba80644dee755523d941b422c8",
+                "reference": "68925d21cfc363ba80644dee755523d941b422c8",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.8.0",
+                "illuminate/support": "~5.8.0|^6.0",
                 "nesbot/carbon": "^1.21|^2.0",
                 "php": "^7.2",
                 "spatie/crawler": "^4.1.0"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.8.0",
+                "orchestra/testbench": "~3.8.0|^4.0",
                 "phpunit/phpunit": "^8.0",
                 "spatie/phpunit-snapshot-assertions": "^2.0.0",
                 "spatie/temporary-directory": "^1.1"
@@ -5291,7 +5291,7 @@
                 "laravel-sitemap",
                 "spatie"
             ],
-            "time": "2019-02-27T20:30:30+00:00"
+            "time": "2019-09-04T08:13:45+00:00"
         },
         {
             "name": "spatie/pdf-to-image",
@@ -7048,16 +7048,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v5.8.34",
+            "version": "v6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "957e430c26c51b65c80acc87896023229dc05a21"
+                "reference": "e35230cde9e682881e9ac27105d0f26c32eca6d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/957e430c26c51b65c80acc87896023229dc05a21",
-                "reference": "957e430c26c51b65c80acc87896023229dc05a21",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/e35230cde9e682881e9ac27105d0f26c32eca6d6",
+                "reference": "e35230cde9e682881e9ac27105d0f26c32eca6d6",
                 "shasum": ""
             },
             "require": {
@@ -7066,7 +7066,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "nesbot/carbon": "^1.26.3",
+                "nesbot/carbon": "^2.23.0",
                 "phpunit/phpunit": "^7.0"
             },
             "type": "library",
@@ -7094,7 +7094,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2019-07-30T19:16:47+00:00"
+            "time": "2019-09-09T14:07:34+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
