@@ -3030,35 +3030,34 @@
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.5.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c"
+                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/1d32342b8c1eb27353c8887c366147b4c2da673c",
-                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
+                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0.0",
-                "php": "^7.3.0"
+                "php": "^7.1.0"
             },
             "require-dev": {
-                "composer/composer": "^1.8.6",
-                "doctrine/coding-standard": "^6.0.0",
+                "composer/composer": "^1.6.3",
+                "doctrine/coding-standard": "^5.0.1",
                 "ext-zip": "*",
-                "infection/infection": "^0.13.4",
-                "phpunit/phpunit": "^8.2.5",
-                "vimeo/psalm": "^3.4.9"
+                "infection/infection": "^0.7.1",
+                "phpunit/phpunit": "^7.0.0"
             },
             "type": "composer-plugin",
             "extra": {
                 "class": "PackageVersions\\Installer",
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -3077,7 +3076,7 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-07-17T15:49:50+00:00"
+            "time": "2019-02-21T12:16:21+00:00"
         },
         {
             "name": "opis/closure",
@@ -4630,22 +4629,22 @@
         },
         {
             "name": "sentry/sdk",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php-sdk.git",
-                "reference": "91c36aec83e4c1c5801b64ef4927b78a5aa8ce7f"
+                "reference": "4c115873c86ad5bd0ac6d962db70ca53bf8fb874"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php-sdk/zipball/91c36aec83e4c1c5801b64ef4927b78a5aa8ce7f",
-                "reference": "91c36aec83e4c1c5801b64ef4927b78a5aa8ce7f",
+                "url": "https://api.github.com/repos/getsentry/sentry-php-sdk/zipball/4c115873c86ad5bd0ac6d962db70ca53bf8fb874",
+                "reference": "4c115873c86ad5bd0ac6d962db70ca53bf8fb874",
                 "shasum": ""
             },
             "require": {
                 "http-interop/http-factory-guzzle": "^1.0",
                 "php-http/curl-client": "^1.0|^2.0",
-                "sentry/sentry": "^2.0.1"
+                "sentry/sentry": "^2.1.3"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
@@ -4659,20 +4658,20 @@
                 }
             ],
             "description": "This is a metapackage shipping sentry/sentry with a recommended http client.",
-            "time": "2019-04-08T07:21:45+00:00"
+            "time": "2019-09-09T19:54:44+00:00"
         },
         {
             "name": "sentry/sentry",
-            "version": "2.1.2",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "646f6ada8b89a08063e31f54ed6d260bd6879239"
+                "reference": "41ef3b66c2a06e3510d6e128eec28acac388f770"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/646f6ada8b89a08063e31f54ed6d260bd6879239",
-                "reference": "646f6ada8b89a08063e31f54ed6d260bd6879239",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/41ef3b66c2a06e3510d6e128eec28acac388f770",
+                "reference": "41ef3b66c2a06e3510d6e128eec28acac388f770",
                 "shasum": ""
             },
             "require": {
@@ -4738,32 +4737,32 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-08-22T07:37:30+00:00"
+            "time": "2019-09-06T16:10:38+00:00"
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "86b4549d8c388c5237bcfdd2eb99673d4c645ff9"
+                "reference": "1e351d2257de312dfa3bdb5544b55e587bd4c00a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/86b4549d8c388c5237bcfdd2eb99673d4c645ff9",
-                "reference": "86b4549d8c388c5237bcfdd2eb99673d4c645ff9",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/1e351d2257de312dfa3bdb5544b55e587bd4c00a",
+                "reference": "1e351d2257de312dfa3bdb5544b55e587bd4c00a",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.0 - 5.8",
+                "illuminate/support": "5.0 - 5.8 | ^6.0",
                 "php": "^7.1",
                 "sentry/sdk": "^2.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "2.14.*",
-                "laravel/framework": "5.8.*",
-                "orchestra/testbench": "3.8.*",
-                "phpunit/phpunit": "7.5.*"
+                "laravel/framework": "^6.0",
+                "orchestra/testbench": "^3.9",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -4806,7 +4805,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-08-23T07:11:58+00:00"
+            "time": "2019-09-03T07:39:44+00:00"
         },
         {
             "name": "spatie/browsershot",
