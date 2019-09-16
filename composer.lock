@@ -1528,16 +1528,16 @@
         },
         {
             "name": "lab404/laravel-impersonate",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/404labfr/laravel-impersonate.git",
-                "reference": "8804a1555b59710e5960a0dd4a35269145b1b4b6"
+                "reference": "8b07d122793cbfc27103a1345dae75b97cbd7a44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/404labfr/laravel-impersonate/zipball/8804a1555b59710e5960a0dd4a35269145b1b4b6",
-                "reference": "8804a1555b59710e5960a0dd4a35269145b1b4b6",
+                "url": "https://api.github.com/repos/404labfr/laravel-impersonate/zipball/8b07d122793cbfc27103a1345dae75b97cbd7a44",
+                "reference": "8b07d122793cbfc27103a1345dae75b97cbd7a44",
                 "shasum": ""
             },
             "require": {
@@ -1545,8 +1545,8 @@
                 "php": ">=7.1.3"
             },
             "require-dev": {
-                "orchestra/database": "^3.8",
-                "orchestra/testbench": "^3.8",
+                "orchestra/database": "^3.8 | ^4.0",
+                "orchestra/testbench": "^3.8 | ^4.0",
                 "phpunit/phpunit": "^7.5 | ^8.0"
             },
             "type": "library",
@@ -1584,7 +1584,7 @@
                 "plugin",
                 "user"
             ],
-            "time": "2019-08-09T13:26:51+00:00"
+            "time": "2019-09-04T13:56:51+00:00"
         },
         {
             "name": "laravel-notification-channels/twitter",
