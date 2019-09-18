@@ -1,5 +1,5 @@
 <script type="text/javascript" src="{{ asset('/plugins/pace/pace.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/backend.js') }}"></script>
+<script type="text/javascript" src="{{ mix('js/backend.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/plugins/modernizr.custom.js') }}"></script>
 {{--<script type="text/javascript" src="{{ asset('/plugins/jquery-ui/jquery-ui.min.js') }}"></script>--}}
 {{--<script type="text/javascript" src="{{ asset('/plugins/jquery/jquery-easy.js') }}"></script>--}}

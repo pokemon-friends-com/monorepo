@@ -34,31 +34,6 @@ abstract class RepositoryEloquentAbstract extends BaseRepository implements Repo
     }
 
     /**
-     * Count all item, based on active criterias.
-     *
-     * @param array $columns
-     *
-     * @return int
-     * @throws RepositoryException
-     */
-    public function count(array $columns = ['*']): int
-    {
-        $this->applyCriteria();
-        $this->applyScope();
-
-        if ($this->model instanceof Builder) {
-            $results = $this->model->get($columns)->count();
-        } else {
-            $results = $this->model->count($columns);
-        }
-
-        $this->resetModel();
-        $this->resetScope();
-
-        return $results;
-    }
-
-    /**
      * Set the current page for paginated request.
      *
      * @param int $currentPage

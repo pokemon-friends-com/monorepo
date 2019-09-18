@@ -15,13 +15,14 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-
-        	console.log('Component mounted.');
-
-            axios.get('api/v1/user').then(response => {});
-            axios.get('ajax/timezones').then(response => {});
-        }
-    }
+export default {
+  mounted() {
+    // eslint-disable-next-line
+    console.log('Component mounted.');
+    // eslint-disable-next-line
+    // axios.get('api/v1/user').then(response => {});
+    // eslint-disable-next-line
+    // axios.get('ajax/timezones').then(response => {});
+  },
+};
 </script>
