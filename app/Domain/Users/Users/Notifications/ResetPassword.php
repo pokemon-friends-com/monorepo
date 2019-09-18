@@ -1,10 +1,9 @@
 <?php namespace obsession\Domain\Users\Users\Notifications;
 
-use obsession\Infrastructure\
-{
-    Interfaces\Queues\ShouldQueueInterface,
-    Contracts\Queues\QueueableTrait,
-    Contracts\Notifications\Notification
+use obsession\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use obsession\Infrastructure\Contracts\{
+    Queues\QueueableTrait,
+    Notifications\Notification
 };
 use obsession\App\Notifications\Messages\CustomerMailMessage;
 
@@ -21,7 +20,8 @@ class ResetPassword extends Notification
     /**
      * Create a notification instance.
      *
-     * @param  string $token
+     * @param string $token
+     *
      * @return void
      */
     public function __construct($token)
@@ -32,7 +32,8 @@ class ResetPassword extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
+     *
      * @return array|string
      */
     public function via($notifiable)
@@ -43,13 +44,17 @@ class ResetPassword extends Notification
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new CustomerMailMessage)
+        return (new CustomerMailMessage())
             ->subject(trans('auth.password_reset_title'))
-            ->view('emails.users.users.reset_password', ['token' => $this->token]);
+            ->view(
+                'emails.users.users.reset_password',
+                ['token' => $this->token]
+            );
     }
 }

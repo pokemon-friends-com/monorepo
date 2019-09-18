@@ -1,10 +1,10 @@
 <?php namespace obsession\Domain\Users\Users\Notifications;
 
-use obsession\Infrastructure\
+use obsession\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use obsession\Infrastructure\Contracts\
 {
-    Interfaces\Queues\ShouldQueueInterface,
-    Contracts\Queues\QueueableTrait,
-    Contracts\Notifications\Notification
+    Queues\QueueableTrait,
+    Notifications\Notification
 };
 use obsession\App\Notifications\
 {
@@ -12,10 +12,7 @@ use obsession\App\Notifications\
     Messages\CustomerMailMessage,
     Messages\MailableMessage
 };
-use obsession\Domain\Users\Users\
-{
-    User
-};
+use obsession\Domain\Users\Users\User;
 
 class CreatedAccountByAdministrator extends Notification
 {
@@ -38,7 +35,7 @@ class CreatedAccountByAdministrator extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
      *
      * @return array|string
      */
@@ -50,19 +47,17 @@ class CreatedAccountByAdministrator extends Notification
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed $notifiable
+     * @param mixed $notifiable
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new CustomerMailMessage)
+        return (new CustomerMailMessage())
             ->subject(trans('mails.created_account_by_administrator_subject'))
             ->view(
                 'emails.users.users.created_account_by_administrator',
-                [
-                    'civility_name' => $this->user->civility_name,
-                ]
+                ['civility_name' => $this->user->civility_name]
             );
     }
 }

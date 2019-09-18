@@ -41,9 +41,12 @@
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "josiasmontag/laravel-redis-mock": "^1.2",
+        "laravel/dusk": "^5.5",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.3"
+        "phpunit/phpunit": "^8.3",
+        "sebastian/phpcpd": "^4.1",
+        "squizlabs/php_codesniffer": "^3.4"
     },
     "config": {
         "optimize-autoloader": true,
@@ -97,10 +100,10 @@
             "docker-compose --project-name obsession exec -T workspace php artisan dusk"
         ],
         "tests:phpcs": [
-            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR2 app",
-            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR2 database",
-            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR2 routes",
-            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR2 tests"
+            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR12 app",
+            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR12 database",
+            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR12 routes",
+            "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcs --standard=PSR12 tests"
         ],
         "tests:duplicated": [
             "docker-compose --project-name obsession exec -T workspace php /var/www/vendor/bin/phpcpd app",

@@ -24,7 +24,7 @@ trait NamableTrait
     {
         return sprintf(
             '%s %s %s',
-            trans('users.civility.'.$this->civility),
+            trans('users.civility.' . $this->civility),
             ucfirst(strtolower($this->last_name)),
             ucfirst(strtolower($this->first_name))
         );

@@ -1,9 +1,7 @@
 <?php namespace obsession\App\Providers;
 
-use Illuminate\{
-    Foundation\Support\Providers\RouteServiceProvider as ServiceProvider,
-    Support\Facades\Route
-};
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {

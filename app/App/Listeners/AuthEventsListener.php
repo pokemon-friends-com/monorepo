@@ -1,15 +1,11 @@
 <?php namespace obsession\App\Listeners;
 
-use Illuminate\{
-    Queue\InteractsWithQueue
-};
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Auth\Events\{
     Login,
     Logout
 };
-use obsession\Infrastructure\{
-    Interfaces\Queues\ShouldQueueInterface
-};
+use obsession\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
 
 class AuthEventsListener
 {

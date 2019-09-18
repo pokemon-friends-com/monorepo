@@ -34,8 +34,16 @@ class FullNameLikeCriteria extends CriteriaAbstract
                 collect($name_words)
                     ->each(function ($word) use (&$query) {
                         $query
-                            ->where('users.first_name', 'LIKE', '%'.$word.'%')
-                            ->orWhere('users.last_name', 'LIKE', '%'.$word.'%');
+                            ->where(
+                                'users.first_name',
+                                'LIKE',
+                                '%' . $word . '%'
+                            )
+                            ->orWhere(
+                                'users.last_name',
+                                'LIKE',
+                                '%' . $word . '%'
+                            );
                     });
             });
     }

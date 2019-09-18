@@ -1,8 +1,8 @@
 <?php namespace obsession\App\Providers;
 
-use Illuminate\{
-    Support\Facades\URL,
-    Support\ServiceProvider
+use Illuminate\Support\{
+    Facades\URL,
+    ServiceProvider
 };
 use Barryvdh\{
     Debugbar\ServiceProvider as DebugbarServiceProvider,

@@ -2,32 +2,43 @@
 
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
-use obsession\Infrastructure\
-{
-    Interfaces\Domain\Users\Users\HandshakableInterface,
-    Interfaces\Domain\Users\Users\UserCivilitiesInterface,
-    Interfaces\Domain\Users\Users\UserRolesInterface,
-    Interfaces\Domain\Locale\LocalesInterface,
-    Interfaces\Domain\Locale\TimeZonesInterface,
-    Contracts\Model\AuthenticatableModelAbstract,
-    Contracts\Model\IdentifiableTrait,
-    Contracts\Model\Notifiable,
-    Contracts\Model\SoftDeletes,
-    Contracts\Model\TimeStampsTz,
-    Contracts\Model\SoftDeletesTz
+use obsession\Infrastructure\Interfaces\Domain\Users\{
+    Users\HandshakableInterface,
+    Users\UserCivilitiesInterface,
+    Users\UserRolesInterface
 };
-use obsession\Domain\Users\
+use obsession\Infrastructure\Interfaces\Domain\{
+    Locale\LocalesInterface,
+    Locale\TimeZonesInterface
+};
+use obsession\Infrastructure\Contracts\
 {
-    Leads\Lead,
-    Leads\Traits\HandshakeNotificationTrait,
-    Profiles\Traits\ProfileableTrait,
-    ProvidersTokens\ProviderToken,
-    Users\Notifications\CreatedAccountByAdministrator,
-    Users\Notifications\ResetPassword,
-    Users\Traits\NamableTrait
+    Model\AuthenticatableModelAbstract,
+    Model\IdentifiableTrait,
+    Model\Notifiable,
+    Model\SoftDeletes,
+    Model\TimeStampsTz,
+    Model\SoftDeletesTz
+};
+use obsession\Domain\Users\Leads\{
+    Lead,
+    Traits\HandshakeNotificationTrait
+};
+use obsession\Domain\Users\Profiles\Traits\ProfileableTrait;
+use obsession\Domain\Users\ProvidersTokens\ProviderToken;
+use obsession\Domain\Users\Users\
+{
+    Notifications\CreatedAccountByAdministrator,
+    Notifications\ResetPassword,
+    Traits\NamableTrait
 };
 
-class User extends AuthenticatableModelAbstract implements UserCivilitiesInterface, UserRolesInterface, LocalesInterface, TimeZonesInterface, HandshakableInterface
+class User extends AuthenticatableModelAbstract implements
+    UserCivilitiesInterface,
+    UserRolesInterface,
+    LocalesInterface,
+    TimeZonesInterface,
+    HandshakableInterface
 {
 
     use HasApiTokens;

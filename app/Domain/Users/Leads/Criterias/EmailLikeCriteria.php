@@ -27,6 +27,10 @@ class EmailLikeCriteria extends CriteriaAbstract
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        return $model->where('users_leads.email', 'LIKE', '%'.$this->email.'%');
+        return $model->where(
+            'users_leads.email',
+            'LIKE',
+            '%' . $this->email . '%'
+        );
     }
 }

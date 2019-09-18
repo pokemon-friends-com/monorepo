@@ -4,10 +4,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use obsession\Http\Controllers\Auth\AuthRedirectTrait;
-use obsession\Domain\Users\{
-    ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent,
-    Users\Repositories\UsersRepositoryEloquent
-};
+use obsession\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
+use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 
 class LoginController extends ControllerAbstract
 {
@@ -126,7 +124,6 @@ class LoginController extends ControllerAbstract
         }
 
         if (!empty($providerUser) && \Auth::check()) {
-
             $isTokenAvailableForUser = $this
                 ->r_providers_tokens
                 ->checkIfTokenIsAvailableForUser(
@@ -170,7 +167,6 @@ class LoginController extends ControllerAbstract
             ->findUserForProvider($providerUser->id, $provider);
 
         if (!is_null($providerToken)) {
-
             $this
                 ->r_providers_tokens
                 ->update(

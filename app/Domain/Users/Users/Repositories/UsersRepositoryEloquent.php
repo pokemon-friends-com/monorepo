@@ -20,10 +20,7 @@ use obsession\Domain\Users\Users\{
     Events\UserTriedToDeleteHisOwnAccountEvent,
     Presenters\UsersListPresenter
 };
-use obsession\Domain\Users\Leads\
-{
-    Lead
-};
+use obsession\Domain\Users\Leads\Lead;
 
 class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements UsersRepositoryInterface
 {
@@ -50,16 +47,25 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      */
     public function create(array $attributes): User
     {
-        if (!array_key_exists('uniqid', $attributes) || !$attributes['uniqid']) {
+        if (
+            !array_key_exists('uniqid', $attributes)
+            || !$attributes['uniqid']
+        ) {
             $attributes['uniqid'] = uniqid();
         }
 
-        if (!array_key_exists('password', $attributes) || !$attributes['password']) {
+        if (
+            !array_key_exists('password', $attributes)
+            || !$attributes['password']
+        ) {
             // Temporary password.
             $attributes['password'] = bcrypt(md5(uniqid()));
         }
 
-        if (!array_key_exists('role', $attributes) || !$attributes['role']) {
+        if (
+            !array_key_exists('role', $attributes)
+            || !$attributes['role']
+        ) {
             $attributes['role'] = User::ROLE_CUSTOMER;
         }
 
@@ -120,9 +126,9 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     public function getRoles()
     {
         return collect([
-            User::ROLE_ADMINISTRATOR => trans('users.role.'.User::ROLE_ADMINISTRATOR),
-            User::ROLE_ACCOUNTANT => trans('users.role.'.User::ROLE_ACCOUNTANT),
-            User::ROLE_CUSTOMER => trans('users.role.'.User::ROLE_CUSTOMER),
+            User::ROLE_ADMINISTRATOR => trans('users.role.' . User::ROLE_ADMINISTRATOR),
+            User::ROLE_ACCOUNTANT => trans('users.role.' . User::ROLE_ACCOUNTANT),
+            User::ROLE_CUSTOMER => trans('users.role.' . User::ROLE_CUSTOMER),
         ]);
     }
 
@@ -132,9 +138,9 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     public function getCivilities()
     {
         return collect([
-            User::CIVILITY_MADAM => trans('users.civility.'.User::CIVILITY_MADAM),
-            User::CIVILITY_MISS => trans('users.civility.'.User::CIVILITY_MISS),
-            User::CIVILITY_MISTER => trans('users.civility.'.User::CIVILITY_MISTER),
+            User::CIVILITY_MADAM => trans('users.civility.' . User::CIVILITY_MADAM),
+            User::CIVILITY_MISS => trans('users.civility.' . User::CIVILITY_MISS),
+            User::CIVILITY_MISTER => trans('users.civility.' . User::CIVILITY_MISTER),
         ]);
     }
 
@@ -278,7 +284,8 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     public function registrationValidator(array $data)
     {
         return Validator::make($data, [
-            'civility' => 'required|in:' . User::CIVILITY_MADAM . ',' . User::CIVILITY_MISS . ',' . User::CIVILITY_MISTER,
+            'civility' => 'required|in:' . User::CIVILITY_MADAM . ','
+                . User::CIVILITY_MISS . ',' . User::CIVILITY_MISTER,
             'first_name' => 'required|max:100',
             'last_name' => 'required|max:100',
             'email' => 'required|email|max:80|unique:users',
@@ -353,9 +360,21 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
                         if ($request->has('term')) {
                             $query->where(function ($query) use ($request) {
                                 $query
-                                    ->where('last_name', 'LIKE', '%'.$request->get('term').'%')
-                                    ->orWhere('first_name', 'LIKE', '%'.$request->get('term').'%')
-                                    ->orWhere('email', 'LIKE', '%'.$request->get('term').'%');
+                                    ->where(
+                                        'last_name',
+                                        'LIKE',
+                                        '%' . $request->get('term') . '%'
+                                    )
+                                    ->orWhere(
+                                        'first_name',
+                                        'LIKE',
+                                        '%' . $request->get('term') . '%'
+                                    )
+                                    ->orWhere(
+                                        'email',
+                                        'LIKE',
+                                        '%' . $request->get('term') . '%'
+                                    );
                             });
                         }
                     });
@@ -383,8 +402,10 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @return bool
      */
-    public function isUserDeletingHisAccount(User $currentUser, int $userId): bool
-    {
+    public function isUserDeletingHisAccount(
+        User $currentUser,
+        int $userId
+    ): bool {
         if ($userId === $currentUser->id) {
             event(new UserTriedToDeleteHisOwnAccountEvent($currentUser));
 

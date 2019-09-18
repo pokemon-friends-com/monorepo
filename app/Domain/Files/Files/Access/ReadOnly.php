@@ -24,17 +24,13 @@ class ReadOnly
         switch ($attr) {
             case 'locked':
             case 'read':
-                {
-                    $allowed = true;
-                    break;
-                }
+                $allowed = true;
+                break;
             case 'write':
             case 'hidden':
             default:
-                {
-                    $allowed = false;
-                    break;
-                }
+                $allowed = false;
+                break;
         }
 
         return $allowed;

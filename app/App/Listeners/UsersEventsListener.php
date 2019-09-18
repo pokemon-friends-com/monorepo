@@ -1,9 +1,7 @@
 <?php namespace obsession\App\Listeners;
 
-use Illuminate\{
-    Queue\InteractsWithQueue,
-    Contracts\Queue\ShouldQueue
-};
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use obsession\Domain\Users\Users\{
     Events\UserCreatedEvent,
     Events\UserUpdatedEvent,

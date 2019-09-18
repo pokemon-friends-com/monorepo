@@ -1,19 +1,19 @@
 <?php namespace obsession\Domain\Users\Leads;
 
-use obsession\Infrastructure\
+use obsession\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
+use obsession\Infrastructure\Contracts\
 {
-    Interfaces\Domain\Users\Users\HandshakableInterface,
-    Contracts\Model\ModelAbstract,
-    Contracts\Model\Notifiable,
-    Contracts\Model\IdentifiableTrait,
-    Contracts\Model\TimeStampsTz,
-    Contracts\Model\SoftDeletesTz
+    Model\ModelAbstract,
+    Model\Notifiable,
+    Model\IdentifiableTrait,
+    Model\TimeStampsTz,
+    Model\SoftDeletesTz
 };
-use obsession\Domain\Users\
+use obsession\Domain\Users\Leads\Traits\HandshakeNotificationTrait;
+use obsession\Domain\Users\Users\
 {
-    Leads\Traits\HandshakeNotificationTrait,
-    Users\User,
-    Users\Traits\NamableTrait
+    User,
+    Traits\NamableTrait
 };
 
 class Lead extends ModelAbstract implements HandshakableInterface

@@ -27,29 +27,17 @@ class ProfileFormRequest extends RequestAbstract
      */
     public function rules()
     {
-        $id = $this->method() === 'PUT'  // only if updating
-            ? $this->segment(3)
-            : 0;
-
         $rules = [
-            'birth_date' => 'date_format:"'.trans('global.date_format').'"',
+            'birth_date' => 'date_format:"' . trans('global.date_format') . '"',
             'family_situation' => 'in:'
-                .Profile::FAMILY_SITUATION_SINGLE.','
-                .Profile::FAMILY_SITUATION_MARRIED.','
-                .Profile::FAMILY_SITUATION_CONCUBINAGE.','
-                .Profile::FAMILY_SITUATION_DIVORCEE.','
-                .Profile::FAMILY_SITUATION_WIDOW_ER,
+                . Profile::FAMILY_SITUATION_SINGLE . ','
+                . Profile::FAMILY_SITUATION_MARRIED . ','
+                . Profile::FAMILY_SITUATION_CONCUBINAGE . ','
+                . Profile::FAMILY_SITUATION_DIVORCEE . ','
+                . Profile::FAMILY_SITUATION_WIDOW_ER,
             'maiden_name' => 'max:100',
-            'timezone' => 'required|in:'.collect(timezones())->implode(','),
-            'locale' => 'required|in:'.collect(User::LOCALES)->implode(','),
-
-            //			'email.*' => 'email|max:80|unique:users,email|unique:profiles_emails,email'
-            //				. (
-            //				(($this->method() === 'PUT') && ($id > 0))
-            //					? ',' . $id
-            //					: ''
-            //				),
-
+            'timezone' => 'required|in:' . collect(timezones())->implode(','),
+            'locale' => 'required|in:' . collect(User::LOCALES)->implode(','),
         ];
 
         return $rules;

@@ -34,8 +34,7 @@ class MediasController extends ControllerAbstract
             return $this
                 ->r_medias
                 ->streamPublicDocument($path);
-        }
-        catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             app('sentry')->captureException($exception);
         }
 
@@ -64,8 +63,7 @@ class MediasController extends ControllerAbstract
             return $this
                 ->r_medias
                 ->streamPrivateDocument($hash);
-        }
-        catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             app('sentry')->captureException($exception);
         }
 

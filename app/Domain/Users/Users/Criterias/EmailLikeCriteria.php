@@ -22,10 +22,11 @@ class EmailLikeCriteria extends CriteriaAbstract
     /**
      * @param $model
      * @param RepositoryInterface $repository
+     *
      * @return mixed
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        return $model->where('users.email', 'LIKE', '%'.$this->email.'%');
+        return $model->where('users.email', 'LIKE', '%' . $this->email . '%');
     }
 }

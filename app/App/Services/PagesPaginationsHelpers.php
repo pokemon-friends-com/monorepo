@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\{
-    Pagination\LengthAwarePaginator,
-    Support\Facades\Request
-};
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Request;
 
 if (!function_exists('pages_pagination')) {
     /**

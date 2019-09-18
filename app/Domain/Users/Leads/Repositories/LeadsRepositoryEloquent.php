@@ -1,23 +1,23 @@
 <?php namespace obsession\Domain\Users\Leads\Repositories;
 
 use Illuminate\Container\Container as Application;
-use obsession\Infrastructure\Contracts\
-{
+use obsession\Infrastructure\Contracts\{
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use obsession\Domain\Users\
-{
+use obsession\Domain\Users\{
     Users\User,
-    Users\Repositories\UsersRepositoryEloquent,
-    Leads\Repositories\LeadsRepositoryInterface,
-    Leads\Lead,
-    Leads\Criterias\EmailLikeCriteria,
-    Leads\Criterias\FullNameLikeCriteria,
-    Leads\Events\LeadCreatedEvent,
-    Leads\Events\LeadUpdatedEvent,
-    Leads\Events\LeadDeletedEvent,
-    Leads\Presenters\LeadsListPresenter
+    Users\Repositories\UsersRepositoryEloquent
+};
+use obsession\Domain\Users\Leads\{
+    Repositories\LeadsRepositoryInterface,
+    Lead,
+    Criterias\EmailLikeCriteria,
+    Criterias\FullNameLikeCriteria,
+    Events\LeadCreatedEvent,
+    Events\LeadUpdatedEvent,
+    Events\LeadDeletedEvent,
+    Presenters\LeadsListPresenter
 };
 
 class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements LeadsRepositoryInterface

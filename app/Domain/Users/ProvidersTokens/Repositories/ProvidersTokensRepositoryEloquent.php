@@ -6,16 +6,17 @@ use obsession\Infrastructure\Contracts\
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use obsession\Domain\Users\
-{
-    Users\User,
-    Users\Repositories\UsersRepositoryEloquent,
-    ProvidersTokens\Repositories\ProvidersTokensRepositoryInterface,
-    ProvidersTokens\ProviderToken,
-    ProvidersTokens\Criterias\TokenByProviderCriteria,
-    ProvidersTokens\Events\ProviderTokenCreatedEvent,
-    ProvidersTokens\Events\ProviderTokenUpdatedEvent,
-    ProvidersTokens\Events\ProviderTokenDeletedEvent
+use obsession\Domain\Users\Users\{
+    User,
+    Repositories\UsersRepositoryEloquent
+};
+use obsession\Domain\Users\ProvidersTokens\{
+    Repositories\ProvidersTokensRepositoryInterface,
+    ProviderToken,
+    Criterias\TokenByProviderCriteria,
+    Events\ProviderTokenCreatedEvent,
+    Events\ProviderTokenUpdatedEvent,
+    Events\ProviderTokenDeletedEvent
 };
 
 class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract implements ProvidersTokensRepositoryInterface

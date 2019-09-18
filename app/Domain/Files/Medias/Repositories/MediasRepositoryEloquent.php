@@ -74,17 +74,14 @@ class MediasRepositoryEloquent extends RepositoryEloquentAbstract implements Med
      */
     public function streamPublicDocument($path)
     {
-        $path = storage_path('app/public/'.$path);
+        $path = storage_path('app/public/' . $path);
 
         if (File::exists($path)) {
-
             $file = File::get($path);
             $type = File::mimeType($path);
 
-            $response = Response::make($file, 200);
-            $response->header("Content-Type", $type);
-
-            return $response;
+            return (Response::make($file, 200))
+                ->header("Content-Type", $type);
         }
 
         throw new \Exception();
@@ -131,7 +128,7 @@ class MediasRepositoryEloquent extends RepositoryEloquentAbstract implements Med
             $response->header('Content-Type', $content_types[$extension]);
             $response->header(
                 'Content-disposition',
-                'filename="'.$raw_media_file->file_name.'"'
+                'filename="' . $raw_media_file->file_name . '"'
             );
 
             return $response;

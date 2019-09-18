@@ -1,23 +1,23 @@
 <?php namespace obsession\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Container\Container as Application;
-use obsession\Infrastructure\
+use obsession\Infrastructure\Contracts\
 {
-    Contracts\Request\RequestAbstract,
-    Contracts\Repositories\RepositoryEloquentAbstract
-};
-use obsession\Domain\Users\
-{
-    Profiles\Profile,
-    ProfilesEmails\ProfileEmail,
-    ProfilesPhones\ProfilePhone,
-    Profiles\Events\ProfileUpdatedEvent,
-    Profiles\Presenters\ProfilesListPresenter,
-    Profiles\Repositories\ProfilesRepository,
-    Users\User,
-    Users\Repositories\UsersRepositoryEloquent
+    Request\RequestAbstract,
+    Repositories\RepositoryEloquentAbstract
 };
 use Carbon\Carbon;
+use obsession\Domain\Users\Users\
+{
+    User,
+    Repositories\UsersRepositoryEloquent
+};
+use obsession\Domain\Users\Profiles\{
+    Profile,
+    Events\ProfileUpdatedEvent,
+    Presenters\ProfilesListPresenter,
+    Repositories\ProfilesRepositoryResetPassword
+};
 
 class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements ProfilesRepository
 {
@@ -27,11 +27,11 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      *     profiles table.
      */
     protected $family_situations = [
-        Profile::FAMILY_SITUATION_SINGLE => 'profiles.family_situation.'.Profile::FAMILY_SITUATION_SINGLE,
-        Profile::FAMILY_SITUATION_MARRIED => 'profiles.family_situation.'.Profile::FAMILY_SITUATION_MARRIED,
-        Profile::FAMILY_SITUATION_CONCUBINAGE => 'profiles.family_situation.'.Profile::FAMILY_SITUATION_CONCUBINAGE,
-        Profile::FAMILY_SITUATION_DIVORCEE => 'profiles.family_situation.'.Profile::FAMILY_SITUATION_DIVORCEE,
-        Profile::FAMILY_SITUATION_WIDOW_ER => 'profiles.family_situation.'.Profile::FAMILY_SITUATION_WIDOW_ER,
+        Profile::FAMILY_SITUATION_SINGLE => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_SINGLE,
+        Profile::FAMILY_SITUATION_MARRIED => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_MARRIED,
+        Profile::FAMILY_SITUATION_CONCUBINAGE => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_CONCUBINAGE,
+        Profile::FAMILY_SITUATION_DIVORCEE => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_DIVORCEE,
+        Profile::FAMILY_SITUATION_WIDOW_ER => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_WIDOW_ER,
     ];
 
     /**
@@ -45,8 +45,10 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      * @param Application $app
      * @param UsersRepositoryEloquent $r_users
      */
-    public function __construct(Application $app, UsersRepositoryEloquent $r_users)
-    {
+    public function __construct(
+        Application $app,
+        UsersRepositoryEloquent $r_users
+    ) {
         parent::__construct($app);
 
         $this->r_users = $r_users;
@@ -130,6 +132,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      * @param array $parameters
      * @param array $emails
      * @param array $phones
+     *
      * @return User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
@@ -157,6 +160,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      * @param array $parameters
      * @param array $emails
      * @param array $phones
+     *
      * @return User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
@@ -173,6 +177,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
 
     /**
      * @param User $user
+     *
      * @return ProfilesRepositoryEloquent
      */
     public function deleteUserProfile(User $user): self
@@ -238,8 +243,10 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function accountantUpdateWithRedirection(RequestAbstract $request, $id)
-    {
+    public function accountantUpdateWithRedirection(
+        RequestAbstract $request,
+        $id
+    ) {
         $this->updateUserProfileWithRequest($request, $id);
 
         return redirect(route('accountant.profile.index'));
@@ -260,8 +267,10 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      * @param RequestAbstract $request
      * @param                 $id
      */
-    protected function updateUserProfileWithRequest(RequestAbstract $request, $id)
-    {
+    protected function updateUserProfileWithRequest(
+        RequestAbstract $request,
+        $id
+    ) {
         try {
             $profile = $this
                 ->update(

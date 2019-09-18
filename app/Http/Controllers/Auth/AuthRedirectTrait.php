@@ -1,6 +1,6 @@
 <?php namespace obsession\Http\Controllers\Auth;
 
-use obsession\Domain\Users\Users\User;
+use Illuminate\Support\Facades\Auth;
 
 trait AuthRedirectTrait
 {
@@ -31,10 +31,9 @@ trait AuthRedirectTrait
      */
     public function redirectTo()
     {
-        if (\Auth::user()->is_administrator) {
+        if (Auth::user()->is_administrator) {
             return route($this->redirectToBackend);
-        }
-        elseif (\Auth::user()->is_accountant) {
+        } elseif (Auth::user()->is_accountant) {
             return route($this->redirectToAccountantSection);
         }
 

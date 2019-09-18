@@ -221,21 +221,26 @@ class UsersController extends ControllerAbstract
             ->each(function ($model) use ($csv) {
                 $csv->insertOne([
                     $model->uniqid,
-                    trans('users.civility.'.$model->civility),
+                    trans('users.civility.' . $model->civility),
                     $model->last_name,
                     $model->first_name,
-                    trans('profiles.family_situation.'.$model->profile->family_situation),
+                    trans('profiles.family_situation.' . $model->profile->family_situation),
                     $model->profile->maiden_name,
                     is_null($model->profile->birth_date_carbon)
-                        ?: $model->profile->birth_date_carbon->format(trans('global.date_format')),
+                        ?: $model
+                        ->profile
+                        ->birth_date_carbon
+                        ->format(trans('global.date_format')),
                     $model->email,
-                    trans('users.role.'.$model->role),
+                    trans('users.role.' . $model->role),
                     $model->locale,
                     $model->timezone,
                 ]);
             });
 
-        $csv->insertOne([trans('users.export_total_user', ['nb_users' => $nb_users])]);
+        $csv->insertOne([
+            trans('users.export_total_user', ['nb_users' => $nb_users]),
+        ]);
         exit;
     }
 }

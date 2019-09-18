@@ -21,7 +21,8 @@ class HomeController extends ControllerAbstract
     public function index()
     {
         return view(
-            'frontend.home.index', [
+            'frontend.home.index',
+            [
                 'metadata' => [
                     'title' => 'Obsession city',
                 ],

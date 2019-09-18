@@ -67,7 +67,7 @@ class FilesRepository
      */
     public function backendShowCKeditor4()
     {
-        return view($this->package.'::ckeditor4', $this->getViewVars());
+        return view($this->package . '::ckeditor4', $this->getViewVars());
     }
 
     /**
@@ -79,7 +79,10 @@ class FilesRepository
 
         if (empty($roots)) {
             $roots = array_merge($roots, $this->listElFinderDirectories());
-            $roots = array_merge($roots, $this->listElFinderDisks('elfinder.disks.'.User::ROLE_ADMINISTRATOR));
+            $roots = array_merge(
+                $roots,
+                $this->listElFinderDisks('elfinder.disks.' . User::ROLE_ADMINISTRATOR)
+            );
         }
 
         return $this->generateElFinderFilesManagerConnector($roots);
@@ -94,7 +97,10 @@ class FilesRepository
 
         if (empty($roots)) {
             $roots = array_merge($roots, $this->listElFinderDirectories());
-            $roots = array_merge($roots, $this->listElFinderDisks('elfinder.disks.'.User::ROLE_ACCOUNTANT));
+            $roots = array_merge(
+                $roots,
+                $this->listElFinderDisks('elfinder.disks.' . User::ROLE_ACCOUNTANT)
+            );
         }
 
         return $this->generateElFinderFilesManagerConnector($roots);
@@ -107,18 +113,23 @@ class FilesRepository
 
         foreach ($dirs as $dir) {
             $roots[] = [
-                'driver' => 'LocalFileSystem', // driver for accessing file system (REQUIRED)
-                'path' => public_path($dir), // path to files (REQUIRED)
-                'URL' => url($dir), // URL to files (REQUIRED)
-                'accessControl' => $this->app->config->get('elfinder.access') // filter callback (OPTIONAL)
+                'driver' => 'LocalFileSystem',
+                // driver for accessing file system (REQUIRED)
+                'path' => public_path($dir),
+                // path to files (REQUIRED)
+                'URL' => url($dir),
+                // URL to files (REQUIRED)
+                'accessControl' => $this->app->config->get('elfinder.access')
+                // filter callback (OPTIONAL)
             ];
         }
 
         return $roots;
     }
 
-    protected function listElFinderDisks($config = 'elfinder.disks.'.User::ROLE_ADMINISTRATOR)
-    {
+    protected function listElFinderDisks(
+        $config = 'elfinder.disks.' . User::ROLE_ADMINISTRATOR
+    ) {
         $roots = [];
         $disks = (array)$this->app['config']->get($config, []);
 
@@ -175,10 +186,10 @@ class FilesRepository
     public function getViewVars()
     {
         $csrf = true;
-        $dir = 'packages/barryvdh/'.$this->package;
+        $dir = 'packages/barryvdh/' . $this->package;
         $locale = str_replace("-", "_", $this->app->config->get('app.locale'));
 
-        if (!file_exists($this->app['path.public']."/$dir/js/i18n/elfinder.$locale.js")) {
+        if (!file_exists($this->app['path.public'] . "/$dir/js/i18n/elfinder.$locale.js")) {
             $locale = false;
         }
 

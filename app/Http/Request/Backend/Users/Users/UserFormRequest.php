@@ -31,15 +31,21 @@ class UserFormRequest extends RequestAbstract
             'first_name' => 'required|max:100',
             'last_name' => 'required|max:100',
             'email' => 'required|email|max:80|unique:users,email'
-                .(
+                . (
                 (($this->method() === 'PUT') && ($id > 0))
-                    ? ','.$id
+                    ? ',' . $id
                     : ''
                 ),
-            'role' => 'required|in:'.User::ROLE_ADMINISTRATOR.','.User::ROLE_CUSTOMER.','.User::ROLE_ACCOUNTANT,
-            'civility' => 'required|in:'.User::CIVILITY_MADAM.','.User::CIVILITY_MISS.','.User::CIVILITY_MISTER,
-            'locale' => 'required|in:'.collect(User::LOCALES)->implode(','),
-            'timezone' => 'required|in:'.collect(timezones())->implode(','),
+            'role' => 'required|in:'
+                . User::ROLE_ADMINISTRATOR . ','
+                . User::ROLE_CUSTOMER . ','
+                . User::ROLE_ACCOUNTANT,
+            'civility' => 'required|in:'
+                . User::CIVILITY_MADAM . ','
+                . User::CIVILITY_MISS . ','
+                . User::CIVILITY_MISTER,
+            'locale' => 'required|in:' . collect(User::LOCALES)->implode(','),
+            'timezone' => 'required|in:' . collect(timezones())->implode(','),
         ];
 
         return $rules;

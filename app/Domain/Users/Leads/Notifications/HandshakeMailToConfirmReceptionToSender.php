@@ -1,11 +1,11 @@
 <?php namespace obsession\Domain\Users\Leads\Notifications;
 
-use obsession\Infrastructure\
+use obsession\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
+use obsession\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use obsession\Infrastructure\Contracts\
 {
-    Interfaces\Domain\Users\Users\HandshakableInterface,
-    Interfaces\Queues\ShouldQueueInterface,
-    Contracts\Queues\QueueableTrait,
-    Contracts\Notifications\Notification
+    Queues\QueueableTrait,
+    Notifications\Notification
 };
 use obsession\App\Notifications\
 {
@@ -68,7 +68,7 @@ class HandshakeMailToConfirmReceptionToSender extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new CustomerMailMessage)
+        return (new CustomerMailMessage())
             ->subject(trans('leads.handshake_subject', [
                 'subject' => $this->subject,
             ]))

@@ -7,12 +7,12 @@ use Spatie\MediaLibrary\
     HasMedia\HasMedia,
     HasMedia\HasMediaTrait
 };
-use obsession\Infrastructure\
+use obsession\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
+use obsession\Infrastructure\Contracts\
 {
-    Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface,
-    Contracts\Model\ModelAbstract,
-    Contracts\Model\TimeStampsTz,
-    Contracts\Model\SoftDeletesTz
+    Model\ModelAbstract,
+    Model\TimeStampsTz,
+    Model\SoftDeletesTz
 };
 use obsession\Domain\Users\
 {
