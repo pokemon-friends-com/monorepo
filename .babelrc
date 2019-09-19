@@ -1,0 +1,15 @@
+{
+  "presets": ["@vue/app"],
+  "plugins": [],
+  "env": {
+    "test": {
+      "plugins": [
+        ["istanbul", {
+          "exclude": [
+            "**/*.spec.js"
+          ]
+        }]
+      ]
+    }
+  }
+}

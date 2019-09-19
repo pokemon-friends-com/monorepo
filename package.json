@@ -1,5 +1,8 @@
 {
     "private": true,
+    "engines": {
+        "node": "^11"
+    },
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -9,7 +12,9 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "gameforest": "cd resources/gameforest && npm install && npm run production",
-        "pages": "cd resources/pages && npm install && grunt demo"
+        "pages": "cd resources/pages && npm install && grunt demo",
+        "mocha": "cross-env NODE_ENV=test mocha-webpack --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require tests/bootstrap.js tests/Unit/Vue/\\\\*.spec.js",
+        "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm run mocha"
     },
     "dependences": {
         "axios": "^0.19",
@@ -22,6 +27,9 @@
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^2.3.0",
         "@typescript-eslint/parser": "^2.3.0",
+        "@vue/babel-preset-app": "^3.11.0",
+        "@vue/test-utils": "^1.0.0-beta.29",
+        "babel-plugin-istanbul": "^5.2.0",
         "copy-webpack-plugin": "^5.0.4",
         "cross-env": "^6.0",
         "eslint": "^6.4.0",
@@ -29,13 +37,21 @@
         "eslint-loader": "^3.0.0",
         "eslint-plugin-import": "^2.18.2",
         "eslint-plugin-vue": "^5.2.3",
+        "expect": "^24.9.0",
         "false": "^0.0.4",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-webpack-plugin": "^2.4.2",
+        "jsdom": "^15.1.1",
+        "jsdom-global": "^3.0.2",
         "laravel-mix": "^4.1.4",
+        "mocha": "^5.2.0",
+        "mocha-webpack": "^2.0.0-beta.0",
+        "nyc": "^14.1.1",
         "resolve-url-loader": "3.1.0",
         "sass": "^1.22.12",
         "sass-loader": "7.*",
+        "typescript": "^3.6.3",
+        "vue-eslint-parser": "^6.0.4",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
