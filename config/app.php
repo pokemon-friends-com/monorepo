@@ -171,7 +171,7 @@ return [
          */
         obsession\App\Providers\AppServiceProvider::class,
         obsession\App\Providers\AuthServiceProvider::class,
-        // obsession\App\Providers\BroadcastServiceProvider::class,
+        obsession\App\Providers\BroadcastServiceProvider::class,
         obsession\App\Providers\EventServiceProvider::class,
         obsession\App\Providers\RouteServiceProvider::class,
 

@@ -39,6 +39,7 @@ class AuthEventsListener
 
     /**
      * Handle Logout events.
+     * @codeCoverageIgnore
      *
      * @param Logout $event
      */

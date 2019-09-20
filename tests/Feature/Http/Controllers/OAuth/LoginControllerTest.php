@@ -20,7 +20,7 @@ class LoginControllerTest extends TestCase
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
 
         $this
-            ->post('/api/oauth/login', [
+            ->postJson('/api/oauth/login', [
                 'email' => $user->email,
                 'password' => $this->getDefaultPassword()
             ])
@@ -33,7 +33,7 @@ class LoginControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this
-            ->post('/api/oauth/login', [
+            ->postJson('/api/oauth/login', [
                 'email' => $user['email'],
                 'password' => $this->faker->password
             ])
@@ -46,7 +46,7 @@ class LoginControllerTest extends TestCase
         Passport::actingAs(factory(User::class)->create());
 
         $this
-            ->get('/api/oauth/logout')
+            ->getJson('/api/oauth/logout')
             ->assertStatus(204);
     }
 }

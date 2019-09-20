@@ -18,7 +18,7 @@ class RegisterControllerTest extends TestCase
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->make();
 
         $this
-            ->post('/api/oauth/register', $user->toArray() + [
+            ->postJson('/api/oauth/register', $user->toArray() + [
                     'password' => $this->getDefaultPassword(),
                     'password_confirmation' => $this->getDefaultPassword()
                 ]

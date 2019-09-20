@@ -21,8 +21,17 @@ class UserControllerTest extends TestCase
         Passport::actingAs($user);
 
         $this
-            ->get('/api/v1/user')
+            ->getJson('/api/v1/user')
             ->assertStatus(200)
             ->assertExactJson((new UserTransformer)->transform($user));
+    }
+
+    public function testUserAsAnonymousEndpoint()
+    {
+        // Do not act as anyone to get Unauthenticated exception.
+        $this
+            ->getJson('/api/v1/user')
+            ->assertStatus(401)
+            ->assertExactJson(['error' => 'Unauthenticated.']);
     }
 }

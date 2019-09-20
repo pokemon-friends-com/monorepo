@@ -34,7 +34,7 @@ class UsersEventsListener
         );
         $events->listen(
             'obsession\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent',
-            'obsession\App\Listeners\UsersEventsListener@handleUserTriedToDeleteHisOwnAccountEventEvent'
+            'obsession\App\Listeners\UsersEventsListener@handleUserTriedToDeleteHisOwnAccountEvent'
         );
         $events->listen(
             'obsession\Domain\Users\Users\Events\UserRefreshSessionEvent',
@@ -77,7 +77,7 @@ class UsersEventsListener
      *
      * @param UserTriedToDeleteHisOwnAccountEvent $event
      */
-    public function handleUserTriedToDeleteHisOwnAccountEventEvent(
+    public function handleUserTriedToDeleteHisOwnAccountEvent(
         UserTriedToDeleteHisOwnAccountEvent $event
     ) {
         session()->flash('message-warning', trans('users.message_user_tried_to_delete_his_own_account_error'));

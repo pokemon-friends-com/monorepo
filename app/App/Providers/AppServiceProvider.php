@@ -20,9 +20,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // @codeCoverageIgnoreStart
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -32,11 +34,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // @codeCoverageIgnoreStart
         if ($this->app->environment('local')) {
             $this->app->register(IdeHelperServiceProvider::class);
             $this->app->register(DebugbarServiceProvider::class);
         } elseif ($this->app->environment('production')) {
             $this->app->register(SentryServiceProvider::class);
         }
+        // @codeCoverageIgnoreEnd
     }
 }

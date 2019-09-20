@@ -35,6 +35,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        // @codeCoverageIgnoreStart
         if (
             !app()->environment('local')
             && app()->bound('sentry')
@@ -44,6 +45,7 @@ class Handler extends ExceptionHandler
             $this->sentryID = app('sentry')
                 ->captureException($exception);
         }
+        // @codeCoverageIgnoreEnd
 
         parent::report($exception);
     }
@@ -58,6 +60,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // @codeCoverageIgnoreStart
         if (
             !app()->environment('local')
             && $this->shouldReport($exception)
@@ -71,6 +74,7 @@ class Handler extends ExceptionHandler
                     500
                 );
         }
+        // @codeCoverageIgnoreEnd
 
         return parent::render($request, $exception);
     }
