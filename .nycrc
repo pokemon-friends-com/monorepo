@@ -1,7 +1,6 @@
 {
     "include": [
-        "resources/js/**/*.js",
-        "resources/js/**/*.vue"
+        "resources/js/**/*.{js,vue}"
     ],
     "extension": [
         ".js",
