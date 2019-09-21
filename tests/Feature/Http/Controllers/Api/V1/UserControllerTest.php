@@ -1,4 +1,4 @@
-<?php namespace obsession\Http\Controllers\OAuth;
+<?php namespace obsession\Http\Controllers\Api\V1;
 
 use obsession\Domain\Users\Profiles\Profile;
 use obsession\Domain\Users\Users\Transformers\UserTransformer;
