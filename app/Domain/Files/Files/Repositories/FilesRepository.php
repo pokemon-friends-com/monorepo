@@ -1,10 +1,21 @@
 <?php namespace obsession\Domain\Files\Files\Repositories;
 
-use obsession\Domain\Users\Users\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Filesystem\FilesystemAdapter;
-use Barryvdh\Elfinder\Session\LaravelSession;
-use Barryvdh\Elfinder\Connector;
+use Illuminate\Support\Facades\
+{
+    File,
+    Response
+};
+use League\Glide\{
+    Responses\LaravelResponseFactory,
+    ServerFactory
+};
+use Barryvdh\Elfinder\{
+    Connector,
+    Session\LaravelSession
+};
+use obsession\Domain\Users\Users\User;
 
 //include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeMySQL.class.php');
 //include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeFTP.class.php');
@@ -194,5 +205,42 @@ class FilesRepository
         }
 
         return compact('dir', 'locale', 'csrf');
+    }
+
+    /**
+     * @param $path
+     *
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function streamPublicDocument($path)
+    {
+        $path = storage_path('app/public/' . $path);
+
+        if (File::exists($path)) {
+            $file = File::get($path);
+            $type = File::mimeType($path);
+
+            return Response::make($file, 200)
+                ->header("Content-Type", $type);
+        }
+
+        throw new \Exception();
+    }
+
+    /**
+     * @param string $path
+     *
+     * @return mixed
+     */
+    public function streamPublicThumbnail(string $path)
+    {
+        return ServerFactory::create([
+            'source' => app('filesystem')->disk('public')->getDriver(),
+            'cache' => storage_path('app/thumbnails'),
+            'driver' => 'imagick',
+            'response' => new LaravelResponseFactory(app('request')),
+        ])
+            ->getImageResponse($path, []);
     }
 }

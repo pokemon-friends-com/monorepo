@@ -19,19 +19,16 @@
                             <tr>
                                 <td valign="middle">
                                     <!--Logo-->
-
                                     <table class="table1-3" border="0" align="left" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td align="center" style="line-height: 0px;">
-                                                <img style="display:block; line-height:0px; font-size:0px; border:0px;" src="{{ asset('img/logo.png') }}" width="306" height="90" alt="logo" />
-                                            </td>
+{{--                                            <td align="center" style="line-height: 0px;">--}}
+{{--                                                <img style="display:block; line-height:0px; font-size:0px; border:0px;" src="{{ asset('images/logo.png') }}" width="306" height="90" alt="logo" />--}}
+{{--                                            </td>--}}
+                                            <td align="left" style="font-family: 'Open Sans', Arial, sans-serif; font-size:22px; color:#34495e; font-weight:bold;">{{ config('app.name') }}</td>
                                         </tr>
                                     </table>
-
                                     <!--End Logo-->
-
                                     <!--social-->
-
                                     <table border="0" align="right" cellpadding="0" cellspacing="0" class="table3-1">
                                         <tr>
                                             <td height="30"></td>
@@ -45,19 +42,17 @@
                                                         <td width="30"></td>
                                                         <td width="30"></td>
                                                         <td align="center" style="line-height: 0px;">
-{{--                                                            <a href="https://twitter.com/obsession">--}}
-{{--                                                                <img style="display:block; line-height:0px; font-size:0px; border:0px;" src="{{ asset('img/icon-twitter.png') }}" width="16" height="12" alt="twitter" />--}}
-{{--                                                            </a>--}}
+                                                            <a href="{{ config('services.twitter.url') }}">
+                                                                <img style="display:block; line-height:0px; font-size:0px; border:0px;" src="{{ asset('img/icon-twitter.png') }}" width="16" height="12" alt="twitter" />
+                                                            </a>
                                                         </td>
                                                         <td width="30"></td>
                                                         <td width="30"></td>
-
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
                                     </table>
-
                                     <!--End social-->
                                 </td>
                             </tr>

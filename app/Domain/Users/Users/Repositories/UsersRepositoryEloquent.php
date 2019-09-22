@@ -1,6 +1,8 @@
 <?php namespace obsession\Domain\Users\Users\Repositories;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Validation\Validator as ContractsValidator;
 use obsession\Infrastructure\Contracts\
 {
     Repositories\RepositoryEloquentAbstract,
@@ -26,7 +28,7 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
 {
 
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */
@@ -42,7 +44,6 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @event obsession\Domain\Users\Users\Events\UserCreatedEvent
      * @return \obsession\Domain\Users\Users\User
-     *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function create(array $attributes): User
@@ -84,7 +85,6 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @event obsession\Domain\Users\Users\Events\UserUpdatedEvent
      * @return \obsession\Domain\Users\Users\User
-     *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(array $attributes, $id): User
@@ -115,15 +115,18 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
         return $user;
     }
 
-    public function refreshSession(User $user)
+    /**
+     * @param User $user
+     */
+    public function refreshSession(User $user): void
     {
         event(new UserRefreshSessionEvent($user));
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    public function getRoles()
+    public function getRoles(): Collection
     {
         return collect([
             User::ROLE_ADMINISTRATOR => trans('users.role.' . User::ROLE_ADMINISTRATOR),
@@ -133,9 +136,9 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    public function getCivilities()
+    public function getCivilities(): Collection
     {
         return collect([
             User::CIVILITY_MADAM => trans('users.civility.' . User::CIVILITY_MADAM),
@@ -145,17 +148,17 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    public function getLocales()
+    public function getLocales(): Collection
     {
         return collect(User::LOCALES);
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    public function getTimezones()
+    public function getTimezones(): Collection
     {
         return collect(timezones());
     }
@@ -173,9 +176,9 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     /**
      * Get only users that was soft deleted.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function onlyTrashed()
+    public function onlyTrashed(): Collection
     {
         return User::onlyTrashed()->get();
     }
@@ -185,9 +188,10 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @param string $uniqid The user uniqid
      *
+     * @return self
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function filterByUniqueId($uniqid)
+    public function filterByUniqueId(string $uniqid): self
     {
         if (!is_null($uniqid) && !empty($uniqid)) {
             $this->pushCriteria(new WhereUniqIdIsCriteria($uniqid));
@@ -201,9 +205,10 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @param string $uniqid The user uniqid
      *
+     * @return UsersRepositoryEloquent
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function filterByUniqueIdDifferentThan($uniqid)
+    public function filterByUniqueIdDifferentThan(string $uniqid): self
     {
         if (!is_null($uniqid) && !empty($uniqid)) {
             $this->pushCriteria(new WhereUniqIdIsDifferentCriteria($uniqid));
@@ -213,13 +218,15 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     }
 
     /**
+     *
      * Filter users by name.
      *
      * @param string $name The user last name or lead first name
      *
+     * @return UsersRepositoryEloquent
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function filterByName($name)
+    public function filterByName(string $name): self
     {
         if (!is_null($name) && !empty($name)) {
             $this->pushCriteria(new FullNameLikeCriteria($name));
@@ -233,9 +240,10 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @param string $email The user email
      *
+     * @return UsersRepositoryEloquent
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function filterByEmail($email)
+    public function filterByEmail(string $email): self
     {
         if (!is_null($email) && !empty($email)) {
             $this->pushCriteria(new EmailLikeCriteria($email));
@@ -245,19 +253,28 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     }
 
     /**
-     * @return User
+     * Create a new user.
      *
+     * @param string $civility
+     * @param string $first_name
+     * @param string $last_name
+     * @param string $email
+     * @param string $role
+     * @param string $locale
+     * @param string $timezone
+     *
+     * @return User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function createUser(
-        $civility,
-        $first_name,
-        $last_name,
-        $email,
-        $role = User::ROLE_CUSTOMER,
-        $locale = User::DEFAULT_LOCALE,
-        $timezone = User::DEFAULT_TZ
-    ) {
+        string $civility,
+        string $first_name,
+        string $last_name,
+        string $email,
+        string $role = User::ROLE_CUSTOMER,
+        string $locale = User::DEFAULT_LOCALE,
+        string $timezone = User::DEFAULT_TZ
+    ): User {
         return $this
             ->create(
                 [
@@ -275,55 +292,6 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    public function registrationValidator(array $data)
-    {
-        return Validator::make($data, [
-            'civility' => 'required|in:' . User::CIVILITY_MADAM . ','
-                . User::CIVILITY_MISS . ',' . User::CIVILITY_MISTER,
-            'first_name' => 'required|max:100',
-            'last_name' => 'required|max:100',
-            'email' => 'required|email|max:80|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-    }
-
-    /**
-     * @return User
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
-    public function registerUser(
-        $civility,
-        $first_name,
-        $last_name,
-        $email,
-        $password,
-        $locale = User::DEFAULT_LOCALE,
-        $timezone = User::DEFAULT_TZ
-    ) {
-        return $this
-            ->create(
-                [
-                    'civility' => $civility,
-                    'first_name' => $first_name,
-                    'last_name' => $last_name,
-                    'email' => $email,
-                    'role' => User::ROLE_CUSTOMER,
-                    'password' => bcrypt($password),
-                    'locale' => $locale,
-                    'timezone' => $timezone,
-                ]
-            )
-            ->addProfile();
-    }
-
-    /**
      * @return array
      * @throws \Exception
      */
@@ -338,10 +306,10 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     /**
      * @param RequestAbstract $request
      *
-     * @return mixed
+     * @return array
      * @throws \Exception
      */
-    public function getPaginatedAndFilteredUsers(RequestAbstract $request)
+    public function getPaginatedAndFilteredUsers(RequestAbstract $request): array
     {
         return $this
             ->with(['lead'])
@@ -406,13 +374,13 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
         User $currentUser,
         int $userId
     ): bool {
-        if ($userId === $currentUser->id) {
-            event(new UserTriedToDeleteHisOwnAccountEvent($currentUser));
+        $isUserDeletingHisAccount = $userId === $currentUser->id;
 
-            return true;
+        if ($isUserDeletingHisAccount) {
+            event(new UserTriedToDeleteHisOwnAccountEvent($currentUser));
         }
 
-        return false;
+        return $isUserDeletingHisAccount;
     }
 
     /**

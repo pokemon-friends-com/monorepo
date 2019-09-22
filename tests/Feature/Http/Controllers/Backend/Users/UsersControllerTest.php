@@ -23,7 +23,7 @@ class UsersControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/backend/users')
-            ->assertStatus(200)
+            ->assertSuccessful()
             ->assertSee($administrator->uniqid)
             ->assertSee($user->uniqid);
     }
@@ -34,7 +34,7 @@ class UsersControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/backend/users/create')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 
     public function testShow()
@@ -44,7 +44,7 @@ class UsersControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/backend/users/'.$user->id)
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 
     public function testEdit()
@@ -54,7 +54,7 @@ class UsersControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/backend/users/'.$user->id.'/edit')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 
     public function testDestroy()

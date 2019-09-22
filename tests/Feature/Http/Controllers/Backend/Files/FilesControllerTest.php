@@ -18,6 +18,6 @@ class FilesControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/backend/files')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 }

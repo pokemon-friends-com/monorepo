@@ -71,7 +71,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         });
         $this->assertDatabaseMissing('users_leads', $lead->toArray());
 
-        // @todo xABE : https://github.com/obsession/www/issues/234
+        // @todo xABE : https://github.com/abenevaut/www/issues/234
 //        $this->assertDatabaseHas('users_leads', $lead->toArray());
 //        $this->assertSoftDeleted('users_leads', $lead->toArray());
     }
@@ -112,7 +112,7 @@ class LeadsRepositoryEloquentTest extends TestCase
     {
         factory(Lead::class)->create();
         $lead = factory(Lead::class)->create();
-        // @todo xABE : https://github.com/obsession/www/issues/234
+        // @todo xABE : https://github.com/abenevaut/www/issues/234
 //        factory(Lead::class)->states('deleted')->create();
         $repositoryLead = $this
             ->r_leads
@@ -127,7 +127,7 @@ class LeadsRepositoryEloquentTest extends TestCase
     {
         factory(Lead::class)->create();
         $lead = factory(Lead::class)->create();
-        // @todo xABE : https://github.com/obsession/www/issues/234
+        // @todo xABE : https://github.com/abenevaut/www/issues/234
 //        factory(Lead::class)->states('deleted')->create();
         $repositoryLead = $this
             ->r_leads
@@ -153,7 +153,7 @@ class LeadsRepositoryEloquentTest extends TestCase
          */
         factory(Lead::class)->create();
         $lead = factory(Lead::class)->create();
-        // @todo xABE : https://github.com/obsession/www/issues/234
+        // @todo xABE : https://github.com/abenevaut/www/issues/234
 //        factory(Lead::class)->states('deleted')->create();
         $repositoryLead = $this
             ->r_leads
@@ -182,7 +182,7 @@ class LeadsRepositoryEloquentTest extends TestCase
     {
         factory(Lead::class)->create();
         $lead = factory(Lead::class)->create();
-        // @todo xABE : https://github.com/obsession/www/issues/234
+        // @todo xABE : https://github.com/abenevaut/www/issues/234
 //        factory(Lead::class)->states('deleted')->create();
         $user = $this->r_leads->createUserFromLead($lead->id);
         $this->assertEquals($lead->email, $user->email);

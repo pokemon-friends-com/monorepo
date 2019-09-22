@@ -1,4 +1,4 @@
-<?php namespace obsession\Http\Controllers\Ajax;
+<?php namespace obsession\Http\Controllers\OAuth;
 
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;

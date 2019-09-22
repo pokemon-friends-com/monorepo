@@ -12,6 +12,6 @@ class HomeControllerTest extends TestCase
     {
         $this
             ->get('/')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 }

@@ -5,8 +5,8 @@
     <!-- END MOBILE SIDEBAR TOGGLE -->
     <div class="">
         <div class="brand inline   ">
-            <img src="/img/logo.png" alt="logo" data-src="/img/logo.png"
-                 data-src-retina="/img/logo_2x.png" width="78" height="22">
+            <img src="{{ asset('images/logo.png') }}" alt="logo" data-src="{{ asset('images/logo.png') }}"
+                 data-src-retina="{{ asset('images/logo_2x.png') }}" width="78" height="22">
         </div>
         <!-- START NOTIFICATION LIST -->
 {{--        <ul class="d-lg-inline-block d-none notification-list no-margin d-lg-inline-block b-grey b-l b-r no-style p-l-30 p-r-20">--}}

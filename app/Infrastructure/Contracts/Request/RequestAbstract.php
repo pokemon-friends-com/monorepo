@@ -30,6 +30,11 @@ abstract class RequestAbstract extends FormRequest
         return parent::has($key);
     }
 
+    /**
+     * @codeCoverageIgnore
+     *
+     * @return bool
+     */
     protected function recaptcha()
     {
         if (

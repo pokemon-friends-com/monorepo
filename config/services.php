@@ -39,4 +39,8 @@ return [
         'changelog' => 'https://github.com/obsession-city/www/milestones?state=closed',
     ],
 
+    'twitter' => [
+        'url' => 'https://twitter.com/obsession_city',
+    ],
+
 ];

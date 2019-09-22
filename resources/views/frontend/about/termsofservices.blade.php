@@ -12,7 +12,7 @@
     <section>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">{{ trans('global.terms') }}</div>
                         <div class="card-body">
@@ -20,32 +20,31 @@
 
                             <h2>La socièté</h2>
 
-                            <div class="row">
-                                <div class="col-sm-5 text-right">
-                                    <p>Socièté</p>
-                                </div>
-                                <div class="col-sm-7 sm-m-t-20">
-                                    Dénomination Sociale : ObsessionCity<br>
-                                    Raison Sociale : SARL<br>
-                                    Identification SIRET : XXX<br>
-                                    Identification TVA : XXX
-                                </div>
-                            </div>
+{{--                            <div class="row">--}}
+{{--                                <div class="col-sm-5 text-right">--}}
+{{--                                    <p>Socièté</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-sm-7 sm-m-t-20">--}}
+{{--                                    Dénomination Sociale : ObsessionCity<br>--}}
+{{--                                    Raison Sociale : SARL<br>--}}
+{{--                                    Identification SIRET : XXX<br>--}}
+{{--                                    Identification TVA : XXX--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="row">
                                 <div class="col-sm-5 text-right">
                                     <p>Coordonnées</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
-                                    Adresse<br>Adresse<br>France<br>
+{{--                                    Adresse<br>Adresse<br>France<br>--}}
                                     <a href="{{ route('frontend.contact.index') }}">Formulaire de contact</a>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-5 text-right">
-                                    <p>Le site</p>
-                                    www.obsession.city
+                                    <p>obsession.city</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
                                     <p>
@@ -57,7 +56,6 @@
                             <div class="row">
                                 <div class="col-sm-5 text-right">
                                     <p>Hébergement</p>
-                                    www.fortrabbit.com
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
                                     <p>

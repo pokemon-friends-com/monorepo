@@ -23,7 +23,7 @@ class LoginControllerTest extends TestCase
     {
         $this
             ->get('/login')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 
     /**

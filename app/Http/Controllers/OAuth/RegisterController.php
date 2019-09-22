@@ -3,7 +3,7 @@
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use obsession\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 use obsession\Domain\Users\Users\User;
 use obsession\Http\Controllers\OAuth\LoginResponseTrait;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
@@ -15,21 +15,29 @@ class RegisterController extends ControllerAbstract
     use RegistersUsers;
 
     /**
-     * @var UsersRepositoryEloquent|null
+     * @var UsersRegistrationsRepositoryEloquent|null
      */
     protected $r_users = null;
 
     /**
      * RegisterController constructor.
      *
-     * @param UsersRepositoryEloquent $r_users
+     * @param UsersRegistrationsRepositoryEloquent $r_users
      */
-    public function __construct(UsersRepositoryEloquent $r_users)
+    public function __construct(UsersRegistrationsRepositoryEloquent $r_users)
     {
         $this->before();
         $this->r_users = $r_users;
     }
 
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -58,6 +66,7 @@ class RegisterController extends ControllerAbstract
      * @param array $data
      *
      * @return User
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     protected function create(array $data)
     {

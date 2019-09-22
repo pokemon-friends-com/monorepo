@@ -24,7 +24,7 @@ class LoginControllerTest extends TestCase
                 'email' => $user->email,
                 'password' => $this->getDefaultPassword()
             ])
-            ->assertStatus(200)
+            ->assertSuccessful()
             ->assertJsonStructure(['access_token', 'token_type', 'expires_at']);
     }
 

@@ -15,7 +15,7 @@ class LocalesControllerTest extends TestCase
     {
         $this
             ->get('/ajax/locales', ["X-Requested-With" => "XMLHttpRequest"])
-            ->assertStatus(200)
+            ->assertSuccessful()
             ->assertJson(LocalesInterface::LOCALES);
     }
 

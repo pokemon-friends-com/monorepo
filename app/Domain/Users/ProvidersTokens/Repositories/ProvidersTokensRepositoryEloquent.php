@@ -143,32 +143,27 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
      * @param $provider_id
      * @param $provider_token
      *
-     * @return ProviderToken|null
+     * @return ProviderToken
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function saveUserTokenForProvider(User $user, $provider, $provider_id, $provider_token)
+    public function saveUserTokenForProvider(User $user, $provider, $provider_id, $provider_token): ProviderToken
     {
-        try {
-            $provider_token = $this
-                ->skipPresenter()
-                ->updateOrCreate(
-                    [
-                        'user_id' => $user->id,
-                        'provider' => $provider,
-                    ],
-                    [
-                        'provider_id' => $provider_id,
-                        'provider_token' => $provider_token,
-                    ]
-                );
+        $provider_token = $this
+            ->skipPresenter()
+            ->updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'provider' => $provider,
+                ],
+                [
+                    'provider_id' => $provider_id,
+                    'provider_token' => $provider_token,
+                ]
+            );
 
-            event(new ProviderTokenUpdatedEvent($provider_token));
+        event(new ProviderTokenUpdatedEvent($provider_token));
 
-            return $provider_token;
-        } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return null;
+        return $provider_token;
     }
 
     /**
@@ -179,21 +174,21 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
      * @param $provider
      *
      * @return bool
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function checkIfTokenIsAvailableForUser(User $user, $provider_id, $provider)
+    public function checkIfTokenIsAvailableForUser(User $user, $provider_id, $provider): bool
     {
-        try {
-            $provider_token = $this
-                ->skipPresenter()
-                ->filterByProvider($provider_id, $provider)
-                ->all();
-        } catch (\Prettus\Repository\Exceptions\RepositoryException $exception) {
-            app('sentry')->captureException($exception);
-        }
+        $provider_token = $this
+            ->skipPresenter()
+            ->filterByProvider($provider_id, $provider)
+            ->all();
 
         return (
-            (0 === $provider_token->count())
-            || (1 === $provider_token->count() && $provider_token->first()->user->id === $user->id)
+            0 === $provider_token->count()
+            || (
+                1 === $provider_token->count()
+                && $provider_token->first()->user->id === $user->id
+            )
         );
     }
 
@@ -203,18 +198,15 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
      * @param $provider_id
      * @param $provider
      *
-     * @return ProviderToken|null
+     * @return null|ProviderToken
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function findUserForProvider($provider_id, $provider)
+    public function findUserForProvider($provider_id, $provider): ?ProviderToken
     {
-        try {
-            $provider_token = $this
-                ->skipPresenter()
-                ->filterByProvider($provider_id, $provider)
-                ->all();
-        } catch (\Prettus\Repository\Exceptions\RepositoryException $exception) {
-            app('sentry')->captureException($exception);
-        }
+        $provider_token = $this
+            ->skipPresenter()
+            ->filterByProvider($provider_id, $provider)
+            ->all();
 
         return 1 === $provider_token->count()
             ? $provider_token->first()

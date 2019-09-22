@@ -11,6 +11,14 @@ mix
       alias: {
         '@': path.resolve(__dirname, './resources/js'),
       },
+      extensions: [
+        '*',
+        '.js',
+        '.jsx',
+        '.vue',
+        '.ts',
+        '.tsx',
+      ],
     },
     module: {
       rules: [
@@ -19,6 +27,16 @@ mix
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules|tests)/,
+        },
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          options: {
+            appendTsSuffixTo: [
+              /\.vue$/,
+            ],
+          },
+          exclude: /node_modules/,
         },
       ],
     },
@@ -29,14 +47,14 @@ mix
       }),
       new CopyWebpackPlugin([
         {
-          from: 'resources/img',
-          to: 'img',
-        }, {
           from: 'resources/clip/html/clip-2/images',
           to: 'img',
         }, {
           from: 'resources/pages/dist/pages/img',
           to: 'img',
+        }, {
+          from: 'resources/images',
+          to: 'images',
         }]),
       new ImageminPlugin({
         test: /\.(jpe?g|png|gif)$/i, // |svg

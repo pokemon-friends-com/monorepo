@@ -67,42 +67,6 @@ class MediasRepositoryEloquent extends RepositoryEloquentAbstract implements Med
     }
 
     /**
-     * @param $path
-     *
-     * @return \Illuminate\Http\Response
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    public function streamPublicDocument($path)
-    {
-        $path = storage_path('app/public/' . $path);
-
-        if (File::exists($path)) {
-            $file = File::get($path);
-            $type = File::mimeType($path);
-
-            return (Response::make($file, 200))
-                ->header("Content-Type", $type);
-        }
-
-        throw new \Exception();
-    }
-
-    /**
-     * @param $path
-     */
-    public function outputPublicThumbnails($path)
-    {
-        $server = \League\Glide\ServerFactory::create([
-            'source' => app('filesystem')
-                ->disk('public')
-                ->getDriver(),
-            'cache' => storage_path('app/thumbnails'),
-        ]);
-
-        $server->outputImage($path, \Illuminate\Support\Facades\Input::query());
-    }
-
-    /**
      * @param string $hash
      *
      * @seealso https://laracasts.com/discuss/channels/general-discussion/opening-files-online-using-laravel

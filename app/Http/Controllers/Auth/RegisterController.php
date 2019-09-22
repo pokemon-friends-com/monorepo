@@ -1,7 +1,7 @@
 <?php namespace obsession\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
-use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use obsession\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use obsession\Http\Controllers\Auth\AuthRedirectTrait;
 use obsession\Domain\Users\Users\User;
@@ -24,32 +24,42 @@ class RegisterController extends ControllerAbstract
     use AuthRedirectTrait;
 
     /**
-     * @var UsersRepositoryEloquent|null
+     * @var UsersRegistrationsRepositoryEloquent|null
      */
     protected $r_users = null;
 
     /**
-     * Create a new controller instance.
+     * RegisterController constructor.
      *
-     * @return void
+     * @param UsersRegistrationsRepositoryEloquent $r_users
      */
-    public function __construct(UsersRepositoryEloquent $r_users)
+    public function __construct(UsersRegistrationsRepositoryEloquent $r_users)
     {
         $this->middleware('guest');
-
         $this->r_users = $r_users;
     }
 
     /**
      * Show the application registration form.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showRegistrationForm()
     {
         return view('auth.register', [
             'civilities' => $this->r_users->getCivilities()
         ]);
+    }
+
+    /**
+     * Show the message that explains registrations are closed.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showNoRegistration()
+    {
+        // @todo xABE : Remove at the end of beta
+        return view('auth.noregistration');
     }
 
     /**
@@ -70,6 +80,7 @@ class RegisterController extends ControllerAbstract
      * @param array $data
      *
      * @return User
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     protected function create(array $data)
     {

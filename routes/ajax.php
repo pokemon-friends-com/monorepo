@@ -20,16 +20,20 @@ Route::group(
         'prefix' => 'ajax',
         'as' => 'ajax.',
         'namespace' => 'Ajax',
-        'middleware' => ['ajax'],
     ],
     function () {
 
         Route::get('locales', ['as' => 'locales.index', 'uses' => 'LocalesController@index']);
         Route::get('timezones', ['as' => 'timezones.index', 'uses' => 'TimeZonesController@index']);
 
-        Route::group(['prefix' => 'users', 'as' => 'users.', 'namespace' => 'Users'], function () {
-            Route::get('check-user-email', ['as' => 'check_user_email', 'uses' => 'UsersController@checkUserEmail']);
+        Route::group(['namespace' => 'Users'], function () {
             Route::get('users', ['as' => 'index', 'uses' => 'UsersController@index']);
+            Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+                Route::get('check-user-email', [
+                    'as' => 'check_user_email',
+                    'uses' => 'UsersController@checkUserEmail'
+                ]);
+            });
         });
 
     });

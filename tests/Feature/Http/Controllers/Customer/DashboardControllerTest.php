@@ -1,4 +1,4 @@
-<?php namespace Tests\Feature\Http\Controllers\Backend;
+<?php namespace Tests\Feature\Http\Controllers\Customer;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -10,19 +10,19 @@ class DashboardControllerTest extends TestCase
 
     use DatabaseMigrations;
 
-    public function testToVisitDashboardAsAdministrator()
+    public function testToVisitDashboardAsCustomer()
     {
-        $this->actingAsAdministrator();
+        $this->actingAsCustomer();
         $this
             ->assertAuthenticated()
-            ->get('/backend/dashboard')
-            ->assertSuccessful();
+            ->get('/dashboard')
+            ->assertStatus(503);
     }
 
     public function testToVisitDashboardAsAnonymous()
     {
         $this
-            ->get('/backend/dashboard')
+            ->get('/dashboard')
             ->assertStatus(302)
             ->assertRedirect('/login');
     }

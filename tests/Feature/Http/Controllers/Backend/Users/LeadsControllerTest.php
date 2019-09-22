@@ -23,7 +23,7 @@ class LeadsControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/backend/leads')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 
     public function testUpdate()

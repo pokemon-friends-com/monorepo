@@ -1,5 +1,6 @@
 <?php namespace obsession\Http\Controllers\Frontend\Files;
 
+use Illuminate\Http\Request;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use obsession\Domain\Files\Medias\Repositories\MediasRepositoryEloquent;
 
@@ -18,38 +19,8 @@ class MediasController extends ControllerAbstract
      */
     public function __construct(MediasRepositoryEloquent $r_medias)
     {
-        $this->r_medias = $r_medias;
-
         $this->before();
-    }
-
-    /**
-     * @param $path
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function document($path)
-    {
-        try {
-            return $this
-                ->r_medias
-                ->streamPublicDocument($path);
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return abort(404);
-    }
-
-    /**
-     *
-     */
-    public function thumbnail($path)
-    {
-        // Direct output, don't need return statement.
-        $this
-            ->r_medias
-            ->outputPublicThumbnails($path);
+        $this->r_medias = $r_medias;
     }
 
     /**

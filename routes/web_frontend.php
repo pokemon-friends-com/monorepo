@@ -27,10 +27,10 @@ Route::group(
         });
 
         Route::group(['namespace' => 'Files'], function () {
-            Route::get('files/media/{hash}', ['as' => 'medias.document.media', 'uses' => 'MediasController@media']);
-            Route::get('files/document/{path}', ['as' => 'medias.document.path', 'uses' => 'MediasController@document'])
+            Route::get('files/media/{hash}', ['as' => 'files.media', 'uses' => 'MediasController@media']);
+            Route::get('files/document/{path}', ['as' => 'files.document', 'uses' => 'FilesController@document'])
                 ->where('path', '.+');
-            Route::get('files/thumbnail/{path}', ['as' => 'medias.document.thumbnail', 'uses' => 'MediasController@thumbnail'])
+            Route::get('files/thumbnail/{path}', ['as' => 'files.thumbnail', 'uses' => 'FilesController@thumbnail'])
                 ->where('path', '.+');
         });
 

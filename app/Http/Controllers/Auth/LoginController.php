@@ -2,6 +2,8 @@
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use obsession\Http\Controllers\Auth\AuthRedirectTrait;
 use obsession\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
@@ -81,7 +83,7 @@ class LoginController extends ControllerAbstract
     public function redirectToProvider($provider)
     {
         try {
-            return \Socialite::driver($provider)->redirect();
+            return Socialite::driver($provider)->redirect();
         } catch (\InvalidArgumentException $exception) {
             app('sentry')->captureException($exception);
 
@@ -109,7 +111,7 @@ class LoginController extends ControllerAbstract
         $providerUser = null;
 
         try {
-            $providerUser = \Socialite::driver($provider)->user();
+            $providerUser = Socialite::driver($provider)->user();
         } catch (\InvalidArgumentException $exception) {
             app('sentry')->captureException($exception);
 
@@ -123,11 +125,11 @@ class LoginController extends ControllerAbstract
                 );
         }
 
-        if (!empty($providerUser) && \Auth::check()) {
+        if (!empty($providerUser) && Auth::check()) {
             $isTokenAvailableForUser = $this
                 ->r_providers_tokens
                 ->checkIfTokenIsAvailableForUser(
-                    \Auth::user(),
+                    Auth::user(),
                     $providerUser->id,
                     $provider
                 );
@@ -136,7 +138,7 @@ class LoginController extends ControllerAbstract
                 $this
                     ->r_providers_tokens
                     ->saveUserTokenForProvider(
-                        \Auth::user(),
+                        Auth::user(),
                         $provider,
                         $providerUser->id,
                         $providerUser->token
@@ -176,7 +178,7 @@ class LoginController extends ControllerAbstract
                     $providerToken->id
                 );
 
-            \Auth::login($providerToken->user, true);
+            Auth::login($providerToken->user, true);
 
             return redirect($this->redirectTo());
         }

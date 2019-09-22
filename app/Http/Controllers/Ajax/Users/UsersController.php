@@ -24,25 +24,21 @@ class UsersController extends ControllerAbstract
      */
     public function __construct(UsersRepositoryEloquent $r_users)
     {
-        $this->r_users = $r_users;
-
         $this->before();
+        $this->middleware('role:customer,administrator');
+        $this->r_users = $r_users;
     }
 
     /**
      * Get an users list.
      *
+     * @param UsersAjaxList $request
+     *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function index(UsersAjaxList $request)
     {
-        if (
-            Gate::allows(User::ROLE_CUSTOMER, Auth::user())
-            || Gate::allows(User::ROLE_ADMINISTRATOR, Auth::user())
-        ) {
-            return abort(403);
-        }
-
         $users = $this->r_users->getPaginatedAndFilteredUsers($request);
 
         return response()->json($users);
@@ -54,16 +50,11 @@ class UsersController extends ControllerAbstract
      * @param CheckUserEmailFormRequest $request
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function checkUserEmail(CheckUserEmailFormRequest $request)
     {
-        $data = [];
-
-        try {
-            $data = $this->r_users->isUserEmailExists($request);
-        } catch (\Prettus\Repository\Exceptions\RepositoryException $exception) {
-            app('sentry')->captureException($exception);
-        }
+        $data = $this->r_users->isUserEmailExists($request);
 
         return response()->json($data);
     }

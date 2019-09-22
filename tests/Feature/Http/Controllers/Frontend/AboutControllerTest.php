@@ -12,6 +12,6 @@ class AboutControllerTest extends TestCase
     {
         $this
             ->get('/terms-of-services')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 }

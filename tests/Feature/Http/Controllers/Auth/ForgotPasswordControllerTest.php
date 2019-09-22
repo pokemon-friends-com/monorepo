@@ -21,7 +21,10 @@ class ForgotPasswordControllerTest extends TestCase
 	{
         $this
             ->get('/password/reset')
-            ->assertStatus(200);
+            ->assertSuccessful()
+            ->assertSee('Changer votre mot de passe')
+            ->assertSee('Courriel')
+            ->assertSee('Envoyer');
 	}
 
 	public function testIfForgotPasswordCanBeSubmittedWithValidUserEmail()
@@ -38,7 +41,7 @@ class ForgotPasswordControllerTest extends TestCase
 
 	public function testIfForgotPasswordCanBeSubmittedWithNotValidEmail()
 	{
-        $email = $this->faker->text(20);
+        $email = $this->faker->word(20);
         Notification::fake();
         $this
 			->post('/password/email', ['email' => $email])

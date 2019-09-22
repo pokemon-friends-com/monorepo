@@ -24,8 +24,9 @@ Route::group(
 
         Route::group(['namespace' => 'Auth'], function () {
             // Registration routes.
-            Route::get('register', 'RegisterController@showRegistrationForm');
-            Route::post('register', ['as' => 'register', 'uses' => 'RegisterController@register']);
+            Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showNoRegistration']);
+//            Route::get('register', 'RegisterController@showRegistrationForm');
+//            Route::post('register', ['as' => 'register', 'uses' => 'RegisterController@register']);
             // Authentication routes
             Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
             Route::post('login', 'LoginController@login');
@@ -41,7 +42,7 @@ Route::group(
                 Route::post('email', ['as' => 'email', 'uses' => 'ForgotPasswordController@sendResetLinkEmail']);
                 // Password reset routes
                 Route::get('reset/{token}', ['as' => 'reset', 'uses' => 'ResetPasswordController@showResetForm']);
-                Route::post('reset', ['as' => 'update', 'uses' => 'ResetPasswordController@showResetForm']);
+                Route::post('reset', ['as' => 'update', 'uses' => 'ResetPasswordController@reset']);
             });
         });
     });

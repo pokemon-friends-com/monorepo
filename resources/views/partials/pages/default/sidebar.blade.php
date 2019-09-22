@@ -25,7 +25,7 @@
     {{--</div>--}}
 
     <div class="sidebar-header">
-        <img src="/assets/images/logo-pages.png" alt="logo" class="brand" data-src="/assets/images/logo-pages.png" data-src-retina="/assets/images/logo-pages_2x.png" width="50" height="40">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" class="brand" data-src="{{ asset('images/logo.png') }}" data-src-retina="{{ asset('images/logo_2x.png') }}" width="78" height="22">
         <div class="sidebar-header-controls">
             <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" data-pages-toggle="#appMenu">
                 {{--<i class="fa fa-angle-down fs-16"></i>--}}

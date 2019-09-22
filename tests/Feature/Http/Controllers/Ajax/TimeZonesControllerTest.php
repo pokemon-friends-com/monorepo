@@ -14,7 +14,7 @@ class TimeZonesControllerTest extends TestCase
     {
         $this
             ->get('/ajax/timezones', ["X-Requested-With" => "XMLHttpRequest"])
-            ->assertStatus(200)
+            ->assertSuccessful()
             ->assertJson(\DateTimeZone::listIdentifiers(\DateTimeZone::ALL));
     }
 

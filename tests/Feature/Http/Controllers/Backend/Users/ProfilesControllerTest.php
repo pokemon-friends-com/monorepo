@@ -16,6 +16,6 @@ class ProfilesControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/backend/users/profile')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 }

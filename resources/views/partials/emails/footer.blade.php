@@ -36,7 +36,6 @@
                             <tr>
                                 <td valign="top">
                                     <!--Preference-->
-
                                     <table class="footer-column" align="left" width="224" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td height="15"></td>
@@ -53,9 +52,7 @@
                                             </td>
                                         </tr>
                                     </table>
-
                                     <!--End Preference-->
-
                                     {{--<!--Space-->--}}
                                     {{--<table width="1" height="25" border="0" cellpadding="0" cellspacing="0" align="left">--}}
                                         {{--<tr>--}}
@@ -65,16 +62,13 @@
                                         {{--</tr>--}}
                                     {{--</table>--}}
                                     {{--<!--End Space-->--}}
-
                                     {{--<!--Link-->--}}
                                     {{--<table class="footer-column" align="left" width="112" border="0" cellspacing="0" cellpadding="0">--}}
                                         {{--<tr>--}}
                                             {{--<td height="15"></td>--}}
                                         {{--</tr>--}}
                                     {{--</table>--}}
-
                                     <!--End Link-->
-
                                     <!--Space-->
                                     <table width="1" height="25" border="0" cellpadding="0" cellspacing="0" align="left">
                                         <tr>
@@ -84,9 +78,7 @@
                                         </tr>
                                     </table>
                                     <!--End Space-->
-
                                     <!--Footer note-->
-
                                     <table bgcolor="#f8f8f8" class="table-full" width="247" border="0" align="right" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td>
@@ -117,7 +109,6 @@
                                             </td>
                                         </tr>
                                     </table>
-
                                     <!--End Footer Note-->
                                 </td>
                             </tr>
@@ -134,7 +125,7 @@
                 </tr>
                 <tr>
                     <td height="30" align="center" valign="bottom" style="font-family: 'Open Sans', Arial, sans-serif; font-size:13px; color:#7f8c8d;">
-                        © {{ date('Y') }} <a href="{{ route('frontend.home') }}">{{ config('app.name') }}</a>. All rights reserved.
+                        {!! trans('global.copyright', ['date' => date('Y'), 'route' => route('frontend.home'), 'name' => config('app.name')]) !!}
                     </td>
                 </tr>
                 <tr>

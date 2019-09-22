@@ -1,4 +1,4 @@
-<?php namespace Tests\Feature\Http\Controllers\Frontend;
+<?php namespace Tests\Feature\Http\Controllers\Frontend\Users;
 
 use obsession\Domain\Users\Leads\Events\LeadCreatedEvent;
 use obsession\Domain\Users\Leads\Lead;
@@ -19,7 +19,7 @@ class LeadsControllerTest extends TestCase
     {
         $this
             ->get('/contact')
-            ->assertStatus(200);
+            ->assertSuccessful();
     }
 
     public function testStoreWithEmptyForm()
@@ -41,7 +41,7 @@ class LeadsControllerTest extends TestCase
             ->assertRedirect('/contact');
         $this
             ->get('/contact')
-            ->assertStatus(200)
+            ->assertSuccessful()
             ->assertSee('Le champ prénom est obligatoire.')
             ->assertSee('Le champ nom est obligatoire.')
             ->assertSee('Le champ courriel est obligatoire.')
@@ -71,7 +71,7 @@ class LeadsControllerTest extends TestCase
             ->assertRedirect('/contact');
         $this
             ->get('/contact')
-            ->assertStatus(200)
+            ->assertSuccessful()
             ->assertSee('Le champ courriel doit être une adresse email valide.');
         Event::assertNotDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(0, HandshakeMailToConfirmReceptionToSender::class);
