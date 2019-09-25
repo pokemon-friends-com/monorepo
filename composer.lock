@@ -5321,16 +5321,16 @@
         },
         {
             "name": "spatie/laravel-sitemap",
-            "version": "5.4.0",
+            "version": "5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sitemap.git",
-                "reference": "68925d21cfc363ba80644dee755523d941b422c8"
+                "reference": "d234204242ae8c9c9a3a3c6d34b3426d950ae699"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/68925d21cfc363ba80644dee755523d941b422c8",
-                "reference": "68925d21cfc363ba80644dee755523d941b422c8",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/d234204242ae8c9c9a3a3c6d34b3426d950ae699",
+                "reference": "d234204242ae8c9c9a3a3c6d34b3426d950ae699",
                 "shasum": ""
             },
             "require": {
@@ -5376,7 +5376,7 @@
                 "laravel-sitemap",
                 "spatie"
             ],
-            "time": "2019-09-04T08:13:45+00:00"
+            "time": "2019-09-24T11:34:59+00:00"
         },
         {
             "name": "spatie/pdf-to-image",
@@ -7133,16 +7133,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v6.0.2",
+            "version": "v6.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "e35230cde9e682881e9ac27105d0f26c32eca6d6"
+                "reference": "4aea0cd7acbdff113968c9c4e735532e10ea1393"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/e35230cde9e682881e9ac27105d0f26c32eca6d6",
-                "reference": "e35230cde9e682881e9ac27105d0f26c32eca6d6",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/4aea0cd7acbdff113968c9c4e735532e10ea1393",
+                "reference": "4aea0cd7acbdff113968c9c4e735532e10ea1393",
                 "shasum": ""
             },
             "require": {
@@ -7179,7 +7179,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2019-09-09T14:07:34+00:00"
+            "time": "2019-09-17T12:13:52+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
