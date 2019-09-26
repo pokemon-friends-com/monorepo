@@ -3,6 +3,11 @@
 # [obsession.city](https://obsession.city)
 Dating site to share fantasy
 
+- [Contacts](https://www.obsession.city/contact)
+- [Terms of services](https://www.obsession.city/terms-of-services)
+- [Change logs](https://github.com/obsession-city/www/milestones?state=closed)
+- [License](https://github.com/obsession-city/www/blob/master/LICENSE)
+
 ## Welcome to the web-app wiki for developers!
 
 - [Set up your host](https://github.com/obsession-city/www/wiki/setup-your-host)
