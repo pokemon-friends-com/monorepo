@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/obsession-city/www.svg?branch=master)](https://travis-ci.org/obsession-city/www) [![Maintainability](https://api.codeclimate.com/v1/badges/ad631aace05ac13cb475/maintainability)](https://codeclimate.com/github/obsession-city/www/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/ad631aace05ac13cb475/test_coverage)](https://codeclimate.com/github/obsession-city/www/test_coverage)
 
-![https://obsession.city](https://github.com/obsession-city/www/blob/master/resources/images/logo.png?raw=true)
-
 # [obsession.city](https://obsession.city)
 Dating site to share fantasy
+
+<img align="right" src="https://github.com/obsession-city/www/blob/master/resources/images/logo.png?raw=true">
 
 - [Contacts](https://www.obsession.city/contact)
 - [Terms of services](https://www.obsession.city/terms-of-services)
