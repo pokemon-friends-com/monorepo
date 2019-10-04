@@ -19,6 +19,7 @@ services:
 ### Workspace Utilities Container ###########################
 
     workspace:
+      image: abenevaut/laradock-workspace:${APP_TAG}
       build:
         context: ./laradock/workspace
         args:
@@ -92,6 +93,7 @@ services:
 ### PHP-FPM Container #######################################
 
     php-fpm:
+      image: abenevaut/laradock-php-fpm:${APP_TAG}
       build:
         context: ./laradock/php-fpm
         args:
@@ -147,6 +149,7 @@ services:
 ### PHP Worker Container #####################################
 
     php-worker:
+      image: abenevaut/laradock-php-worker:${APP_TAG}
       build:
         context: ./laradock/php-worker
         args:
@@ -166,6 +169,7 @@ services:
 ### Apache Server Container #################################
 
     apache2:
+      image: abenevaut/laradock-apache2:${APP_TAG}
       build:
         context: ./laradock/apache2
         args:
@@ -189,6 +193,7 @@ services:
 ### MySQL Container #########################################
 
     mysql:
+      image: abenevaut/laradock-mysql:${APP_TAG}
       build:
         context: ./laradock/mysql
         args:
@@ -210,6 +215,7 @@ services:
 ### Redis Container #########################################
 
     redis:
+      image: abenevaut/laradock-redis:${APP_TAG}
       build: ./laradock/redis
       volumes:
         - ${DOCKER_STORAGE_PATH}/redis:/data
@@ -221,6 +227,7 @@ services:
 ### Mailhog Container #########################################
 
     mailhog:
+      image: abenevaut/laradock-mailhog:${APP_TAG}
       build: ./laradock/mailhog
       ports:
         - "${MAIL_PORT}:1025"
@@ -232,6 +239,7 @@ services:
 ### ElasticSearch ########################################
 
     elasticsearch:
+      image: abenevaut/laradock-elasticsearch:${APP_TAG}
       build: ./laradock/elasticsearch
       volumes:
         - ${DOCKER_STORAGE_PATH}/elasticsearch:/usr/share/elasticsearch/data
@@ -255,6 +263,7 @@ services:
 ### Kibana ##############################################
 
     kibana:
+      image: abenevaut/laradock-kibana:${APP_TAG}
       build: ./laradock/kibana
       ports:
         - "${DOCKER_KIBANA_PUBLIC_PORT}:5601"

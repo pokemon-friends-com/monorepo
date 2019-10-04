@@ -1,14 +1,6 @@
-[![Build Status](https://travis-ci.org/obsession-city/www.svg?branch=master)](https://travis-ci.org/obsession-city/www) [![Maintainability](https://api.codeclimate.com/v1/badges/ad631aace05ac13cb475/maintainability)](https://codeclimate.com/github/obsession-city/www/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/ad631aace05ac13cb475/test_coverage)](https://codeclimate.com/github/obsession-city/www/test_coverage)
+[![Build Status](https://travis-ci.org/abenevaut/www-template.svg?branch=master)](https://travis-ci.org/abenevaut/www-template)
 
-# [obsession.city](https://obsession.city)
-Dating site to share fantasy
-
-<img align="right" src="https://github.com/obsession-city/www/blob/master/resources/images/logo.png?raw=true">
-
-- [Contacts](https://www.obsession.city/contact)
-- [Terms of services](https://www.obsession.city/terms-of-services)
-- [Change logs](https://github.com/obsession-city/www/milestones?state=closed)
-- [License](https://github.com/obsession-city/www/blob/master/LICENSE)
+Laravel template for web application
 
 ## Welcome to the web-app wiki for developers!
 

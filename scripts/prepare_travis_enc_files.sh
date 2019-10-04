@@ -7,4 +7,4 @@ else
 fi
 
 tar cvf travis.tar deploy_rsa
-travis encrypt-file travis.tar -r obsession-city/www
+travis encrypt-file travis.tar -r abenevaut/www-template
