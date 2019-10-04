@@ -85,6 +85,7 @@ before_script:
 script:
   - vendor/bin/phpunit
   - npm test
+  - docker-compose --project-name obsession build --no-cache --compress --parallel workspace apache2 mailhog php-fpm php-worker mysql redis elasticsearch kibana
 
 after_script:
   - |
