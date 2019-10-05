@@ -28,22 +28,24 @@ jobs:
   - stage: test
     name: abenevaut/www-template
     language: php
-    php:
-      - 7.3
-      env:
-        - CODECLIMATE=on
-        - APP_ENV=testing
-      - 7.4
-      env:
-        - CODECLIMATE=off
-        - APP_ENV=testing
-      - nightly
-      env:
-        - CODECLIMATE=off
-        - APP_ENV=testing
-    allow_failures:
-      - php: nightly
-      - php: 7.4
+    matrix:
+      fast_finish: true
+      include:
+        - php: 7.3
+          env:
+            - CODECLIMATE=on
+            - APP_ENV=testing
+        - php: 7.4
+          env:
+            - CODECLIMATE=off
+            - APP_ENV=testing
+        - php: nightly
+          env:
+            - CODECLIMATE=off
+            - APP_ENV=testing
+      allow_failures:
+        - php: nightly
+        - php: 7.4
     before_install:
       - chmod 777 scripts/*.sh
       - bash scripts/decrypt_travis_enc_files.sh
