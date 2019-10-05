@@ -50,6 +50,7 @@ before_install:
   - eval "$(ssh-agent -s)"
   - chmod 600 /tmp/deploy_rsa
   - ssh-add /tmp/deploy_rsa
+  - git submodule update --init laradock
   - git submodule update --init resources/clip
   - git submodule update --init resources/gameforest
   - git submodule update --init resources/pages
