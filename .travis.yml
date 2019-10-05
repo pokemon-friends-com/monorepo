@@ -18,24 +18,29 @@ cache:
     - vendor
     - node_modules
 
+stages:
+  - test
+  - deploy
+
 jobs:
   fast_finish: true
   include:
-  -
+  - stage: test
     name: abenevaut/www-template
     language: php
-    php: 7.3
-    env:
-      - CODECLIMATE=on
-      - APP_ENV=testing
-    php: 7.4
-    env:
-      - CODECLIMATE=off
-      - APP_ENV=testing
-    php: nightly
-    env:
-      - CODECLIMATE=off
-      - APP_ENV=testing
+    php:
+      - 7.3
+      env:
+        - CODECLIMATE=on
+        - APP_ENV=testing
+      - 7.4
+      env:
+        - CODECLIMATE=off
+        - APP_ENV=testing
+      - nightly
+      env:
+        - CODECLIMATE=off
+        - APP_ENV=testing
     allow_failures:
       - php: nightly
       - php: 7.4
@@ -57,11 +62,9 @@ jobs:
       - nvm install
       - nvm use
       - npm install grunt-cli@1.3.2 -g
-
     install:
       - travis_retry composer install -o --no-interaction --prefer-dist --no-suggest
       - travis_retry npm install
-
     before_script:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
@@ -72,11 +75,9 @@ jobs:
       - bash scripts/prepare_pages_assets.sh
       - travis_retry npm run dev
       - php artisan elfinder:publish
-
     script:
       - vendor/bin/phpunit
       - npm test
-
     after_script:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
@@ -94,7 +95,8 @@ jobs:
     #    script: bash scripts/<SCRIPT_TO_DEPLOU>
     #    on:
     #      branch: master
-  -
+  - stage: deploy
+    if: branch = master
     name: abenevaut/laradock-mailhog
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -116,6 +118,6 @@ jobs:
     deploy:
       - provider: script
         skip_cleanup: true
-        script: docker-compose --project-name abenevaut push workspace mailhog
+        script: docker-compose --project-name abenevaut push mailhog
         on:
           branch: master
