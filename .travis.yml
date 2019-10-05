@@ -1,5 +1,6 @@
 sudo: required
 dist: trusty
+language: php
 
 git:
   submodules: false
@@ -18,9 +19,9 @@ cache:
     - vendor
     - node_modules
 
-stages:
-  - test
-  - deploy
+#stages:
+#  - test
+#  - deploy
 
 matrix:
   fast_finish: true
@@ -94,7 +95,6 @@ before_install:
   #      branch: master
 
 jobs:
-  fast_finish: true
   include:
   - stage: deploy
     if: branch = master
