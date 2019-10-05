@@ -25,17 +25,17 @@ jobs:
     name: abenevaut/www-template
     language: php
     php: 7.3
-      env:
-        - CODECLIMATE=on
-        - APP_ENV=testing
+    env:
+      - CODECLIMATE=on
+      - APP_ENV=testing
     php: 7.4
-      env:
-        - CODECLIMATE=off
-        - APP_ENV=testing
+    env:
+      - CODECLIMATE=off
+      - APP_ENV=testing
     php: nightly
-      env:
-        - CODECLIMATE=off
-        - APP_ENV=testing
+    env:
+      - CODECLIMATE=off
+      - APP_ENV=testing
     allow_failures:
       - php: nightly
       - php: 7.4
