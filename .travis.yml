@@ -78,16 +78,16 @@ before_script:
     if [[ "$CODECLIMATE" = "on" ]]; then
       ./cc-test-reporter before-build
     fi
-  - travis_retry npm run gameforest
-  - travis_retry npm run pages
-  - bash scripts/prepare_pages_assets.sh
-  - travis_retry npm run dev
-  - php artisan elfinder:publish
+#  - travis_retry npm run gameforest
+#  - travis_retry npm run pages
+#  - bash scripts/prepare_pages_assets.sh
+#  - travis_retry npm run dev
+#  - php artisan elfinder:publish
 
 script:
-  - vendor/bin/phpunit
-  - npm test
-  - docker-compose --project-name obsession build --no-cache --compress workspace apache2 mailhog php-fpm php-worker mysql redis elasticsearch kibana
+#  - vendor/bin/phpunit
+#  - npm test
+  - docker-compose --project-name obsession build --no-cache --compress mailhog
 
 after_script:
   - |
