@@ -63,11 +63,6 @@ before_install:
   - nvm install
   - nvm use
   - npm install grunt-cli@1.3.2 -g
-  - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-  - cp .env.example .env
 
 install:
   - travis_retry composer install -o --no-interaction --prefer-dist --no-suggest
@@ -78,16 +73,15 @@ before_script:
     if [[ "$CODECLIMATE" = "on" ]]; then
       ./cc-test-reporter before-build
     fi
-#  - travis_retry npm run gameforest
-#  - travis_retry npm run pages
-#  - bash scripts/prepare_pages_assets.sh
-#  - travis_retry npm run dev
-#  - php artisan elfinder:publish
+  - travis_retry npm run gameforest
+  - travis_retry npm run pages
+  - bash scripts/prepare_pages_assets.sh
+  - travis_retry npm run dev
+  - php artisan elfinder:publish
 
 script:
-#  - vendor/bin/phpunit
-#  - npm test
-  - docker-compose --project-name obsession build --no-cache --compress mailhog
+  - vendor/bin/phpunit
+  - npm test
 
 after_script:
   - |
@@ -100,10 +94,37 @@ after_script:
 
 #before_deploy:
 #  - travis_retry npm run prod
+#
+#deploy:
+#  - provider: script
+#    skip_cleanup: true
+#    script: bash scripts/<SCRIPT_TO_DEPLOU>
+#    on:
+#      branch: master
 
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: bash scripts/push_to_docker_cloud.sh
-    on:
-      branch: master
+jobs:
+  include:
+  -
+    name: abenevaut/laradock-mailhog
+#    env:
+#      -
+    language: generic
+    services:
+      - docker
+    before_install:
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress mailhog
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push workspace mailhog
+        on:
+          branch: master
