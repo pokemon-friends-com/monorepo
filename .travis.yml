@@ -2,9 +2,6 @@ sudo: required
 dist: trusty
 language: php
 
-env:
-  - DOCKER_COMPOSE_VERSION=1.24.1
-
 git:
   submodules: false
 
@@ -32,14 +29,17 @@ matrix:
       env:
         - CODECLIMATE=on
         - APP_ENV=testing
+        - DOCKER_COMPOSE_VERSION=1.24.1
     - php: 7.4
       env:
         - CODECLIMATE=off
         - APP_ENV=testing
+        - DOCKER_COMPOSE_VERSION=1.24.1
     - php: nightly
       env:
         - CODECLIMATE=off
         - APP_ENV=testing
+        - DOCKER_COMPOSE_VERSION=1.24.1
   allow_failures:
     - php: nightly
     - php: 7.4
