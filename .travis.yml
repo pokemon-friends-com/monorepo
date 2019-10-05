@@ -1,6 +1,5 @@
 sudo: required
 dist: trusty
-language: php
 
 git:
   submodules: false
@@ -23,80 +22,84 @@ stages:
   - test
   - deploy
 
-matrix:
+jobs:
   fast_finish: true
   include:
-    - php: 7.3
-      env:
-        - CODECLIMATE=on
-        - APP_ENV=testing
-    - php: 7.4
-      env:
-        - CODECLIMATE=off
-        - APP_ENV=testing
-    - php: nightly
-      env:
-        - CODECLIMATE=off
-        - APP_ENV=testing
-  allow_failures:
-    - php: nightly
-    - php: 7.4
-
-before_install:
-  - chmod 777 scripts/*.sh
-  - bash scripts/decrypt_travis_enc_files.sh
-  - eval "$(ssh-agent -s)"
-  - chmod 600 /tmp/deploy_rsa
-  - ssh-add /tmp/deploy_rsa
-  - git submodule update --init resources/clip
-  - git submodule update --init resources/gameforest
-  - git submodule update --init resources/pages
-  - printf "\n" | pecl install imagick
-  - |
-    if [[ "$CODECLIMATE" = "on" ]]; then
-      curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-      chmod +x ./cc-test-reporter
-    fi
-  - nvm install
-  - nvm use
-  - npm install grunt-cli@1.3.2 -g
-install:
-  - travis_retry composer install -o --no-interaction --prefer-dist --no-suggest
-  - travis_retry npm install
-before_script:
-  - |
-    if [[ "$CODECLIMATE" = "on" ]]; then
-      ./cc-test-reporter before-build
-    fi
-  - travis_retry npm run gameforest
-  - travis_retry npm run pages
-  - bash scripts/prepare_pages_assets.sh
-  - travis_retry npm run dev
-  - php artisan elfinder:publish
-script:
-  - vendor/bin/phpunit
-  - npm test
-after_script:
-  - |
-    if [[ "$CODECLIMATE" = "on" ]]; then
-      ./cc-test-reporter format-coverage -t clover -o coverage/codeclimate.php.json coverage/clover.xml
-      ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.js.json coverage/lcov.info
-      ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
-      ./cc-test-reporter upload-coverage
-    fi
-
-  #before_deploy:
-  #  - travis_retry npm run prod
-  #
-  #deploy:
-  #  - provider: script
-  #    skip_cleanup: true
-  #    script: bash scripts/<SCRIPT_TO_DEPLOU>
-  #    on:
-  #      branch: master
-
-jobs:
-  include:
+  - stage: test
+    name: abenevaut/www-template
+    language: php
+    php: 7.3
+    env:
+      - CODECLIMATE=on
+      - APP_ENV=testing
+    before_install:
+      - chmod 777 scripts/*.sh
+      - bash scripts/decrypt_travis_enc_files.sh
+      - eval "$(ssh-agent -s)"
+      - chmod 600 /tmp/deploy_rsa
+      - ssh-add /tmp/deploy_rsa
+      - git submodule update --init resources/clip
+      - git submodule update --init resources/gameforest
+      - git submodule update --init resources/pages
+      - printf "\n" | pecl install imagick
+      - |
+        if [[ "$CODECLIMATE" = "on" ]]; then
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+        fi
+      - nvm install
+      - nvm use
+      - npm install grunt-cli@1.3.2 -g
+    install:
+      - travis_retry composer install -o --no-interaction --prefer-dist --no-suggest
+      - travis_retry npm install
+    before_script:
+      - |
+        if [[ "$CODECLIMATE" = "on" ]]; then
+          ./cc-test-reporter before-build
+        fi
+      - travis_retry npm run gameforest
+      - travis_retry npm run pages
+      - bash scripts/prepare_pages_assets.sh
+      - travis_retry npm run dev
+      - php artisan elfinder:publish
+    script:
+      - vendor/bin/phpunit
+      - npm test
+    after_script:
+      - |
+        if [[ "$CODECLIMATE" = "on" ]]; then
+          ./cc-test-reporter format-coverage -t clover -o coverage/codeclimate.php.json coverage/clover.xml
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.js.json coverage/lcov.info
+          ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
+          ./cc-test-reporter upload-coverage
+        fi
+#  - stage: deploy
+#    name: abenevaut/www-template
+#    language: php
+#    php: 7.3
+#    before_install:
+#      - chmod 777 scripts/*.sh
+#      - bash scripts/decrypt_travis_enc_files.sh
+#      - eval "$(ssh-agent -s)"
+#      - chmod 600 /tmp/deploy_rsa
+#      - ssh-add /tmp/deploy_rsa
+#      - git submodule update --init resources/clip
+#      - git submodule update --init resources/gameforest
+#      - git submodule update --init resources/pages
+#      - nvm install
+#      - nvm use
+#      - npm install grunt-cli@1.3.2 -g
+#    install:
+#      - travis_retry npm install
+#    before_script:
+#      - travis_retry npm run gameforest
+#      - travis_retry npm run pages
+#      - bash scripts/prepare_pages_assets.sh
+#      - travis_retry npm run prod
+#      - php artisan elfinder:publish
+#    script:
+#      - <SCRIPT TO DEPLOY>
   - stage: deploy
     if: branch = master
     name: abenevaut/laradock-mailhog
@@ -121,5 +124,213 @@ jobs:
       - provider: script
         skip_cleanup: true
         script: docker-compose --project-name abenevaut push mailhog
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-redis
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress redis
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push redis
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-kibana
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress kibana
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push kibana
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-elasticsearch
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress elasticsearch
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push elasticsearch
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-apache2
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress apache2
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push apache2
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-php-fpm
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress php-fpm
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push php-fpm
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-php-worker
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress php-worker
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push php-worker
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-workspace
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress workspace
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push workspace
+        on:
+          branch: master
+  - stage: deploy
+    if: branch = master
+    name: abenevaut/laradock-mysql
+    env:
+      - DOCKER_COMPOSE_VERSION=1.24.1
+    language: generic
+    services:
+      - docker
+    before_install:
+      - git submodule update --init laradock
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+    install:
+      - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+      - chmod +x docker-compose
+      - sudo mv docker-compose /usr/local/bin
+      - cp .env.example .env
+    script:
+      - docker-compose --project-name abenevaut build --no-cache --compress mysql
+    before_deploy:
+      - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: docker-compose --project-name abenevaut push mysql
         on:
           branch: master
