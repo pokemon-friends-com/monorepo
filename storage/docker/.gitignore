@@ -1,3 +1,5 @@
 *
 !.gitignore
+!apache2/
+!apache2/sites/
 !apache2/sites/default.apache.conf.example
