@@ -36,7 +36,7 @@
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-webpack-plugin": "^2.4.2",
         "jquery": "^3.2",
-        "jsdom": "^15.2.0",
+        "jsdom": "^15.2.1",
         "jsdom-global": "^3.0.2",
         "laravel-mix": "^5.0.0",
         "lodash": "^4.17.13",
