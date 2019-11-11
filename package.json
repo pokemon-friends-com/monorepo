@@ -54,7 +54,7 @@
         "ts-loader": "^6.2.1",
         "typescript": "^3.6.3",
         "vue": "^2.5.17",
-        "vue-eslint-parser": "^6.0.4",
+        "vue-eslint-parser": "^7.0.0",
         "vue-template-compiler": "^2.6.10"
     }
 }
