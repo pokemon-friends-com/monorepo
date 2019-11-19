@@ -30,7 +30,7 @@
         "eslint-config-airbnb-base": "^14.0.0",
         "eslint-loader": "^3.0.2",
         "eslint-plugin-import": "^2.18.2",
-        "eslint-plugin-vue": "^6.0.0",
+        "eslint-plugin-vue": "^6.0.1",
         "expect": "^24.9.0",
         "false": "^0.0.4",
         "imagemin-mozjpeg": "^8.0.0",
