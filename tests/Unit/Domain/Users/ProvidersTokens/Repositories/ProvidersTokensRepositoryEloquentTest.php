@@ -50,6 +50,8 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
 
     public function testUpdate()
     {
+        $this->markTestSkipped('https://github.com/obsession-city/www/issues/62');
+
         $user = factory(User::class)->create();
         $providerToken = factory(ProviderToken::class)->create(['user_id' => $user->id]);
         $newProviderToken = factory(ProviderToken::class)->raw(['user_id' => $user->id]);
