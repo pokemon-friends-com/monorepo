@@ -5181,16 +5181,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "6.7.5",
+            "version": "6.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "81e10ccb9f22307fb0ed548f895264ba5dcfff82"
+                "reference": "9526cd53072644de6e4850cffaf79376c9a4f2d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/81e10ccb9f22307fb0ed548f895264ba5dcfff82",
-                "reference": "81e10ccb9f22307fb0ed548f895264ba5dcfff82",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/9526cd53072644de6e4850cffaf79376c9a4f2d0",
+                "reference": "9526cd53072644de6e4850cffaf79376c9a4f2d0",
                 "shasum": ""
             },
             "require": {
@@ -5211,7 +5211,7 @@
                 "league/flysystem-aws-s3-v3": "^1.0",
                 "mockery/mockery": "^1.0",
                 "orchestra/testbench": "3.8.*|4.*",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.4"
             },
             "suggest": {
                 "laravel/slack-notification-channel": "Required for sending notifications via Slack"
@@ -5252,7 +5252,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2019-12-02T21:58:43+00:00"
+            "time": "2019-12-12T13:39:26+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
