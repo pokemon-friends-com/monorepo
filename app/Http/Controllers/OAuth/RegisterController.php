@@ -1,16 +1,16 @@
-<?php namespace obsession\Http\Controllers\OAuth;
+<?php
+
+namespace obsession\Http\Controllers\OAuth;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use obsession\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 use obsession\Domain\Users\Users\User;
-use obsession\Http\Controllers\OAuth\LoginResponseTrait;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class RegisterController extends ControllerAbstract
 {
-
     use LoginResponseTrait;
     use RegistersUsers;
 
@@ -26,7 +26,6 @@ class RegisterController extends ControllerAbstract
      */
     public function __construct(UsersRegistrationsRepositoryEloquent $r_users)
     {
-        $this->before();
         $this->r_users = $r_users;
     }
 

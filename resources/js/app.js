@@ -5,10 +5,14 @@
  */
 
 require('./bootstrap');
-
+require('moment');
+require('admin-lte');
+require('admin-lte/plugins/select2/js/select2.full');
+require('admin-lte/plugins/select2/js/i18n/fr');
+require('admin-lte/plugins/select2/js/i18n/en');
+require('admin-lte/plugins/sweetalert2/sweetalert2.all');
+require('admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4');
 const Vue = require('vue');
-
-window.Vue = Vue;
 
 /**
  * The following block of code may be used to automatically register your
@@ -18,10 +22,16 @@ window.Vue = Vue;
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+const files = require.context('./components/', true, /\.vue$/i);
+files.keys().map((key) => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/**
+ * laravel/passport components.
+ */
+
+Vue.component('passport-clients', require('./components/passport/Clients.vue').default);
+Vue.component('passport-authorized-clients', require('./components/passport/AuthorizedClients.vue').default);
+Vue.component('passport-personal-access-tokens', require('./components/passport/PersonalAccessTokens.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

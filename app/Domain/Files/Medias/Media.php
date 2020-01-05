@@ -1,11 +1,12 @@
-<?php namespace obsession\Domain\Files\Medias;
+<?php
+
+namespace obsession\Domain\Files\Medias;
 
 use Spatie\MediaLibrary\Models\Media as SpatieMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Media extends SpatieMedia
 {
-
     use SoftDeletes;
 
     protected $table = 'medias';

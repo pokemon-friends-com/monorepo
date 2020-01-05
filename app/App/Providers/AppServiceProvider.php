@@ -1,4 +1,6 @@
-<?php namespace obsession\App\Providers;
+<?php
+
+namespace obsession\App\Providers;
 
 use Illuminate\Support\{
     Facades\URL,

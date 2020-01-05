@@ -1,4 +1,6 @@
-<?php namespace obsession\Domain\Users\Profiles;
+<?php
+
+namespace obsession\Domain\Users\Profiles;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,7 +23,6 @@ use obsession\Domain\Users\
 
 class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterface, HasMedia
 {
-
     use HasMediaTrait;
     use SoftDeletes;
     use TimeStampsTz;
@@ -42,6 +43,7 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         'birth_date',
         'family_situation',
         'maiden_name',
+        'is_sidebar_pined',
     ];
 
     /**

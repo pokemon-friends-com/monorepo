@@ -16,7 +16,6 @@ class ProfilesListTransformer extends TransformerAbstract
     public function transform(Profile $model)
     {
         $data = [
-            'id' => (int)$model->id,
             'family_situation' => [
                 'key' => $model->family_situation,
                 'trans' => trans('profiles.family_situation.' . $model->family_situation),
@@ -30,6 +29,12 @@ class ProfilesListTransformer extends TransformerAbstract
             'locale' => [
                 'language' => $model->user->locale,
                 'timezone' => $model->user->timezone,
+            ],
+            'user' => [
+                'identifier' => $model->user->uniqid,
+                'first_name' => $model->user->first_name,
+                'last_name' => $model->user->last_name,
+                'civility' => $model->user->civility,
             ],
         ];
 

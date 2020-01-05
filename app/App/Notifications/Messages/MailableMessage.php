@@ -1,4 +1,6 @@
-<?php namespace obsession\App\Notifications\Messages;
+<?php
+
+namespace obsession\App\Notifications\Messages;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

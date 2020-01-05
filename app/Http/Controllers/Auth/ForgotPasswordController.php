@@ -1,10 +1,13 @@
-<?php namespace obsession\Http\Controllers\Auth;
+<?php
+
+namespace obsession\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class ForgotPasswordController extends ControllerAbstract
 {
+    use SendsPasswordResetEmails;
 
     /*
     |--------------------------------------------------------------------------
@@ -16,8 +19,6 @@ class ForgotPasswordController extends ControllerAbstract
     | your application to your users. Feel free to explore this trait.
     |
     */
-
-    use SendsPasswordResetEmails;
 
     /**
      * Create a new controller instance.

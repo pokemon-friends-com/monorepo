@@ -19,15 +19,20 @@ class LeadsListTransformer extends TransformerAbstract
      */
     public function transform(Lead $model)
     {
-        return [
+        $lead = [
             'id' => (int)$model->id,
             'identifier' => $model->identifier,
             'civility_name' => $model->civility_name,
             'email' => $model->email,
             'user' => [
-                'is_user' => $model->user instanceof User,
-                'id' => (int)$model->user_id,
+                'is_user' => (bool)$model->user_id,
             ],
         ];
+
+        if ($lead['user']['is_user']) {
+            $lead['user']['identifier'] = $model->user->uniqid;
+        }
+
+        return $lead;
     }
 }

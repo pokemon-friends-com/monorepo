@@ -1,5 +1,6 @@
 <?php namespace obsession\Infrastructure\Contracts\Request;
 
+use GuzzleHttp\Client as GuzzleHttpClient;
 use Illuminate\Foundation\Http\FormRequest;
 
 abstract class RequestAbstract extends FormRequest
@@ -31,9 +32,8 @@ abstract class RequestAbstract extends FormRequest
     }
 
     /**
-     * @codeCoverageIgnore
-     *
      * @return bool
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected function recaptcha()
     {
@@ -44,18 +44,21 @@ abstract class RequestAbstract extends FormRequest
             return true;
         }
 
-        $recaptchaIp = $_SERVER['REMOTE_ADDR'];
-        $recaptchaKey = config('services.google_recaptcha.serverkey');
-        $recaptchaResponse = $this->get('g-recaptcha-response');
+        $remoteUrl = sprintf(
+            'https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s',
+            config('services.google_recaptcha.serverkey'),
+            $this->get('g-recaptcha-response'),
+            $_SERVER['REMOTE_ADDR']
+        );
 
-        $recaptchaResponse = file_get_contents(sprintf(
-            "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s",
-            $recaptchaKey,
-            $recaptchaResponse,
-            $recaptchaIp
-        ));
+        $response = (new GuzzleHttpClient())
+            ->request('GET', $remoteUrl);
 
-        $recaptchaResponse = json_decode($recaptchaResponse);
+        if (200 === $response->getStatusCode()) {
+            $recaptchaResponse = json_decode($response->getBody());
+        } else {
+            throw new \Exception('Recaptcha verification failed!');
+        }
 
         return $recaptchaResponse->success;
     }

@@ -1,4 +1,6 @@
-<?php namespace obsession\Domain\Files\Medias\Repositories;
+<?php
+
+namespace obsession\Domain\Files\Medias\Repositories;
 
 use Illuminate\Support\Facades\
 {
@@ -20,7 +22,6 @@ use obsession\Domain\Files\Medias\
 
 class MediasRepositoryEloquent extends RepositoryEloquentAbstract implements MediasRepository
 {
-
     use SecurityHashTrait;
 
     /**

@@ -1,4 +1,6 @@
-<?php namespace obsession\Domain\Files\Medias\Repositories;
+<?php
+
+namespace obsession\Domain\Files\Medias\Repositories;
 
 use obsession\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 

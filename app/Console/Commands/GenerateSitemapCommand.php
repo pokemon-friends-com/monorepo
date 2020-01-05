@@ -1,4 +1,6 @@
-<?php namespace obsession\Console\Commands;
+<?php
+
+namespace obsession\Console\Commands;
 
 use Carbon\Carbon;
 use Spatie\Sitemap\SitemapGenerator;

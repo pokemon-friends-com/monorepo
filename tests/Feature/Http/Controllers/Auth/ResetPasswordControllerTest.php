@@ -1,4 +1,6 @@
-<?php namespace Tests\Feature\Http\Controllers\Auth;
+<?php
+
+namespace Tests\Feature\Http\Controllers\Auth;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -12,7 +14,6 @@ use obsession\Domain\Users\Users\User;
 
 class ResetPasswordControllerTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
@@ -37,9 +38,7 @@ class ResetPasswordControllerTest extends TestCase
      */
     public function testSubmitPasswordResetInvalidEmail()
     {
-        $this->markTestSkipped('https://github.com/obsession-city/www/issues/63');
-
-        $newPassword = $this->faker->password(6);
+        $newPassword = $this->faker->password(8);
         $user = factory(User::class)->create([
             'role' => User::ROLE_CUSTOMER,
             'password' => $this->getDefaultPasswordBcrypted(),
@@ -67,7 +66,7 @@ class ResetPasswordControllerTest extends TestCase
      */
     public function testSubmitPasswordResetEmailNotFound()
     {
-        $newPassword = $this->faker->password(6);
+        $newPassword = $this->faker->password(8);
         $user = factory(User::class)->create([
             'role' => User::ROLE_CUSTOMER,
             'password' => $this->getDefaultPasswordBcrypted(),
@@ -83,7 +82,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $newPassword,
             ])
             ->assertSuccessful()
-            ->assertSee(e('Aucun utilisateur n\'a été trouvé avec cette adresse email.'));
+            ->assertSee(e('Aucun utilisateur n\'a été trouvé avec ce courriel.'));
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
@@ -95,7 +94,7 @@ class ResetPasswordControllerTest extends TestCase
      */
     public function testSubmitPasswordResetPasswordMismatch()
     {
-        $newPassword = $this->faker->password(6);
+        $newPassword = $this->faker->password(8);
         $user = factory(User::class)->create([
             'role' => User::ROLE_CUSTOMER,
             'password' => $this->getDefaultPasswordBcrypted(),
@@ -108,7 +107,7 @@ class ResetPasswordControllerTest extends TestCase
                 'token' => $token,
                 'email' => $user->email,
                 'password' => $newPassword,
-                'password_confirmation' => $this->faker->password(8),
+                'password_confirmation' => $this->faker->password(10),
             ])
             ->assertSuccessful()
             ->assertSee('Le champ de confirmation mot de passe ne correspond pas.');
@@ -150,7 +149,7 @@ class ResetPasswordControllerTest extends TestCase
      */
     public function testSubmitPasswordReset()
     {
-        $newPassword = $this->faker->password(6);
+        $newPassword = $this->faker->password(8);
         $user = factory(User::class)->create([
             'role' => User::ROLE_CUSTOMER,
             'password' => $this->getDefaultPasswordBcrypted(),
@@ -164,7 +163,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password' => $newPassword,
                 'password_confirmation' => $newPassword,
             ])
-            ->assertRedirect('dashboard');
+            ->assertRedirect('users/dashboard');
         $user->refresh();
         $this->assertFalse(Hash::check($this->getDefaultPassword(), $user->password));
         $this->assertTrue(Hash::check($newPassword, $user->password));

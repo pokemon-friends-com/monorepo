@@ -1,9 +1,0 @@
-[submodule "resources/gameforest"]
-	path = resources/gameforest
-	url = git@github.com:abenevaut/gameforest.git
-[submodule "resources/clip"]
-	path = resources/clip
-	url = git@github.com:abenevaut/clip.git
-[submodule "resources/pages"]
-	path = resources/pages
-	url = git@github.com:revoxltd/pages.git

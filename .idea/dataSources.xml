@@ -6,7 +6,7 @@
       <synchronize>true</synchronize>
       <remarks>laradock</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/laravel</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/default</jdbc-url>
       <driver-properties>
         <property name="serverTimezone" value="Europe/Paris" />
       </driver-properties>

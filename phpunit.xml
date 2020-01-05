@@ -35,6 +35,7 @@
         <env name="REDIS_CLIENT" value="mock"/>
         <env name="SCOUT_DRIVER" value="null"/>
         <env name="BROADCAST_DRIVER" value="null"/>
+        <env name="HONEYPOT_ENABLED" value="false"/>
     </php>
     <logging>
         <log type="coverage-clover" target="coverage/clover.xml"/>

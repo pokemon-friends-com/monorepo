@@ -1,66 +1,70 @@
-@extends('layouts.gameforest.landings')
+@extends('auth.default')
 
 @section('content')
-    <nav class="bg-white border-bottom" aria-label="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('login') }}">{{ trans('auth.login') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('auth.forgot_password') }}</li>
-            </ol>
-        </div>
-    </nav>
-    <section>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">{{ trans('auth.forgot_password') }}</div>
-                        <div class="card-body">
-                            {!! Form::open(['route' => ['password.update'], 'method' => 'POST']) !!}
-
-
-                                <input type="hidden" name="token" value="{{ $token }}">
-
-                                <div class="form-group form-group-default required">
-                                    <label class="control-label">{{ trans('users.email') }}</label>
-                                    <input type="text" name="email" class="form-control" placeholder="{{ trans('users.email') }}" value="{{ old('email') }}"/>
-                                    @if ($errors && $errors->has('email'))
-                                        <span class="error">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group form-group-default required">
-                                            <label class="control-label">{{ trans('users.password') }}</label>
-                                            <input type="password" name="password" class="form-control" placeholder="{{ trans('users.password') }}"/>
-                                            @if ($errors && $errors->has('password'))
-                                                <span class="error">{{ $errors->first('password') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group form-group-default required">
-                                            <label class="control-label">{{ trans('users.password_confirmation') }}</label>
-                                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ trans('users.password_confirmation') }}"/>
-                                            @if ($errors && $errors->has('password_confirmation'))
-                                                <span class="error">{{ $errors->first('password_confirmation') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="sm-p-t-10 clearfix">
-                                    <input type="submit" value="{{ trans('leads.send') }}" name="submit" class="btn btn-primary font-montserrat all-caps fs-12 pull-right xs-pull-left" />
-                                </div>
-                                <div class="clearfix"></div>
-
-
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>
+<div class="card-body login-card-body">
+    <p class="login-box-msg">{{ trans('auth.forgot_password') }}</p>
+    {!! Form::open(['route' => ['password.update'], 'method' => 'POST']) !!}
+    @honeypot
+    <div class="input-group mb-3">
+        <input
+                type="text"
+                name="email"
+                class="form-control {{ $errors && $errors->has('email') ? 'is-invalid' : '' }}"
+                placeholder="{{ trans('users.email') }}" value="{{ old('email') }}"
+        />
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
             </div>
         </div>
-    </section>
+        @if ($errors && $errors->has('email'))
+        <div class="error mb-2">{{ $errors->first('email') }}</div>
+        @endif
+    </div>
+    <div class="input-group mb-3">
+        <input
+                type="password"
+                name="password"
+                class="form-control {{ $errors && $errors->has('password') ? 'is-invalid' : '' }}"
+                placeholder="{{ trans('users.password') }}"
+        />
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+        @if ($errors && $errors->has('password'))
+            <div class="error mb-2">{{ $errors->first('password') }}</div>
+        @endif
+    </div>
+    <div class="input-group mb-3">
+        <input
+                type="password"
+                name="password_confirmation"
+                class="form-control {{ $errors && $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
+                placeholder="{{ trans('users.password_confirmation') }}"
+        />
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+        @if ($errors && $errors->has('password_confirmation'))
+        <div class="error mb-2">{{ $errors->first('password_confirmation') }}</div>
+        @endif
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" name="submit" class="btn btn-primary btn-block">
+                {{ trans('users.leads.send') }}
+            </button>
+        </div>
+    </div>
+    {!! Form::close() !!}
+    @if (Route::has('login'))
+    <p class="mt-3 mb-1">
+        <a href="{{ route('login') }}">{{ trans('auth.login') }}</a>
+    </p>
+    @endif
+</div>
 @endsection

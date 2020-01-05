@@ -1,9 +1,12 @@
-<?php namespace obsession\Console;
+<?php
+
+namespace obsession\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use obsession\Console\Commands\{
-    GenerateSitemapCommand
+    GenerateSitemapCommand,
+    TestLaravelEchoCommand
 };
 
 class Kernel extends ConsoleKernel
@@ -16,6 +19,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         GenerateSitemapCommand::class,
+        TestLaravelEchoCommand::class,
     ];
 
     /**

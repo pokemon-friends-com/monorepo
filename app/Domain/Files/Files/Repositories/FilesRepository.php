@@ -1,4 +1,6 @@
-<?php namespace obsession\Domain\Files\Files\Repositories;
+<?php
+
+namespace obsession\Domain\Files\Files\Repositories;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Filesystem\FilesystemAdapter;
@@ -17,13 +19,6 @@ use Barryvdh\Elfinder\{
 };
 use obsession\Domain\Users\Users\User;
 
-//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeMySQL.class.php');
-//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeFTP.class.php');
-//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeDropbox.class.php');
-//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeGoogleDrive.class.php');
-//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeBox.class.php');
-//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeOneDrive.class.php');
-
 define('ELFINDER_DROPBOX_CONSUMERKEY', '');
 define('ELFINDER_DROPBOX_CONSUMERSECRET', '');
 define('ELFINDER_DROPBOX_META_CACHE_PATH', '');
@@ -33,6 +28,13 @@ define('ELFINDER_GOOGLEDRIVE_CLIENTSECRET', '');
 
 define('ELFINDER_BOX_CLIENTID', '');
 define('ELFINDER_BOX_CLIENTSECRET', '');
+
+//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeMySQL.class.php');
+//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeFTP.class.php');
+//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeDropbox.class.php');
+//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeGoogleDrive.class.php');
+//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeBox.class.php');
+//include_once base_path('vendor/studio-42/elfinder/php/elFinderVolumeOneDrive.class.php');
 
 class FilesRepository
 {
@@ -58,33 +60,9 @@ class FilesRepository
     }
 
     /**
-     * @return mixed
-     */
-    public function backendShowIndexView()
-    {
-        return view('backend.files.files.index', $this->getViewVars());
-    }
-
-    /**
-     * @return mixed
-     */
-    public function accountantShowIndexView()
-    {
-        return view('accountant.files.files.index', $this->getViewVars());
-    }
-
-    /**
-     * @return mixed
-     */
-    public function backendShowCKeditor4()
-    {
-        return view($this->package . '::ckeditor4', $this->getViewVars());
-    }
-
-    /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function backendShowConnector()
+    public function connector()
     {
         $roots = $this->app->config->get('elfinder.roots', []);
 
@@ -100,91 +78,28 @@ class FilesRepository
     }
 
     /**
+     * @param array $roots
+     *
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
-    public function accountantShowConnector()
+    public function generateElFinderFilesManagerConnector(array $roots = [])
     {
-        $roots = $this->app->config->get('elfinder.roots', []);
+        $session = null;
+        $rootOptions = $this->app->config->get('elfinder.root_options', []);
+        $opts = $this->app->config->get('elfinder.options', []);
 
-        if (empty($roots)) {
-            $roots = array_merge($roots, $this->listElFinderDirectories());
-            $roots = array_merge(
-                $roots,
-                $this->listElFinderDisks('elfinder.disks.' . User::ROLE_ACCOUNTANT)
-            );
-        }
-
-        return $this->generateElFinderFilesManagerConnector($roots);
-    }
-
-    protected function listElFinderDirectories($config = 'elfinder.dir')
-    {
-        $roots = [];
-        $dirs = (array)$this->app['config']->get($config, []);
-
-        foreach ($dirs as $dir) {
-            $roots[] = [
-                'driver' => 'LocalFileSystem',
-                // driver for accessing file system (REQUIRED)
-                'path' => public_path($dir),
-                // path to files (REQUIRED)
-                'URL' => url($dir),
-                // URL to files (REQUIRED)
-                'accessControl' => $this->app->config->get('elfinder.access')
-                // filter callback (OPTIONAL)
-            ];
-        }
-
-        return $roots;
-    }
-
-    protected function listElFinderDisks(
-        $config = 'elfinder.disks.' . User::ROLE_ADMINISTRATOR
-    ) {
-        $roots = [];
-        $disks = (array)$this->app['config']->get($config, []);
-
-        foreach ($disks as $key => $root) {
-            if (is_string($root)) {
-                $key = $root;
-                $root = [];
-            }
-            $disk = app('filesystem')->disk($key);
-            if ($disk instanceof FilesystemAdapter) {
-                $defaults = [
-                    'driver' => 'Flysystem',
-                    'filesystem' => $disk->getDriver(),
-                    'alias' => $key,
-                    'accessControl' => $this->app->config->get('elfinder.access'),
-                ];
-                $roots[] = array_merge($defaults, $root);
-            }
-        }
-
-        return $roots;
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function generateElFinderFilesManagerConnector($roots = [])
-    {
         if (app()->bound('session.store')) {
             $sessionStore = app('session.store');
             $session = new LaravelSession($sessionStore);
-        } else {
-            $session = null;
         }
 
-        $rootOptions = $this->app->config->get('elfinder.root_options', []);
         foreach ($roots as $key => $root) {
             $roots[$key] = array_merge($rootOptions, $root);
         }
 
-        $opts = $this->app->config->get('elfinder.options', []);
         $opts = array_merge($opts, ['roots' => $roots, 'session' => $session]);
-
-        // run elFinder
+        // Run elFinder.
         $connector = new Connector(new \elFinder($opts));
         $connector->run();
 
@@ -200,7 +115,7 @@ class FilesRepository
         $dir = 'packages/barryvdh/' . $this->package;
         $locale = str_replace("-", "_", $this->app->config->get('app.locale'));
 
-        if (!file_exists($this->app['path.public'] . "/$dir/js/i18n/elfinder.$locale.js")) {
+        if (!file_exists(public_path("/$dir/js/i18n/elfinder.$locale.js"))) {
             $locale = false;
         }
 
@@ -208,12 +123,12 @@ class FilesRepository
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function streamPublicDocument($path)
+    public function streamPublicDocument(string $path)
     {
         $path = storage_path('app/public/' . $path);
 
@@ -242,5 +157,62 @@ class FilesRepository
             'response' => new LaravelResponseFactory(app('request')),
         ])
             ->getImageResponse($path, []);
+    }
+
+    /**
+     * @param string $config
+     *
+     * @return array
+     */
+    protected function listElFinderDirectories(string $config = 'elfinder.dir')
+    {
+        $roots = [];
+        $dirs = (array)$this->app['config']->get($config, []);
+
+        foreach ($dirs as $dir) {
+            $roots[] = [
+                // driver for accessing file system (REQUIRED)
+                'driver' => 'LocalFileSystem',
+                // path to files (REQUIRED)
+                'path' => public_path($dir),
+                // URL to files (REQUIRED)
+                'URL' => url($dir),
+                // filter callback (OPTIONAL)
+                'accessControl' => $this->app->config->get('elfinder.access')
+            ];
+        }
+
+        return $roots;
+    }
+
+    /**
+     * @param string $config
+     *
+     * @return array
+     */
+    protected function listElFinderDisks(
+        $config = 'elfinder.disks.' . User::ROLE_ADMINISTRATOR
+    ) {
+        $roots = [];
+        $disks = (array)$this->app['config']->get($config, []);
+
+        foreach ($disks as $key => $root) {
+            if (is_string($root)) {
+                $key = $root;
+                $root = [];
+            }
+            $disk = app('filesystem')->disk($key);
+            if ($disk instanceof FilesystemAdapter) {
+                $defaults = [
+                    'driver' => 'Flysystem',
+                    'filesystem' => $disk->getDriver(),
+                    'alias' => $key,
+                    'accessControl' => $this->app->config->get('elfinder.access'),
+                ];
+                $roots[] = array_merge($defaults, $root);
+            }
+        }
+
+        return $roots;
     }
 }

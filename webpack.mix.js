@@ -6,6 +6,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 mix
+  .autoload({
+    jquery: ['$', 'window.jQuery', 'jQuery', 'window.$', 'jquery', 'window.jquery'],
+    moment: ['moment', 'window.moment'],
+    'pusher-js': ['Pusher', 'window.Pusher'],
+  })
   .webpackConfig({
     resolve: {
       alias: {
@@ -38,6 +43,17 @@ mix
           },
           exclude: /node_modules/,
         },
+        {
+          // Exposes jQuery for use outside Webpack build
+          test: require.resolve('jquery'),
+          use: [{
+            loader: 'expose-loader',
+            options: 'jQuery',
+          }, {
+            loader: 'expose-loader',
+            options: '$',
+          }],
+        },
       ],
     },
     plugins: [
@@ -47,15 +63,10 @@ mix
       }),
       new CopyWebpackPlugin([
         {
-          from: 'resources/clip/html/clip-2/images',
-          to: 'img',
-        }, {
-          from: 'resources/pages/dist/pages/img',
-          to: 'img',
-        }, {
           from: 'resources/images',
           to: 'images',
-        }]),
+        },
+      ]),
       new ImageminPlugin({
         test: /\.(jpe?g|png|gif)$/i, // |svg
         pngquant: {
@@ -85,17 +96,7 @@ mix
 
 mix
   .js('resources/js/app.js', 'public/js')
-  .js('resources/js/backend.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css')
-  .sass('resources/sass/backend.scss', 'public/css')
-  .copy('resources/gameforest/dist/css', 'public/css')
-  .copy('resources/gameforest/dist/js', 'public/js')
-  .copy('resources/gameforest/dist/fonts', 'public/fonts')
-  .copy('resources/pages/dist/pages/css', 'public/css')
-  .copy('resources/pages/dist/pages/js', 'public/js')
-  .copy('resources/pages/dist/pages/fonts', 'public/fonts')
-  .copy('resources/pages/dist/pages/ico', 'public/ico')
-  .copy('resources/pages/plugins', 'public/plugins');
+  .sass('resources/sass/app.scss', 'public/css');
 
 if (mix.config.production) {
   mix.version();

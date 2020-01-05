@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df12a6d4884d3c3257e856e9c02c3642",
+    "content-hash": "370ff3f09916ad6ed9c9ed4b01a91d63",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -842,6 +842,61 @@
                 "parser"
             ],
             "time": "2019-03-17T18:48:37+00:00"
+        },
+        {
+            "name": "fedeisas/laravel-mail-css-inliner",
+            "version": "2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fedeisas/laravel-mail-css-inliner.git",
+                "reference": "c1cbdbecfebc3d737f31ed87266172c4eee9635b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fedeisas/laravel-mail-css-inliner/zipball/c1cbdbecfebc3d737f31ed87266172c4eee9635b",
+                "reference": "c1cbdbecfebc3d737f31ed87266172c4eee9635b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0|^6.0",
+                "php": ">=5.4.0",
+                "tijsverkoyen/css-to-inline-styles": "~2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.7",
+                "squizlabs/php_codesniffer": "^2.3",
+                "swiftmailer/swiftmailer": "~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fedeisas\\LaravelMailCssInliner\\LaravelMailCssInlinerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fedeisas\\LaravelMailCssInliner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fede Isas",
+                    "email": "fedeisas@hotmail.com"
+                }
+            ],
+            "description": "Inline the CSS of your HTML emails using Laravel",
+            "keywords": [
+                "css",
+                "laravel",
+                "mailer"
+            ],
+            "time": "2019-09-13T23:11:54+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -5261,6 +5316,66 @@
                 "spatie"
             ],
             "time": "2019-12-12T13:39:26+00:00"
+        },
+        {
+            "name": "spatie/laravel-honeypot",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-honeypot.git",
+                "reference": "67a89380b26376e821a54278df97850d92c1273f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/67a89380b26376e821a54278df97850d92c1273f",
+                "reference": "67a89380b26376e821a54278df97850d92c1273f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.8.*|^6.0",
+                "illuminate/encryption": "5.8.*|^6.0",
+                "illuminate/http": "5.8.*|^6.0",
+                "illuminate/support": "5.8.*|^6.0",
+                "illuminate/validation": "5.8.*|^6.0",
+                "nesbot/carbon": "^2.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.8.*|^4.0",
+                "spatie/phpunit-snapshot-assertions": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Honeypot\\HoneypotServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Honeypot\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Preventing spam submitted through forms",
+            "homepage": "https://github.com/spatie/laravel-honeypot",
+            "keywords": [
+                "laravel-honeypot",
+                "spatie"
+            ],
+            "time": "2019-09-04T08:28:11+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",

@@ -27,46 +27,12 @@ return [
 	*/
 	'disks' => [
 		\obsession\Domain\Users\Users\User::ROLE_ADMINISTRATOR => [
-			'accounting' => [
-				'alias' => 'Accounting',
-				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess'
-			],
-			'backups' => [
-				'alias' => 'Backups',
-				'accessControl' => 'obsession\Domain\Files\Files\Access\ReadOnly::checkAccess'
-			],
-			'documentations' => [
-				'alias' => 'Documentations',
-				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess'
-			],
-			'folios' => [
-				'alias' => 'Folios',
-				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess'
-			],
-			'organizations' => [
-				'alias' => 'Organizations',
-				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess'
-			],
-			'projects' => [
-				'alias' => 'Projects',
-				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess'
-			],
 			'public' => [
 				'alias' => 'Public',
 				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
 				'URL' => 'files/document',
 				'tmbURL' => env('APP_URL'),
 				'glideURL' => 'files/thumbnail',
-			],
-			'users' => [
-				'alias' => 'Users',
-				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
-			],
-		],
-		\obsession\Domain\Users\Users\User::ROLE_ACCOUNTANT => [
-			'accounting' => [
-				'alias' => 'Accounting',
-				'accessControl' => 'obsession\Domain\Files\Files\Access\ReadOnly::checkAccess'
 			],
 		],
 	],

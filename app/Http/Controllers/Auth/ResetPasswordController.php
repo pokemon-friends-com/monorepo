@@ -1,12 +1,15 @@
-<?php namespace obsession\Http\Controllers\Auth;
+<?php
+
+namespace obsession\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use obsession\Domain\Users\Users\Repositories\UsersResetPasswordRepositoryEloquent;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Http\Controllers\Auth\AuthRedirectTrait;
 
 class ResetPasswordController extends ControllerAbstract
 {
+    use ResetsPasswords;
+    use AuthRedirectTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -18,9 +21,6 @@ class ResetPasswordController extends ControllerAbstract
     | explore this trait and override any methods you wish to tweak.
     |
     */
-
-    use ResetsPasswords;
-    use AuthRedirectTrait;
 
     /**
      * @var UsersResetPasswordRepositoryEloquent|null

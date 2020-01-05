@@ -221,14 +221,12 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * @param $id
+     * @param Lead $lead
      * @return User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function createUserFromLead($id): User
+    public function createUserFromLead(Lead $lead): User
     {
-        $lead = $this->find($id);
-
         $user = $this
             ->r_users
             ->createUser(

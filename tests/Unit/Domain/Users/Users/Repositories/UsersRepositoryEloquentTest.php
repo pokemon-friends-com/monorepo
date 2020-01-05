@@ -11,6 +11,7 @@ use obsession\Domain\Users\Users\User;
 use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
@@ -75,7 +76,10 @@ class UsersRepositoryEloquentTest extends TestCase
         Event::assertDispatched(UserUpdatedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
-        $this->assertDatabaseHas('users', $user->toArray());
+        $userArr = $user->toArray();
+        Arr::forget($userArr, 'updated_at');
+        Arr::forget($userArr, 'profile');
+        $this->assertDatabaseHas('users', $userArr);
     }
 
     public function testDelete()
@@ -86,8 +90,10 @@ class UsersRepositoryEloquentTest extends TestCase
         Event::assertDispatched(UserDeletedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
-        $this->assertDatabaseHas('users', $user->toArray());
-        $this->assertSoftDeleted('users', $user->toArray());
+        $userArr = $user->toArray();
+        Arr::forget($userArr, 'profile');
+        $this->assertDatabaseHas('users', $userArr);
+        $this->assertSoftDeleted('users', $userArr);
     }
 
     public function testRefreshSession()
@@ -286,7 +292,7 @@ class UsersRepositoryEloquentTest extends TestCase
         /*
          * Administrator delete user.
          */
-        $isNotDeletinHisAccount = $this->r_users->isUserDeletingHisAccount($administrator, $user->id);
+        $isNotDeletinHisAccount = $this->r_users->isUserDeletingHisAccount($administrator, $user);
         Event::assertNotDispatched(UserTriedToDeleteHisOwnAccountEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
@@ -294,7 +300,7 @@ class UsersRepositoryEloquentTest extends TestCase
         /*
          * Administrator delete his account.
          */
-        $isDeletinHisAccount = $this->r_users->isUserDeletingHisAccount($administrator, $administrator->id);
+        $isDeletinHisAccount = $this->r_users->isUserDeletingHisAccount($administrator, $administrator);
         Event::assertDispatched(UserTriedToDeleteHisOwnAccountEvent::class, function ($event) use ($administrator) {
             return $event->user->id === $administrator->id;
         });

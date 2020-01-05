@@ -184,7 +184,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         $lead = factory(Lead::class)->create();
         // @todo xABE : https://github.com/abenevaut/www/issues/234
 //        factory(Lead::class)->states('deleted')->create();
-        $user = $this->r_leads->createUserFromLead($lead->id);
+        $user = $this->r_leads->createUserFromLead($lead);
         $this->assertEquals($lead->email, $user->email);
     }
 }

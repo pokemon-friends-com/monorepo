@@ -1,7 +1,10 @@
-<?php namespace obsession\Domain\Users\Users;
+<?php
+
+namespace obsession\Domain\Users\Users;
 
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
+use obsession\Domain\Users\Profiles\Profile;
 use obsession\Infrastructure\Interfaces\Domain\Users\{
     Users\HandshakableInterface,
     Users\UserCivilitiesInterface,
@@ -16,6 +19,7 @@ use obsession\Infrastructure\Contracts\
     Model\AuthenticatableModelAbstract,
     Model\IdentifiableTrait,
     Model\Notifiable,
+    Model\RouteKeyNameUniquidTrait,
     Model\SoftDeletes,
     Model\TimeStampsTz,
     Model\SoftDeletesTz
@@ -40,7 +44,6 @@ class User extends AuthenticatableModelAbstract implements
     TimeZonesInterface,
     HandshakableInterface
 {
-
     use HasApiTokens;
     use Notifiable;
     use IdentifiableTrait;
@@ -48,6 +51,7 @@ class User extends AuthenticatableModelAbstract implements
     use HandshakeNotificationTrait;
     use NamableTrait;
     use ProfileableTrait;
+    use RouteKeyNameUniquidTrait;
     use TimeStampsTz;
     use SoftDeletesTz;
     use Impersonate;
@@ -86,6 +90,10 @@ class User extends AuthenticatableModelAbstract implements
      */
     protected $dates = [
         'deleted_at',
+    ];
+
+    protected $with = [
+        'profile',
     ];
 
     /**
@@ -171,6 +179,14 @@ class User extends AuthenticatableModelAbstract implements
     public function lead()
     {
         return $this->hasOne(Lead::class);
+    }
+
+    /**
+     * Get the profile that owns the user.
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
     /**

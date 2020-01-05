@@ -116,6 +116,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'recaptcha' => 'The :attribute field is invalid.',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +177,7 @@ return [
         'available'             => 'available',
         'size'                  => 'size',
         'subject'               => 'subject',
+        'recaptcha'             => 'recaptcha',
     ],
 
 ];

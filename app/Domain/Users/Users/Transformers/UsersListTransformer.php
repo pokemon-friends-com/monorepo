@@ -17,7 +17,6 @@ class UsersListTransformer extends TransformerAbstract
     public function transform(User $model)
     {
         $data = [
-            'id' => (int)$model->id,
             'identifier' => $model->uniqid,
             'full_name' => $model->full_name,
             'civility_name' => $model->civility_name,

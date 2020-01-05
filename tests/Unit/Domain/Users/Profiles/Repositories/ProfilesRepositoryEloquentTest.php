@@ -1,8 +1,10 @@
 <?php namespace Tests\Unit\Domain\Users\Profiles\Repositories;
 
+use Illuminate\Support\Collection;
 use obsession\Domain\Users\Profiles\Events\ProfileUpdatedEvent;
 use obsession\Domain\Users\Profiles\Profile;
 use obsession\Domain\Users\Users\User;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
@@ -56,7 +58,9 @@ class ProfilesRepositoryEloquentTest extends TestCase
         Event::assertDispatched(ProfileUpdatedEvent::class, function ($event) use ($profile) {
             return $event->profile->id === $profile->id;
         });
-        $this->assertDatabaseHas('users_profiles', $profile->toArray());
+        $profileArr = $profile->toArray();
+        Arr::forget($profileArr, 'updated_at');
+        $this->assertDatabaseHas('users_profiles', $profileArr);
     }
 
     public function testDelete()
@@ -69,12 +73,9 @@ class ProfilesRepositoryEloquentTest extends TestCase
 
     public function testGetFamilySituationsList()
     {
-        $this->assertEquals([
-            Profile::FAMILY_SITUATION_SINGLE,
-            Profile::FAMILY_SITUATION_MARRIED,
-            Profile::FAMILY_SITUATION_CONCUBINAGE,
-            Profile::FAMILY_SITUATION_DIVORCEE,
-            Profile::FAMILY_SITUATION_WIDOW_ER,
-        ], $this->r_profiles->getFamilySituationsList()->keys()->toArray());
+        $this->assertEquals(
+            new Collection(Profile::FAMILY_SITUATIONS),
+            $this->r_profiles->getFamilySituations()
+        );
     }
 }

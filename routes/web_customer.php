@@ -19,7 +19,9 @@ Route::group(
         'middleware' => ['auth', 'role:'.\obsession\Domain\Users\Users\User::ROLE_CUSTOMER],
     ],
     function () {
-
-        Route::resource('dashboard', 'DashboardController');
-
+        Route::group(['namespace' => 'Users'], function () {
+            Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+                Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard']);
+            });
+        });
     });
