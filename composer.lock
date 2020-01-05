@@ -293,16 +293,16 @@
         },
         {
             "name": "barryvdh/laravel-elfinder",
-            "version": "v0.4.3",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-elfinder.git",
-                "reference": "5ffc5da61b6e434c20c57bd7479829b7dcc8dab5"
+                "reference": "47405c06e828d16f834dcc6235f67c88971862f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/5ffc5da61b6e434c20c57bd7479829b7dcc8dab5",
-                "reference": "5ffc5da61b6e434c20c57bd7479829b7dcc8dab5",
+                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/47405c06e828d16f834dcc6235f67c88971862f8",
+                "reference": "47405c06e828d16f834dcc6235f67c88971862f8",
                 "shasum": ""
             },
             "require": {
@@ -346,7 +346,7 @@
                 "laravel",
                 "tinymce"
             ],
-            "time": "2019-09-03T20:16:06+00:00"
+            "time": "2019-10-27T18:56:41+00:00"
         },
         {
             "name": "clue/stream-filter",
@@ -1339,16 +1339,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "39eaef720d082ecc54c64bf54541c55f10db546d"
+                "reference": "abbf18d5ab8367f96b3205ca3c89fb2fa598c69e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/39eaef720d082ecc54c64bf54541c55f10db546d",
-                "reference": "39eaef720d082ecc54c64bf54541c55f10db546d",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/abbf18d5ab8367f96b3205ca3c89fb2fa598c69e",
+                "reference": "abbf18d5ab8367f96b3205ca3c89fb2fa598c69e",
                 "shasum": ""
             },
             "require": {
@@ -1405,7 +1405,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2019-06-24T14:06:31+00:00"
+            "time": "2019-11-02T09:15:47+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2357,16 +2357,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.61",
+            "version": "1.0.63",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9"
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/4fb13c01784a6c9f165a351e996871488ca2d8c9",
-                "reference": "4fb13c01784a6c9f165a351e996871488ca2d8c9",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8132daec326565036bc8e8d1876f77ec183a7bd6",
+                "reference": "8132daec326565036bc8e8d1876f77ec183a7bd6",
                 "shasum": ""
             },
             "require": {
@@ -2437,7 +2437,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-12-08T21:46:50+00:00"
+            "time": "2020-01-04T16:30:31+00:00"
         },
         {
             "name": "league/flysystem-cached-adapter",
@@ -5665,16 +5665,16 @@
         },
         {
             "name": "studio-42/elfinder",
-            "version": "2.1.50",
+            "version": "2.1.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "ae1a24001af2727ef7ef4e8f32c7dc1b49709062"
+                "reference": "783709d6b97cafba586b0aa61e48b271407821fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/ae1a24001af2727ef7ef4e8f32c7dc1b49709062",
-                "reference": "ae1a24001af2727ef7ef4e8f32c7dc1b49709062",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/783709d6b97cafba586b0aa61e48b271407821fb",
+                "reference": "783709d6b97cafba586b0aa61e48b271407821fb",
                 "shasum": ""
             },
             "require": {
@@ -5719,7 +5719,7 @@
             ],
             "description": "File manager for web",
             "homepage": "http://elfinder.org",
-            "time": "2019-08-20T14:15:16+00:00"
+            "time": "2019-12-08T03:03:51+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
