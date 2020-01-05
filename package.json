@@ -57,7 +57,7 @@
         "stylelint-scss": "^3.13.0",
         "stylelint-webpack-plugin": "^1.1.2",
         "ts-loader": "^6.2.1",
-        "typescript": "^3.7.3",
+        "typescript": "^3.7.4",
         "vue": "^2.6.11",
         "vue-eslint-parser": "^7.0.0",
         "vue-template-compiler": "^2.6.11"
