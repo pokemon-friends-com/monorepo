@@ -40,7 +40,7 @@
 <meta property="og:image" content="@yield('image', asset(config('services.facebook.og:image')))" />
 <meta property="og:description" content="@yield('description', config('app.description'))" />
 @section('type')
-    <meta property="og:type" content="{{ config('services.facebook.og:type') }}" />
+<meta property="og:type" content="{{ config('services.facebook.og:type') }}" />
 @show
 <meta property="og:url" content="{{ URL::current() }}"/>
 <meta name="twitter:title" content="@yield('title', config('app.name'))" />

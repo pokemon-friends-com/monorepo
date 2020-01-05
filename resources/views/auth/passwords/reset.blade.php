@@ -5,6 +5,7 @@
     <p class="login-box-msg">{{ trans('auth.forgot_password') }}</p>
     {!! Form::open(['route' => ['password.update'], 'method' => 'POST']) !!}
     @honeypot
+    <input type="hidden" name="token" value="{{ $token }}">
     <div class="input-group mb-3">
         <input
                 type="text"

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ Session::get('locale') }}">
 <head>
     @include('partials.metadata')
 </head>
