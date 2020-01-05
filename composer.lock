@@ -1584,16 +1584,16 @@
         },
         {
             "name": "lab404/laravel-impersonate",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/404labfr/laravel-impersonate.git",
-                "reference": "9e839683aef30b5fd2c79c2fc686e990ccfa37d0"
+                "reference": "7c4d5345a76aedf58d38fc986ec933b10685909a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/404labfr/laravel-impersonate/zipball/9e839683aef30b5fd2c79c2fc686e990ccfa37d0",
-                "reference": "9e839683aef30b5fd2c79c2fc686e990ccfa37d0",
+                "url": "https://api.github.com/repos/404labfr/laravel-impersonate/zipball/7c4d5345a76aedf58d38fc986ec933b10685909a",
+                "reference": "7c4d5345a76aedf58d38fc986ec933b10685909a",
                 "shasum": ""
             },
             "require": {
@@ -1645,7 +1645,7 @@
                 "plugin",
                 "user"
             ],
-            "time": "2019-12-17T10:51:16+00:00"
+            "time": "2020-01-02T15:27:10+00:00"
         },
         {
             "name": "laravel-notification-channels/twitter",
