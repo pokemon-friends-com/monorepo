@@ -15,7 +15,7 @@
         "test": "cross-env NODE_ENV=testing nyc --reporter=lcov npm run mocha"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^2.14.0",
+        "@typescript-eslint/eslint-plugin": "^2.15.0",
         "@typescript-eslint/parser": "^2.14.0",
         "@vue/babel-preset-app": "^3.11.0",
         "@vue/test-utils": "^1.0.0-beta.30",
