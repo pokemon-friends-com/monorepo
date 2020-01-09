@@ -1,4 +1,6 @@
-<?php namespace obsession\Domain\Files\Files\Access;
+<?php
+
+namespace obsession\Domain\Files\Files\Access;
 
 class ReadOnly
 {

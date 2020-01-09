@@ -1,51 +1,53 @@
-@extends('layouts.gameforest.landings')
+@extends('auth.default')
 
 @section('content')
-    <nav class="bg-white border-bottom" aria-label="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('login') }}">{{ trans('auth.login') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ trans('auth.forgot_password') }}</li>
-            </ol>
-        </div>
-    </nav>
-    <section>
-        <div class="container">
-            <div class="row justify-content-center">
-
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">{{ trans('auth.forgot_password') }}</div>
-                        <div class="card-body">
-                            {!! Form::open(['route' => ['password.email'], 'method' => 'POST']) !!}
-
-
-                            <div class="form-group form-group-default required">
-                                <label class="control-label">{{ trans('users.email') }}</label>
-                                <input type="text" name="email" class="form-control" placeholder="{{ trans('users.email') }}" value="{{ old('email', Auth::check() ? Auth::user()->email : '') }}"/>
-                                @if ($errors && $errors->has('email'))
-                                    <span class="error">{{ $errors->first('email') }}</span>
-                                @endif
-                            </div>
-
-
-                            <div class="sm-p-t-10 clearfix">
-                                <input type="submit" value="{{ trans('leads.send') }}" name="submit" class="btn btn-primary font-montserrat all-caps fs-12 pull-right xs-pull-left" />
-                            </div>
-                            <div class="clearfix"></div>
-
-
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
-                </div>
+<div class="card-body login-card-body">
+    <p class="login-box-msg">{{ trans('auth.forgot_password') }}</p>
+    @if (session('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session('status') }}
+    </div>
+    @endif
+    {!! Form::open(['route' => ['password.email'], 'method' => 'POST']) !!}
+    @honeypot
+    <div class="input-group mb-3">
+        <input
+                type="text"
+                name="email"
+                class="form-control {{ $errors && $errors->has('email') ? 'is-invalid' : '' }}"
+                placeholder="{{ trans('users.email') }}"
+                value="{{ old('email', Auth::check() ? Auth::user()->email : '') }}"
+        />
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
             </div>
         </div>
-    </section>
+        @if ($errors && $errors->has('email'))
+            <div class="error mb-2">{{ $errors->first('email') }}</div>
+        @endif
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" name="submit" class="btn btn-primary btn-block">
+                {{ trans('users.leads.send') }}
+            </button>
+        </div>
+    </div>
+    {!! Form::close() !!}
+    @if (Route::has('login'))
+    <p class="mt-3 mb-1">
+        <a href="{{ route('login') }}">
+            {{ trans('auth.login') }}
+        </a>
+    </p>
+    @endif
+    @if (Route::has('register'))
+    <p class="mb-0">
+        <a href="{{ route('register') }}" class="text-center">
+            {{ trans('auth.register') }}
+        </a>
+    </p>
+    @endif
+</div>
 @endsection

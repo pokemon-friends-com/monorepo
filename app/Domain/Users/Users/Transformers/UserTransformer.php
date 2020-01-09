@@ -45,6 +45,7 @@ class UserTransformer extends TransformerAbstract
                 'language' => $model->locale,
                 'timezone' => $model->timezone,
             ],
+            'is_sidebar_pined' => $model->profile->is_sidebar_pined,
         ];
 
         return $data;

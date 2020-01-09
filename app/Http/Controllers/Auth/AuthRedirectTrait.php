@@ -1,4 +1,6 @@
-<?php namespace obsession\Http\Controllers\Auth;
+<?php
+
+namespace obsession\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -10,7 +12,7 @@ trait AuthRedirectTrait
      *
      * @var string
      */
-    protected $redirectTo = 'customer.dashboard.index';
+    protected $redirectTo = 'customer.users.dashboard';
 
     /**
      * Where to redirect accountants after login.
@@ -24,7 +26,7 @@ trait AuthRedirectTrait
      *
      * @var string
      */
-    protected $redirectToBackend = 'backend.dashboard.index';
+    protected $redirectToBackend = 'administrator.users.dashboard';
 
     /**
      * @return string

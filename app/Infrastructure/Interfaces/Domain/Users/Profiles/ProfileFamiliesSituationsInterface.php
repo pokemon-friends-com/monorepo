@@ -9,7 +9,6 @@ interface ProfileFamiliesSituationsInterface
     const FAMILY_SITUATION_CONCUBINAGE = 'concubinage';
     const FAMILY_SITUATION_DIVORCEE = 'divorcee';
     const FAMILY_SITUATION_WIDOW_ER = 'widow_er';
-
     const FAMILY_SITUATIONS_WHIT_MAIDEN_NAME = [
         self::FAMILY_SITUATION_MARRIED,
         self::FAMILY_SITUATION_DIVORCEE,

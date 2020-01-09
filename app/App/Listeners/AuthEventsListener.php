@@ -1,4 +1,6 @@
-<?php namespace obsession\App\Listeners;
+<?php
+
+namespace obsession\App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Auth\Events\{

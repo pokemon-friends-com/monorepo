@@ -1,13 +1,16 @@
-<?php namespace obsession\Http\Controllers\Auth;
+<?php
+
+namespace obsession\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use obsession\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Http\Controllers\Auth\AuthRedirectTrait;
 use obsession\Domain\Users\Users\User;
 
 class RegisterController extends ControllerAbstract
 {
+    use RegistersUsers;
+    use AuthRedirectTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -19,9 +22,6 @@ class RegisterController extends ControllerAbstract
     | provide this functionality without requiring any additional code.
     |
     */
-
-    use RegistersUsers;
-    use AuthRedirectTrait;
 
     /**
      * @var UsersRegistrationsRepositoryEloquent|null

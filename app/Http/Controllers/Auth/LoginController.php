@@ -1,16 +1,19 @@
-<?php namespace obsession\Http\Controllers\Auth;
+<?php
+
+namespace obsession\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Http\Controllers\Auth\AuthRedirectTrait;
 use obsession\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
 use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 
 class LoginController extends ControllerAbstract
 {
+    use AuthenticatesUsers;
+    use AuthRedirectTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -22,9 +25,6 @@ class LoginController extends ControllerAbstract
     | to conveniently provide its functionality to your applications.
     |
     */
-
-    use AuthenticatesUsers;
-    use AuthRedirectTrait;
 
     /**
      * @var UsersRepositoryEloquent|null
@@ -87,7 +87,7 @@ class LoginController extends ControllerAbstract
         } catch (\InvalidArgumentException $exception) {
             app('sentry')->captureException($exception);
 
-            return redirect(route('frontend.home'))
+            return redirect(route('anonymous.dashboard'))
                 ->with(
                     'message-error',
                     sprintf(
@@ -115,7 +115,7 @@ class LoginController extends ControllerAbstract
         } catch (\InvalidArgumentException $exception) {
             app('sentry')->captureException($exception);
 
-            return redirect(route('frontend.home'))
+            return redirect(route('anonymous.dashboard'))
                 ->with(
                     'message-error',
                     sprintf(

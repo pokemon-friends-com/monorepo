@@ -5,6 +5,7 @@ use obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent;
 use obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent;
 use obsession\Domain\Users\ProvidersTokens\ProviderToken;
 use obsession\Domain\Users\Users\User;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
@@ -58,7 +59,9 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         Event::assertDispatched(ProviderTokenUpdatedEvent::class, function ($event) use ($providerToken) {
             return $event->provider_token->id === $providerToken->id;
         });
-        $this->assertDatabaseHas('users_providers_tokens', $providerToken->toArray());
+        $providerTokenArr = $providerToken->toArray();
+        Arr::forget($providerTokenArr, 'updated_at');
+        $this->assertDatabaseHas('users_providers_tokens', $providerTokenArr);
     }
 
     public function testDelete()

@@ -15,6 +15,7 @@
         "babenkoivan/scout-elasticsearch-driver": "^4.0",
         "barryvdh/laravel-cors": "^0.11.4",
         "barryvdh/laravel-elfinder": "^0.4.2",
+        "fedeisas/laravel-mail-css-inliner": "^2.3",
         "fideloper/proxy": "^4.0",
         "lab404/laravel-impersonate": "^1.4",
         "laravel-notification-channels/twitter": "^3.0",
@@ -33,6 +34,7 @@
         "pusher/pusher-php-server": "^4.0",
         "sentry/sentry-laravel": "^1.1",
         "spatie/laravel-backup": "^6.3",
+        "spatie/laravel-honeypot": "^1.4",
         "spatie/laravel-medialibrary": "^7.10",
         "spatie/laravel-sitemap": "^5.3"
     },
@@ -70,7 +72,7 @@
             "database/factories"
         ],
         "files": [
-            "app/App/Services/PagesPaginationsHelpers.php",
+            "resources/views/admin-lte/AdminLtePaginationsHelpers.php",
             "app/App/Services/TimeZonesHelpers.php"
         ]
     },
@@ -112,16 +114,6 @@
         "docker:build": [
             "docker:build:workspace",
             "docker:build:infrastructure"
-        ],
-        "docker:push:workspace": [
-            "docker-compose --project-name obsession push workspace"
-        ],
-        "docker:push:infrastructure": [
-            "docker-compose --project-name obsession push apache2 mailhog php-fpm php-worker mysql redis elasticsearch kibana"
-        ],
-        "docker:push": [
-            "docker:push:workspace",
-            "docker:push:infrastructure"
         ],
         "docker:stop": [
             "docker-compose --project-name obsession stop"

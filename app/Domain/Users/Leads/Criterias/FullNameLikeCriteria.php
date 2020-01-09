@@ -1,4 +1,6 @@
-<?php namespace obsession\Domain\Users\Leads\Criterias;
+<?php
+
+namespace obsession\Domain\Users\Leads\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 use obsession\Infrastructure\Contracts\Criterias\CriteriaAbstract;

@@ -1,4 +1,6 @@
-<?php namespace obsession\Http\Middleware;
+<?php
+
+namespace obsession\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Session;
@@ -6,13 +8,6 @@ use obsession\Infrastructure\Interfaces\Domain\Locale\LocalesInterface;
 
 class Locale
 {
-
-    /**
-     * The available languages.
-     *
-     * @array $languages
-     */
-    protected $languages = LocalesInterface::LOCALES;
 
     /**
      * Handle current locale.

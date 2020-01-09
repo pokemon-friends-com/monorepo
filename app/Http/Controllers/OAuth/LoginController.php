@@ -1,15 +1,15 @@
-<?php namespace obsession\Http\Controllers\OAuth;
+<?php
+
+namespace obsession\Http\Controllers\OAuth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
-use obsession\Http\Controllers\OAuth\LoginResponseTrait;
 use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class LoginController extends ControllerAbstract
 {
-
     use LoginResponseTrait;
     use AuthenticatesUsers;
 
@@ -25,7 +25,6 @@ class LoginController extends ControllerAbstract
      */
     public function __construct(UsersRepositoryEloquent $r_users)
     {
-        $this->before();
         $this->r_users = $r_users;
     }
 

@@ -1,4 +1,6 @@
-<?php namespace obsession\App\Providers;
+<?php
+
+namespace obsession\App\Providers;
 
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

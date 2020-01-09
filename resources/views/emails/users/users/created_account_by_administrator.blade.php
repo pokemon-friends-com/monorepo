@@ -1,4 +1,4 @@
-@extends('layouts.emails')
+@extends('emails.default')
 
 @section('title', trans('mails.created_account_by_administrator_subject'))
 

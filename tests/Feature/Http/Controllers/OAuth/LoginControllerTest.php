@@ -1,4 +1,6 @@
-<?php namespace obsession\Http\Controllers\OAuth;
+<?php
+
+namespace obsession\Http\Controllers\OAuth;
 
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
@@ -11,7 +13,6 @@ use obsession\Domain\Users\Users\User;
 
 class LoginControllerTest extends TestCase
 {
-
     use OAuthTestCaseTrait;
     use DatabaseMigrations;
 

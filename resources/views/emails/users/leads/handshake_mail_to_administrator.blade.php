@@ -1,6 +1,6 @@
-@extends('layouts.emails')
+@extends('emails.default')
 
-@section('title', trans('leads.handshake_title', ['civility_name' => $civility_name]))
+@section('title', trans('users.leads.handshake_title', ['civility_name' => $civility_name]))
 
 @section('content')
 	<table bgcolor="#cdcdc8" align="center" width="100%" border="0" cellspacing="0" cellpadding="0">

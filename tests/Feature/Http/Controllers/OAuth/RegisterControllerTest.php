@@ -1,4 +1,6 @@
-<?php namespace obsession\Http\Controllers\OAuth;
+<?php
+
+namespace obsession\Http\Controllers\OAuth;
 
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
@@ -9,7 +11,6 @@ use obsession\Domain\Users\Users\User;
 
 class RegisterControllerTest extends TestCase
 {
-
     use OAuthTestCaseTrait;
     use DatabaseMigrations;
 

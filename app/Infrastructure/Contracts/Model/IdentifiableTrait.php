@@ -1,4 +1,6 @@
-<?php namespace obsession\Infrastructure\Contracts\Model;
+<?php
+
+namespace obsession\Infrastructure\Contracts\Model;
 
 trait IdentifiableTrait
 {

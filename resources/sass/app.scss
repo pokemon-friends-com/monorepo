@@ -1,13 +1,11 @@
-// Fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "~admin-lte/plugins/fontawesome-free/css/all.css";
+@import "~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css";
+@import "~admin-lte/plugins/select2/css/select2.css";
+@import "~admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.css";
+@import "~admin-lte/plugins/sweetalert2/sweetalert2.css";
+@import "~admin-lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4";
+@import "~admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4";
+@import "~admin-lte/dist/css/adminlte.css";
 
-// Variables
-@import 'variables';
-
-// Bootstrap
-//@import '~bootstrap/scss/bootstrap';
-
-.error {
-    color: $red;
-    font-size: 12px;
-}
+// Google Fonts
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700);

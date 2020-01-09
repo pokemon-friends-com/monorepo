@@ -14,33 +14,42 @@ return [
     |
     */
 
-//    'mailgun' => [
-//        'domain' => env('MAILGUN_DOMAIN'),
-//        'secret' => env('MAILGUN_SECRET'),
-//        'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
-//    ],
-//
-//    'postmark' => [
-//        'token' => env('POSTMARK_TOKEN'),
-//    ],
-//
-//    'ses' => [
-//        'key' => env('AWS_ACCESS_KEY_ID'),
-//        'secret' => env('AWS_SECRET_ACCESS_KEY'),
-//        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
-//    ],
-//
-//    'sparkpost' => [
-//        'secret' => env('SPARKPOST_SECRET'),
-//    ],
-
     'github' => [
         'url' => 'https://github.com/obsession-city',
         'changelog' => 'https://github.com/obsession-city/www/milestones?state=closed',
     ],
 
+    'google_recaptcha' => [
+        'sitekey' => env('GOOGLE_RECAPTCHA_SITEKEY'),
+        'serverkey' => env('GOOGLE_RECAPTCHA_SERVERKEY'),
+    ],
+
     'twitter' => [
+        'username' => '@obsession_city',
         'url' => 'https://twitter.com/obsession_city',
+        /*
+        |--------------------------------------------------------------------------
+        | Site Card
+        |--------------------------------------------------------------------------
+        |
+        | Twitter : twitter:card = summary, summary_large_image, app, player
+        |
+        */
+        'card' => 'summary_large_image',
+        'image' => '/images/og-image.png',
+    ],
+
+    'facebook' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Site type
+        |--------------------------------------------------------------------------
+        |
+        | Facebook : og:type = https://developers.facebook.com/docs/reference/opengraph
+        |
+        */
+        'og:type' => 'website',
+        'og:image' => '/images/og-image.png',
     ],
 
 ];

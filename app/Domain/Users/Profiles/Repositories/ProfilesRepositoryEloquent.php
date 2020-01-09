@@ -1,6 +1,9 @@
-<?php namespace obsession\Domain\Users\Profiles\Repositories;
+<?php
+
+namespace obsession\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Container\Container as Application;
+use Illuminate\Support\Collection;
 use obsession\Infrastructure\Contracts\
 {
     Request\RequestAbstract,
@@ -15,24 +18,11 @@ use obsession\Domain\Users\Users\
 use obsession\Domain\Users\Profiles\{
     Profile,
     Events\ProfileUpdatedEvent,
-    Presenters\ProfilesListPresenter,
-    Repositories\ProfilesRepositoryResetPassword
+    Presenters\ProfilesListPresenter
 };
 
 class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements ProfilesRepository
 {
-
-    /**
-     * @var array Family situation available to fill family_situation field in
-     *     profiles table.
-     */
-    protected $family_situations = [
-        Profile::FAMILY_SITUATION_SINGLE => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_SINGLE,
-        Profile::FAMILY_SITUATION_MARRIED => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_MARRIED,
-        Profile::FAMILY_SITUATION_CONCUBINAGE => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_CONCUBINAGE,
-        Profile::FAMILY_SITUATION_DIVORCEE => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_DIVORCEE,
-        Profile::FAMILY_SITUATION_WIDOW_ER => 'profiles.family_situation.' . Profile::FAMILY_SITUATION_WIDOW_ER,
-    ];
 
     /**
      * @var UsersRepositoryEloquent|null
@@ -40,7 +30,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     protected $r_users = null;
 
     /**
-     * LeadsRepositoryEloquent constructor.
+     * ProfilesRepositoryEloquent constructor.
      *
      * @param Application $app
      * @param UsersRepositoryEloquent $r_users
@@ -50,7 +40,6 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
         UsersRepositoryEloquent $r_users
     ) {
         parent::__construct($app);
-
         $this->r_users = $r_users;
     }
 
@@ -65,29 +54,26 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * Create trainer profile.
+     * Create user profile.
      *
      * @param array $attributes
      *
-     * @event None
-     * @return \obsession\Domain\Users\Profiles\Profile
+     * @return Profile
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function create(array $attributes)
     {
-        $profile = parent::create($attributes);
-
-        return $profile;
+        return parent::create($attributes);
     }
 
     /**
-     * Update trainer profile.
+     * Update user profile.
      *
      * @param array $attributes
      * @param integer $id
      *
      * @event ProfileUpdatedEvent
-     * @return \obsession\Domain\Users\Profiles\Profile
+     * @return Profile
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(array $attributes, $id)
@@ -100,7 +86,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * Delete trainer profile.
+     * Delete user profile.
      *
      * @param $id
      *
@@ -117,40 +103,23 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function getFamilySituationsList()
+    public function getFamilySituations(): Collection
     {
-        return collect($this->family_situations)
-            ->map(
-                function ($translation_key, $family_situation_key) {
-                    return trans($translation_key);
-                }
-            );
+        return collect(Profile::FAMILY_SITUATIONS);
     }
 
     /**
      * @param User $user
      * @param array $parameters
-     * @param array $emails
-     * @param array $phones
      *
      * @return User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function createUserProfile(
         User $user,
-        $parameters = [],
-        $emails = [],
-        $phones = []
+        $parameters = []
     ): User {
-        $profile = $this
-            ->create(
-                array_merge(
-                    [
-                        'user_id' => $user->id,
-                    ],
-                    $parameters
-                )
-            );
+        $this->create(array_merge(['user_id' => $user->id], $parameters));
 
         return $user;
     }
@@ -158,17 +127,13 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     /**
      * @param User $user
      * @param array $parameters
-     * @param array $emails
-     * @param array $phones
      *
      * @return User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function updateUserProfile(
         User $user,
-        $parameters = [],
-        $emails = [],
-        $phones = []
+        $parameters = []
     ): User {
         $this->update($parameters, $user->profile->id);
 
@@ -188,118 +153,76 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
+     * @return Collection
      */
-    public function backendIndexView()
+    public function getCivilities(): Collection
     {
-        $profile = $this->getCurrentUserProfile();
-
-        return view(
-            'backend.users.profiles.index',
-            [
-                'profile' => $profile,
-                'families_situations' => $this->getFamilySituationsList(),
-                'timezones' => $this->r_users->getTimezones(),
-                'locales' => $this->r_users->getLocales(),
-            ]
-        );
+        return $this->r_users->getCivilities();
     }
 
     /**
-     * @param RequestAbstract $request
-     * @param                 $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Collection
      */
-    public function backendUpdateWithRedirection(RequestAbstract $request, $id)
+    public function getLocales(): Collection
     {
-        $this->updateUserProfileWithRequest($request, $id);
-
-        return redirect(route('backend.users.profile.index'));
+        return $this->r_users->getLocales();
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Collection
      */
-    public function accountantIndexView()
+    public function getTimezones(): Collection
     {
-        $profile = $this->getCurrentUserProfile();
-
-        return view(
-            'accountant.users.profiles.index',
-            [
-                'profile' => $profile,
-                'families_situations' => $this->getFamilySituationsList(),
-                'timezones' => $this->r_users->getTimezones(),
-                'locales' => $this->r_users->getLocales(),
-            ]
-        );
-    }
-
-    /**
-     * @param RequestAbstract $request
-     * @param                 $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function accountantUpdateWithRedirection(
-        RequestAbstract $request,
-        $id
-    ) {
-        $this->updateUserProfileWithRequest($request, $id);
-
-        return redirect(route('accountant.profile.index'));
+        return $this->r_users->getTimezones();
     }
 
     /**
      * @return Profile
      * @throws \Exception
      */
-    protected function getCurrentUserProfile()
+    public function getUserProfile(User $user)
     {
         return $this
             ->setPresenter(new ProfilesListPresenter())
-            ->find(\Auth::user()->profile->id);
+            ->find($user->profile->id);
     }
 
     /**
      * @param RequestAbstract $request
-     * @param                 $id
+     * @param $id
+     *
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    protected function updateUserProfileWithRequest(
+    public function updateUserProfileWithRequest(
         RequestAbstract $request,
         $id
     ) {
-        try {
-            $profile = $this
-                ->update(
-                    [
-                        'birth_date' => $request->has('birth_date')
-                            ? Carbon::createFromFormat(
-                                trans('global.date_format'),
-                                $request->get('birth_date')
-                            )->format('Y-m-d')
-                            : null,
-                        'family_situation' => $request->get('family_situation'),
-                        'maiden_name' => $request->get('maiden_name'),
-                    ],
-                    $id
-                );
+        $data = [
+            'birth_date' => $request->has('birth_date')
+                ? Carbon::createFromFormat(
+                    trans('global.date_format'),
+                    $request->get('birth_date')
+                )->format('Y-m-d')
+                : null,
+            'family_situation' => $request->get('family_situation'),
+            'maiden_name' => $request->get('maiden_name'),
+            'is_sidebar_pined' => $request->get('is_sidebar_pined'),
+        ];
+        $data = array_filter($data, function($v) { return !is_null($v); });
 
+        $profile = $this->update($data, $id);
+
+        $data = [
+            'timezone' => $request->get('timezone'),
+            'locale' => $request->get('locale'),
+        ];
+        $data = array_filter($data, function($v) { return !is_null($v); });
+
+        if ($data) {
             $user = $this
                 ->r_users
-                ->update(
-                    [
-                        'timezone' => $request->get('timezone'),
-                        'locale' => $request->get('locale'),
-                    ],
-                    $profile->user->id
-                );
-
+                ->update($data, $profile->user->id);
             $this->r_users->refreshSession($user);
-        } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
-            app('sentry')->captureException($exception);
         }
     }
 }

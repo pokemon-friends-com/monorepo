@@ -366,15 +366,15 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
 
     /**
      * @param User $currentUser
-     * @param int $userId
+     * @param User $user
      *
      * @return bool
      */
     public function isUserDeletingHisAccount(
         User $currentUser,
-        int $userId
+        User $user
     ): bool {
-        $isUserDeletingHisAccount = $userId === $currentUser->id;
+        $isUserDeletingHisAccount = $user->id === $currentUser->id;
 
         if ($isUserDeletingHisAccount) {
             event(new UserTriedToDeleteHisOwnAccountEvent($currentUser));

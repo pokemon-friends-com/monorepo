@@ -1,6 +1,6 @@
-@extends('layouts.emails')
+@extends('emails.default')
 
-@section('title', trans('leads.handshake_title', ['civility_name' => $civility_name]))
+@section('title', trans('users.leads.handshake_title', ['civility_name' => $civility_name]))
 
 @section('content')
 	<table bgcolor="#cdcdc8" align="center" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -38,10 +38,10 @@
 							<table width="520" border="0" align="center" cellpadding="0" cellspacing="0" class="table-inner">
 								<tr>
 									<td align="left"  style="font-family: 'Open Sans', Arial, sans-serif; font-size:13px; color:#999999; line-height:20px;">
-										<p>{!! trans('leads.handshake_body_header') !!}</p>
+										<p>{!! trans('users.leads.handshake_body_header') !!}</p>
 										<div>{!! $body !!}</div>
 										<br/>
-										<p>{!! trans('leads.handshake_body_footer') !!}</p>
+										<p>{!! trans('users.leads.handshake_body_footer') !!}</p>
 									</td>
 								</tr>
 							</table>

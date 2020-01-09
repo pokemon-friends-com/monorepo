@@ -20,4 +20,14 @@ abstract class TestCase extends BaseTestCase
 
         $this->hotfixSqlite();
     }
+
+    public function dateFormat()
+    {
+        return trans('global.date_format');
+    }
+
+    public function dateTimeFormat()
+    {
+        return trans('global.date_time_format');
+    }
 }

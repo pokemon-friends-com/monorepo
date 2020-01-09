@@ -1,4 +1,6 @@
-<?php namespace obsession\App\Notifications\Channels;
+<?php
+
+namespace obsession\App\Notifications\Channels;
 
 use obsession\Infrastructure\Contracts\Notifications\Notification;
 use obsession\Infrastructure\Interfaces\App\Notifications\Channels\MailableChannelInterface;

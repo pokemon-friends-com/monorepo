@@ -38,9 +38,6 @@ jobs:
       - eval "$(ssh-agent -s)"
       - chmod 600 /tmp/deploy_rsa
       - ssh-add /tmp/deploy_rsa
-      - git submodule update --init resources/clip
-      - git submodule update --init resources/gameforest
-      - git submodule update --init resources/pages
       - printf "\n" | pecl install imagick
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
@@ -58,9 +55,6 @@ jobs:
         if [[ "$CODECLIMATE" = "on" ]]; then
           ./cc-test-reporter before-build
         fi
-      - travis_retry npm run gameforest
-      - travis_retry npm run pages
-      - bash scripts/prepare_pages_assets.sh
       - travis_retry npm run dev
       - php artisan elfinder:publish
     script:
