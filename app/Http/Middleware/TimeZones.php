@@ -1,8 +1,8 @@
-<?php namespace obsession\Http\Middleware;
+<?php namespace template\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Session;
-use obsession\Infrastructure\Interfaces\Domain\Locale\TimeZonesInterface;
+use template\Infrastructure\Interfaces\Domain\Locale\TimeZonesInterface;
 
 class TimeZones
 {

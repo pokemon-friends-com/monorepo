@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\App\Notifications\Channels;
 
-use obsession\App\Notifications\Channels\AdministratorMailableChannel;
-use obsession\App\Notifications\Messages\MailableMessage;
-use obsession\Infrastructure\Contracts\Model\Notifiable;
-use obsession\Infrastructure\Contracts\Notifications\Notification;
+use template\App\Notifications\Channels\AdministratorMailableChannel;
+use template\App\Notifications\Messages\MailableMessage;
+use template\Infrastructure\Contracts\Model\Notifiable;
+use template\Infrastructure\Contracts\Notifications\Notification;
 use Tests\TestCase;
 
 class AdministratorMailableChannelTest extends TestCase

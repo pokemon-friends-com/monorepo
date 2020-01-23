@@ -128,15 +128,15 @@
                                     <div class="col-sm-10">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \obsession\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}">
+                                                <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}">
                                                     <span class="pull-left"><i class="fab fa-twitter"></i></span>
                                                     <span class="bold">Lier Twitter</span>
                                                 </a>
-                                                <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \obsession\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}">
+                                                <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}">
                                                     <span class="pull-left"><i class="fab fa-google-plus"></i></span>
                                                     <span class="bold">Lier Google+</span>
                                                 </a>
-                                                <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \obsession\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::LINKEDIN]) }}">
+                                                <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::LINKEDIN]) }}">
                                                     <span class="pull-left"><i class="fab fa-linkedin"></i></span>
                                                     <span class="bold">Lier Linkedin</span>
                                                 </a>

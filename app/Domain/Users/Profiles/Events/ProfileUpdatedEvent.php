@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Domain\Users\Profiles\Events;
+namespace template\Domain\Users\Profiles\Events;
 
-use obsession\Infractucture\Contracts\Events\EventAbstract;
-use obsession\Domain\Users\Profiles\Profile;
+use template\Infractucture\Contracts\Events\EventAbstract;
+use template\Domain\Users\Profiles\Profile;
 
 class ProfileUpdatedEvent extends EventAbstract
 {

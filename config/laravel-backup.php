@@ -27,7 +27,6 @@ return [
                  * You can specify individual files as well.
                  */
                 'exclude' => [
-					storage_path('app/obsession'),
 					storage_path('app/thumbnails'),
                 ],
 

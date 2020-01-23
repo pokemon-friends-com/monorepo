@@ -9,7 +9,7 @@ use Illuminate\Auth\Events\{
     Login as LoginEvent,
     Logout as LogoutEvent
 };
-use obsession\Domain\Users\{
+use template\Domain\Users\{
     Users\User,
     Users\Events\UserRefreshSessionEvent
 };

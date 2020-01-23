@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\App\Notifications\Channels;
 
-use obsession\App\Notifications\Messages\CustomerMailMessage;
+use template\App\Notifications\Messages\CustomerMailMessage;
 use Tests\TestCase;
 
 class CustomerMailMessageTest extends TestCase

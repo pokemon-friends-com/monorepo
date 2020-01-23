@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Domain\Users\Users\Events;
+namespace template\Domain\Users\Users\Events;
 
-use obsession\Infractucture\Contracts\Events\EventAbstract;
-use obsession\Domain\Users\Users\User;
+use template\Infractucture\Contracts\Events\EventAbstract;
+use template\Domain\Users\Users\User;
 
 class UserUpdatedEvent extends EventAbstract
 {

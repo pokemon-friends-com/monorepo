@@ -1,10 +1,10 @@
 <?php
 
-namespace obsession\Console;
+namespace template\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use obsession\Console\Commands\{
+use template\Console\Commands\{
     GenerateSitemapCommand,
     TestLaravelEchoCommand
 };

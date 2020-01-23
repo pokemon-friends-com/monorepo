@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use obsession\Domain\Users\
+use template\Domain\Users\
 {
     Users\User,
     Profiles\Profile

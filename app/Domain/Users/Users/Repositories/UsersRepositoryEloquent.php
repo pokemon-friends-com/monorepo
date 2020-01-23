@@ -1,14 +1,14 @@
-<?php namespace obsession\Domain\Users\Users\Repositories;
+<?php namespace template\Domain\Users\Users\Repositories;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Validation\Validator as ContractsValidator;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Contracts\
 {
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use obsession\Domain\Users\Users\{
+use template\Domain\Users\Users\{
     Repositories\UsersRepositoryInterface,
     User,
     Criterias\EmailLikeCriteria,
@@ -22,7 +22,7 @@ use obsession\Domain\Users\Users\{
     Events\UserTriedToDeleteHisOwnAccountEvent,
     Presenters\UsersListPresenter
 };
-use obsession\Domain\Users\Leads\Lead;
+use template\Domain\Users\Leads\Lead;
 
 class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements UsersRepositoryInterface
 {
@@ -42,8 +42,8 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @param array $attributes
      *
-     * @event obsession\Domain\Users\Users\Events\UserCreatedEvent
-     * @return \obsession\Domain\Users\Users\User
+     * @event template\Domain\Users\Users\Events\UserCreatedEvent
+     * @return \template\Domain\Users\Users\User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function create(array $attributes): User
@@ -83,8 +83,8 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      * @param array $attributes
      * @param integer $id
      *
-     * @event obsession\Domain\Users\Users\Events\UserUpdatedEvent
-     * @return \obsession\Domain\Users\Users\User
+     * @event template\Domain\Users\Users\Events\UserUpdatedEvent
+     * @return \template\Domain\Users\Users\User
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(array $attributes, $id): User
@@ -101,8 +101,8 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
      *
      * @param integer $id
      *
-     * @event obsession\Domain\Users\Users\Events\UserDeletedEvent
-     * @return \obsession\Domain\Users\Users\User
+     * @event template\Domain\Users\Users\Events\UserDeletedEvent
+     * @return \template\Domain\Users\Users\User
      */
     public function delete($id): User
     {

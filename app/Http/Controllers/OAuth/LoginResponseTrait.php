@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Http\Controllers\OAuth;
+namespace template\Http\Controllers\OAuth;
 
 use Carbon\Carbon;
 use Laravel\Passport\PersonalAccessTokenResult;

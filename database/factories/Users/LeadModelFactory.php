@@ -11,8 +11,8 @@
 |
 */
 
-use obsession\Domain\Users\Leads\Lead;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Leads\Lead;
+use template\Domain\Users\Users\User;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory

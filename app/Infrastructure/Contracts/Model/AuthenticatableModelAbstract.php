@@ -1,4 +1,4 @@
-<?php namespace obsession\Infrastructure\Contracts\Model;
+<?php namespace template\Infrastructure\Contracts\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Prettus\Repository\Contracts\Transformable;

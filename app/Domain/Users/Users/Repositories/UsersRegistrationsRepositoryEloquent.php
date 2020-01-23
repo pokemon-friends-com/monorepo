@@ -1,8 +1,8 @@
-<?php namespace obsession\Domain\Users\Users\Repositories;
+<?php namespace template\Domain\Users\Users\Repositories;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Validation\Validator as ContractsValidator;
-use obsession\Domain\Users\Users\{
+use template\Domain\Users\Users\{
     User,
     Repositories\UsersRegistrationsRepositoryInterface
 };

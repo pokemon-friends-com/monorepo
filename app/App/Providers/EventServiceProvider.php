@@ -1,10 +1,10 @@
 <?php
 
-namespace obsession\App\Providers;
+namespace template\App\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use obsession\App\Listeners\{
+use template\App\Listeners\{
     AuthEventsListener,
     UsersEventsListener
 };

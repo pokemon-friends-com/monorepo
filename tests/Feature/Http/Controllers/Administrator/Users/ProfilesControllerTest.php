@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers\Administrator\Users;
 
-use obsession\Domain\Users\Profiles\Profile;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Profiles\Profile;
+use template\Domain\Users\Users\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\Users\Criterias;
+<?php namespace template\Domain\Users\Users\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
-use obsession\Infrastructure\Contracts\Criterias\CriteriaAbstract;
+use template\Infrastructure\Contracts\Criterias\CriteriaAbstract;
 
 class EmailLikeCriteria extends CriteriaAbstract
 {

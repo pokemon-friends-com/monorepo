@@ -1,7 +1,7 @@
-<?php namespace obsession\Http\Request\Administrator\Users\Users;
+<?php namespace template\Http\Request\Administrator\Users\Users;
 
-use obsession\Infrastructure\Contracts\Request\RequestAbstract;
-use obsession\Domain\Users\Users\User;
+use template\Infrastructure\Contracts\Request\RequestAbstract;
+use template\Domain\Users\Users\User;
 
 class UserFormRequest extends RequestAbstract
 {

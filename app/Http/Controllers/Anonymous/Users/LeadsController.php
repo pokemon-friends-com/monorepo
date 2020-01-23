@@ -1,10 +1,10 @@
 <?php
 
-namespace obsession\Http\Controllers\Anonymous\Users;
+namespace template\Http\Controllers\Anonymous\Users;
 
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Http\Request\Anonymous\Contacts\ContactRequest;
-use obsession\Domain\Users\Leads\Repositories\LeadsRepositoryEloquent;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Http\Request\Anonymous\Contacts\ContactRequest;
+use template\Domain\Users\Leads\Repositories\LeadsRepositoryEloquent;
 
 class LeadsController extends ControllerAbstract
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace obsession\Console\Commands;
+namespace template\Console\Commands;
 
-use obsession\Infrastructure\Contracts\Commands\CommandAbstract;
+use template\Infrastructure\Contracts\Commands\CommandAbstract;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;

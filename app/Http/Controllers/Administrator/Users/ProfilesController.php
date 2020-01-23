@@ -1,12 +1,12 @@
 <?php
 
-namespace obsession\Http\Controllers\Administrator\Users;
+namespace template\Http\Controllers\Administrator\Users;
 
 use Illuminate\Http\Request;
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Http\Request\Administrator\Users\Profiles\ProfileFormRequest;
-use obsession\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use obsession\Domain\Users\Users\User;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Http\Request\Administrator\Users\Profiles\ProfileFormRequest;
+use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use template\Domain\Users\Users\User;
 
 class ProfilesController extends ControllerAbstract
 {

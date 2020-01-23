@@ -1,11 +1,11 @@
 <?php
 
-namespace obsession\Infrastructure\Contracts\Model;
+namespace template\Infrastructure\Contracts\Model;
 
 /**
  * Allows to load entity as route arguments from uniquid field.
  *
- * @package obsession\Infrastructure\Contracts\Model
+ * @package template\Infrastructure\Contracts\Model
  */
 trait RouteKeyNameUniquidTrait
 {

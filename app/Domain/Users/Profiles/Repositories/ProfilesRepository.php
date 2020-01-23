@@ -1,8 +1,8 @@
-<?php namespace obsession\Domain\Users\Profiles\Repositories;
+<?php namespace template\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Support\Collection;
-use obsession\Infrastructure\Interfaces\Repositories\RepositoryInterface;
-use obsession\Domain\Users\Users\User;
+use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use template\Domain\Users\Users\User;
 
 interface ProfilesRepository extends RepositoryInterface
 {

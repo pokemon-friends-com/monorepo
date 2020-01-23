@@ -16,7 +16,7 @@ Route::group(
         'as' => 'customer.',
         'namespace' => 'Customer',
         'domain' => env('APP_DOMAIN'),
-        'middleware' => ['auth', 'role:'.\obsession\Domain\Users\Users\User::ROLE_CUSTOMER],
+        'middleware' => ['auth', 'role:'.\template\Domain\Users\Users\User::ROLE_CUSTOMER],
     ],
     function () {
         Route::group(['namespace' => 'Users'], function () {

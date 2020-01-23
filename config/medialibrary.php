@@ -23,7 +23,7 @@ return [
     /*
      * The class names of the models that should be used.
      */
-    'media_model' => obsession\Domain\Files\Medias\Media::class,
+    'media_model' => template\Domain\Files\Medias\Media::class,
 
     's3' => [
         /*
@@ -74,7 +74,7 @@ return [
      * When urls to files get generated, this class will be called. Leave empty
      * if your files are stored locally above the site root or on s3.
      */
-    'url_generator' => \obsession\Domain\Files\Medias\UrlGenerator\PrivateStorageUrlGenerator::class,
+    'url_generator' => \template\Domain\Files\Medias\UrlGenerator\PrivateStorageUrlGenerator::class,
 
     /*
      * The class that contains the strategy for determining a media file's path.

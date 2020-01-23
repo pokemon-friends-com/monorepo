@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Domain\Users\Users\Presenters;
+namespace template\Domain\Users\Users\Presenters;
 
-use obsession\Infrastructure\Contracts\Presenters\PresenterAbstract;
-use obsession\Domain\Users\Users\Transformers\UsersListTransformer;
+use template\Infrastructure\Contracts\Presenters\PresenterAbstract;
+use template\Domain\Users\Users\Transformers\UsersListTransformer;
 
 class UsersListPresenter extends PresenterAbstract
 {

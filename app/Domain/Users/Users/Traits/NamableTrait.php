@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Domain\Users\Users\Traits;
+namespace template\Domain\Users\Users\Traits;
 
 trait NamableTrait
 {

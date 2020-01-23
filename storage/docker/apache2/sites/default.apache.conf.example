@@ -1,13 +1,7 @@
 <VirtualHost *:80>
-  ServerName www.benevaut.fr.local
+  ServerName template.benevaut.fr.local
   DocumentRoot /var/www/public/
   Options Indexes FollowSymLinks
-
-  ServerAlias app.benevaut.fr.local
-  ServerAlias console.benevaut.fr.local
-  ServerAlias accounting.benevaut.fr.local
-  ServerAlias webhook.benevaut.fr.local
-  ServerAlias ajax.benevaut.fr.local
 
   <Directory "/var/www/public/">
     AllowOverride All

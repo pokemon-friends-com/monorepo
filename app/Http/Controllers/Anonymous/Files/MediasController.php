@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Http\Controllers\Anonymous\Files;
+namespace template\Http\Controllers\Anonymous\Files;
 
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Domain\Files\Medias\Repositories\MediasRepositoryEloquent;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Domain\Files\Medias\Repositories\MediasRepositoryEloquent;
 
 class MediasController extends ControllerAbstract
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace obsession\Http\Controllers\Api\V1\Users;
+namespace template\Http\Controllers\Api\V1\Users;
 
-use obsession\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
+use template\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laravel\Passport\Passport;
-use obsession\Domain\Users\Profiles\Profile;
-use obsession\Domain\Users\Users\User;
-use obsession\Domain\Users\Users\Transformers\UserTransformer;
+use template\Domain\Users\Profiles\Profile;
+use template\Domain\Users\Users\User;
+use template\Domain\Users\Users\Transformers\UserTransformer;
 
 class ProfilesControllerTest extends TestCase
 {

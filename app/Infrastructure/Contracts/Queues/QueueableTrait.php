@@ -1,4 +1,4 @@
-<?php namespace obsession\Infrastructure\Contracts\Queues;
+<?php namespace template\Infrastructure\Contracts\Queues;
 
 use Illuminate\Bus\Queueable;
 

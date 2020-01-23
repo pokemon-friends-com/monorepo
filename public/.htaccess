@@ -5,7 +5,7 @@
 
     RewriteEngine On
 
-    RewriteCond %{HTTP_HOST} obsession\.city$ [NC]
+    RewriteCond %{HTTP_HOST} temlate\.benevaut\.fr$ [NC]
     RewriteCond %{HTTP:X-Forwarded-Port} !=443
     RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
 

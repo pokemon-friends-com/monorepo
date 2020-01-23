@@ -1,13 +1,13 @@
 <?php
 
-namespace obsession\Http\Controllers\OAuth;
+namespace template\Http\Controllers\OAuth;
 
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 
 class RegisterControllerTest extends TestCase
 {

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Notification;
-use obsession\Domain\Users\{
+use template\Domain\Users\{
     Users\Notifications\CreatedAccountByAdministrator,
     Users\User,
     Profiles\Profile,

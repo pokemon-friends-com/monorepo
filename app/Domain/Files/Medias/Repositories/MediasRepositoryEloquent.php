@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Domain\Files\Medias\Repositories;
+namespace template\Domain\Files\Medias\Repositories;
 
 use Illuminate\Support\Facades\
 {
@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\
     Response
 };
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Contracts\
 {
     Request\RequestAbstract,
     Repositories\RepositoryEloquentAbstract,
     Traits\SecurityHashTrait
 };
-use obsession\Domain\Files\Medias\
+use template\Domain\Files\Medias\
 {
     Media,
     Repositories\MediasRepository

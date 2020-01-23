@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Infrastructure\Interfaces\Queues;
+namespace template\Infrastructure\Interfaces\Queues;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 

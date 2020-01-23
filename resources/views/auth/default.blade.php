@@ -4,7 +4,7 @@
     @include('partials.metadata')
 </head>
 <body class="hold-transition login-page">
-<div id="obsessioncity" class="login-box">
+<div id="template" class="login-box">
     <div class="login-logo">
         <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a>
     </div>

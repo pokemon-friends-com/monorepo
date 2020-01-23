@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Domain\Files\Files\Repositories;
+namespace template\Domain\Files\Files\Repositories;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Filesystem\FilesystemAdapter;
@@ -17,7 +17,7 @@ use Barryvdh\Elfinder\{
     Connector,
     Session\LaravelSession
 };
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 
 define('ELFINDER_DROPBOX_CONSUMERKEY', '');
 define('ELFINDER_DROPBOX_CONSUMERSECRET', '');

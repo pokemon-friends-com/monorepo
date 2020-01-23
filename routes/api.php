@@ -38,7 +38,7 @@ Route::group(
     ],
     function () {
         Route::group(['namespace' => 'Users'], function () {
-            Route::model('profile', \obsession\Domain\Users\Users\User::class);
+            Route::model('profile', \template\Domain\Users\Users\User::class);
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::group(['prefix' => 'profiles', 'as' => 'profiles.'], function () {
                     Route::get('family-situations', 'ProfilesController@familySituations');

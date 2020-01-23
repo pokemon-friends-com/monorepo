@@ -1,13 +1,13 @@
-<?php namespace obsession\Domain\Users\Leads\Notifications;
+<?php namespace template\Domain\Users\Leads\Notifications;
 
-use obsession\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
-use obsession\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
+use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use template\Infrastructure\Contracts\
 {
     Queues\QueueableTrait,
     Notifications\Notification
 };
-use obsession\App\Notifications\
+use template\App\Notifications\
 {
     Channels\AdministratorMailableChannel,
     Messages\CustomerMailMessage,

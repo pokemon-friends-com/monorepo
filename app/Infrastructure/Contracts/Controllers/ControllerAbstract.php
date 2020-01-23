@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Infrastructure\Contracts\Controllers;
+namespace template\Infrastructure\Contracts\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Bus\DispatchesJobs;

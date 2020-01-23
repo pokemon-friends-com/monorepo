@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\Leads\Transformers;
+<?php namespace template\Domain\Users\Leads\Transformers;
 
-use obsession\Infrastructure\Contracts\Transformers\TransformerAbstract;
-use obsession\Domain\Users\
+use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
+use template\Domain\Users\
 {
     Users\User,
     Leads\Lead

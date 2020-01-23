@@ -15,8 +15,8 @@ return [
     */
 
     'github' => [
-        'url' => 'https://github.com/obsession-city',
-        'changelog' => 'https://github.com/obsession-city/www/milestones?state=closed',
+        'url' => 'https://github.com/abenevaut/www-template',
+        'changelog' => 'https://github.com/abenevaut/www-template/milestones?state=closed',
     ],
 
     'google_recaptcha' => [
@@ -25,8 +25,8 @@ return [
     ],
 
     'twitter' => [
-        'username' => '@obsession_city',
-        'url' => 'https://twitter.com/obsession_city',
+        'username' => '@abenevaut',
+        'url' => 'https://twitter.com/abenevaut',
         /*
         |--------------------------------------------------------------------------
         | Site Card

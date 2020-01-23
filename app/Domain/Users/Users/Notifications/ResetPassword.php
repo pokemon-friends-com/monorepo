@@ -1,11 +1,11 @@
-<?php namespace obsession\Domain\Users\Users\Notifications;
+<?php namespace template\Domain\Users\Users\Notifications;
 
-use obsession\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
-use obsession\Infrastructure\Contracts\{
+use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use template\Infrastructure\Contracts\{
     Queues\QueueableTrait,
     Notifications\Notification
 };
-use obsession\App\Notifications\Messages\CustomerMailMessage;
+use template\App\Notifications\Messages\CustomerMailMessage;
 
 class ResetPassword extends Notification
 {

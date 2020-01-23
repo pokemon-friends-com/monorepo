@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Http\Controllers\Customer\Users;
+namespace template\Http\Controllers\Customer\Users;
 
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 
 class UsersController extends ControllerAbstract
 {

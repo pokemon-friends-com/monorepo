@@ -11,7 +11,7 @@
 |
 */
 
-use obsession\Domain\Files\Medias\Media;
+use template\Domain\Files\Medias\Media;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory

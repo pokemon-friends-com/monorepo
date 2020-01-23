@@ -1,18 +1,18 @@
-<?php namespace obsession\Domain\Users\Users\Notifications;
+<?php namespace template\Domain\Users\Users\Notifications;
 
-use obsession\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use template\Infrastructure\Contracts\
 {
     Queues\QueueableTrait,
     Notifications\Notification
 };
-use obsession\App\Notifications\
+use template\App\Notifications\
 {
     Channels\AdministratorMailableChannel,
     Messages\CustomerMailMessage,
     Messages\MailableMessage
 };
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 
 class CreatedAccountByAdministrator extends Notification
 {

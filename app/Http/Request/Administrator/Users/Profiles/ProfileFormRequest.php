@@ -1,7 +1,7 @@
-<?php namespace obsession\Http\Request\Administrator\Users\Profiles;
+<?php namespace template\Http\Request\Administrator\Users\Profiles;
 
-use obsession\Infrastructure\Contracts\Request\RequestAbstract;
-use obsession\Domain\Users\
+use template\Infrastructure\Contracts\Request\RequestAbstract;
+use template\Domain\Users\
 {
     Users\User,
     Profiles\Profile

@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\ProvidersTokens\Criterias;
+<?php namespace template\Domain\Users\ProvidersTokens\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
-use obsession\Infrastructure\Contracts\Criterias\CriteriaAbstract;
+use template\Infrastructure\Contracts\Criterias\CriteriaAbstract;
 
 class TokenByProviderCriteria extends CriteriaAbstract
 {

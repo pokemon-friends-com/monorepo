@@ -1,16 +1,16 @@
-<?php namespace obsession\Domain\Users\ProvidersTokens\Repositories;
+<?php namespace template\Domain\Users\ProvidersTokens\Repositories;
 
 use Illuminate\Container\Container as Application;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Contracts\
 {
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use obsession\Domain\Users\Users\{
+use template\Domain\Users\Users\{
     User,
     Repositories\UsersRepositoryEloquent
 };
-use obsession\Domain\Users\ProvidersTokens\{
+use template\Domain\Users\ProvidersTokens\{
     Repositories\ProvidersTokensRepositoryInterface,
     ProviderToken,
     Criterias\TokenByProviderCriteria,
@@ -55,8 +55,8 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
      *
      * @param array $attributes
      *
-     * @event obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent
-     * @return \obsession\Domain\Users\ProvidersTokens\ProviderToken
+     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent
+     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
@@ -75,8 +75,8 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
      * @param array $attributes
      * @param integer $id
      *
-     * @event obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent
-     * @return \obsession\Domain\Users\ProvidersTokens\ProviderToken
+     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent
+     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
@@ -94,8 +94,8 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
      *
      * @param integer $id
      *
-     * @event obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent
-     * @return \obsession\Domain\Users\ProvidersTokens\ProviderToken
+     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent
+     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
      */
     public function delete($id): ProviderToken
     {

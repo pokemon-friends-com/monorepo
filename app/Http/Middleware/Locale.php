@@ -1,10 +1,10 @@
 <?php
 
-namespace obsession\Http\Middleware;
+namespace template\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Session;
-use obsession\Infrastructure\Interfaces\Domain\Locale\LocalesInterface;
+use template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface;
 
 class Locale
 {

@@ -1,4 +1,4 @@
-<?php namespace obsession\Http\Middleware;
+<?php namespace template\Http\Middleware;
 
 use Closure;
 

@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\Profiles\Transformers;
+<?php namespace template\Domain\Users\Profiles\Transformers;
 
-use obsession\Infrastructure\Contracts\Transformers\TransformerAbstract;
-use obsession\Domain\Users\Profiles\Profile;
+use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
+use template\Domain\Users\Profiles\Profile;
 
 class ProfilesListTransformer extends TransformerAbstract
 {

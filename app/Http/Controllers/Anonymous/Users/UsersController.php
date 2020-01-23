@@ -1,8 +1,8 @@
 <?php
 
-namespace obsession\Http\Controllers\Anonymous\Users;
+namespace template\Http\Controllers\Anonymous\Users;
 
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class UsersController extends ControllerAbstract
 {
@@ -16,7 +16,7 @@ class UsersController extends ControllerAbstract
             'anonymous.users.users.dashboard',
             [
                 'metadata' => [
-                    'title' => 'Obsession city',
+                    'title' => 'Template www',
                 ],
             ]
         );

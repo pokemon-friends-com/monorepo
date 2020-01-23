@@ -1,8 +1,8 @@
 <?php
 
-namespace obsession\Http\Request\Anonymous\Contacts;
+namespace template\Http\Request\Anonymous\Contacts;
 
-use obsession\Infrastructure\Contracts\Request\RequestAbstract;
+use template\Infrastructure\Contracts\Request\RequestAbstract;
 
 class ContactRequest extends RequestAbstract
 {

@@ -1,16 +1,16 @@
 <?php namespace Tests\Unit\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Support\Collection;
-use obsession\Domain\Users\Profiles\Events\ProfileUpdatedEvent;
-use obsession\Domain\Users\Profiles\Profile;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Profiles\Events\ProfileUpdatedEvent;
+use template\Domain\Users\Profiles\Profile;
+use template\Domain\Users\Users\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use obsession\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 
 class ProfilesRepositoryEloquentTest extends TestCase
 {

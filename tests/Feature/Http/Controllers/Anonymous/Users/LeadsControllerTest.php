@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers\Anonymous\Users;
 
-use obsession\Domain\Users\Leads\Events\LeadCreatedEvent;
-use obsession\Domain\Users\Leads\Lead;
-use obsession\Domain\Users\Leads\Notifications\HandshakeMailToConfirmReceptionToSender;
+use template\Domain\Users\Leads\Events\LeadCreatedEvent;
+use template\Domain\Users\Leads\Lead;
+use template\Domain\Users\Leads\Notifications\HandshakeMailToConfirmReceptionToSender;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

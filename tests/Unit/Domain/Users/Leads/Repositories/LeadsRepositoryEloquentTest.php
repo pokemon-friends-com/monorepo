@@ -1,15 +1,15 @@
 <?php namespace Tests\Unit\Domain\Users\Leads\Repositories;
 
-use obsession\Domain\Users\Leads\Events\LeadCreatedEvent;
-use obsession\Domain\Users\Leads\Events\LeadDeletedEvent;
-use obsession\Domain\Users\Leads\Events\LeadUpdatedEvent;
-use obsession\Domain\Users\Leads\Lead;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Leads\Events\LeadCreatedEvent;
+use template\Domain\Users\Leads\Events\LeadDeletedEvent;
+use template\Domain\Users\Leads\Events\LeadUpdatedEvent;
+use template\Domain\Users\Leads\Lead;
+use template\Domain\Users\Users\User;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use obsession\Domain\Users\Leads\Repositories\LeadsRepositoryEloquent;
+use template\Domain\Users\Leads\Repositories\LeadsRepositoryEloquent;
 
 class LeadsRepositoryEloquentTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Domain\Users\Leads\Criterias;
+namespace template\Domain\Users\Leads\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
-use obsession\Infrastructure\Contracts\Criterias\CriteriaAbstract;
+use template\Infrastructure\Contracts\Criterias\CriteriaAbstract;
 
 class FullNameLikeCriteria extends CriteriaAbstract
 {

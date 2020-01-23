@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Domain\Users\Profiles;
+namespace template\Domain\Users\Profiles;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,14 +9,14 @@ use Spatie\MediaLibrary\
     HasMedia\HasMedia,
     HasMedia\HasMediaTrait
 };
-use obsession\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
+use template\Infrastructure\Contracts\
 {
     Model\ModelAbstract,
     Model\TimeStampsTz,
     Model\SoftDeletesTz
 };
-use obsession\Domain\Users\
+use template\Domain\Users\
 {
     Users\User
 };

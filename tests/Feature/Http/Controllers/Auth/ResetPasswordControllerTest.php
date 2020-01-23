@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\{
     Hash,
     Password
 };
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 
 class ResetPasswordControllerTest extends TestCase
 {

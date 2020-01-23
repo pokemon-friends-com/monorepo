@@ -13,10 +13,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use obsession\Domain\Users\ProvidersTokens\ProviderToken;
+use template\Domain\Users\ProvidersTokens\ProviderToken;
 
 $factory
-    ->define(obsession\Domain\Users\ProvidersTokens\ProviderToken::class, function (Faker\Generator $faker) {
+    ->define(template\Domain\Users\ProvidersTokens\ProviderToken::class, function (Faker\Generator $faker) {
         return [
             'user_id' => 0,
             'provider' => $faker->randomElement(ProviderToken::PROVIDERS),

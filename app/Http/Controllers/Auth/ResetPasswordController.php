@@ -1,10 +1,10 @@
 <?php
 
-namespace obsession\Http\Controllers\Auth;
+namespace template\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use obsession\Domain\Users\Users\Repositories\UsersResetPasswordRepositoryEloquent;
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Domain\Users\Users\Repositories\UsersResetPasswordRepositoryEloquent;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class ResetPasswordController extends ControllerAbstract
 {

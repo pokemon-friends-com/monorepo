@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Http\Request\Api\V1\Users\Profiles;
+namespace template\Http\Request\Api\V1\Users\Profiles;
 
-use obsession\Infrastructure\Contracts\Request\RequestAbstract;
-use obsession\Domain\Users\
+use template\Infrastructure\Contracts\Request\RequestAbstract;
+use template\Domain\Users\
 {
     Users\User,
     Profiles\Profile

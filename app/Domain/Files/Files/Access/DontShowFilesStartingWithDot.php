@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Domain\Files\Files\Access;
+namespace template\Domain\Files\Files\Access;
 
 class DontShowFilesStartingWithDot
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Http\Controllers\OAuth;
+namespace template\Http\Controllers\OAuth;
 
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\Passport;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 
 class LoginControllerTest extends TestCase
 {

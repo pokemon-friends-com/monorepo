@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Obsession.city'),
+    'name' => env('APP_NAME', 'Template www'),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'description' => 'Les rencontres pour réaliser vos fantasmes!',
+    'description' => 'A Laravel Framework template for web application.',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return [
     |
     */
 
-    'keywords' => 'obsession,city',
+    'keywords' => 'laravel,template,web application',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://www.obsession.city'),
+    'url' => env('APP_URL', 'https://template.benevaut.fr'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'timezone' => \obsession\Infrastructure\Interfaces\Domain\Locale\TimeZonesInterface::DEFAULT_TZ,
+    'timezone' => \template\Infrastructure\Interfaces\Domain\Locale\TimeZonesInterface::DEFAULT_TZ,
 
     /*
     |--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', \obsession\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE),
+    'locale' => env('APP_LOCALE', \template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE),
 
     /*
     |--------------------------------------------------------------------------
@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'fallback_locale' => \obsession\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE,
+    'fallback_locale' => \template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE,
 
     /*
     |--------------------------------------------------------------------------
@@ -196,11 +196,11 @@ return [
         /*
          * Application Service Providers...
          */
-        obsession\App\Providers\AppServiceProvider::class,
-        obsession\App\Providers\AuthServiceProvider::class,
-        obsession\App\Providers\BroadcastServiceProvider::class,
-        obsession\App\Providers\EventServiceProvider::class,
-        obsession\App\Providers\RouteServiceProvider::class,
+        template\App\Providers\AppServiceProvider::class,
+        template\App\Providers\AuthServiceProvider::class,
+        template\App\Providers\BroadcastServiceProvider::class,
+        template\App\Providers\EventServiceProvider::class,
+        template\App\Providers\RouteServiceProvider::class,
 
     ],
 

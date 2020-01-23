@@ -1,6 +1,6 @@
-<?php namespace obsession\Infrastructure\Interfaces\App\Notifications\Channels;
+<?php namespace template\Infrastructure\Interfaces\App\Notifications\Channels;
 
-use obsession\Infrastructure\Contracts\Notifications\Notification;
+use template\Infrastructure\Contracts\Notifications\Notification;
 
 interface MailableChannelInterface
 {

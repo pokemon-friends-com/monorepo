@@ -1,10 +1,10 @@
 <?php
 
-namespace obsession\App\Listeners;
+namespace template\App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use obsession\Domain\Users\Users\{
+use template\Domain\Users\Users\{
     Events\UserCreatedEvent,
     Events\UserUpdatedEvent,
     Events\UserDeletedEvent,
@@ -23,24 +23,24 @@ class UsersEventsListener
     public function subscribe($events)
     {
         $events->listen(
-            'obsession\Domain\Users\Users\Events\UserCreatedEvent',
-            'obsession\App\Listeners\UsersEventsListener@handleUserCreatedEvent'
+            'template\Domain\Users\Users\Events\UserCreatedEvent',
+            'template\App\Listeners\UsersEventsListener@handleUserCreatedEvent'
         );
         $events->listen(
-            'obsession\Domain\Users\Users\Events\UserUpdatedEvent',
-            'obsession\App\Listeners\UsersEventsListener@handleUserUpdatedEvent'
+            'template\Domain\Users\Users\Events\UserUpdatedEvent',
+            'template\App\Listeners\UsersEventsListener@handleUserUpdatedEvent'
         );
         $events->listen(
-            'obsession\Domain\Users\Users\Events\UserDeletedEvent',
-            'obsession\App\Listeners\UsersEventsListener@handleUserDeletedEvent'
+            'template\Domain\Users\Users\Events\UserDeletedEvent',
+            'template\App\Listeners\UsersEventsListener@handleUserDeletedEvent'
         );
         $events->listen(
-            'obsession\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent',
-            'obsession\App\Listeners\UsersEventsListener@handleUserTriedToDeleteHisOwnAccountEvent'
+            'template\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent',
+            'template\App\Listeners\UsersEventsListener@handleUserTriedToDeleteHisOwnAccountEvent'
         );
         $events->listen(
-            'obsession\Domain\Users\Users\Events\UserRefreshSessionEvent',
-            'obsession\App\Listeners\UsersEventsListener@handleUserRefreshSessionEvent'
+            'template\Domain\Users\Users\Events\UserRefreshSessionEvent',
+            'template\App\Listeners\UsersEventsListener@handleUserRefreshSessionEvent'
         );
     }
 

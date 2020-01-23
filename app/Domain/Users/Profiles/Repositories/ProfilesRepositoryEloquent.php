@@ -1,21 +1,21 @@
 <?php
 
-namespace obsession\Domain\Users\Profiles\Repositories;
+namespace template\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Container\Container as Application;
 use Illuminate\Support\Collection;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Contracts\
 {
     Request\RequestAbstract,
     Repositories\RepositoryEloquentAbstract
 };
 use Carbon\Carbon;
-use obsession\Domain\Users\Users\
+use template\Domain\Users\Users\
 {
     User,
     Repositories\UsersRepositoryEloquent
 };
-use obsession\Domain\Users\Profiles\{
+use template\Domain\Users\Profiles\{
     Profile,
     Events\ProfileUpdatedEvent,
     Presenters\ProfilesListPresenter

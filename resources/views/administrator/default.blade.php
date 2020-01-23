@@ -4,7 +4,7 @@
     @include('partials.metadata')
 </head>
 <body class="hold-transition sidebar-mini @if (Auth::user()->profile->is_sidebar_pined) sidebar-collapse @else layout-fixed @endif">
-<div id="obsessioncity" class="wrapper">
+<div id="template" class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <ul class="navbar-nav">
             <li class="nav-item">

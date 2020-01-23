@@ -4,7 +4,7 @@
     @include('partials.metadata')
 </head>
 <body class="hold-transition layout-top-nav">
-<div id="obsessioncity" class="wrapper">
+<div id="template" class="wrapper">
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
         <div class="container">
             <a href="{{ route('anonymous.dashboard') }}" class="navbar-brand">

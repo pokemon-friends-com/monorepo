@@ -15,9 +15,9 @@ Route::group(
     [
         'as' => 'administrator.',
         'namespace' => 'Administrator',
-        'prefix' => \obsession\Domain\Users\Users\User::ROLE_ADMINISTRATOR,
+        'prefix' => \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR,
         'domain' => env('APP_DOMAIN'),
-        'middleware' => ['auth', 'role:'.\obsession\Domain\Users\Users\User::ROLE_ADMINISTRATOR],
+        'middleware' => ['auth', 'role:'.\template\Domain\Users\Users\User::ROLE_ADMINISTRATOR],
     ],
     function () {
         Route::group(['namespace' => 'Files'], function () {
@@ -25,7 +25,7 @@ Route::group(
             Route::any('files/connector', ['as' => 'files.connector', 'uses' => 'FilesController@connector']);
         });
         Route::group(['namespace' => 'Users'], function () {
-            Route::model('profile', \obsession\Domain\Users\Users\User::class);
+            Route::model('profile', \template\Domain\Users\Users\User::class);
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::get('profile', 'ProfilesController@profile');
             });

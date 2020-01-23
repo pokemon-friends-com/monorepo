@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Http\Controllers\Auth;
+namespace template\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class ForgotPasswordController extends ControllerAbstract
 {

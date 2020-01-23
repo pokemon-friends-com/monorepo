@@ -1,6 +1,6 @@
-<?php namespace obsession\Domain\Users\Leads\Traits;
+<?php namespace template\Domain\Users\Leads\Traits;
 
-use obsession\Domain\Users\Leads\Notifications\HandshakeMailToConfirmReceptionToSender;
+use template\Domain\Users\Leads\Notifications\HandshakeMailToConfirmReceptionToSender;
 
 /**
  * Trait HandshakeNotificationTrait

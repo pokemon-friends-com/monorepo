@@ -1,11 +1,11 @@
 <?php
 
-namespace obsession\App\Providers;
+namespace template\App\Providers;
 
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use obsession\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
+use template\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
 
 class AuthServiceProvider extends ServiceProvider
 {

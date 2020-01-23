@@ -1,12 +1,12 @@
 <?php
 
-namespace obsession\Http\Controllers\OAuth;
+namespace template\Http\Controllers\OAuth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
-use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class LoginController extends ControllerAbstract
 {

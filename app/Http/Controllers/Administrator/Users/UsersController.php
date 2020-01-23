@@ -1,17 +1,17 @@
 <?php
 
-namespace obsession\Http\Controllers\Administrator\Users;
+namespace template\Http\Controllers\Administrator\Users;
 
 use League\Csv\Writer;
 use Illuminate\Support\Facades\Auth;
-use obsession\Domain\Users\Users\User;
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Http\Request\Administrator\Users\Users\
+use template\Domain\Users\Users\User;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Http\Request\Administrator\Users\Users\
 {
     UserFormRequest,
     UsersFiltersFormRequest
 };
-use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 
 class UsersController extends ControllerAbstract
 {

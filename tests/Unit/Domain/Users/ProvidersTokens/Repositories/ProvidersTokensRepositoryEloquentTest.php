@@ -1,17 +1,17 @@
 <?php namespace Tests\Unit\Domain\Users\ProvidersTokens\Repositories;
 
-use obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent;
-use obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent;
-use obsession\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent;
-use obsession\Domain\Users\ProvidersTokens\ProviderToken;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent;
+use template\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent;
+use template\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent;
+use template\Domain\Users\ProvidersTokens\ProviderToken;
+use template\Domain\Users\Users\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use obsession\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
+use template\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
 
 class ProvidersTokensRepositoryEloquentTest extends TestCase
 {

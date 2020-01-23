@@ -13,7 +13,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 
 $factory
     ->define(User::class, function (Faker\Generator $faker) {

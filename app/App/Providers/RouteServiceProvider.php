@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\App\Providers;
+namespace template\App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'obsession\Http\Controllers';
+    protected $namespace = 'template\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

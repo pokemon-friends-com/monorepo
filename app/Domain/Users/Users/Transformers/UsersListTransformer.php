@@ -1,8 +1,8 @@
-<?php namespace obsession\Domain\Users\Users\Transformers;
+<?php namespace template\Domain\Users\Users\Transformers;
 
-use obsession\Infrastructure\Contracts\Transformers\TransformerAbstract;
-use obsession\Domain\Users\Users\User;
-use obsession\Domain\Users\Leads\Lead;
+use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
+use template\Domain\Users\Users\User;
+use template\Domain\Users\Leads\Lead;
 
 class UsersListTransformer extends TransformerAbstract
 {

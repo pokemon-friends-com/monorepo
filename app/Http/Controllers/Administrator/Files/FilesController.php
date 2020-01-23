@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Http\Controllers\Administrator\Files;
+namespace template\Http\Controllers\Administrator\Files;
 
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Domain\Files\Files\Repositories\FilesRepository;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Domain\Files\Files\Repositories\FilesRepository;
 
 class FilesController extends ControllerAbstract
 {

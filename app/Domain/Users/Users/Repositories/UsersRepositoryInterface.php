@@ -1,6 +1,6 @@
-<?php namespace obsession\Domain\Users\Users\Repositories;
+<?php namespace template\Domain\Users\Users\Repositories;
 
-use obsession\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 
 interface UsersRepositoryInterface extends RepositoryInterface
 {

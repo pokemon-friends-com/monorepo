@@ -1,20 +1,20 @@
 <?php
 
-namespace obsession\Domain\Users\Users;
+namespace template\Domain\Users\Users;
 
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
-use obsession\Domain\Users\Profiles\Profile;
-use obsession\Infrastructure\Interfaces\Domain\Users\{
+use template\Domain\Users\Profiles\Profile;
+use template\Infrastructure\Interfaces\Domain\Users\{
     Users\HandshakableInterface,
     Users\UserCivilitiesInterface,
     Users\UserRolesInterface
 };
-use obsession\Infrastructure\Interfaces\Domain\{
+use template\Infrastructure\Interfaces\Domain\{
     Locale\LocalesInterface,
     Locale\TimeZonesInterface
 };
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Contracts\
 {
     Model\AuthenticatableModelAbstract,
     Model\IdentifiableTrait,
@@ -24,13 +24,13 @@ use obsession\Infrastructure\Contracts\
     Model\TimeStampsTz,
     Model\SoftDeletesTz
 };
-use obsession\Domain\Users\Leads\{
+use template\Domain\Users\Leads\{
     Lead,
     Traits\HandshakeNotificationTrait
 };
-use obsession\Domain\Users\Profiles\Traits\ProfileableTrait;
-use obsession\Domain\Users\ProvidersTokens\ProviderToken;
-use obsession\Domain\Users\Users\
+use template\Domain\Users\Profiles\Traits\ProfileableTrait;
+use template\Domain\Users\ProvidersTokens\ProviderToken;
+use template\Domain\Users\Users\
 {
     Notifications\CreatedAccountByAdministrator,
     Notifications\ResetPassword,

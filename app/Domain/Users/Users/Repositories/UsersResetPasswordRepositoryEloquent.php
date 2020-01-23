@@ -1,6 +1,6 @@
-<?php namespace obsession\Domain\Users\Users\Repositories;
+<?php namespace template\Domain\Users\Users\Repositories;
 
-use obsession\Domain\Users\Users\{
+use template\Domain\Users\Users\{
     Repositories\UsersResetPasswordRepositoryInterface
 };
 

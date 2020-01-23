@@ -1,8 +1,8 @@
 <?php
 
-namespace obsession\Http\Controllers\Anonymous;
+namespace template\Http\Controllers\Anonymous;
 
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class AboutController extends ControllerAbstract
 {

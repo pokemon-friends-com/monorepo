@@ -13,16 +13,16 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory
-    ->define(obsession\Domain\Users\Profiles\Profile::class, function (Faker\Generator $faker) {
+    ->define(template\Domain\Users\Profiles\Profile::class, function (Faker\Generator $faker) {
         return [
             'user_id' => 0,
             'birth_date' => $faker->dateTimeThisDecade()->format('Y-m-d H:i:s'),
             'family_situation' => ($family_situation = $faker
-                ->randomElement(\obsession\Domain\Users\Profiles\Profile::FAMILY_SITUATIONS)
+                ->randomElement(\template\Domain\Users\Profiles\Profile::FAMILY_SITUATIONS)
             ),
             'maiden_name' => in_array(
                 $family_situation,
-                \obsession\Domain\Users\Profiles\Profile::FAMILY_SITUATIONS_WHIT_MAIDEN_NAME
+                \template\Domain\Users\Profiles\Profile::FAMILY_SITUATIONS_WHIT_MAIDEN_NAME
             )
                 ? $faker->text(100)
                 : null,

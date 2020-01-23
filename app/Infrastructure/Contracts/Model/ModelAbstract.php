@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Infrastructure\Contracts\Model;
+namespace template\Infrastructure\Contracts\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;

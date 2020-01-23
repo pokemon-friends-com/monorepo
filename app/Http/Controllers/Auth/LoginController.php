@@ -1,14 +1,14 @@
 <?php
 
-namespace obsession\Http\Controllers\Auth;
+namespace template\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
-use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
+use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 
 class LoginController extends ControllerAbstract
 {

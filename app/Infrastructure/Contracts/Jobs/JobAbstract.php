@@ -1,4 +1,4 @@
-<?php namespace obsession\Infrastructure\Contracts\Jobs;
+<?php namespace template\Infrastructure\Contracts\Jobs;
 
 use Illuminate\Bus\Queueable;
 

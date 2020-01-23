@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Infrastructure\Interfaces\Domain\Users\Users;
+namespace template\Infrastructure\Interfaces\Domain\Users\Users;
 
 interface UserRolesInterface
 {

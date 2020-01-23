@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\Leads\Presenters;
+<?php namespace template\Domain\Users\Leads\Presenters;
 
-use obsession\Infrastructure\Contracts\Presenters\PresenterAbstract;
-use obsession\Domain\Users\Leads\Transformers\LeadsListTransformer;
+use template\Infrastructure\Contracts\Presenters\PresenterAbstract;
+use template\Domain\Users\Leads\Transformers\LeadsListTransformer;
 
 class LeadsListPresenter extends PresenterAbstract
 {

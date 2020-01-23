@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Domain\Users\ProvidersTokens\Events;
+namespace template\Domain\Users\ProvidersTokens\Events;
 
-use obsession\Infractucture\Contracts\Events\EventAbstract;
-use obsession\Domain\Users\ProvidersTokens\ProviderToken;
+use template\Infractucture\Contracts\Events\EventAbstract;
+use template\Domain\Users\ProvidersTokens\ProviderToken;
 
 class ProviderTokenCreatedEvent extends EventAbstract
 {

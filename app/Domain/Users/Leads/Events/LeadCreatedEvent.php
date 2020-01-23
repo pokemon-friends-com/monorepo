@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\Leads\Events;
+<?php namespace template\Domain\Users\Leads\Events;
 
-use obsession\Infractucture\Contracts\Events\EventAbstract;
-use obsession\Domain\Users\Leads\Lead;
+use template\Infractucture\Contracts\Events\EventAbstract;
+use template\Domain\Users\Leads\Lead;
 
 class LeadCreatedEvent extends EventAbstract
 {

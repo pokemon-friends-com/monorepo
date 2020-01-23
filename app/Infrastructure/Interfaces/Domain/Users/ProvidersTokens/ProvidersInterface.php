@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Infrastructure\Interfaces\Domain\Users\ProvidersTokens;
+namespace template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens;
 
 interface ProvidersInterface
 {

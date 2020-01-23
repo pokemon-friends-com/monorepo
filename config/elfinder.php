@@ -26,7 +26,7 @@ return [
 	|    ]
 	*/
 	'disks' => [
-		\obsession\Domain\Users\Users\User::ROLE_ADMINISTRATOR => [
+		\template\Domain\Users\Users\User::ROLE_ADMINISTRATOR => [
 			'public' => [
 				'alias' => 'Public',
 				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',

@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\Http;
+namespace template\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use obsession\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
+use template\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
 
 class Kernel extends HttpKernel
 {
@@ -18,9 +18,9 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \obsession\Http\Middleware\TrimStrings::class,
+        \template\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \obsession\Http\Middleware\TrustProxies::class,
+        \template\Http\Middleware\TrustProxies::class,
     ];
 
     /**
@@ -30,28 +30,28 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \obsession\Http\Middleware\EncryptCookies::class,
+            \template\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \obsession\Http\Middleware\VerifyCsrfToken::class,
+            \template\Http\Middleware\VerifyCsrfToken::class,
             \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \obsession\Http\Middleware\Locale::class,
-            \obsession\Http\Middleware\TimeZones::class,
+            \template\Http\Middleware\Locale::class,
+            \template\Http\Middleware\TimeZones::class,
         ],
         'ajax' => [
-            \obsession\Http\Middleware\EncryptCookies::class,
+            \template\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \obsession\Http\Middleware\VerifyCsrfToken::class,
+            \template\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \obsession\Http\Middleware\AllowOnlyAjaxRequests::class,
-            \obsession\Http\Middleware\Locale::class,
-            \obsession\Http\Middleware\TimeZones::class,
+            \template\Http\Middleware\AllowOnlyAjaxRequests::class,
+            \template\Http\Middleware\Locale::class,
+            \template\Http\Middleware\TimeZones::class,
         ],
         'api' => [
             \Barryvdh\Cors\HandleCors::class,
@@ -84,9 +84,9 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \obsession\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \template\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'role' => \obsession\Http\Middleware\AuthenticatedUserHasRole::class,
+        'role' => \template\Http\Middleware\AuthenticatedUserHasRole::class,
         'cors' => \Barryvdh\Cors\HandleCors::class,
     ];
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Http\Controllers\Auth;
+namespace template\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Auth;
 

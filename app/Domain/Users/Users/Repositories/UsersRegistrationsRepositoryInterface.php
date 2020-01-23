@@ -1,8 +1,8 @@
-<?php namespace obsession\Domain\Users\Users\Repositories;
+<?php namespace template\Domain\Users\Users\Repositories;
 
 use Illuminate\Contracts\Validation\Validator as ContractsValidator;
-use obsession\Infrastructure\Interfaces\Repositories\RepositoryInterface;
-use obsession\Domain\Users\Users\User;
+use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use template\Domain\Users\Users\User;
 
 interface UsersRegistrationsRepositoryInterface extends RepositoryInterface
 {

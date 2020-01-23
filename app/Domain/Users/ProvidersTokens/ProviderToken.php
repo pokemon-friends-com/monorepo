@@ -1,13 +1,13 @@
-<?php namespace obsession\Domain\Users\ProvidersTokens;
+<?php namespace template\Domain\Users\ProvidersTokens;
 
-use obsession\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
-use obsession\Infrastructure\Contracts\{
+use template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
+use template\Infrastructure\Contracts\{
     Model\ModelAbstract,
     Model\Notifiable,
     Model\IdentifiableTrait,
     Model\TimeStampsTz
 };
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 
 class ProviderToken extends ModelAbstract implements ProvidersInterface
 {

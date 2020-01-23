@@ -1,15 +1,15 @@
-<?php namespace obsession\Domain\Users\Leads\Repositories;
+<?php namespace template\Domain\Users\Leads\Repositories;
 
 use Illuminate\Container\Container as Application;
-use obsession\Infrastructure\Contracts\{
+use template\Infrastructure\Contracts\{
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use obsession\Domain\Users\{
+use template\Domain\Users\{
     Users\User,
     Users\Repositories\UsersRepositoryEloquent
 };
-use obsession\Domain\Users\Leads\{
+use template\Domain\Users\Leads\{
     Repositories\LeadsRepositoryInterface,
     Lead,
     Criterias\EmailLikeCriteria,
@@ -58,8 +58,8 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
      *
      * @param array $attributes
      *
-     * @event obsession\Domain\Users\Leads\Events\LeadCreatedEvent
-     * @return \obsession\Domain\Users\Leads\Lead
+     * @event template\Domain\Users\Leads\Events\LeadCreatedEvent
+     * @return \template\Domain\Users\Leads\Lead
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
@@ -78,8 +78,8 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
      * @param array $attributes
      * @param integer $id
      *
-     * @event obsession\Domain\Users\Leads\Events\LeadUpdatedEvent
-     * @return \obsession\Domain\Users\Leads\Lead
+     * @event template\Domain\Users\Leads\Events\LeadUpdatedEvent
+     * @return \template\Domain\Users\Leads\Lead
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
@@ -97,8 +97,8 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
      *
      * @param integer $id
      *
-     * @event obsession\Domain\Users\Leads\Events\LeadDeletedEvent
-     * @return \obsession\Domain\Users\Leads\Lead
+     * @event template\Domain\Users\Leads\Events\LeadDeletedEvent
+     * @return \template\Domain\Users\Leads\Lead
      */
     public function delete($id): Lead
     {

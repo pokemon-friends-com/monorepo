@@ -41,5 +41,5 @@ Vue.component('passport-personal-access-tokens', require('./components/passport/
 
 // eslint-disable-next-line
 const app = new Vue({
-  el: '#obsessioncity',
+  el: '#template',
 });

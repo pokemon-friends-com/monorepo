@@ -1,6 +1,6 @@
 <?php
 
-namespace obsession\Infrastructure\Interfaces\Domain\Locale;
+namespace template\Infrastructure\Interfaces\Domain\Locale;
 
 interface TimeZonesInterface
 {

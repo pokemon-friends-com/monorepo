@@ -1,9 +1,9 @@
 <?php
 
-namespace obsession\App\Notifications\Channels;
+namespace template\App\Notifications\Channels;
 
-use obsession\Infrastructure\Contracts\Notifications\Notification;
-use obsession\Infrastructure\Interfaces\App\Notifications\Channels\MailableChannelInterface;
+use template\Infrastructure\Contracts\Notifications\Notification;
+use template\Infrastructure\Interfaces\App\Notifications\Channels\MailableChannelInterface;
 
 class AdministratorMailableChannel implements MailableChannelInterface
 {

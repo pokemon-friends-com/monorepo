@@ -1,14 +1,14 @@
 <?php namespace Tests\Unit\Domain\Users\Users\Repositories;
 
-use obsession\Domain\Users\Users\Events\UserCreatedEvent;
-use obsession\Domain\Users\Users\Events\UserDeletedEvent;
-use obsession\Domain\Users\Users\Events\UserRefreshSessionEvent;
-use obsession\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent;
-use obsession\Domain\Users\Users\Events\UserUpdatedEvent;
-use obsession\Domain\Users\Users\Notifications\CreatedAccountByAdministrator;
-use obsession\Domain\Users\Users\Transformers\UsersListTransformer;
-use obsession\Domain\Users\Users\User;
-use obsession\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use template\Domain\Users\Users\Events\UserCreatedEvent;
+use template\Domain\Users\Users\Events\UserDeletedEvent;
+use template\Domain\Users\Users\Events\UserRefreshSessionEvent;
+use template\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent;
+use template\Domain\Users\Users\Events\UserUpdatedEvent;
+use template\Domain\Users\Users\Notifications\CreatedAccountByAdministrator;
+use template\Domain\Users\Users\Transformers\UsersListTransformer;
+use template\Domain\Users\Users\User;
+use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Arr;

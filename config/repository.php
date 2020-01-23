@@ -227,7 +227,7 @@ return [
     */
     'generator'  => [
         'basePath'      => app()->path('Domain'),
-        'rootNamespace' => 'obsession\\Domain\\',
+        'rootNamespace' => 'template\\Domain\\',
         'stubsOverridePath' => app()->path('Domain'),
         'paths'         => [
             'models'       => 'Entities',

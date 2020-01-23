@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use obsession\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
+use template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
 
 class CreateProvidersTokensTable extends Migration
 {

@@ -1,6 +1,6 @@
 <?php namespace Tests\Feature\Http\Controllers\Auth;
 
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

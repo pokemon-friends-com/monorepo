@@ -1,12 +1,12 @@
 <?php
 
-namespace obsession\Console\Commands;
+namespace template\Console\Commands;
 
 use Carbon\Carbon;
 use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
-use obsession\Infrastructure\Contracts\Commands\CommandAbstract;
+use template\Infrastructure\Contracts\Commands\CommandAbstract;
 
 class GenerateSitemapCommand extends CommandAbstract
 {

@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\Profiles\Traits;
+<?php namespace template\Domain\Users\Profiles\Traits;
 
-use obsession\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use obsession\Domain\Users\
+use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use template\Domain\Users\
 {
     Profiles\Profile
 };

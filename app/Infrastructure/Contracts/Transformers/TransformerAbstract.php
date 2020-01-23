@@ -1,4 +1,4 @@
-<?php namespace obsession\Infrastructure\Contracts\Transformers;
+<?php namespace template\Infrastructure\Contracts\Transformers;
 
 use League\Fractal\TransformerAbstract as LeagueTransformerAbstract;
 

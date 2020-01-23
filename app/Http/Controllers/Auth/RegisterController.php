@@ -1,11 +1,11 @@
 <?php
 
-namespace obsession\Http\Controllers\Auth;
+namespace template\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
-use obsession\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
-use obsession\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use obsession\Domain\Users\Users\User;
+use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
+use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use template\Domain\Users\Users\User;
 
 class RegisterController extends ControllerAbstract
 {

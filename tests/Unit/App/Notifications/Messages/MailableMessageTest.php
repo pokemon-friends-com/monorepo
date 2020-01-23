@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\App\Notifications\Channels;
 
-use obsession\App\Notifications\Messages\MailableMessage;
+use template\App\Notifications\Messages\MailableMessage;
 use Tests\TestCase;
 
 class MailableMessageTest extends TestCase

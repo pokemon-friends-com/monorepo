@@ -1,8 +1,8 @@
 <?php
 
-namespace obsession\Domain\Files\Medias\Repositories;
+namespace template\Domain\Files\Medias\Repositories;
 
-use obsession\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 
 interface MediasRepository extends RepositoryInterface
 {

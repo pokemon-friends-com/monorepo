@@ -1,7 +1,7 @@
-<?php namespace obsession\Domain\Users\Leads;
+<?php namespace template\Domain\Users\Leads;
 
-use obsession\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
-use obsession\Infrastructure\Contracts\
+use template\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
+use template\Infrastructure\Contracts\
 {
     Model\ModelAbstract,
     Model\Notifiable,
@@ -9,8 +9,8 @@ use obsession\Infrastructure\Contracts\
     Model\TimeStampsTz,
     Model\SoftDeletesTz
 };
-use obsession\Domain\Users\Leads\Traits\HandshakeNotificationTrait;
-use obsession\Domain\Users\Users\
+use template\Domain\Users\Leads\Traits\HandshakeNotificationTrait;
+use template\Domain\Users\Users\
 {
     User,
     Traits\NamableTrait

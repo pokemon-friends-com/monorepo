@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => obsession\Domain\Users\Users\User::class,
+            'model' => template\Domain\Users\Users\User::class,
         ],
 
         // 'users' => [

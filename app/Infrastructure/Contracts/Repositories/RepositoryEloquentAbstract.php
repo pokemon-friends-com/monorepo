@@ -1,6 +1,6 @@
-<?php namespace obsession\Infrastructure\Contracts\Repositories;
+<?php namespace template\Infrastructure\Contracts\Repositories;
 
-use obsession\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\Paginator;
