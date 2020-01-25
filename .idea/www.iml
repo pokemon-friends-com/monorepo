@@ -92,6 +92,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-http/message" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-http/message-factory" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/php-http/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/php-webdriver/webdriver" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
