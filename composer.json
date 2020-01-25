@@ -106,10 +106,10 @@
             "ssh-add laradock/workspace/insecure_id_rsa"
         ],
         "docker:build:workspace": [
-            "docker-compose --project-name template build --no-cache --compress workspace"
+            "docker-compose --project-name template build --compress workspace"
         ],
         "docker:build:infrastructure": [
-            "docker-compose --project-name template build --no-cache --compress --parallel apache2 mailhog php-fpm php-worker mysql redis elasticsearch kibana"
+            "docker-compose --project-name template build --compress --parallel apache2 mailhog php-fpm php-worker mysql redis elasticsearch kibana"
         ],
         "docker:build": [
             "docker:build:workspace",
