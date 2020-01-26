@@ -36,17 +36,12 @@ jobs:
       - CODECLIMATE=off
       - APP_ENV=testing
     before_install:
-      - chmod 777 scripts/*.sh
-      - bash scripts/decrypt_travis_enc_files.sh
-      - eval "$(ssh-agent -s)"
-      - chmod 600 /tmp/deploy_rsa
-      - ssh-add /tmp/deploy_rsa
-      - printf "\n" | pecl install imagick
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
         fi
+      - printf "\n" | pecl install imagick
       - nvm install
       - nvm use
     install:
@@ -69,11 +64,6 @@ jobs:
       - CODECLIMATE=off
       - APP_ENV=testing
     before_install:
-      - chmod 777 scripts/*.sh
-      - bash scripts/decrypt_travis_enc_files.sh
-      - eval "$(ssh-agent -s)"
-      - chmod 600 /tmp/deploy_rsa
-      - ssh-add /tmp/deploy_rsa
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -368,6 +358,12 @@ jobs:
     if: (NOT type IN (pull_request)) AND (branch = develop)
     name: abenevaut/www-template tag staging
     language: generic
+    before_install:
+      - chmod 777 scripts/*.sh
+      - bash scripts/decrypt_travis_enc_files.sh
+      - eval "$(ssh-agent -s)"
+      - chmod 600 /tmp/deploy_rsa
+      - ssh-add /tmp/deploy_rsa
     script:
       - git tag -a staging -m "automated travis-ci tag" --force
       - git push origin --tags
@@ -375,6 +371,12 @@ jobs:
     if: (NOT type IN (pull_request)) AND (branch = master)
     name: abenevaut/www-template tag master
     language: generic
+    before_install:
+      - chmod 777 scripts/*.sh
+      - bash scripts/decrypt_travis_enc_files.sh
+      - eval "$(ssh-agent -s)"
+      - chmod 600 /tmp/deploy_rsa
+      - ssh-add /tmp/deploy_rsa
     install:
       - cp .env.example .env
       - export $(grep -v '^#' .env | xargs -0)
