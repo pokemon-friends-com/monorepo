@@ -363,7 +363,7 @@ jobs:
       - git config --global user.name "Travis CI"
     script:
       - git tag staging -f -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-      - git push -f -q https://$GITHUBKEY@github.com/abenevaut/www-template staging
+      - git push -f -q https://$GITHUBKEY@github.com/abenevaut/www-template.git staging
   - stage: tag
     if: (NOT type IN (pull_request)) AND (branch = master)
     name: abenevaut/www-template tag master
@@ -376,4 +376,4 @@ jobs:
       - export $(grep -v '^#' .env | xargs -0)
     script:
       - git tag ${APP_TAG} -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-      - git push -q https://$GITHUBKEY@github.com/abenevaut/www-template ${APP_TAG}
+      - git push -q https://$GITHUBKEY@github.com/abenevaut/www-template.git ${APP_TAG}
