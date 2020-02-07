@@ -1,10 +1,16 @@
 {
-    "name": "laravel/laravel",
+    "name": "abenevaut/www-template",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "A Laravel Framework template for web application.",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "laravel-passport",
+        "laravel-socialite",
+        "travis-ci",
+        "phpunit",
+        "mocha-tests",
+        "coverage",
+        "cms"
     ],
     "license": "MIT",
     "require": {
@@ -93,33 +99,6 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-        "ide": [
-            "php artisan ide-helper:generate",
-            "php artisan ide-helper:meta"
-        ],
-        "docker": [
-            "docker-compose --project-name template up -d apache2 php-fpm php-worker mysql redis mailhog elasticsearch kibana"
-        ],
-        "docker:ssh-add": [
-            "chmod 600 laradock/workspace/insecure_id_rsa",
-            "ssh-add laradock/workspace/insecure_id_rsa"
-        ],
-        "docker:build:workspace": [
-            "docker-compose --project-name template build --compress workspace"
-        ],
-        "docker:build:infrastructure": [
-            "docker-compose --project-name template build --compress --parallel apache2 mailhog php-fpm php-worker mysql redis elasticsearch kibana"
-        ],
-        "docker:build": [
-            "docker:build:workspace",
-            "docker:build:infrastructure"
-        ],
-        "docker:stop": [
-            "docker-compose --project-name template stop"
-        ],
-        "docker:remove": [
-            "docker-compose --project-name template rm -f"
         ]
     }
 }

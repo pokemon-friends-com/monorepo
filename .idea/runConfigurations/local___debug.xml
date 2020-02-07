@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="local - debug" type="JavascriptDebugType" uri="https://template.benevaut.fr.local" useFirstLineBreakpoints="true">
+    <mapping url="https://template.benevaut.fr.local" local-file="$PROJECT_DIR$/public" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -115,6 +115,8 @@ jobs:
       - cp .env.example .env
       - export $(grep -v '^#' .env | xargs -0)
       - npm install
+      - composer install -o --no-interaction --prefer-dist --no-suggest
+      - npm install
     before_script:
       - npm run prod
       - php artisan elfinder:publish
@@ -136,14 +138,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mailhog
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mailhog
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mailhog
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push mailhog
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push mailhog
         on:
           branch: master
   - stage: deploy
@@ -162,14 +163,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress redis
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress redis
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress redis
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push redis
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push redis
         on:
           branch: master
   - stage: deploy
@@ -188,14 +188,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress kibana
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress kibana
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress kibana
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push kibana
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push kibana
         on:
           branch: master
   - stage: deploy
@@ -214,14 +213,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress elasticsearch
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress elasticsearch
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress elasticsearch
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push elasticsearch
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push elasticsearch
         on:
           branch: master
   - stage: deploy
@@ -240,14 +238,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress apache2
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress apache2
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress apache2
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push apache2
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push apache2
         on:
           branch: master
   - stage: deploy
@@ -266,14 +263,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-fpm
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-fpm
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-fpm
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push php-fpm
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push php-fpm
         on:
           branch: master
   - stage: deploy
@@ -292,14 +288,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-worker
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-worker
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-worker
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push php-worker
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push php-worker
         on:
           branch: master
   - stage: deploy
@@ -318,14 +313,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress workspace
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress workspace
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress workspace
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push workspace
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push workspace
         on:
           branch: master
   - stage: deploy
@@ -344,14 +338,13 @@ jobs:
       - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
-      - APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mysql
-      #- APP_TAG="latest" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mysql
+      - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mysql
     before_deploy:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
         skip_cleanup: true
-        script: APP_TAG="${APP_TAG}" docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push mysql
+        script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push mysql
         on:
           branch: master
   - stage: tag
