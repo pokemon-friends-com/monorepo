@@ -20,18 +20,71 @@ cache:
 
 stages:
   - test
-  - send-coverage
-  - deploy
+  - coverage
+  - name: deploy
+    if: (NOT type IN (pull_request)) AND (branch = master)
   - tag
 
 jobs:
   fast_finish: true
   include:
-  - stage: send-coverage
-    name: Send codeclimate coverage
+  - stage: test
+    name: abenevaut/www-template PHP
+    language: php
+    php: 7.3
     env:
       - CODECLIMATE=off
       - APP_ENV=testing
+    before_install:
+      - |
+        if [[ "$CODECLIMATE" = "on" ]]; then
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+        fi
+      - printf "\n" | pecl install imagick
+      - nvm install
+      - nvm use
+    install:
+      - composer install -o --no-interaction --prefer-dist --no-suggest
+      - npm install
+    before_script:
+      - |
+        if [[ "$CODECLIMATE" = "on" ]]; then
+          ./cc-test-reporter before-build
+        fi
+      - npm run prod
+      - php artisan elfinder:publish
+    script:
+      - vendor/bin/phpunit
+  - stage: test
+    name: abenevaut/www-template JS&TS
+    language: node_js
+    node_js: 12
+    env:
+      - CODECLIMATE=off
+      - APP_ENV=testing
+    before_install:
+      - |
+        if [[ "$CODECLIMATE" = "on" ]]; then
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+        fi
+      - nvm install
+      - nvm use
+    install:
+      - npm install
+    before_script:
+      - |
+        if [[ "$CODECLIMATE" = "on" ]]; then
+          ./cc-test-reporter before-build
+        fi
+      - npm run dev
+    script:
+      - npm test
+  - stage: coverage
+    name: Send codeclimate coverage
+    env:
+      - CODECLIMATE=off
     before_install:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
@@ -46,99 +99,28 @@ jobs:
           ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
           ./cc-test-reporter upload-coverage
         fi
-  - stage: test
-    name: abenevaut/www-template php
+  - stage: deploy
+    name: abenevaut/www-template
     language: php
     php: 7.3
-    env:
-      - CODECLIMATE=off
-      - APP_ENV=testing
     before_install:
       - chmod 777 scripts/*.sh
       - bash scripts/decrypt_travis_enc_files.sh
       - eval "$(ssh-agent -s)"
       - chmod 600 /tmp/deploy_rsa
       - ssh-add /tmp/deploy_rsa
-      - printf "\n" | pecl install imagick
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-        fi
       - nvm install
       - nvm use
-      - npm install grunt-cli@1.3.2 -g
     install:
-      - travis_retry composer install -o --no-interaction --prefer-dist --no-suggest
-      - travis_retry npm install
+      - cp .env.example .env
+      - export $(grep -v '^#' .env | xargs -0)
+      - npm install
     before_script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          ./cc-test-reporter before-build
-        fi
-      - travis_retry npm run prod
+      - npm run prod
       - php artisan elfinder:publish
     script:
-      - vendor/bin/phpunit
-  - stage: test
-    name: abenevaut/www-template node
-    language: node_js
-    node_js: 12
-    env:
-      - CODECLIMATE=off
-      - APP_ENV=testing
-    before_install:
-      - chmod 777 scripts/*.sh
-      - bash scripts/decrypt_travis_enc_files.sh
-      - eval "$(ssh-agent -s)"
-      - chmod 600 /tmp/deploy_rsa
-      - ssh-add /tmp/deploy_rsa
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-        fi
-      - nvm install
-      - nvm use
-      - npm install grunt-cli@1.3.2 -g
-    install:
-      - travis_retry npm install
-    before_script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          ./cc-test-reporter before-build
-        fi
-      - travis_retry npm run dev
-    script:
-      - npm test
-#  - stage: deploy
-#    name: abenevaut/www-template
-#    language: php
-#    php: 7.3
-#    before_install:
-#      - chmod 777 scripts/*.sh
-#      - bash scripts/decrypt_travis_enc_files.sh
-#      - eval "$(ssh-agent -s)"
-#      - chmod 600 /tmp/deploy_rsa
-#      - ssh-add /tmp/deploy_rsa
-#      - git submodule update --init resources/clip
-#      - git submodule update --init resources/gameforest
-#      - git submodule update --init resources/pages
-#      - nvm install
-#      - nvm use
-#      - npm install grunt-cli@1.3.2 -g
-#    install:
-#      - travis_retry npm install
-#    before_script:
-#      - travis_retry npm run gameforest
-#      - travis_retry npm run pages
-#      - bash scripts/prepare_pages_assets.sh
-#      - travis_retry npm run prod
-#      - php artisan elfinder:publish
-#    script:
-#      - <SCRIPT TO DEPLOY>
+      - bash scripts/push_to_fortrabbit.sh
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-mailhog
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -165,7 +147,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-redis
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -192,7 +173,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-kibana
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -219,7 +199,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-elasticsearch
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -246,7 +225,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-apache2
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -273,7 +251,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-php-fpm
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -300,7 +277,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-php-worker
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -327,7 +303,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-workspace
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -354,7 +329,6 @@ jobs:
         on:
           branch: master
   - stage: deploy
-    if: branch = master
     name: abenevaut/laradock-mysql
     env:
       - DOCKER_COMPOSE_VERSION=1.24.1
@@ -381,17 +355,25 @@ jobs:
         on:
           branch: master
   - stage: tag
-    if: branch = staging
-    name: abenevaut/www-template tag
+    if: (NOT type IN (pull_request)) AND (branch = develop)
+    name: abenevaut/www-template tag staging
     language: generic
+    before_install:
+      - git config --global user.email "builds@travis-ci.com"
+      - git config --global user.name "Travis CI"
     script:
-      - git tag -a staging -m "automated travis-ci tag" --force
+      - git tag staging -f -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+      - git push -f -q https://$GITHUBKEY@github.com/abenevaut/www-template.git staging
   - stage: tag
-    if: branch = master
-    name: abenevaut/www-template tag
+    if: (NOT type IN (pull_request)) AND (branch = master)
+    name: abenevaut/www-template tag master
     language: generic
+    before_install:
+      - git config --global user.email "builds@travis-ci.com"
+      - git config --global user.name "Travis CI"
     install:
       - cp .env.example .env
       - export $(grep -v '^#' .env | xargs -0)
     script:
-      - git tag -a ${APP_TAG} -m "automated travis-ci tag"
+      - git tag ${APP_TAG} -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+      - git push -q https://$GITHUBKEY@github.com/abenevaut/www-template.git ${APP_TAG}
