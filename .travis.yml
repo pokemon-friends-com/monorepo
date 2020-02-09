@@ -109,6 +109,7 @@ jobs:
       - eval "$(ssh-agent -s)"
       - chmod 600 /tmp/deploy_rsa
       - ssh-add /tmp/deploy_rsa
+      - printf "\n" | pecl install imagick
       - nvm install
       - nvm use
     install:
