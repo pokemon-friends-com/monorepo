@@ -120,10 +120,15 @@ jobs:
       - composer install -o --no-interaction --prefer-dist --no-suggest
       - npm install
     before_script:
-      - npm run prod
       - php artisan elfinder:publish
     script:
-      - bash scripts/push_to_fortrabbit.sh
+      - npm run prod
+    deploy:
+      - provider: script
+        skip_cleanup: true
+        script: bash scripts/push_to_fortrabbit.sh
+        on:
+          branch: master
   - stage: deploy
     name: abenevaut/laradock-mailhog
     env:
