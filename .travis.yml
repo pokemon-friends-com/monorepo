@@ -10,6 +10,7 @@ addons:
     - template.benevaut.fr.local
   ssh_known_hosts:
     - github.com
+    - deploy.eu2.frbit.com
 
 cache:
   apt: true
