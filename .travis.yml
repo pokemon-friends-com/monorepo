@@ -57,6 +57,35 @@ jobs:
       - php artisan elfinder:publish
     script:
       - vendor/bin/phpunit
+#  - stage: test
+#    name: abenevaut/www-template PHP
+#    language: php
+#    php: 7.4
+#    allow_failures: true
+#    env:
+#      - CODECLIMATE=off
+#      - APP_ENV=testing
+#    before_install:
+#      - |
+#        if [[ "$CODECLIMATE" = "on" ]]; then
+#          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#          chmod +x ./cc-test-reporter
+#        fi
+#      - printf "\n" | pecl install imagick
+#      - nvm install
+#      - nvm use
+#    install:
+#      - composer install -o --no-interaction --prefer-dist --no-suggest
+#      - npm install
+#    before_script:
+#      - |
+#        if [[ "$CODECLIMATE" = "on" ]]; then
+#          ./cc-test-reporter before-build
+#        fi
+#      - npm run prod
+#      - php artisan elfinder:publish
+#    script:
+#      - vendor/bin/phpunit
   - stage: test
     name: abenevaut/www-template JS&TS
     language: node_js
@@ -105,17 +134,11 @@ jobs:
     language: php
     php: 7.3
     before_install:
-      - chmod 777 scripts/*.sh
-      - bash scripts/decrypt_travis_enc_files.sh
-      - eval "$(ssh-agent -s)"
-      - chmod 600 /tmp/deploy_rsa
-      - ssh-add /tmp/deploy_rsa
       - printf "\n" | pecl install imagick
       - nvm install
       - nvm use
     install:
       - cp .env.example .env
-      - export $(grep -v '^#' .env | xargs -0)
       - npm install
       - composer install -o --no-interaction --prefer-dist --no-suggest
       - npm install
@@ -123,6 +146,12 @@ jobs:
       - php artisan elfinder:publish
     script:
       - npm run prod
+    before_deploy:
+      - chmod 777 scripts/*.sh
+      - bash scripts/decrypt_travis_enc_files.sh
+      - eval "$(ssh-agent -s)"
+      - chmod 600 /tmp/deploy_rsa
+      - ssh-add /tmp/deploy_rsa
     deploy:
       - provider: script
         skip_cleanup: true
