@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ -e deploy_rsa ]
 then
     echo "[OK] deploy_rsa"
