@@ -30,4 +30,11 @@ Route::group(
             Route::get('/', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard']);
             Route::resource('contact', 'LeadsController')->middleware(ProtectAgainstSpam::class);
         });
+
+        if (!app()->environment('local')) {
+            Route::get('/debug-sentry', function () {
+                throw new Exception('debug Sentry error!');
+            });
+        }
+
     });
