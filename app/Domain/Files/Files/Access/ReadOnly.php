@@ -15,8 +15,6 @@ class ReadOnly
      */
     public static function checkAccess($attr, $path, $data, $volume)
     {
-        $allowed = false;
-
         if (0 === strpos(basename($path), '.')) {
             return 0 === strpos(basename($path), '.')
                 ? !($attr === 'read' || $attr === 'write')
@@ -26,15 +24,11 @@ class ReadOnly
         switch ($attr) {
             case 'locked':
             case 'read':
-                $allowed = true;
-                break;
+                return true;
             case 'write':
             case 'hidden':
             default:
-                $allowed = false;
-                break;
+                return false;
         }
-
-        return $allowed;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace template\Infrastructure\Contracts\Request;
+<?php
+
+namespace template\Infrastructure\Contracts\Request;
 
 use GuzzleHttp\Client as GuzzleHttpClient;
 use Illuminate\Foundation\Http\FormRequest;

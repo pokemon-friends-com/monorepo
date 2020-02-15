@@ -1,4 +1,6 @@
-<?php namespace template\Infrastructure\Contracts\Model;
+<?php
+
+namespace template\Infrastructure\Contracts\Model;
 
 use Illuminate\Notifications\Notifiable as IlluminateNotifiable;
 

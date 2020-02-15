@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Leads\Events;
+<?php
+
+namespace template\Domain\Users\Leads\Events;
 
 use template\Infractucture\Contracts\Events\EventAbstract;
 use template\Domain\Users\Leads\Lead;

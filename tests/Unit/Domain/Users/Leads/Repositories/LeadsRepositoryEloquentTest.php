@@ -159,14 +159,6 @@ class LeadsRepositoryEloquentTest extends TestCase
             ->r_leads
             ->qualifyLead($lead->civility, $lead->first_name, $lead->last_name, $lead->email);
         $this->assertEquals($lead->id, $repositoryLead->id);
-        /*
-         * Connected User
-         */
-        $customer = $this->actingAsCustomer();
-        $repositoryLead = $this
-            ->r_leads
-            ->qualifyLead($lead->civility, $lead->first_name, $lead->last_name, $lead->email);
-        $this->assertEquals($customer->id, $repositoryLead->id);
     }
 
     public function testGetLeadsPaginated()

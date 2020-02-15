@@ -12,7 +12,11 @@ trait NamableTrait
      */
     public function getFullNameAttribute()
     {
-        return sprintf('%s %s', ucfirst(strtolower($this->first_name)), ucfirst(strtolower($this->last_name)));
+        return sprintf(
+            '%s %s',
+            ucfirst(strtolower($this->first_name)),
+            ucfirst(strtolower($this->last_name))
+        );
     }
 
     /**

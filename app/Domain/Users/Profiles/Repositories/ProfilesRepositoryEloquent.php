@@ -54,29 +54,19 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * Create user profile.
-     *
-     * @param array $attributes
-     *
-     * @return Profile
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function create(array $attributes)
+    public function create(array $attributes): Profile
     {
         return parent::create($attributes);
     }
 
     /**
-     * Update user profile.
-     *
-     * @param array $attributes
-     * @param integer $id
-     *
-     * @event ProfileUpdatedEvent
-     * @return Profile
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(array $attributes, $id)
+    public function update(array $attributes, $id): Profile
     {
         $profile = parent::update($attributes, $id);
 
@@ -86,14 +76,9 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * Delete user profile.
-     *
-     * @param $id
-     *
-     * @event None
-     * @return int
+     * {@inheritdoc}
      */
-    public function delete($id)
+    public function delete($id): int
     {
         $profile = parent::delete($id);
 
@@ -101,7 +86,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * {@inheritdoc}
      */
     public function getFamilySituations(): Collection
     {
@@ -109,10 +94,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @param User $user
-     * @param array $parameters
-     *
-     * @return User
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function createUserProfile(
@@ -125,10 +107,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @param User $user
-     * @param array $parameters
-     *
-     * @return User
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function updateUserProfile(
@@ -141,11 +120,9 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @param User $user
-     *
-     * @return ProfilesRepositoryEloquent
+     * {@inheritdoc}
      */
-    public function deleteUserProfile(User $user): self
+    public function deleteUserProfile(User $user): ProfilesRepository
     {
         $user->profile->delete();
 
@@ -153,7 +130,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @return Collection
+     * {@inheritdoc}
      */
     public function getCivilities(): Collection
     {
@@ -161,7 +138,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @return Collection
+     * {@inheritdoc}
      */
     public function getLocales(): Collection
     {
@@ -169,7 +146,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @return Collection
+     * {@inheritdoc}
      */
     public function getTimezones(): Collection
     {
@@ -177,10 +154,10 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @return Profile
+     * {@inheritdoc}
      * @throws \Exception
      */
-    public function getUserProfile(User $user)
+    public function getUserProfile(User $user): array
     {
         return $this
             ->setPresenter(new ProfilesListPresenter())
@@ -188,15 +165,13 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
-     * @param RequestAbstract $request
-     * @param $id
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function updateUserProfileWithRequest(
         RequestAbstract $request,
         $id
-    ) {
+    ): void {
         $data = [
             'birth_date' => $request->has('birth_date')
                 ? Carbon::createFromFormat(

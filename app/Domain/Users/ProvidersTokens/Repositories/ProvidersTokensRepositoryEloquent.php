@@ -1,6 +1,10 @@
-<?php namespace template\Domain\Users\ProvidersTokens\Repositories;
+<?php
+
+namespace template\Domain\Users\ProvidersTokens\Repositories;
 
 use Illuminate\Container\Container as Application;
+use Illuminate\Support\Collection;
+use PhpParser\ErrorHandler\Collecting;
 use template\Infrastructure\Contracts\
 {
     Repositories\RepositoryEloquentAbstract,
@@ -41,9 +45,7 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * Specify Model class name
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function model(): string
     {
@@ -51,13 +53,7 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * Create ProviderToken request and fire event "ProviderTokenCreatedEvent".
-     *
-     * @param array $attributes
-     *
-     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent
-     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function create(array $attributes): ProviderToken
@@ -70,14 +66,7 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * Update ProviderToken request and fire event "ProviderTokenUpdatedEvent".
-     *
-     * @param array $attributes
-     * @param integer $id
-     *
-     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent
-     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(array $attributes, $id): ProviderToken
@@ -90,12 +79,7 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * Delete ProviderToken request and fire event "ProviderTokenDeletedEvent".
-     *
-     * @param integer $id
-     *
-     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent
-     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
+     * {@inheritdoc}
      */
     public function delete($id): ProviderToken
     {
@@ -109,21 +93,18 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * {@inheritdoc}
      */
-    public function getProviders()
+    public function getProviders(): Collection
     {
         return collect(ProviderToken::PROVIDERS);
     }
 
     /**
-     * Filter provider_tokens by name.
-     *
-     * @param string $name The provider_token last name and/or provider_token first name
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function filterByProvider($provider_id, $provider)
+    public function filterByProvider($provider_id, $provider): ProvidersTokensRepositoryInterface
     {
         if (
             !is_null($provider_id) && !empty($provider_id)
@@ -136,18 +117,15 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * Create or update the user token for specified provider.
-     *
-     * @param User $user
-     * @param $provider
-     * @param $provider_id
-     * @param $provider_token
-     *
-     * @return ProviderToken
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function saveUserTokenForProvider(User $user, $provider, $provider_id, $provider_token): ProviderToken
-    {
+    public function saveUserTokenForProvider(
+        User $user,
+        $provider,
+        $provider_id,
+        $provider_token
+    ): ProviderToken {
         $provider_token = $this
             ->skipPresenter()
             ->updateOrCreate(
@@ -167,13 +145,7 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * Check if the requested token is allowed to be used by the user.
-     *
-     * @param User $user
-     * @param $provider_id
-     * @param $provider
-     *
-     * @return bool
+     * {@inheritdoc}
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function checkIfTokenIsAvailableForUser(User $user, $provider_id, $provider): bool
@@ -193,12 +165,7 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     }
 
     /**
-     * Find the user by token for specified provider.
-     *
-     * @param $provider_id
-     * @param $provider
-     *
-     * @return null|ProviderToken
+     * {@inheritdoc}
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function findUserForProvider($provider_id, $provider): ?ProviderToken

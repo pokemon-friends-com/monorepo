@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Leads\Transformers;
+<?php
+
+namespace template\Domain\Users\Leads\Transformers;
 
 use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
 use template\Domain\Users\

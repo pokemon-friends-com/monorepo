@@ -3,7 +3,6 @@
 namespace template\Console\Commands;
 
 use Carbon\Carbon;
-use Spatie\Sitemap\SitemapGenerator;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use template\Infrastructure\Contracts\Commands\CommandAbstract;

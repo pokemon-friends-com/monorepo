@@ -1,4 +1,6 @@
-<?php namespace template\Infrastructure\Contracts\Commands;
+<?php
+
+namespace template\Infrastructure\Contracts\Commands;
 
 use Illuminate\Console\Command;
 

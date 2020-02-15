@@ -1,4 +1,6 @@
-<?php namespace template\Infrastructure\Contracts\Repositories;
+<?php
+
+namespace template\Infrastructure\Contracts\Repositories;
 
 use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 use Illuminate\Container\Container as Application;
