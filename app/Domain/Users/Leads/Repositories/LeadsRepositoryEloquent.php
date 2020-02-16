@@ -1,6 +1,9 @@
-<?php namespace template\Domain\Users\Leads\Repositories;
+<?php
+
+namespace template\Domain\Users\Leads\Repositories;
 
 use Illuminate\Container\Container as Application;
+use Illuminate\Support\Collection;
 use template\Infrastructure\Contracts\{
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
@@ -9,8 +12,7 @@ use template\Domain\Users\{
     Users\User,
     Users\Repositories\UsersRepositoryEloquent
 };
-use template\Domain\Users\Leads\{
-    Repositories\LeadsRepositoryInterface,
+use template\Domain\Users\Leads\{Repositories\LeadsRepositoryInterface,
     Lead,
     Criterias\EmailLikeCriteria,
     Criterias\FullNameLikeCriteria,
@@ -54,13 +56,7 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * Create Lead request and fire event "LeadCreatedEvent".
-     *
-     * @param array $attributes
-     *
-     * @event template\Domain\Users\Leads\Events\LeadCreatedEvent
-     * @return \template\Domain\Users\Leads\Lead
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function create(array $attributes): Lead
@@ -73,14 +69,7 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * Update Lead request and fire event "LeadUpdatedEvent".
-     *
-     * @param array $attributes
-     * @param integer $id
-     *
-     * @event template\Domain\Users\Leads\Events\LeadUpdatedEvent
-     * @return \template\Domain\Users\Leads\Lead
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(array $attributes, $id): Lead
@@ -93,12 +82,7 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * Delete Lead request and fire event "LeadDeletedEvent".
-     *
-     * @param integer $id
-     *
-     * @event template\Domain\Users\Leads\Events\LeadDeletedEvent
-     * @return \template\Domain\Users\Leads\Lead
+     * {@inheritdoc}
      */
     public function delete($id): Lead
     {
@@ -112,41 +96,34 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * {@inheritdoc}
      */
-    public function getCivilities()
+    public function getCivilities(): Collection
     {
         return $this->r_users->getCivilities();
     }
 
     /**
-     * Get the list of all leads, active and soft deleted users.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * {@inheritdoc}
      */
-    public function allWithTrashed()
+    public function allWithTrashed(): Collection
     {
         return Lead::withTrashed()->get();
     }
 
     /**
-     * Get only leads that was soft deleted.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * {@inheritdoc}
      */
-    public function onlyTrashed()
+    public function onlyTrashed(): Collection
     {
         return Lead::onlyTrashed()->get();
     }
 
     /**
-     * Filter leads by name.
-     *
-     * @param string $name The lead last name and/or lead first name
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function filterByName($name)
+    public function filterByName($name): LeadsRepositoryInterface
     {
         if (!is_null($name) && !empty($name)) {
             $this->pushCriteria(new FullNameLikeCriteria($name));
@@ -156,13 +133,10 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * Filter leads by emails.
-     *
-     * @param string $email The lead email
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function filterByEmail($email)
+    public function filterByEmail($email): LeadsRepositoryInterface
     {
         if (!is_null($email) && !empty($email)) {
             $this->pushCriteria(new EmailLikeCriteria($email));
@@ -172,26 +146,11 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * Qualify the lead as :
-     * - new lead and create it
-     * - existing lead and return the previously created one
-     * - connected user and return the current user
-     *
-     * @param $civility
-     * @param $first_name
-     * @param $last_name
-     * @param $email
-     *
-     * @return Lead
-     *
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function qualifyLead($civility, $first_name, $last_name, $email)
+    public function qualifyLead($civility, $first_name, $last_name, $email): Lead
     {
-        if (\Auth::check()) {
-            return \Auth::user();
-        }
-
         $lead = $this->findByField('email', $email);
 
         if (0 === $lead->count()) {
@@ -208,10 +167,10 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      * @throws \Exception
      */
-    public function getLeadsPaginated()
+    public function getLeadsPaginated(): array
     {
         return $this
             ->with(['user'])
@@ -221,8 +180,7 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     }
 
     /**
-     * @param Lead $lead
-     * @return User
+     * {@inheritdoc}
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function createUserFromLead(Lead $lead): User

@@ -1,4 +1,6 @@
-<?php namespace template\Http\Request\Administrator\Users\Profiles;
+<?php
+
+namespace template\Http\Request\Administrator\Users\Profiles;
 
 use template\Infrastructure\Contracts\Request\RequestAbstract;
 use template\Domain\Users\

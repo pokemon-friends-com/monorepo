@@ -1,4 +1,6 @@
-<?php namespace template\Infractucture\Contracts\Events;
+<?php
+
+namespace template\Infractucture\Contracts\Events;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;

@@ -43,6 +43,7 @@ class LeadsController extends ControllerAbstract
      */
     public function store(ContactRequest $request)
     {
+        $lead = null;
         $validator = \Validator::make($request->all(), $request->rules());
 
         if ($validator->fails()) {
@@ -52,14 +53,20 @@ class LeadsController extends ControllerAbstract
 
         $validatedContact = $validator->validate();
 
-        $this
-            ->r_leads
-            ->qualifyLead(
-                $validatedContact['civility'],
-                $validatedContact['first_name'],
-                $validatedContact['last_name'],
-                $validatedContact['email']
-            )
+        if (\Auth::check()) {
+            $lead = \Auth::user();
+        } else {
+            $lead = $this
+                ->r_leads
+                ->qualifyLead(
+                    $validatedContact['civility'],
+                    $validatedContact['first_name'],
+                    $validatedContact['last_name'],
+                    $validatedContact['email']
+                );
+        }
+
+        $lead
             ->sendHandshakeMailToConfirmReceptionToSenderNotification(
                 $validatedContact['subject'],
                 $validatedContact['message']

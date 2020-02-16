@@ -1,4 +1,6 @@
-<?php namespace template\Exceptions;
+<?php
+
+namespace template\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

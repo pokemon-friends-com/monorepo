@@ -1,3 +1,4 @@
+const _ = require('underscore');
 const axios = require('axios');
 const sinon = require('sinon');
 

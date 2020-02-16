@@ -1,4 +1,6 @@
-<?php namespace template\Infrastructure\Contracts\Criterias;
+<?php
+
+namespace template\Infrastructure\Contracts\Criterias;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 

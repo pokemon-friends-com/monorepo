@@ -11,7 +11,6 @@ use template\Domain\Users\Users\User;
 
 class ProviderToken extends ModelAbstract implements ProvidersInterface
 {
-
     use Notifiable;
     use IdentifiableTrait;
     use TimeStampsTz;

@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Leads\Traits;
+<?php
+
+namespace template\Domain\Users\Leads\Traits;
 
 use template\Domain\Users\Leads\Notifications\HandshakeMailToConfirmReceptionToSender;
 

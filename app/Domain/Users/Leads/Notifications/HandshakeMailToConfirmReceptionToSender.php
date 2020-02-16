@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Leads\Notifications;
+<?php
+
+namespace template\Domain\Users\Leads\Notifications;
 
 use template\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
 use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;

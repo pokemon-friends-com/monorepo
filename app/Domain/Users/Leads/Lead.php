@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Leads;
+<?php
+
+namespace template\Domain\Users\Leads;
 
 use template\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
 use template\Infrastructure\Contracts\
@@ -18,7 +20,6 @@ use template\Domain\Users\Users\
 
 class Lead extends ModelAbstract implements HandshakableInterface
 {
-
     use Notifiable;
     use IdentifiableTrait;
     use HandshakeNotificationTrait;

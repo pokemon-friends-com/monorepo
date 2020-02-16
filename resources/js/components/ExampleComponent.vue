@@ -11,6 +11,11 @@ import AppComponent from './AppComponent.vue';
 
 export default {
   extends: AppComponent,
+  data() {
+    return {
+      toast: null,
+    };
+  },
   mounted() {
     this.toast = Swal
       .mixin({
@@ -20,24 +25,12 @@ export default {
         timer: 3000,
       });
 
-    this.listenMyChannel();
-  },
-  data() {
-    return {
-      toast: null,
-    };
-  },
-  methods: {
-    listenMyChannel() {
-      window
-        .Echo
-        .channel('my-channel')
-        .listen('.my-event', (data) => {
-          this.toast.fire({ type: 'success', title: data.message });
-        });
-
-      return this;
-    },
+    window
+      .Echo
+      .channel('my-channel')
+      .listen('.my-event', (data) => {
+        this.toast.fire({ type: 'success', title: data.message });
+      });
   },
 };
 </script>

@@ -6,24 +6,17 @@
 import axios from 'axios';
 
 export default {
-  mounted() {
-    this.getUser();
-  },
   data() {
     return {
       user: null,
     };
   },
-  methods: {
-    getUser() {
-      axios
-        .get('/api/v1/users/user')
-        .then((response) => {
-          this.user = response.data;
-        });
-
-      return this;
-    },
+  mounted() {
+    axios
+      .get('/api/v1/users/user')
+      .then((response) => {
+        this.user = response.data;
+      });
   },
 };
 </script>

@@ -1,4 +1,6 @@
-<?php namespace template\Infrastructure\Interfaces\App\Notifications\Channels;
+<?php
+
+namespace template\Infrastructure\Interfaces\App\Notifications\Channels;
 
 use template\Infrastructure\Contracts\Notifications\Notification;
 

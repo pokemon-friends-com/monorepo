@@ -146,15 +146,15 @@ jobs:
     script:
       - npm run prod
     before_deploy:
-      - chmod 777 scripts/*.sh
-      - bash scripts/decrypt_travis_enc_files.sh
+      - chmod 777 bin/*.sh
+      - bash bin/decrypt_travis_enc_files.sh
       - eval "$(ssh-agent -s)"
       - chmod 600 /tmp/deploy_rsa
       - ssh-add /tmp/deploy_rsa
     deploy:
       - provider: script
         cleanup: false
-        script: bash scripts/push_to_fortrabbit.sh
+        script: bash bin/push_to_fortrabbit.sh
         on:
           branch: master
   - stage: deploy

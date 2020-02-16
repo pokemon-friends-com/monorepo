@@ -1,8 +1,8 @@
-// setup JSDOM
+// Setup JSDOM.
 require('jsdom-global')();
-// make assert available globally
+// Make assert available globally.
 global.assert = require('assert');
-// make expect available globally
+// Make expect available globally.
 global.expect = require('expect');
 
 // @see https://github.com/vuejs/vue-cli/issues/2128
