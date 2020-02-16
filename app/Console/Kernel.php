@@ -6,6 +6,9 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use template\Console\Commands\{
     GenerateSitemapCommand,
+    GetFileFromAwsCommand,
+    PushFileToAwsCommand,
+    RemoveFileOnAwsCommand,
     TestLaravelEchoCommand
 };
 
@@ -19,6 +22,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         GenerateSitemapCommand::class,
+        GetFileFromAwsCommand::class,
+        PushFileToAwsCommand::class,
+        RemoveFileOnAwsCommand::class,
         TestLaravelEchoCommand::class,
     ];
 
