@@ -1,3 +1,4 @@
+sudo: required
 dist: trusty
 
 git:
@@ -33,7 +34,7 @@ jobs:
     language: php
     php: 7.3
     env:
-      - CODECLIMATE=off
+      - CODECLIMATE=on
       - APP_ENV=testing
     before_install:
       - |
@@ -56,6 +57,8 @@ jobs:
       - php artisan elfinder:publish
     script:
       - vendor/bin/phpunit
+    after_script:
+      - php artisan file:aws:push coverage/clover.xml coverages/${TRAVIS_COMMIT}/clover.xml
 #  - stage: test
 #    name: abenevaut/www-template PHP
 #    language: php
@@ -87,10 +90,10 @@ jobs:
 #      - vendor/bin/phpunit
   - stage: test
     name: abenevaut/www-template JS&TS
-    language: node_js
-    node_js: 12
+    language: php
+    php: 7.3
     env:
-      - CODECLIMATE=off
+      - CODECLIMATE=on
       - APP_ENV=testing
     before_install:
       - |
@@ -98,9 +101,11 @@ jobs:
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
         fi
+      - printf "\n" | pecl install imagick
       - nvm install
       - nvm use
     install:
+      - composer install -o --no-interaction --prefer-dist --no-suggest
       - npm install
     before_script:
       - |
@@ -110,17 +115,28 @@ jobs:
       - npm run dev
     script:
       - npm test
+    after_script:
+      - php artisan file:aws:push coverage/lcov.info coverages/${TRAVIS_COMMIT}/lcov.info
   - stage: coverage
     name: Send codeclimate coverage
+    language: php
+    php: 7.3
     env:
-      - CODECLIMATE=off
+      - CODECLIMATE=on
+      - APP_ENV=testing
     before_install:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
         fi
+      - printf "\n" | pecl install imagick
+      - mkdir coverage
+    install:
+      - composer install -o --no-interaction --prefer-dist --no-suggest
     script:
+      - php artisan file:aws:get coverages/${TRAVIS_COMMIT}/clover.xml coverage/clover.xml
+      - php artisan file:aws:get coverages/${TRAVIS_COMMIT}/lcov.info coverage/lcov.info
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
           ./cc-test-reporter format-coverage -t clover -o coverage/codeclimate.php.json coverage/clover.xml
@@ -128,6 +144,9 @@ jobs:
           ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
           ./cc-test-reporter upload-coverage
         fi
+    after_script:
+      - php artisan file:aws:rm coverages/${TRAVIS_COMMIT}/clover.xml
+      - php artisan file:aws:rm coverages/${TRAVIS_COMMIT}/lcov.info
   - stage: deploy
     name: abenevaut/www-template
     language: php
@@ -166,11 +185,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mailhog
@@ -191,11 +210,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress redis
@@ -216,11 +235,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress kibana
@@ -241,11 +260,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress elasticsearch
@@ -266,11 +285,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress apache2
@@ -291,11 +310,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-fpm
@@ -316,11 +335,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress php-worker
@@ -341,11 +360,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress workspace
@@ -366,11 +385,11 @@ jobs:
       - docker
     before_install:
       - git submodule update --init laradock
-      - rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
+      - sudo rm /usr/local/bin/docker-compose # https://docs.travis-ci.com/user/docker/#using-docker-compose
     install:
       - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
       - chmod +x docker-compose
-      - mv docker-compose /usr/local/bin
+      - sudo mv docker-compose /usr/local/bin
       - cp .env.example .env
     script:
       - docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template build --compress mysql
