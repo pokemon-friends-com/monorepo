@@ -172,7 +172,7 @@ jobs:
       - ssh-add /tmp/deploy_rsa
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: bash bin/push_to_fortrabbit.sh
         on:
           branch: master
@@ -197,7 +197,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push mailhog
         on:
           branch: master
@@ -222,7 +222,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push redis
         on:
           branch: master
@@ -247,7 +247,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push kibana
         on:
           branch: master
@@ -272,7 +272,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push elasticsearch
         on:
           branch: master
@@ -297,7 +297,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push apache2
         on:
           branch: master
@@ -322,7 +322,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push php-fpm
         on:
           branch: master
@@ -347,7 +347,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push php-worker
         on:
           branch: master
@@ -372,7 +372,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push workspace
         on:
           branch: master
@@ -397,7 +397,7 @@ jobs:
       - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
     deploy:
       - provider: script
-        cleanup: false
+        skip_cleanup: true
         script: docker-compose -f docker-compose.yml -f docker-compose.prod.yml --project-name template push mysql
         on:
           branch: master
