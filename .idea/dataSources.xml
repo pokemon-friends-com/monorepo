@@ -12,5 +12,12 @@
       </driver-properties>
       <time-zone>Europe/Paris</time-zone>
     </data-source>
+    <data-source source="LOCAL" name="@production" uuid="cf90b89d-3b78-4f88-a426-95433b1b9102">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>fortrrabit</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://pokemon-friends.mysql.eu2.frbit.com:3306/pokemon-friends</jdbc-url>
+    </data-source>
   </component>
 </project>
