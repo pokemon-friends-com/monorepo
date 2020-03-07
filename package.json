@@ -59,7 +59,7 @@
         "stylelint-scss": "^3.14.2",
         "stylelint-webpack-plugin": "^1.2.3",
         "ts-loader": "^6.2.1",
-        "typescript": "^3.7.5",
+        "typescript": "^3.8.3",
         "underscore": "^1.9.2",
         "vue": "^2.6.11",
         "vue-eslint-parser": "^7.0.0",
