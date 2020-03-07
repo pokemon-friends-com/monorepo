@@ -2,15 +2,17 @@
 
 return [
 
-    'baseline' => 'Meetings to fulfill your fantasies!',
+    'baseline' => 'Sign up to share your friend code and join your trainer community!',
     'changelog' => 'Changelog',
     'copyright' => '&copy; :date <a href=":route">:name</a>. All rights reserved.',
+    'version' => '<b>Version</b> :version',
     'terms' => 'Terms of Service',
     'social_networks_baseline' => 'Follow us on social media',
+    'share_gift' => 'Share gifts',
+    'fight_friend' => 'Fight your friends',
+    'boost_xp' => 'Boost your XP',
 
-    'locale.fr' => 'French',
-    'locale.en' => 'English',
-
+    'beta' => 'Beta',
     'add' => 'Add',
     'cancel' => 'Cancel',
     'export' => 'Export',

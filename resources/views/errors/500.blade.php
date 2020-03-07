@@ -17,7 +17,7 @@
             <h2 class="headline text-warning">500</h2>
             <div class="error-content">
                 <h3>
-                    <i class="fas fa-exclamation-triangle text-warning"></i> {{ trans('errors.500_title') }}
+                    <i class="fas fa-exclamation-triangle text-warning mr-2"></i>{{ trans('errors.500_title') }}
                 </h3>
                 <p>
                     {{ trans('errors.500_description') }}

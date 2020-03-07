@@ -1,5 +1,6 @@
 <?php namespace Tests\Feature\Http\Controllers\Auth;
 
+use template\Domain\Users\Profiles\Profile;
 use template\Domain\Users\Users\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -32,9 +33,10 @@ class RegisterControllerTest extends TestCase
     {
         $this->markTestSkipped('https://github.com/obsession-city/www/issues/40');
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->make();
+        $profile = factory(Profile::class)->make();
 
         $this
-            ->post('/register', $user->toArray() + [
+            ->post('/register', $user->toArray() + $profile->toArray() + [
                     'password' => $this->getDefaultPassword(),
                     'password_confirmation' => $this->getDefaultPassword()
                 ]

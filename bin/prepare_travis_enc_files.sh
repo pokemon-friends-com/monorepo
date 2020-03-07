@@ -9,4 +9,4 @@ else
 fi
 
 tar cvf travis.tar deploy_rsa
-travis encrypt-file travis.tar -r abenevaut/www-template
+travis encrypt-file travis.tar -r pokemon-friends-com/www

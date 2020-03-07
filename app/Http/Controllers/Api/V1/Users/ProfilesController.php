@@ -3,6 +3,9 @@
 namespace template\Http\Controllers\Api\V1\Users;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use template\Domain\Users\Profiles\Criterias\NotAuthenticatedLimitCriteria;
+use template\Domain\Users\Profiles\Criterias\WhereSponsoredCriteria;
 use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 use template\Domain\Users\Users\Transformers\UserTransformer;
 use template\Domain\Users\Users\User;
@@ -29,6 +32,25 @@ class ProfilesController extends ControllerAbstract
     }
 
     /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index()
+    {
+        if (!Auth::guard('api')->check()) {
+            $this
+                ->r_profiles
+                ->pushCriteria(NotAuthenticatedLimitCriteria::class)
+                ->pushCriteria(WhereSponsoredCriteria::class);
+        }
+
+        $profiles = $this
+            ->r_profiles
+            ->paginate();
+
+        return response()->json($profiles);
+    }
+
+    /**
      * Update user profile.
      *
      * @param User $user
@@ -41,7 +63,7 @@ class ProfilesController extends ControllerAbstract
         try {
             $this
                 ->r_profiles
-                ->updateUserProfileWithRequest($request, $user->profile->id);
+                ->updateUserProfileWithRequest($request, $user);
 
             $user = (new UserTransformer())->transform($user->refresh());
         } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
@@ -52,7 +74,7 @@ class ProfilesController extends ControllerAbstract
     }
 
     /**
-     * Profile familly situations.
+     * Profile family situations.
      *
      * @param Request $request
      *

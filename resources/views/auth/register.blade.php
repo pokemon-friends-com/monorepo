@@ -1,118 +1,106 @@
 @extends('auth.default')
 
 @section('content')
-<section>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ trans('auth.register') }}</div>
-                    <div class="card-body">
-                        <p class="semi-bold no-margin">{{ trans('auth.register_baseline') }}</p>
-                        {!! Form::open(['route' => ['register'], 'method' => 'POST']) !!}
-                        @honeypot
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group form-group-default required">
-                                    <label class="control-label">{{ trans('users.civility') }}</label>
-                                    <select name="civility" id="civility" class="form-control">
-                                        @foreach ($civilities as $key => $trans)
-                                        <option
-                                                value="{{ $key }}"
-                                                @if (Auth::check() && $key === Auth::user()->civility) selected="selected" @endif
-                                        >
-                                            {{ $trans }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group form-group-default required">
-                                    <label class="control-label">{{ trans('users.first_name') }}</label>
-                                    <input
-                                            type="text"
-                                            name="first_name"
-                                            class="form-control"
-                                            placeholder="{{ trans('users.first_name') }}"
-                                            value="{{ old('first_name', Auth::check() ? Auth::user()->first_name : '') }}"
-                                    />
-                                    @if ($errors && $errors->has('first_name'))
-                                    <span class="error">{{ $errors->first('first_name') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group form-group-default required">
-                                    <label class="control-label">{{ trans('users.last_name') }}</label>
-                                    <input
-                                            type="text"
-                                            name="last_name"
-                                            class="form-control"
-                                            placeholder="{{ trans('users.last_name') }}"
-                                            value="{{ old('last_name', Auth::check() ? Auth::user()->last_name : '') }}"
-                                    />
-                                    @if ($errors && $errors->has('last_name'))
-                                    <span class="error">{{ $errors->first('last_name') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group form-group-default required">
-                            <label class="control-label">{{ trans('users.email') }}</label>
-                            <input
-                                    type="text"
-                                    name="email"
-                                    class="form-control"
-                                    placeholder="{{ trans('users.email') }}"
-                                    value="{{ old('email', Auth::check() ? Auth::user()->email : '') }}"
-                            />
-                            @if ($errors && $errors->has('email'))
-                            <span class="error">{{ $errors->first('email') }}</span>
-                            @endif
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group form-group-default required">
-                                    <label class="control-label">{{ trans('users.password') }}</label>
-                                    <input
-                                            type="password"
-                                            name="password"
-                                            class="form-control"
-                                            placeholder="{{ trans('users.password') }}"
-                                    />
-                                    @if ($errors && $errors->has('password'))
-                                    <span class="error">{{ $errors->first('password') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group form-group-default required">
-                                    <label class="control-label">{{ trans('users.password_confirmation') }}</label>
-                                    <input
-                                            type="password"
-                                            name="password_confirmation"
-                                            class="form-control"
-                                            placeholder="{{ trans('users.password_confirmation') }}"
-                                    />
-                                    @if ($errors && $errors->has('password_confirmation'))
-                                    <span class="error">{{ $errors->first('password_confirmation') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sm-p-t-10 clearfix">
-                            <p class="pull-left small hint-text m-t-10 font-arial">{{ trans('users.leads.certify') }}</p>
-                            <button type="submit" class="btn btn-primary pull-right xs-pull-left">
-                                {{ trans('users.leads.send') }}
-                            </button>
-                        </div>
-                        <div class="clearfix"></div>
-                        {!! Form::close() !!}
+    <div class="card-body login-card-body">
+        <p class="login-box-msg">{{ trans('auth.register_baseline') }}</p>
+        {!! Form::open(['route' => ['register'], 'method' => 'POST']) !!}
+        @honeypot
+        <div class="form-group">
+            <div class="input-group">
+                <input
+                        type="text"
+                        name="friend_code"
+                        class="form-control {{ $errors && $errors->has('friend_code') ? 'is-invalid' : '' }}"
+                        placeholder="{{ trans('users.profiles.friend_code') }}"
+                        value="{{ old('friend_code') }}"
+                />
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-users"></span>
                     </div>
                 </div>
             </div>
+            @if ($errors && $errors->has('friend_code'))
+                <div class="text-danger text-sm">{{ $errors->first('friend_code') }}</div>
+            @endif
         </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input
+                        type="email"
+                        name="email"
+                        class="form-control {{ $errors && $errors->has('email') ? 'is-invalid' : '' }}"
+                        placeholder="{{ trans('users.email') }}"
+                        value="{{ old('email') }}"
+                />
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            @if ($errors && $errors->has('email'))
+                <div class="text-danger text-sm">{{ $errors->first('email') }}</div>
+            @endif
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input
+                        type="password"
+                        name="password"
+                        class="form-control {{ $errors && $errors->has('password') ? 'is-invalid' : '' }}"
+                        placeholder="{{ trans('users.password') }}"
+                />
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            @if ($errors && $errors->has('password'))
+                <div class="text-danger text-sm">{{ $errors->first('password') }}</div>
+            @endif
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input
+                        type="password"
+                        name="password_confirmation"
+                        class="form-control {{ $errors && $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
+                        placeholder="{{ trans('users.password_confirmation') }}"
+                />
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            @if ($errors && $errors->has('password_confirmation'))
+                <div class="text-danger text-sm">{{ $errors->first('password_confirmation') }}</div>
+            @endif
+        </div>
+        <div class="sm-p-t-10 clearfix"></div>
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                    {{ trans('auth.register') }}
+                </button>
+            </div>
+        </div>
+        {!! Form::close() !!}
+        @if (Route::has('login'))
+            <p class="mt-3 mb-1">
+                <a href="{{ route('login') }}" class="text-center">
+                    {{ trans('auth.login') }}
+                </a>
+            </p>
+        @endif
+        @if (Route::has('password.request'))
+            <p class="mb-1">
+                <a href="{{ route('password.request') }}">
+                    {{ trans('auth.forgot_password') }}
+                </a>
+            </p>
+        @endif
     </div>
-</section>
 @endsection

@@ -47,19 +47,8 @@ class RegisterController extends ControllerAbstract
     public function showRegistrationForm()
     {
         return view('auth.register', [
-            'civilities' => $this->r_users->getCivilities()
+            'civilities' => $this->r_users->getCivilities(),
         ]);
-    }
-
-    /**
-     * Show the message that explains registrations are closed.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showNoRegistration()
-    {
-        // @todo xABE : Remove at the end of beta
-        return view('auth.noregistration');
     }
 
     /**
@@ -84,14 +73,16 @@ class RegisterController extends ControllerAbstract
      */
     protected function create(array $data)
     {
-        return $this
+        $user = $this
             ->r_users
             ->registerUser(
-                $data['civility'],
-                $data['first_name'],
-                $data['last_name'],
                 $data['email'],
                 $data['password']
             );
+
+        $user->profile->friend_code = $data['friend_code'];
+        $user->profile->save();
+
+        return $user;
     }
 }

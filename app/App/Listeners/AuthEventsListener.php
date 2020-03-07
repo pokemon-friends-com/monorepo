@@ -5,7 +5,8 @@ namespace template\App\Listeners;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Auth\Events\{
     Login,
-    Logout
+    Logout,
+    PasswordReset
 };
 use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
 
@@ -26,6 +27,10 @@ class AuthEventsListener
         $events->listen(
             'Illuminate\Auth\Events\Logout',
             'template\App\Listeners\AuthEventsListener@handleLogoutEvent'
+        );
+        $events->listen(
+            'Illuminate\Auth\Events\PasswordReset',
+            'template\App\Listeners\AuthEventsListener@handlePasswordResetEvent'
         );
     }
 
@@ -48,5 +53,15 @@ class AuthEventsListener
     public function handleLogoutEvent(Logout $event)
     {
         // stuff
+    }
+
+    /**
+     * Handle PasswordReset events.
+     *
+     * @param PasswordReset $event
+     */
+    public function handlePasswordResetEvent(PasswordReset $event)
+    {
+        session()->flash('message-success', trans('auth.message_password_reset_success'));
     }
 }

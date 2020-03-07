@@ -49,8 +49,6 @@ class UsersController extends ControllerAbstract
      */
     public function user(Request $request)
     {
-        $user = (new UserTransformer())->transform($request->user());
-
-        return response()->json($user);
+        return $this->show($request->user());
     }
 }

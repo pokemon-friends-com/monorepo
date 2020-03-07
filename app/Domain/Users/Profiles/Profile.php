@@ -20,8 +20,9 @@ use template\Domain\Users\
 {
     Users\User
 };
+use template\Domain\Users\Profiles\ProfilesTeamsColors;
 
-class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterface, HasMedia
+class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterface, HasMedia, ProfilesTeamsColors
 {
     use HasMediaTrait;
     use SoftDeletes;
@@ -44,6 +45,8 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         'family_situation',
         'maiden_name',
         'is_sidebar_pined',
+        'friend_code',
+        'team_color',
     ];
 
     /**

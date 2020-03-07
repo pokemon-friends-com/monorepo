@@ -39,10 +39,11 @@ class ProfilesController extends ControllerAbstract
                 'administrator.users.profiles.profile',
                 [
                     'profile' => $this->r_profiles->getUserProfile($user),
+                    'teams' => $this->r_profiles->getTeamsColors(),
                     'families_situations' => $this
                         ->r_profiles
                         ->getFamilySituations()
-                        ->mapWithKeys(function($item) {
+                        ->mapWithKeys(function ($item) {
                             return [$item => trans("users.profiles.family_situation.{$item}")];
                         }),
                     'timezones' => $this->r_profiles->getTimezones(),
@@ -58,28 +59,17 @@ class ProfilesController extends ControllerAbstract
     }
 
     /**
-     * @param User $user
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Exception
-     */
-    public function profile(Request $request)
-    {
-        return $this->edit($request->user());
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param integer $id Profile id
+     * @param User $user
      * @param ProfileFormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, ProfileFormRequest $request)
+    public function update(User $user, ProfileFormRequest $request)
     {
         try {
-            $this->r_profiles->updateUserProfileWithRequest($request, $id);
+            $this->r_profiles->updateUserProfileWithRequest($request, $user);
         } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
             app('sentry')->captureException($exception);
         }

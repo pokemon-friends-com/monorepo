@@ -14,8 +14,7 @@ use template\Infrastructure\Interfaces\Domain\{
     Locale\LocalesInterface,
     Locale\TimeZonesInterface
 };
-use template\Infrastructure\Contracts\
-{
+use template\Infrastructure\Contracts\{
     Model\AuthenticatableModelAbstract,
     Model\IdentifiableTrait,
     Model\Notifiable,

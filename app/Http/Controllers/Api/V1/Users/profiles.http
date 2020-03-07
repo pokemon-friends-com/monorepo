@@ -1,3 +1,11 @@
+GET {{host}}/api/v1/users/profiles?XDEBUG_SESSION_START=PHPSTORM
+Authorization: Bearer {{bearer}}
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json
+
+###
+
 PUT {{host}}/api/v1/users/profiles/5d612150d5420?XDEBUG_SESSION_START=PHPSTORM
 Authorization: Bearer {{bearer}}
 Accept: application/json

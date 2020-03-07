@@ -4,27 +4,27 @@
 <div class="card-body login-card-body">
     <p class="login-box-msg">{{ trans('auth.forgot_password') }}</p>
     @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
+        <div class="alert alert-success text-sm" role="alert">{{ session('status') }}</div>
     @endif
     {!! Form::open(['route' => ['password.email'], 'method' => 'POST']) !!}
     @honeypot
-    <div class="input-group mb-3">
-        <input
-                type="text"
-                name="email"
-                class="form-control {{ $errors && $errors->has('email') ? 'is-invalid' : '' }}"
-                placeholder="{{ trans('users.email') }}"
-                value="{{ old('email', Auth::check() ? Auth::user()->email : '') }}"
-        />
-        <div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
+    <div class="form-group">
+        <div class="input-group">
+            <input
+                    type="text"
+                    name="email"
+                    class="form-control {{ $errors && $errors->has('email') ? 'is-invalid' : '' }}"
+                    placeholder="{{ trans('users.email') }}"
+                    value="{{ old('email', Auth::check() ? Auth::user()->email : '') }}"
+            />
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
             </div>
         </div>
         @if ($errors && $errors->has('email'))
-            <div class="error mb-2">{{ $errors->first('email') }}</div>
+            <div class="text-danger text-sm">{{ $errors->first('email') }}</div>
         @endif
     </div>
     <div class="row">

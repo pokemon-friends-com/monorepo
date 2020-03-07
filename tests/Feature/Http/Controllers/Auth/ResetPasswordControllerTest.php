@@ -122,7 +122,7 @@ class ResetPasswordControllerTest extends TestCase
      */
     public function testSubmitPasswordResetPasswordTooShort()
     {
-        $newPassword = $this->faker->password(3, 5);
+        $newPassword = $this->faker->password(3, 7);
         $user = factory(User::class)->create([
             'role' => User::ROLE_CUSTOMER,
             'password' => $this->getDefaultPasswordBcrypted(),
@@ -138,7 +138,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $newPassword,
             ])
             ->assertSuccessful()
-            ->assertSee(e('Le texte mot de passe doit contenir au moins 6 caractères.'));
+            ->assertSee(e('Le texte mot de passe doit contenir au moins 8 caractères.'));
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));

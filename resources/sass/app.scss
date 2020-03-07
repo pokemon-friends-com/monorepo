@@ -9,3 +9,24 @@
 
 // Google Fonts
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700);
+
+.js-cookie-consent.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  background-color: #f0f2f1;
+}
+span.cookie-consent__message {
+  color: #1F1F21;
+}
+button.js-cookie-consent-agree {
+  border: none;
+  border-radius: 3px;
+  background: #007bff;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+}

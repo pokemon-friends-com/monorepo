@@ -42,8 +42,33 @@
             </div>
             <div class="row">
                 <div class="col-12">
+                    {!! Form::open(['route' => ['administrator.users.profiles.update', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
                     <div class="card">
-                        {!! Form::open(['route' => ['administrator.users.profiles.update', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
+                        <div class="card-header">
+                            Join the friend code list
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="friend_code" class="col-sm-2 col-form-label">{{ trans('users.profiles.friend_code') }}</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="friend_code" placeholder="{{ trans('users.profiles.friend_code') }}" name="friend_code" value="{{ $profile['data']['friend_code'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="team_color" class="col-sm-2 col-form-label">{{ trans('users.profiles.team_color') }}</label>
+                                <div class="col-sm-10">
+                                    <select name="locale" id="locale" class="select2 w-100 form-control">
+                                        @foreach ($teams as $key)
+                                            <option value="{{ $key }}" @if ($key === $profile['data']['team_color']) selected="selected" @endif>
+                                                {{ trans('users.profiles.teams_colors.' . $key) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
                         <div class="card-body">
                             <div class="card-body">
                                 <div class="form-group row">
@@ -149,8 +174,69 @@
                         <div class="card-footer">
                             <button class="btn btn-primary" type="submit">{{ trans('global.record') }}</button>
                         </div>
-                        {{ Form::close() }}
                     </div>
+                    {{ Form::close() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {!! Form::open(['route' => ['customer.users.update-password', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
+                    <div class="card">
+                        <div class="card-header">
+                            Update password
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="form-group row">
+                                <label for="current_password"
+                                       class="col-sm-2 col-form-label">{{ trans('users.current_password') }}</label>
+                                <div class="col-sm-10">
+                                    <input
+                                            type="password"
+                                            name="current_password"
+                                            class="form-control"
+                                            id="current_password"
+                                            placeholder="{{ trans('users.current_password') }}"
+                                            value=""/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password"
+                                       class="col-sm-2 col-form-label">{{ trans('users.password') }}</label>
+                                <div class="col-sm-10">
+                                    <input
+                                            type="password"
+                                            name="password"
+                                            class="form-control"
+                                            id="password"
+                                            placeholder="{{ trans('users.password') }}"
+                                            value=""/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="password_confirmation"
+                                       class="col-sm-2 col-form-label">{{ trans('users.password_confirmation') }}</label>
+                                <div class="col-sm-10">
+                                    <input
+                                            type="password"
+                                            name="password_confirmation"
+                                            class="form-control"
+                                            id="password_confirmation"
+                                            placeholder="{{ trans('users.password_confirmation') }}"
+                                            value=""/>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" type="submit">{{ trans('global.record') }}</button>
+                        </div>
+                    </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

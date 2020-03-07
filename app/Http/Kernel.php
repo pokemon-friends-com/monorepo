@@ -41,18 +41,6 @@ class Kernel extends HttpKernel
             \template\Http\Middleware\Locale::class,
             \template\Http\Middleware\TimeZones::class,
         ],
-        'ajax' => [
-            \template\Http\Middleware\EncryptCookies::class,
-            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \template\Http\Middleware\VerifyCsrfToken::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \template\Http\Middleware\AllowOnlyAjaxRequests::class,
-            \template\Http\Middleware\Locale::class,
-            \template\Http\Middleware\TimeZones::class,
-        ],
         'api' => [
             \Barryvdh\Cors\HandleCors::class,
             'throttle:60,1',

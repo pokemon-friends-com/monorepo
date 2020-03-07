@@ -4,8 +4,18 @@
     <div class="content-header">
         <div class="container">
             <div class="row mb-2">
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <h1 class="m-0 text-dark">{{ trans('global.terms') }}</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('anonymous.dashboard') }}">
+                                {{ trans('global.home') }}
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active">{{ trans('global.terms') }}</li>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -34,22 +44,22 @@
 
                             <div class="row">
                                 <div class="col-sm-5 text-right">
-                                    <p>Coordonnées</p>
+                                    <p><a href="{{ route('anonymous.dashboard') }}">www.pokemon-friends.com</a></p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
-                                    {{--                                    Adresse<br>Adresse<br>France<br>--}}
-                                    <a href="{{ route('anonymous.contact.index') }}">Formulaire de contact</a>
+                                    <p>
+                                        est une platerforme de partage de code ami du jeu Pokemon Go.<br/>
+                                        Cette plateforme n'est pas liée à la sociétè éditrice du jeu.
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-5 text-right">
-                                    <p>obsession.city</p>
+                                    <p>Coordonnées</p>
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
-                                    <p>
-                                        est une platerforme de rencontre.
-                                    </p>
+                                    <a href="{{ route('anonymous.contact.index') }}">Formulaire de contact</a>
                                 </div>
                             </div>
 
@@ -75,7 +85,7 @@
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
                                     <p>
-                                        <a href="{{ route('anonymous.dashboard') }}">www.obsession.city</a> utilise des services d’analyses de site internet, pour ameliorer la qualité de son service, cela est fait de façon anonyme, ce qui signifie que les données transmisent aux services tiers ne peuvent vous identifier directement.
+                                        <a href="{{ route('anonymous.dashboard') }}">www.pokemon-friends.com</a> utilise des services d’analyses de site internet, pour ameliorer la qualité de son service, cela est fait de façon anonyme, ce qui signifie que les données transmisent aux services tiers ne peuvent vous identifier directement.
                                     </p>
                                 </div>
                             </div>
@@ -86,7 +96,8 @@
                                 </div>
                                 <div class="col-sm-7 sm-m-t-20">
                                     <p>
-                                        sont des fichiers texte placés sur votre ordinateur, pour aider le site internet à analyser l’utilisation du site par ses utilisateurs.
+                                        sont des fichiers texte placés sur votre ordinateur, pour aider le site internet à analyser l’utilisation du site par ses utilisateurs.<br/>
+                                        <a href="https://wikis.ec.europa.eu/display/WEBGUIDE/04.+Cookies#section_2">Loi sur les cookies</a>
                                     </p>
                                 </div>
                             </div>
