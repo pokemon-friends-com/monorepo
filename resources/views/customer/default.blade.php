@@ -83,13 +83,13 @@
         @yield('content')
     </div>
     <footer class="main-footer">
-{{--        <div class="float-right d-none d-sm-inline">--}}
-{{--            <div class="d-none d-sm-block mb-2">--}}
-{{--                {{ trans('global.social_networks_baseline') }}--}}
-{{--                <a href="{{ config('services.github.url') }}" target="_blank" rel="noopener" title="github.com"><i class="fab fa-github"></i></a>--}}
-{{--                <a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter"></i></a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="float-right d-none d-sm-inline">
+            <div class="d-none d-sm-block mb-2">
+                {{ trans('global.social_networks_baseline') }}
+                <a href="{{ config('services.github.url') }}" target="_blank" rel="noopener" title="github.com"><i class="fab fa-github"></i></a>
+                <a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
         <span class="mr-1">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span><a href="{{ route('anonymous.terms') }}">{{ trans('global.terms') }}</a>
     </footer>
 </div>
