@@ -15,8 +15,8 @@ return [
     */
 
     'github' => [
-        'url' => 'https://github.com/abenevaut/www-template',
-        'changelog' => 'https://github.com/abenevaut/www-template/milestones?state=closed',
+        'url' => 'https://github.com/pokemon-friends-com/www',
+        'changelog' => 'https://github.com/pokemon-friends-com/www/milestones?state=closed',
     ],
 
     'google_recaptcha' => [
@@ -25,8 +25,8 @@ return [
     ],
 
     'twitter' => [
-        'username' => '@abenevaut',
-        'url' => 'https://twitter.com/abenevaut',
+        'username' => '@pkmn_friends',
+        'url' => 'https://twitter.com/pkmn_friends',
         /*
         |--------------------------------------------------------------------------
         | Site Card
@@ -36,7 +36,7 @@ return [
         |
         */
         'card' => 'summary_large_image',
-        'image' => '/images/og-image.png',
+        'image' => '/images/og-image.jpeg',
     ],
 
     'facebook' => [
@@ -49,7 +49,7 @@ return [
         |
         */
         'og:type' => 'website',
-        'og:image' => '/images/og-image.png',
+        'og:image' => '/images/og-image.jpeg',
     ],
 
 ];

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Template www'),
+    'name' => env('APP_NAME', 'pokemon-friends'),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'description' => 'A Laravel Framework template for web application.',
+    'description' => 'Pokemon go "friends codes" sharing community',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return [
     |
     */
 
-    'keywords' => 'laravel,template,web application',
+    'keywords' => 'pokemon,pokemon go,go,community,friends,pokemon go friends,pokemon friends',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://template.benevaut.fr'),
+    'url' => env('APP_URL', 'https://www.pokemon-friends.com'),
 
     'asset_url' => env('ASSET_URL', null),
 
