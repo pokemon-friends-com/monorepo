@@ -20,7 +20,7 @@
                         <div class="form-group required">
                             <label class="col-sm-3 control-label">{{ trans('users.locale') }}</label>
                             <div class="col-sm-9">
-                                <select name="locale" class="full-width" data-init-plugin="select2"data-disable-search="true">
+                                <select name="locale" class="full-width" data-init-plugin="select2" data-disable-search="true">
                                     @foreach ($locales as $key)
                                         <option value="{{ $key }}" @if ($key === $user['data']['locale']['language']) selected="selected" @endif>{{ $key }}</option>
                                     @endforeach
@@ -30,7 +30,7 @@
                         <div class="form-group required">
                             <label class="col-sm-3 control-label">{{ trans('users.timezone') }}</label>
                             <div class="col-sm-9">
-                                <select name="timezone" class="full-width" data-init-plugin="select2"data-disable-search="false">
+                                <select name="timezone" class="full-width" data-init-plugin="select2" data-disable-search="false">
                                     @foreach ($timezones as $key)
                                         <option value="{{ $key }}" @if ($key === $user['data']['locale']['timezone']) selected="selected" @endif>{{ $key }}</option>
                                     @endforeach

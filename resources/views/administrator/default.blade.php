@@ -11,7 +11,11 @@
                 <collapse-sidebar-component></collapse-sidebar-component>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto"></ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link"><i class="fa fa-sign-out-alt mr-2"></i>{{ trans('auth.logout') }}</a>
+            </li>
+        </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{ route('administrator.users.dashboard') }}" class="brand-link">
@@ -129,9 +133,9 @@
     </div>
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.0
+            {!! trans('global.version', ['version' => env('APP_VERSION')]) !!}
         </div>
-        {!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}
+        <span class="mr-0">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span>
     </footer>
     <aside class="control-sidebar control-sidebar-dark"></aside>
 </div>

@@ -2,20 +2,23 @@
 
 namespace template\Domain\Users\Profiles\Repositories;
 
+use Carbon\Carbon;
 use Illuminate\Container\Container as Application;
 use Illuminate\Support\Collection;
-use template\Infrastructure\Contracts\
-{
+use Illuminate\Support\Facades\Auth;
+use template\Infrastructure\Contracts\{
     Request\RequestAbstract,
     Repositories\RepositoryEloquentAbstract
 };
-use Carbon\Carbon;
-use template\Domain\Users\Users\
-{
+use template\Domain\Users\Users\{
     User,
     Repositories\UsersRepositoryEloquent
 };
 use template\Domain\Users\Profiles\{
+    Criterias\NotAuthenticatedLimitCriteria,
+    Criterias\OrderByUpdateAtCriteria,
+    Criterias\WhereFriendCodeNotNullCriteria,
+    Criterias\WhereSponsoredCriteria,
     Profile,
     Events\ProfileUpdatedEvent,
     Presenters\ProfilesListPresenter
@@ -23,6 +26,15 @@ use template\Domain\Users\Profiles\{
 
 class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements ProfilesRepository
 {
+
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'user.gid' => 'like',
+        'friend_code' => 'like',
+        'team_color'
+    ];
 
     /**
      * @var UsersRepositoryEloquent|null
@@ -41,6 +53,17 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     ) {
         parent::__construct($app);
         $this->r_users = $r_users;
+    }
+
+    /**
+     *
+     */
+    public function boot()
+    {
+        $this
+            ->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'))
+            ->pushCriteria(WhereFriendCodeNotNullCriteria::class)
+            ->pushCriteria(OrderByUpdateAtCriteria::class);
     }
 
     /**
@@ -154,6 +177,14 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     }
 
     /**
+     * @return Collection
+     */
+    public function getTeamsColors(): Collection
+    {
+        return new Collection(Profile::COLORS);
+    }
+
+    /**
      * {@inheritdoc}
      * @throws \Exception
      */
@@ -170,7 +201,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      */
     public function updateUserProfileWithRequest(
         RequestAbstract $request,
-        $id
+        User $user
     ): void {
         $data = [
             'birth_date' => $request->has('birth_date')
@@ -181,22 +212,27 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
                 : null,
             'family_situation' => $request->get('family_situation'),
             'maiden_name' => $request->get('maiden_name'),
+            'friend_code' => $request->get('friend_code'),
+            'team_color' => $request->get('team_color'),
             'is_sidebar_pined' => $request->get('is_sidebar_pined'),
         ];
         $data = array_filter($data, function($v) { return !is_null($v); });
 
-        $profile = $this->update($data, $id);
+        if ($data) {
+            $this->update($data, $user->profile->id);
+        }
 
         $data = [
             'timezone' => $request->get('timezone'),
             'locale' => $request->get('locale'),
+            'civility' => $request->get('civility'),
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
         ];
         $data = array_filter($data, function($v) { return !is_null($v); });
 
         if ($data) {
-            $user = $this
-                ->r_users
-                ->update($data, $profile->user->id);
+            $user = $this->r_users->update($data, $user->id);
             $this->r_users->refreshSession($user);
         }
     }

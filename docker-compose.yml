@@ -20,65 +20,6 @@ services:
 
   workspace:
     image: abenevaut/laradock-workspace:${APP_TAG:-latest}
-    build:
-      context: ./laradock/workspace
-      cache_from:
-        - abenevaut/laradock-workspace:latest
-      args:
-        - PHP_VERSION=${DOCKER_PHP_VERSION}
-        - LARADOCK_PHP_VERSION=${DOCKER_PHP_VERSION}
-        - INSTALL_SUBVERSION=false
-        - INSTALL_XDEBUG=true
-        - INSTALL_PHPDBG=false
-        - INSTALL_BLACKFIRE=true
-        - INSTALL_SSH2=false
-        - INSTALL_GMP=false
-        - INSTALL_SOAP=false
-        - INSTALL_LDAP=false
-        - INSTALL_IMAP=false
-        - INSTALL_MONGO=false
-        - INSTALL_AMQP=false
-        - INSTALL_PHPREDIS=false
-        - INSTALL_MSSQL=false
-        - INSTALL_NODE=true
-        - NPM_REGISTRY=false
-        - INSTALL_YARN=false
-        - INSTALL_NPM_GULP=false
-        - INSTALL_NPM_BOWER=false
-        - INSTALL_NPM_VUE_CLI=false
-        - INSTALL_DRUSH=false
-        - INSTALL_DRUPAL_CONSOLE=false
-        - INSTALL_AEROSPIKE=false
-        - AEROSPIKE_PHP_REPOSITORY=false
-        - INSTALL_V8JS=false
-        - COMPOSER_GLOBAL_INSTALL=false
-        - COMPOSER_REPO_PACKAGIST=false
-        - INSTALL_WORKSPACE_SSH=true
-        - INSTALL_LARAVEL_ENVOY=false
-        - INSTALL_LARAVEL_INSTALLER=false
-        - INSTALL_DEPLOYER=true
-        - INSTALL_PRESTISSIMO=fale
-        - INSTALL_LINUXBREW=false
-        - INSTALL_MC=false
-        - INSTALL_SYMFONY=false
-        - INSTALL_PYTHON=false
-        - INSTALL_IMAGE_OPTIMIZERS=false
-        - INSTALL_IMAGEMAGICK=true
-        - INSTALL_TERRAFORM=false
-        - INSTALL_DUSK_DEPS=true
-        - INSTALL_PG_CLIENT=false
-        - INSTALL_SWOOLE=false
-        - INSTALL_LIBPNG=false
-        - INSTALL_IONCUBE=false
-        - PUID=1000
-        - PGID=1000
-        - CHROME_DRIVER_VERSION=2.32
-        - NODE_VERSION=11
-        - YARN_VERSION=latest
-        - DRUSH_VERSION=8.1.17
-        - TZ=${DOCKER_PROJECT_TZ}
-        - BLACKFIRE_CLIENT_ID=
-        - BLACKFIRE_CLIENT_TOKEN=
     volumes:
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
     extra_hosts:
@@ -96,44 +37,6 @@ services:
 
   php-fpm:
     image: abenevaut/laradock-php-fpm:${APP_TAG:-latest}
-    build:
-      context: ./laradock/php-fpm
-      cache_from:
-        - abenevaut/laradock-php-fpm:latest
-      args:
-        - PHP_VERSION=${DOCKER_PHP_VERSION}
-        - LARADOCK_PHP_VERSION=${DOCKER_PHP_VERSION}
-        - INSTALL_XDEBUG=true
-        - INSTALL_PHPDBG=false
-        - INSTALL_BLACKFIRE=true
-        - INSTALL_SSH2=false
-        - INSTALL_SOAP=false
-        - INSTALL_IMAP=false
-        - INSTALL_MONGO=false
-        - INSTALL_AMQP=false
-        - INSTALL_MSSQL=false
-        - INSTALL_ZIP_ARCHIVE=false
-        - INSTALL_BCMATH=false
-        - INSTALL_GMP=false
-        - INSTALL_PHPREDIS=false
-        - INSTALL_MEMCACHED=false
-        - INSTALL_OPCACHE=false
-        - INSTALL_EXIF=true
-        - INSTALL_AEROSPIKE=false
-        - AEROSPIKE_PHP_REPOSITORY=false
-        - INSTALL_MYSQLI=false
-        - INSTALL_PGSQL=false
-        - INSTALL_PG_CLIENT=false
-        - INSTALL_TOKENIZER=false
-        - INSTALL_INTL=false
-        - INSTALL_GHOSTSCRIPT=false
-        - INSTALL_LDAP=false
-        - INSTALL_SWOOLE=false
-        - INSTALL_IMAGE_OPTIMIZERS=false
-        - INSTALL_IMAGEMAGICK=true
-        - INSTALL_CALENDAR=false
-        - INSTALL_FAKETIME=false
-        - INSTALL_IONCUBE=false
     volumes:
       - ./laradock/php-fpm/php${DOCKER_PHP_VERSION}.ini:/usr/local/etc/php/php.ini
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
@@ -154,14 +57,6 @@ services:
 
   php-worker:
     image: abenevaut/laradock-php-worker:${APP_TAG:-latest}
-    build:
-      context: ./laradock/php-worker
-      cache_from:
-        - abenevaut/laradock-php-worker:latest
-      args:
-        - PHP_VERSION=${DOCKER_PHP_VERSION}
-        - INSTALL_PGSQL=false
-        - INSTALL_BCMATH=false
     volumes:
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
       - ${DOCKER_STORAGE_PATH}/php-worker/supervisord.d:/etc/supervisord.d
@@ -176,15 +71,6 @@ services:
 
   apache2:
     image: abenevaut/laradock-apache2:${APP_TAG:-latest}
-    build:
-      context: ./laradock/apache2
-      cache_from:
-        - abenevaut/laradock-apache2:latest
-      args:
-        - PHP_UPSTREAM_CONTAINER=php-fpm
-        - PHP_UPSTREAM_PORT=${DOCKER_PHPFPM_PORT}
-        - PHP_UPSTREAM_TIMEOUT=60
-        - DOCUMENT_ROOT=/var/www/public/
     volumes:
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
       - ${DOCKER_STORAGE_PATH}/apache2/logs:/var/log/apache2
@@ -202,12 +88,6 @@ services:
 
   mysql:
     image: abenevaut/laradock-mysql:${APP_TAG:-latest}
-    build:
-      context: ./laradock/mysql
-      cache_from:
-        - abenevaut/laradock-mysql:latest
-      args:
-        - MYSQL_VERSION=${DOCKER_MYSQL_VERSION}
     environment:
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_USER=${DB_USERNAME}
@@ -226,10 +106,6 @@ services:
 
   redis:
     image: abenevaut/laradock-redis:${APP_TAG:-latest}
-    build:
-      context: ./laradock/redis
-      cache_from:
-        - abenevaut/laradock-redis:latest
     volumes:
       - ${DOCKER_STORAGE_PATH}/redis:/data
     ports:
@@ -241,10 +117,6 @@ services:
 
   mailhog:
     image: abenevaut/laradock-mailhog:${APP_TAG:-latest}
-    build:
-      context: ./laradock/mailhog
-      cache_from:
-        - abenevaut/laradock-mailhog:latest
     ports:
       - "${MAIL_PORT}:1025"
       - "${DOCKER_MAILHOG_PUBLIC_HTTP_PORT}:8025"
@@ -256,16 +128,6 @@ services:
 
   elasticsearch:
     image: abenevaut/laradock-elasticsearch:${APP_TAG:-latest}
-    build:
-      context: ./laradock/elasticsearch
-      cache_from:
-        - abenevaut/laradock-elasticsearch:latest
-    volumes:
-      - ${DOCKER_STORAGE_PATH}/elasticsearch:/usr/share/elasticsearch/data
-    environment:
-      - cluster.name=${APP_NAME}
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -283,10 +145,6 @@ services:
 
   kibana:
     image: abenevaut/laradock-kibana:${APP_TAG:-latest}
-    build:
-      context: ./laradock/kibana
-      cache_from:
-        - abenevaut/laradock-kibana:latest
     ports:
       - "${DOCKER_KIBANA_PUBLIC_PORT}:5601"
     depends_on:

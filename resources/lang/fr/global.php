@@ -2,15 +2,17 @@
 
 return [
 
-    'baseline' => 'Les rencontres pour réaliser vos fantasmes!',
+    'baseline' => 'Inscrivez-vous pour partager votre code ami et rejoindre vote communauté de dresseurs!',
     'changelog' => 'Changelog',
-    'copyright' => '&copy; :date <a href=":route">:name</a>. All rights reserved.',
+    'copyright' => '&copy; :date <a href=":route">:name</a>. Tous les droits sont réservés.',
+    'version' => '<b>Version</b> :version',
     'terms' => 'Conditions générales d\'utilisation',
     'social_networks_baseline' => 'Suivez nous sur les réseaux sociaux',
+    'share_gift' => 'Partagez des cadeaux',
+    'fight_friend' => 'Combattez vos amis',
+    'boost_xp' => 'Boostez votre XP',
 
-    'locale.fr' => 'Français',
-    'locale.en' => 'Anglais',
-
+    'beta' => 'Beta',
     'add' => 'Ajouter',
     'cancel' => 'Annuler',
     'export' => 'Exporter',

@@ -165,9 +165,9 @@ class LeadsRepositoryEloquentTest extends TestCase
     {
         factory(Lead::class)->times(30)->create();
         $leads = $this->r_leads->getLeadsPaginated();
-        $this->assertEquals(10, $leads['meta']['pagination']['per_page']);
+        $this->assertEquals(12, $leads['meta']['pagination']['per_page']);
         $this->assertEquals(30, $leads['meta']['pagination']['total']);
-        $this->assertEquals(10, count($leads['data']));
+        $this->assertEquals(12, count($leads['data']));
     }
 
     public function testCreateUserFromLead()

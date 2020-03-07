@@ -96,13 +96,15 @@ interface ProfilesRepository extends RepositoryInterface
     public function getUserProfile(User $user): array;
 
     /**
+     * Update the specified resource in storage.
+     *
      * @param RequestAbstract $request
-     * @param $id
+     * @param User $user
      *
      * @return void
      */
     public function updateUserProfileWithRequest(
         RequestAbstract $request,
-        $id
+        User $user
     ): void;
 }

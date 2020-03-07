@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
                 ->enum('civility', UserCivilitiesInterface::CIVILITIES)
                 ->default(UserCivilitiesInterface::CIVILITY_MADAM)
                 ->index();
-            $table->string('first_name', 100)->index();
-            $table->string('last_name', 100)->index();
+            $table->string('first_name', 100)->nullable(true)->index();
+            $table->string('last_name', 100)->nullable(true)->index();
             $table->string('email', 80)->unique()->index();
             $table->string('password', 100);
             $table->rememberToken();

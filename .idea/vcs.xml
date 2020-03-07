@@ -3,8 +3,5 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/laradock" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/resources/clip" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/resources/gameforest" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/resources/pages" vcs="Git" />
   </component>
 </project>

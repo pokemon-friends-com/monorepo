@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@obsession.city.local" uuid="ec7c0660-189d-4719-8146-421128b3664c">
+    <data-source source="LOCAL" name="@pokemon-friends.com.local" uuid="ec7c0660-189d-4719-8146-421128b3664c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <remarks>laradock</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/default</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/laravel</jdbc-url>
       <driver-properties>
         <property name="serverTimezone" value="Europe/Paris" />
       </driver-properties>

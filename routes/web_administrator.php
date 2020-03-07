@@ -27,9 +27,6 @@ Route::group(
         Route::group(['namespace' => 'Users'], function () {
             Route::model('profile', \template\Domain\Users\Users\User::class);
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-                Route::get('profile', 'ProfilesController@profile');
-            });
-            Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard']);
                 Route::get('export', ['as' => 'export', 'uses' => 'UsersController@export']);
                 Route::resource('profiles', 'ProfilesController');

@@ -26,5 +26,7 @@ $factory
             )
                 ? $faker->text(100)
                 : null,
+            'friend_code' => $faker->numberBetween(100000000000, 999999999999),
+            'team_color' => $faker->randomElement(\template\Domain\Users\Profiles\ProfilesTeamsColors::COLORS),
         ];
     });

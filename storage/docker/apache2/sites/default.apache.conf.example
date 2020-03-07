@@ -1,5 +1,5 @@
 <VirtualHost *:80>
-  ServerName template.benevaut.fr.local
+  ServerName www.pokemon-friends.com.local
   DocumentRoot /var/www/public/
   Options Indexes FollowSymLinks
 

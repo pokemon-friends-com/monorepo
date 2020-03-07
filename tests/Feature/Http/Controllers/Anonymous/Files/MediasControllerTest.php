@@ -17,7 +17,7 @@ class MediasControllerTest extends TestCase
     public function testMediaEndpoint()
     {
         File::copy(
-            '/'.base_path('resources/images/home.index.jpg'),
+            '/'.base_path('resources/images/test.jpg'),
             '/'.storage_path('app/public/file001.jpg')
         );
 

@@ -16,17 +16,23 @@ return [
 	'role.customer' => 'Customer',
 
 	'locale' => 'Language',
+    'locale.fr' => 'French',
+    'locale.en' => 'English',
+
 	'timezone' => 'Time zone',
 	'first_name' => 'First name',
 	'last_name' => 'Last name',
-	'email' => 'email',
+	'email' => 'Email',
+    'current_password' => 'Current password',
 	'password' => 'Password',
 	'password_confirmation' => 'Confirm password',
 
     'impersonate'        => 'Impersonate',
     'stop_impersonation' => 'Admin session',
 
-	'title' => 'Users',
+    'dashboard' => 'Dashboard',
+
+    'title' => 'Users',
 	'create.title' => 'New user',
 	'edit.title' => 'Edit user',
 	'show.title' => 'User :username',
@@ -40,6 +46,7 @@ return [
 	'message_created_success' => "User successfully added",
 	'message_updated_success' => "User has been successfully updated",
 	'message_deleted_success' => "User has been deleted",
+    'message_password_reset_success' => "Password has been successfully changed",
 	'message_user_tried_to_delete_his_own_account_error' => 'You cannot delete your own user account',
 
     'profiles.family_situation' => 'Situation familiale',
@@ -52,6 +59,11 @@ return [
     'profiles.birth_date' => 'Date de naissance',
     'profiles.providers_tokens' => 'Lier vos comptes sociaux',
     'profiles.edit.title' => 'Profil utilisateur',
+    'profiles.friend_code' => 'Friend code',
+    'profiles.team_color' => 'Couleur d\'équipe',
+    'profiles.teams_colors.blue' => 'Mystic, blue team',
+    'profiles.teams_colors.red' => 'Valor, red team',
+    'profiles.teams_colors.yellow' => 'Instinct, yellow team',
 
     'leads.title' => 'Leads',
     'leads.transformed_user' => 'Transformed user',

@@ -13,11 +13,12 @@ class UsersControllerTest extends TestCase
 
     public function testToVisitDashboardAsCustomer()
     {
-        $this->actingAsCustomer();
+        $user = $this->actingAsCustomer();
         $this
             ->assertAuthenticated()
             ->get('/users/dashboard')
-            ->assertStatus(200);
+            ->assertStatus(302)
+            ->assertRedirect("/users/profiles/{$user->uniqid}/edit");
     }
 
     public function testToVisitDashboardAsAnonymous()

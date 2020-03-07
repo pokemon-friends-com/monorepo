@@ -16,15 +16,21 @@ return [
 	'role.customer' => 'Client',
 
 	'locale' => 'Langue',
+    'locale.fr' => 'Français',
+    'locale.en' => 'Anglais',
+
 	'timezone' => 'Fuseau horaire',
 	'first_name' => 'Prénom',
 	'last_name' => 'Nom',
 	'email' => 'Courriel',
+	'current_password' => 'Mot de passe actuel',
 	'password' => 'Mot de passe',
 	'password_confirmation' => 'Confirmer le mot de passe',
 
     'impersonate'        => 'Imiter',
     'stop_impersonation' => 'Session admin',
+
+    'dashboard' => 'Dashboard',
 
 	'title' => 'Utilisateurs',
 	'create.title' => 'Nouvel utilisateur',
@@ -40,6 +46,7 @@ return [
 	'message_created_success' => "L'utilisateur a bien été ajouté",
 	'message_updated_success' => "L'utilisateur a bien été mis à jour",
 	'message_deleted_success' => "L'utilisateur a bien été supprimé",
+	'message_password_reset_success' => "Le mot de passe a bien été changé",
 	'message_user_tried_to_delete_his_own_account_error' => 'Vous ne pouvez pas supprimer votre propre compte utilisateur',
 
     'profiles.family_situation' => 'Situation familiale',
@@ -52,6 +59,11 @@ return [
     'profiles.birth_date' => 'Date de naissance',
     'profiles.providers_tokens' => 'Lier vos comptes sociaux',
     'profiles.edit.title' => 'Profil utilisateur',
+    'profiles.friend_code' => 'Code ami',
+    'profiles.team_color' => 'Team color',
+    'profiles.teams_colors.blue' => 'Sagesse, équipe bleu',
+    'profiles.teams_colors.red' => 'Bravoure, équipe rouge',
+    'profiles.teams_colors.yellow' => 'Intuition, équipe jaune',
 
     'leads.title' => 'Leads',
     'leads.transformed_user' => 'Transformed user',
