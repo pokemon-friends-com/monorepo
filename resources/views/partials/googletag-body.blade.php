@@ -1,0 +1,1 @@
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ env('GOOGLE_TAG_MANAGER') }}&gtm_auth={{ env('GOOGLE_TAG_AUTH') }}&gtm_preview=env-2&gtm_cookies_win=x" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

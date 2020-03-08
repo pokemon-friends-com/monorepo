@@ -4,6 +4,7 @@
     @include('partials.metadata')
 </head>
 <body class="hold-transition sidebar-mini @if (Auth::user()->profile->is_sidebar_pined) sidebar-collapse @else layout-fixed @endif">
+@include('partials.googletag-body')
 <div id="template" class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <ul class="navbar-nav">
@@ -19,13 +20,13 @@
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{ route('administrator.users.dashboard') }}" class="brand-link">
-            <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name') }}" class="brand-image img-circle elevation-3">
+            <img src="{{ asset('images/pokeball.jpg') }}" alt="{{ config('app.name') }}" class="brand-image img-circle elevation-3">
             <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
         </a>
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('images/logo.png') }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset('images/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="{{ route('administrator.users.profiles.edit', ['id' => Auth::user()->uniqid]) }}" class="d-block">{{ Auth::user()->full_name }}</a>

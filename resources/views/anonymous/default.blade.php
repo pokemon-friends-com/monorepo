@@ -4,6 +4,7 @@
     @include('partials.metadata')
 </head>
 <body class="hold-transition layout-top-nav">
+@include('partials.googletag-body')
 <div id="template" class="wrapper">
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
         <div class="container">

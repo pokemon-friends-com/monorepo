@@ -5,12 +5,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><i class="fa fa-users"></i> {!! trans('users.title') !!}</h1>
+                <h1><i class="fa fa-users mr-2"></i>{!! trans('users.title') !!}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item active">
-                        <i class="fa fa-users"></i> {!! trans('users.title') !!}
+                        <i class="fa fa-users mr-2"></i>{!! trans('users.title') !!}
                     </li>
                 </ol>
             </div>
@@ -26,10 +26,10 @@
                     <div class="card-header">
                         <div class="card-tools">
                             <a href="{{ route('administrator.users.export') }}" class="btn btn-secondary btn-sm elevation-1">
-                                <i class="fa fa-file-excel"></i> {!! trans('global.export') !!}
+                                <i class="fa fa-file-excel mr-2"></i>{!! trans('global.export') !!}
                             </a>
                             <a href="{{ route('administrator.users.create') }}" class="btn btn-primary btn-sm elevation-1">
-                                <i class="fa fa-user-plus"></i> {!! trans('global.add') !!}
+                                <i class="fa fa-user-plus mr-2"></i>{!! trans('global.add') !!}
                             </a>
                         </div>
                     </div>
@@ -60,18 +60,18 @@
                                 <td class="align-middle text-right">
                                     @canImpersonate
                                     @if ($user['impersonation']['can_be_impersonated'])
-                                    <a href="{{ route('impersonate', $user['identifier']) }}" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-user-secret"></i> {{ trans('users.impersonate') }}
+                                    <a href="{{ route('impersonate', $user['id']) }}" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-user-secret mr-2"></i>{{ trans('users.impersonate') }}
                                     </a>
                                     @endif
                                     @endCanImpersonate
                                     <a href="{{ route('administrator.users.edit', ['id' => $user['identifier']]) }}"
                                        class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i> {!! trans('global.edit') !!}
+                                        <i class="fa fa-edit mr-2"></i>{!! trans('global.edit') !!}
                                     </a>
                                     <button data-target="#confirm_user_deletion_{{ $user['identifier'] }}"
                                             data-toggle="modal" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i> {!! trans('global.delete') !!}
+                                        <i class="fa fa-trash mr-2"></i>{!! trans('global.delete') !!}
                                     </button>
                                 </td>
                             </tr>
@@ -87,7 +87,7 @@
                 @else
                 <div class="box-body">
                     <div class="alert alert-info alert-dismissible alert-module">
-                        <h4><i class="icon fa fa-info-circle"></i> {!! trans('users.index_no_data_title') !!}</h4>
+                        <h4><i class="icon fa fa-info-circle mr-2"></i>{!! trans('users.index_no_data_title') !!}</h4>
                         {!! trans('users.index_no_data_description') !!}
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                 <div class="modal-footer justify-content-between">
                     {!! Form::open(['route' => ['administrator.users.destroy', $user['identifier']], 'method' => 'DELETE']) !!}
                     <button type="submit" class="btn btn-danger">
-                        <i class="fa fa-trash"></i> {!! trans('global.delete') !!}
+                        <i class="fa fa-trash mr-2"></i>{!! trans('global.delete') !!}
                     </button>
                     {!! Form::close() !!}
                     <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('global.cancel') }}</button>
