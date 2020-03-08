@@ -35,10 +35,19 @@ export default {
     };
   },
   mounted() {
-    this.fetch(1);
+    const urlParams = new URLSearchParams(window.location.search);
+    // Get `page` query param from url.
+    const page = urlParams.get('page') || 1;
+
+    this.fetch(page);
   },
   methods: {
     url(page = 1) {
+      if (page && page !== window.location.href.split('?')[1]) {
+        // Set `page` query param in url.
+        window.history.pushState({}, '', `?page=${page}`);
+      }
+
       return `/api/v1/users/profiles?page=${page}`;
     },
     fetch(page) {
