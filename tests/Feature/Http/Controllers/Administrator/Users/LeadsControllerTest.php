@@ -43,7 +43,31 @@ class LeadsControllerTest extends TestCase
         Notification::fake();
         $this
             ->assertAuthenticated()
-            ->put('/administrator/users/leads/'.$lead->id)
+            ->put("/administrator/users/leads/{$lead->id}")
+            ->assertStatus(302)
+            ->assertRedirect('administrator/users/leads');
+        $lead->refresh();
+        Notification::assertSentTo($lead->user, CreatedAccountByAdministrator::class);
+
+        $this
+            ->assertAuthenticated()
+            ->get('/administrator/users/leads')
+            ->assertSeeText('Aucune action')
+            ->assertSeeInOrder(['<tr id="lead_1">', '<i class="far fa-user-circle" title="Transformed user"></i>'])
+            ->assertSeeText($lead->email)
+            ->assertSeeText($lead->civility_name)
+            ->assertSeeText($lead->identifier)
+            ->assertSuccessful();
+    }
+
+    public function testUpdateWithApostrophe()
+    {
+        $this->actingAsAdministrator();
+        $lead = factory(Lead::class)->create(['last_name' => "D'amore"]);
+        Notification::fake();
+        $this
+            ->assertAuthenticated()
+            ->put("/administrator/users/leads/{$lead->id}")
             ->assertStatus(302)
             ->assertRedirect('administrator/users/leads');
         $lead->refresh();

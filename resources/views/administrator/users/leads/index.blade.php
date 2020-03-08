@@ -46,10 +46,10 @@
                                     <td class="align-middle text-center">
                                         @if ($lead['user']['is_user'])
                                         <a href="{{ route('administrator.users.show', ['id' => $lead['user']['identifier']]) }}">
-                                            {{ $lead['civility_name'] }}
+                                            {!! $lead['civility_name'] !!}
                                         </a>
                                         @else
-                                        {{ $lead['civility_name'] }}
+                                        {!! $lead['civility_name'] !!}
                                         @endif
                                     </td>
                                     <td class="align-middle text-center">{{ $lead['email'] }}</td>
