@@ -55,3 +55,4 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <link rel="sitemap" type="application/xml" title="sitemap" href="{{ url('/sitemap.xml') }}" />
 @yield('css')
+@include('partials.googletag-head')
