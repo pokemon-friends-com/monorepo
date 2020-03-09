@@ -8895,26 +8895,26 @@
         },
         {
             "name": "josiasmontag/laravel-redis-mock",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/josiasmontag/laravel-redis-mock.git",
-                "reference": "8417635a1f8d102b759661566876acd63733048a"
+                "reference": "a0497b1d23e5e6138c8808adb6f8b957166d3759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/josiasmontag/laravel-redis-mock/zipball/8417635a1f8d102b759661566876acd63733048a",
-                "reference": "8417635a1f8d102b759661566876acd63733048a",
+                "url": "https://api.github.com/repos/josiasmontag/laravel-redis-mock/zipball/a0497b1d23e5e6138c8808adb6f8b957166d3759",
+                "reference": "a0497b1d23e5e6138c8808adb6f8b957166d3759",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^5.8.30|^6.0",
+                "laravel/framework": "^5.8.30|^6.0|^7.0",
                 "m6web/redis-mock": "^4.2",
                 "php": ">=7.1.0",
                 "predis/predis": "^1.1"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.8.0|^4.0",
+                "orchestra/testbench": "~3.8.0|^4.0|^5.0",
                 "phpunit/phpunit": "^7.0|^8.0"
             },
             "type": "library",
@@ -8948,7 +8948,7 @@
                 "localization",
                 "php"
             ],
-            "time": "2019-09-03T22:54:55+00:00"
+            "time": "2020-03-08T16:14:53+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -9086,16 +9086,16 @@
         },
         {
             "name": "m6web/redis-mock",
-            "version": "v4.6.1",
+            "version": "v4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/M6Web/RedisMock.git",
-                "reference": "5f8821e8a39055ca4ef0d4b51dbc063aa000a2dc"
+                "reference": "057ad8e1bea903aee54642e310d900bdb794372c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/M6Web/RedisMock/zipball/5f8821e8a39055ca4ef0d4b51dbc063aa000a2dc",
-                "reference": "5f8821e8a39055ca4ef0d4b51dbc063aa000a2dc",
+                "url": "https://api.github.com/repos/M6Web/RedisMock/zipball/057ad8e1bea903aee54642e310d900bdb794372c",
+                "reference": "057ad8e1bea903aee54642e310d900bdb794372c",
                 "shasum": ""
             },
             "require": {
@@ -9127,7 +9127,7 @@
                 "mock",
                 "redis"
             ],
-            "time": "2019-08-20T13:03:26+00:00"
+            "time": "2019-11-04T09:03:23+00:00"
         },
         {
             "name": "maximebf/debugbar",
