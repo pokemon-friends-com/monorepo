@@ -5638,16 +5638,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.19.2",
+            "version": "7.19.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "944f00a8e886abcb5e2166ae17660917a086368d"
+                "reference": "7d6b634e0967f7399e1c7cd7b02c8b7da6f80c2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/944f00a8e886abcb5e2166ae17660917a086368d",
-                "reference": "944f00a8e886abcb5e2166ae17660917a086368d",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/7d6b634e0967f7399e1c7cd7b02c8b7da6f80c2d",
+                "reference": "7d6b634e0967f7399e1c7cd7b02c8b7da6f80c2d",
                 "shasum": ""
             },
             "require": {
@@ -5720,7 +5720,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2020-03-04T19:00:40+00:00"
+            "time": "2020-03-09T16:43:55+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
