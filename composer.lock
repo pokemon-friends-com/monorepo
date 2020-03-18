@@ -198,21 +198,21 @@
         },
         {
             "name": "babenkoivan/scout-elasticsearch-driver",
-            "version": "v4.0.3",
+            "version": "v4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/babenkoivan/scout-elasticsearch-driver.git",
-                "reference": "c99fc14afcd0e188bfffafc416b5199736b5411d"
+                "reference": "2821233736c8d6482501f6cc17fcb93bd8b3a075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/babenkoivan/scout-elasticsearch-driver/zipball/c99fc14afcd0e188bfffafc416b5199736b5411d",
-                "reference": "c99fc14afcd0e188bfffafc416b5199736b5411d",
+                "url": "https://api.github.com/repos/babenkoivan/scout-elasticsearch-driver/zipball/2821233736c8d6482501f6cc17fcb93bd8b3a075",
+                "reference": "2821233736c8d6482501f6cc17fcb93bd8b3a075",
                 "shasum": ""
             },
             "require": {
                 "elasticsearch/elasticsearch": ">=7.0 <7.4.0",
-                "laravel/scout": "^7.0",
+                "laravel/scout": "^7.0|^8.0",
                 "php": "^7.1.3"
             },
             "require-dev": {
@@ -255,7 +255,7 @@
                 "scout",
                 "search"
             ],
-            "time": "2020-01-19T12:33:54+00:00"
+            "time": "2020-03-17T20:17:08+00:00"
         },
         {
             "name": "barryvdh/elfinder-flysystem-driver",
