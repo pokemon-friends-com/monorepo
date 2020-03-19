@@ -34,8 +34,10 @@ abstract class RequestAbstract extends FormRequest
     }
 
     /**
+     * Determine if the user is not a bot to make this request.
+     *
      * @return bool
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
     protected function recaptcha()
     {
@@ -65,6 +67,11 @@ abstract class RequestAbstract extends FormRequest
         return $recaptchaResponse->success;
     }
 
+    /**
+     * ReCaptacha rule.
+     *
+     * @return array
+     */
     protected function recaptchaRule()
     {
         $isEnvironmentNeedRule = app()->environment('local')

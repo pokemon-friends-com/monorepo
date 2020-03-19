@@ -28,4 +28,6 @@ return [
     'date_format' => 'm/d/Y',
     'datetime_format' => 'm/d/Y H\hi',
 
+    'automated_requested_email' => 'This email is an automatic message sent following your request.',
+
 ];

@@ -2,8 +2,10 @@
 
 namespace template\Http\Controllers\Anonymous\Users;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use template\Http\Request\Anonymous\Contacts\ContactRequest;
+use template\Http\Request\Anonymous\Users\Leads\NewLeadRequest;
 use template\Domain\Users\Leads\Repositories\LeadsRepositoryEloquent;
 
 class LeadsController extends ControllerAbstract
@@ -16,6 +18,7 @@ class LeadsController extends ControllerAbstract
 
     /**
      * LeadsController constructor.
+     *
      * @param LeadsRepositoryEloquent $r_leads
      */
     public function __construct(LeadsRepositoryEloquent $r_leads)
@@ -24,6 +27,8 @@ class LeadsController extends ControllerAbstract
     }
 
     /**
+     * Display contact form, to record new lead.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
@@ -32,19 +37,22 @@ class LeadsController extends ControllerAbstract
             'metadata' => [
                 'title' => trans('leads.contacts'),
             ],
-            'civilities' => $this->r_leads->getCivilities()
+            'civilities' => $this->r_leads->getCivilities(),
         ]);
     }
 
     /**
-     * @param ContactRequest $request
+     * Store new lead.
+     *
+     * @param NewLeadRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(ContactRequest $request)
+    public function store(NewLeadRequest $request)
     {
         $lead = null;
-        $validator = \Validator::make($request->all(), $request->rules());
+        $validator = Validator::make($request->all(), $request->rules());
 
         if ($validator->fails()) {
             return redirect(route('anonymous.users.leads.index'))
@@ -53,8 +61,8 @@ class LeadsController extends ControllerAbstract
 
         $validatedContact = $validator->validate();
 
-        if (\Auth::check()) {
-            $lead = \Auth::user();
+        if (Auth::check()) {
+            $lead = Auth::user();
         } else {
             $lead = $this
                 ->r_leads

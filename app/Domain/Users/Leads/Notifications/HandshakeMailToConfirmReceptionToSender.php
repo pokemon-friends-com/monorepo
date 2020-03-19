@@ -71,7 +71,7 @@ class HandshakeMailToConfirmReceptionToSender extends Notification
     public function toMail($notifiable)
     {
         return (new CustomerMailMessage())
-            ->subject(trans('leads.handshake_subject', [
+            ->subject(trans('users.leads.handshake_subject', [
                 'subject' => $this->subject,
             ]))
             ->view(
@@ -91,7 +91,7 @@ class HandshakeMailToConfirmReceptionToSender extends Notification
     public function toAdministrator($notifiable)
     {
         return (new MailableMessage())
-            ->subject(trans('leads.handshake_subject', [
+            ->subject(trans('users.leads.handshake_subject', [
                 'subject' => $this->subject,
             ]))
             ->view(

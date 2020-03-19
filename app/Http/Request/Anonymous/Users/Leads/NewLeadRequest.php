@@ -1,16 +1,17 @@
 <?php
 
-namespace template\Http\Request\Anonymous\Contacts;
+namespace template\Http\Request\Anonymous\Users\Leads;
 
 use template\Infrastructure\Contracts\Request\RequestAbstract;
 
-class ContactRequest extends RequestAbstract
+class NewLeadRequest extends RequestAbstract
 {
 
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
+     * @throws \Exception
      */
     public function authorize()
     {

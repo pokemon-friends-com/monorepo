@@ -8,6 +8,8 @@ class AboutController extends ControllerAbstract
 {
 
     /**
+     * Display terms.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function terms()
