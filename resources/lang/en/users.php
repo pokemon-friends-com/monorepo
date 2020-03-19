@@ -86,6 +86,6 @@ return [
     'leads.handshake_title' => 'New contact, :civility_name',
     'leads.handshake_subject' => 'New contact, :subject',
     'leads.handshake_body_header' => 'You have just contacted us with the following message:',
-    'leads.handshake_body_footer' => 'We will respond as soon as possible. <br/> <br/> The Obsession.city team',
+    'leads.handshake_body_footer' => 'We will respond as soon as possible. <br/> <br/> The :app_name team',
 
 ];

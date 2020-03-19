@@ -27,6 +27,8 @@ class UsersController extends ControllerAbstract
     }
 
     /**
+     * Display anonymous dashboard.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function dashboard()
@@ -35,7 +37,7 @@ class UsersController extends ControllerAbstract
             'anonymous.users.users.dashboard',
             [
                 'metadata' => [
-                    'title' => 'Template www',
+                    'title' => 'Pokemon friends',
                 ],
             ]
         );

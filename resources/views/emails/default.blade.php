@@ -75,6 +75,7 @@
             background: #ffffff;
             border-radius: 3px;
             width: 100%;
+            display: block; /* pkmn-friends */
         }
 
         .wrapper {
@@ -102,6 +103,18 @@
             text-align: center;
         }
 
+        /* pkmn-friends */
+        .info {
+            clear: both;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .info p {
+            color: #999999;
+            font-size: 10px;
+        }
+        /* !pkmn-friends */
+
         /* -------------------------------------
             TYPOGRAPHY
         ------------------------------------- */
@@ -121,7 +134,6 @@
             font-size: 35px;
             font-weight: 300;
             text-align: center;
-            text-transform: capitalize;
         }
 
         p,
@@ -141,8 +153,11 @@
         }
 
         a {
-            color: #3498db;
-            text-decoration: underline;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #0056b3;
         }
 
         /* -------------------------------------
@@ -163,10 +178,10 @@
         }
         .btn a {
             background-color: #ffffff;
-            border: solid 1px #3498db;
+            border: solid 1px #007bff;
             border-radius: 5px;
             box-sizing: border-box;
-            color: #3498db;
+            color: #007bff;
             cursor: pointer;
             display: inline-block;
             font-size: 14px;
@@ -174,16 +189,15 @@
             margin: 0;
             padding: 12px 25px;
             text-decoration: none;
-            text-transform: capitalize;
         }
 
         .btn-primary table td {
-            background-color: #3498db;
+            background-color: #007bff;
         }
 
         .btn-primary a {
-            background-color: #3498db;
-            border-color: #3498db;
+            background-color: #007bff;
+            border-color: #007bff;
             color: #ffffff;
         }
 
@@ -322,11 +336,11 @@
                 line-height: inherit;
             }
             .btn-primary table td:hover {
-                background-color: #34495e !important;
+                background-color: #0069d9 !important;
             }
             .btn-primary a:hover {
-                background-color: #34495e !important;
-                border-color: #34495e !important;
+                background-color: #0069d9 !important;
+                border-color: #0062cc !important;
             }
         }
 
@@ -347,15 +361,10 @@
                         <tr>
                             <td class="content-block">
                                 <span class="apple-link"><a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a></span>
-                                <br> This email is an automatic message sent following your request.
-{{--                                <br> Don't like these emails? <a href="http://i.imgur.com/CScmqnj.gif">Unsubscribe</a>.--}}
+                                <br/>
+                                {{ trans('global.automated_requested_email') }}
                             </td>
                         </tr>
-{{--                        <tr>--}}
-{{--                            <td class="content-block powered-by">--}}
-{{--                                <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
                     </table>
                 </div>
             </div>

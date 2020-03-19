@@ -22,13 +22,13 @@
                         </div>
                     </div>
                     <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header text-white" style="background: url(/images/pokemon-banner.jpg) no-repeat center center;">
+                    <div class="widget-user-header text-white" style="background:url(images/pokemon-banner.jpg) no-repeat center center;">
                         <h3 class="widget-user-username text-left">{{ trans('pokemon.welcome') }}</h3>
                     </div>
                     <div class="widget-user-image">
                         <img class="img-circle" src="{{ asset('images/avatar.png') }}" alt="User Avatar">
                     </div>
-                    <div class="card-footer">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
@@ -46,6 +46,19 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Inscrivez-vous pour partager votre code ami et rejoindre vote communauté de dresseurs!</p>
+                                <p>L'équipe <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a> travail activement sur les prochaines fonctionnalités de votre plateforme pour votre plus grand plaisir</p>
+                            </div>
+                            <div class="col-12">
+                                <div class="alert alert-info">
+                                    <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a>, est un site communautaire qui n'est pas une filliale de Niantic.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"></div>
                     </div>
                 </div>
             </div>
@@ -139,23 +152,6 @@
                     </div>
                     {!! Form::close() !!}
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-body">
-
-                        <p>Inscrivez-vous pour partager votre code ami et rejoindre vote communauté de dresseurs!</p>
-                        <p>L'équipe <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a> travail activement sur les prochaines fonctionnalités de votre plateforme pour votre plus grand plaisir</p>
-
-                    </div>
-                </div>
-                <div class="alert alert-info">
-                    <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a>, est un site communautaire qui n'est pas une filliale de Niantic.
-                </div>
-            </div>
-            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <iframe width="100%" src="https://www.youtube.com/embed/2GNw1j7fepI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
