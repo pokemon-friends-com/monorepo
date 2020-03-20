@@ -27,6 +27,7 @@ return [
     'no_action'          => 'Aucune action',
     'date_format'        => 'd/m/Y',
     'datetime_format'    => 'd/m/Y H\hi',
+    'today' => 'Aujourd\'hui',
 
     'automated_requested_email' => 'Ce courriel est un message automatique envoyé suite à votre demande.',
 

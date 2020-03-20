@@ -2,7 +2,6 @@
 
 namespace template\Domain\Users\Leads;
 
-use template\Infrastructure\Interfaces\Domain\Users\Users\HandshakableInterface;
 use template\Infrastructure\Contracts\
 {
     Model\ModelAbstract,
@@ -12,18 +11,28 @@ use template\Infrastructure\Contracts\
     Model\SoftDeletesTz
 };
 use template\Domain\Users\Leads\Traits\HandshakeNotificationTrait;
+use template\Infrastructure\Interfaces\Domain\Users\{
+    Users\HandshakableInterface,
+    Users\UserCivilitiesInterface,
+    Users\UserGendersInterface
+};
 use template\Domain\Users\Users\
 {
     User,
-    Traits\NamableTrait
+    Traits\NamableTrait,
+    Traits\GenrableTrait
 };
 
-class Lead extends ModelAbstract implements HandshakableInterface
+class Lead extends ModelAbstract implements
+    UserCivilitiesInterface,
+    UserGendersInterface,
+    HandshakableInterface
 {
     use Notifiable;
     use IdentifiableTrait;
     use HandshakeNotificationTrait;
     use NamableTrait;
+    use GenrableTrait;
     use TimeStampsTz;
     use SoftDeletesTz;
 

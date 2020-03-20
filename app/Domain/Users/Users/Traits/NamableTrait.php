@@ -6,11 +6,11 @@ trait NamableTrait
 {
 
     /**
-     * Get the lead's full name.
+     * Get the full name of namable entity.
      *
      * @return string
      */
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return sprintf(
             '%s %s',
@@ -20,15 +20,19 @@ trait NamableTrait
     }
 
     /**
-     * Get the lead's civility name.
+     * Get the civility name of namable entity.
      *
      * @return string
      */
-    public function getCivilityNameAttribute()
+    public function getCivilityNameAttribute(): string
     {
+        if (self::CIVILITY_UNDEFINED === $this->civility) {
+            return $this->getFullNameAttribute();
+        }
+
         return sprintf(
             '%s %s %s',
-            trans('users.civility.' . $this->civility),
+            trans("users.civility.{$this->civility}"),
             ucfirst(strtolower($this->last_name)),
             ucfirst(strtolower($this->first_name))
         );

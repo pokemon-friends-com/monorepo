@@ -8,6 +8,7 @@ use template\Domain\Users\Profiles\Profile;
 use template\Infrastructure\Interfaces\Domain\Users\{
     Users\HandshakableInterface,
     Users\UserCivilitiesInterface,
+    Users\UserGendersInterface,
     Users\UserRolesInterface
 };
 use template\Infrastructure\Interfaces\Domain\{
@@ -33,11 +34,13 @@ use template\Domain\Users\Users\
 {
     Notifications\CreatedAccountByAdministrator,
     Notifications\ResetPassword,
-    Traits\NamableTrait
+    Traits\NamableTrait,
+    Traits\GenrableTrait
 };
 
 class User extends AuthenticatableModelAbstract implements
     UserCivilitiesInterface,
+    UserGendersInterface,
     UserRolesInterface,
     LocalesInterface,
     TimeZonesInterface,
@@ -49,6 +52,7 @@ class User extends AuthenticatableModelAbstract implements
     use SoftDeletes;
     use HandshakeNotificationTrait;
     use NamableTrait;
+    use GenrableTrait;
     use ProfileableTrait;
     use RouteKeyNameUniquidTrait;
     use TimeStampsTz;

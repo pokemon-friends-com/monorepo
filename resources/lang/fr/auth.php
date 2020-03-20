@@ -16,6 +16,7 @@ return [
     'throttle' => 'Tentatives de connexion trop nombreuses. Veuillez essayer de nouveau dans :seconds secondes.',
 
     'register' => 'S\'inscrire',
+    'registration' => 'Inscription',
     'register_baseline' => 'Formulaire d\'inscription',
     'remember_me' => 'Se souvenir de moi',
 

@@ -151,11 +151,11 @@ interface UsersRepositoryInterface extends RepositoryInterface
     public function getPaginatedAndFilteredUsers(RequestAbstract $request): array;
 
     /**
-     * @param $id
+     * @param int $id
      *
      * @return array
      */
-    public function getUser($id): array;
+    public function getUser(int $id): array;
 
     /**
      * @param User $currentUser

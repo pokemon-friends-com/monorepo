@@ -2,8 +2,10 @@
 
 namespace template\Http\Controllers\Administrator\Users;
 
+use Carbon\Carbon;
 use League\Csv\Writer;
 use Illuminate\Support\Facades\Auth;
+use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 use template\Domain\Users\Users\User;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use template\Http\Request\Administrator\Users\Users\
@@ -17,18 +19,27 @@ class UsersController extends ControllerAbstract
 {
 
     /**
-     * @var null
+     * @var null|UsersRepositoryEloquent
      */
     protected $r_users = null;
+
+    /**
+     * @var null|ProfilesRepositoryEloquent
+     */
+    protected $r_profiles = null;
+
 
     /**
      * UsersController constructor.
      *
      * @param UsersRepositoryEloquent $r_users
      */
-    public function __construct(UsersRepositoryEloquent $r_users)
-    {
+    public function __construct(
+        UsersRepositoryEloquent $r_users,
+        ProfilesRepositoryEloquent $r_profiles
+    ) {
         $this->r_users = $r_users;
+        $this->r_profiles = $r_profiles;
     }
 
     /**
@@ -144,9 +155,10 @@ class UsersController extends ControllerAbstract
     /**
      * Show the form for editing the specified resource.
      *
-     * @param integer $id User id
+     * @param User $user
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function edit(User $user)
     {
@@ -158,6 +170,13 @@ class UsersController extends ControllerAbstract
             'roles' => $this->r_users->getRoles(),
             'locales' => $this->r_users->getLocales(),
             'timezones' => $this->r_users->getTimezones(),
+            'teams' => $this->r_profiles->getTeamsColors(),
+            'families_situations' => $this
+                ->r_profiles
+                ->getFamilySituations()
+                ->mapWithKeys(function ($item) {
+                    return [$item => trans("users.profiles.family_situation.{$item}")];
+                }),
         ]);
     }
 
@@ -186,7 +205,18 @@ class UsersController extends ControllerAbstract
                     ],
                     $user->id
                 )
-                ->updateProfile();
+                ->updateProfile([
+                    'birth_date' => $request->has('birth_date')
+                        ? Carbon::createFromFormat(
+                            trans('global.date_format'),
+                            $request->get('birth_date')
+                        )->format('Y-m-d')
+                        : null,
+                    'family_situation' => $request->get('family_situation'),
+                    'maiden_name' => $request->get('maiden_name'),
+                    'friend_code' => $request->get('friend_code'),
+                    'team_color' => $request->get('team_color'),
+                ]);
         } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
             app('sentry')->captureException($exception);
         }

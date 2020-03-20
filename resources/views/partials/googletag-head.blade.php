@@ -5,7 +5,7 @@
     'user': '{{ Auth::check() ? Auth::user()->uniqid : 'anonymous' }}',
     'locale': '{{ Session::get('locale') }}',
     'timezone': '{{ Session::get('timezone') }}',
-    'gender': '{{ Auth::check() ? (in_array(Auth::user()->civility, \template\Infrastructure\Interfaces\Domain\Users\Users\UserCivilitiesInterface::GENDER_FEMALE_CIVILITIES) ? 'female' : 'male') : 'undefined' }}',
+    'gender': '{{ Auth::check() ? Auth::user()->gender : \template\Infrastructure\Interfaces\Domain\Users\Users\UserGendersInterface::GENDER_UNDEFINED }}',
   }];
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l]
   .push({'gtm.start': new Date().getTime(),event:'gtm.js'});

@@ -81,6 +81,6 @@ class LeadsController extends ControllerAbstract
             );
 
         return redirect(route('anonymous.contact.index'))
-            ->with('message-success', trans('frontend/contacts.alert_send_success'));
+            ->with('message-success', trans('users.leads.handshake_sent_success'));
     }
 }

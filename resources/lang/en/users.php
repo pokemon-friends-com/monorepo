@@ -60,10 +60,13 @@ return [
     'profiles.providers_tokens' => 'Lier vos comptes sociaux',
     'profiles.edit.title' => 'Profil utilisateur',
     'profiles.friend_code' => 'Friend code',
-    'profiles.team_color' => 'Couleur d\'équipe',
+    'profiles.team_color' => 'Team color',
     'profiles.teams_colors.blue' => 'Mystic, blue team',
     'profiles.teams_colors.red' => 'Valor, red team',
     'profiles.teams_colors.yellow' => 'Instinct, yellow team',
+
+    'reports.title' => 'Reports',
+    'reports.no_report' => 'No report',
 
     'leads.title' => 'Leads',
     'leads.transformed_user' => 'Transformed user',
@@ -87,5 +90,6 @@ return [
     'leads.handshake_subject' => 'New contact, :subject',
     'leads.handshake_body_header' => 'You have just contacted us with the following message:',
     'leads.handshake_body_footer' => 'We will respond as soon as possible. <br/> <br/> The :app_name team',
+    'leads.handshake_sent_success' => 'Your message has been sent',
 
 ];

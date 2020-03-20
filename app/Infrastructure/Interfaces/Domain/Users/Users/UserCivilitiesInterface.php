@@ -7,6 +7,7 @@ interface UserCivilitiesInterface
     const CIVILITY_MADAM = 'madam';
     const CIVILITY_MISS = 'miss';
     const CIVILITY_MISTER = 'mister';
+    const CIVILITY_UNDEFINED = 'undefined';
 
     const CIVILITIES = [
         self::CIVILITY_MADAM,
