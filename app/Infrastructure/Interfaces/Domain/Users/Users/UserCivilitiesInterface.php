@@ -13,4 +13,13 @@ interface UserCivilitiesInterface
         self::CIVILITY_MISS,
         self::CIVILITY_MISTER,
     ];
+
+    const GENDER_MALE_CIVILITIES = [
+        self::CIVILITY_MISTER,
+    ];
+
+    const GENDER_FEMALE_CIVILITIES = [
+        self::CIVILITY_MADAM,
+        self::CIVILITY_MISS,
+    ];
 }
