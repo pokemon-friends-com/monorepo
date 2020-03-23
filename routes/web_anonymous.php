@@ -31,7 +31,7 @@ Route::group(
             Route::resource('contact', 'LeadsController')->middleware(ProtectAgainstSpam::class);
         });
 
-        if (!app()->environment('local')) {
+        if (!app()->environment('local') && !app()->environment('testing')) {
             Route::get('/debug-sentry', function () {
                 throw new Exception('debug Sentry error!');
             });
