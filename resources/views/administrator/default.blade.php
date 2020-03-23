@@ -26,7 +26,7 @@
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('images/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset('images/avatar.png') }}" class="img-circle elevation-2" alt="{{ Auth::user()->full_name }}">
                 </div>
                 <div class="info">
                     <a href="{{ route('administrator.users.profiles.edit', ['id' => Auth::user()->uniqid]) }}" class="d-block">{{ Auth::user()->full_name }}</a>
@@ -37,7 +37,7 @@
                     <li class="nav-item">
                         <a href="{{ route('administrator.users.dashboard') }}" class="nav-link @if (Route::currentRouteNamed('administrator.users.dashboard')) active @endif">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Dashboard</p>
+                            <p>{{ trans('users.dashboard') }}</p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview @if (
@@ -83,58 +83,23 @@
                             <p>{{ trans('files.title') }}</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('administrator.settings.index') }}" class="nav-link @if (Route::currentRouteNamed('administrator.settings.index')) active @endif">
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p>{{ trans('settings.title') }}</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </aside>
     <div class="content-wrapper">
-        @if (Session::has('message-success'))
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row pt-2 pb-2">
-                    <div class="col-12">
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            {!! trans(Session::get('message-success')) !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        @endif
-        @if (Session::has('message-error'))
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row pt-2 pb-2">
-                    <div class="col-12">
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            {!! trans(Session::get('message-error')) !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        @endif
-        @if (Session::has('message-warning'))
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row pt-2 pb-2">
-                    <div class="col-12">
-                        <div class="alert alert-warning alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            {!! trans(Session::get('message-warning')) !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        @endif
+        @include('partials.session-message')
         @yield('content')
     </div>
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            {!! trans('global.version', ['version' => env('APP_VERSION')]) !!}
+            {!! trans('global.environment', ['environment' => config('app.env')]) !!}
         </div>
         <span class="mr-0">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span>
     </footer>

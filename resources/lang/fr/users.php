@@ -8,6 +8,7 @@ return [
 	'civility.miss' => 'Mademoiselle',
 	'civility.mister' => 'Monsieur',
     'civility_name'      => 'Nom civile',
+    'full_name'      => 'Nom complet',
 
 	'roles' => 'Rôles',
 	'role' => 'Rôle',
@@ -48,6 +49,10 @@ return [
 	'message_deleted_success' => "L'utilisateur a bien été supprimé",
 	'message_password_reset_success' => "Le mot de passe a bien été changé",
 	'message_user_tried_to_delete_his_own_account_error' => 'Vous ne pouvez pas supprimer votre propre compte utilisateur',
+
+    'created_account_by_administrator_subject' => 'Votre compte vient d\'être créé',
+    'created_account_by_administrator_text_reset_password' => 'Votre compte utilisateur vient d\'être créé et est disponible dès maintenant.<br/>Vous devez mettre à jour votre mot de passe pour l\'utiliser.',
+    'created_account_by_administrator_text_login' => 'Une fois votre mot de passe mis à jour, utiliser le bouton ci-dessous pour vous connecter.',
 
     'profiles.family_situation' => 'Situation familiale',
     'profiles.family_situation.single' => 'Célibataire',

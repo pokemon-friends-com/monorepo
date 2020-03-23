@@ -20,14 +20,43 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-3">
+                <div class="card">
+                    {!! Form::open(['route' => ['administrator.users.index'], 'method' => 'GET']) !!}
+                    <div class="card-header">{{ trans('global.filters') }}</div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <input type="text" class="form-control {{ $errors && $errors->has('full_name') ? 'is-invalid' : '' }}" id="full_name" placeholder="{{ trans('users.full_name') }}" name="full_name" value="{{ old('full_name', $f_full_name) }}">
+                            @if ($errors && $errors->has('full_name'))
+                                <div class="text-danger text-sm">{{ $errors->first('full_name') }}</div>
+                            @endif
+                        </div>
+                        <div class="form-group row">
+                            <input type="text" class="form-control {{ $errors && $errors->has('email') ? 'is-invalid' : '' }}" id="email" placeholder="{{ trans('users.email') }}" name="email" value="{{ old('email', $f_email) }}">
+                            @if ($errors && $errors->has('email'))
+                                <div class="text-danger text-sm">{{ $errors->first('email') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-sm" type="submit">{{ trans('global.filter') }}</button>
+                    </div>
+                    {{ Form::close() }}
+                </div>
+                <div class="card">
+                    <div class="card-header">{{ trans('global.actions') }}</div>
+                    <div class="card-body">
+                        <a href="{{ route('administrator.users.export', ['full_name' => $f_full_name, 'email' => $f_email]) }}" class="btn btn-secondary btn-sm btn-block elevation-1">
+                            <i class="fa fa-file-excel mr-2"></i>{!! trans('global.export') !!}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
                 @if ($users['meta']['pagination']['total'])
                 <div class="card">
                     <div class="card-header">
                         <div class="card-tools">
-                            <a href="{{ route('administrator.users.export') }}" class="btn btn-secondary btn-sm elevation-1">
-                                <i class="fa fa-file-excel mr-2"></i>{!! trans('global.export') !!}
-                            </a>
                             <a href="{{ route('administrator.users.create') }}" class="btn btn-primary btn-sm elevation-1">
                                 <i class="fa fa-user-plus mr-2"></i>{!! trans('global.add') !!}
                             </a>
@@ -37,17 +66,15 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th class="text-center w-15">{!! trans('global.id') !!}</th>
                                 <th class="text-center w-5"><i class="far fa-user-circle" title="{{ trans('users.leads.transformed_user') }}"></i></th>
                                 <th class="text-center w-25">{!! trans('users.civility_name') !!}</th>
-                                <th class="text-center w-25">{!! trans('users.email') !!}</th>
-                                <th class="text-center w-30">{!! trans('global.actions') !!}</th>
+                                <th class="text-center w-30">{!! trans('users.email') !!}</th>
+                                <th class="text-center w-40">{!! trans('global.actions') !!}</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach ($users['data'] as $user)
                             <tr>
-                                <td class="align-middle text-center">{{ $user['identifier'] }}</td>
                                 <td class="align-middle text-center">
                                     @if ($user['lead']['is_lead'])
                                     <i class="fa fa-user-circle-o" title="{{ trans('users.leads.transformed_user') }}"></i>
@@ -56,7 +83,7 @@
                                 <td class="align-middle text-center">
                                     <a href="{{ route('administrator.users.show', ['id' => $user['identifier']]) }}">{{ $user['civility_name'] }}</a>
                                 </td>
-                                <td class="align-middle text-center">{{ $user['email'] }}</td>
+                                <td class="align-middle text-center"><a href="mailto:{{ $user['email'] }}">{{ $user['email'] }}</a></td>
                                 <td class="align-middle text-right">
                                     @canImpersonate
                                     @if ($user['impersonation']['can_be_impersonated'])

@@ -192,6 +192,7 @@ return [
         /*
          * Package Service Providers...
          */
+        abenevaut\Settings\App\Providers\SettingsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -252,6 +253,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Settings'  => abenevaut\Settings\App\Facades\SettingsFacade::class,
 
     ],
 

@@ -8,6 +8,7 @@ return [
 	'civility.miss' => 'Miss',
 	'civility.mister' => 'Mister',
     'civility_name'      => 'Civility name',
+    'full_name'      => 'Full name',
 
 	'roles' => 'Roles',
 	'role' => 'Role',
@@ -48,6 +49,10 @@ return [
 	'message_deleted_success' => "User has been deleted",
     'message_password_reset_success' => "Password has been successfully changed",
 	'message_user_tried_to_delete_his_own_account_error' => 'You cannot delete your own user account',
+
+    'created_account_by_administrator_subject' => 'Your account has just been created',
+    'created_account_by_administrator_text_reset_password' => 'Your user account has just been created and is available now.<br/>You must update your password to use it.',
+    'created_account_by_administrator_text_login' => 'Once your password is updated, use the button below to login.',
 
     'profiles.family_situation' => 'Situation familiale',
     'profiles.family_situation.single' => 'Célibataire',

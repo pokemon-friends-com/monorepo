@@ -81,39 +81,39 @@ interface UsersRepositoryInterface extends RepositoryInterface
     /**
      * Filter users by uniqid.
      *
-     * @param string $uniqid The user uniqid
+     * @param string|null $uniqid The user uniqid
      *
      * @return self
      */
-    public function filterByUniqueId(string $uniqid): self;
+    public function filterByUniqueId(?string $uniqid): self;
 
     /**
      * Filter users by uniqid different than the one as argument.
      *
-     * @param string $uniqid The user uniqid
+     * @param string|null $uniqid The user uniqid
      *
      * @return UsersRepositoryEloquent
      */
-    public function filterByUniqueIdDifferentThan(string $uniqid): self;
+    public function filterByUniqueIdDifferentThan(?string $uniqid): self;
 
     /**
      *
      * Filter users by name.
      *
-     * @param string $name The user last name or lead first name
+     * @param string|null $name The user last name or lead first name
      *
      * @return UsersRepositoryEloquent
      */
-    public function filterByName(string $name): self;
+    public function filterByName(?string $name): self;
 
     /**
      * Filter users by emails.
      *
-     * @param string $email The user email
+     * @param string|null $email The user email
      *
      * @return UsersRepositoryEloquent
      */
-    public function filterByEmail(string $email): self;
+    public function filterByEmail(?string $email): self;
 
     /**
      * Create a new user.

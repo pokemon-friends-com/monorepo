@@ -20,6 +20,7 @@ Route::group(
         'middleware' => ['auth', 'role:'.\template\Domain\Users\Users\User::ROLE_ADMINISTRATOR],
     ],
     function () {
+        Route::resource('settings', 'Settings\SettingsController', ['only' => ['index', 'store']]);
         Route::group(['namespace' => 'Files'], function () {
             Route::get('files', ['as' => 'files.index', 'uses' => 'FilesController@index']);
             Route::any('files/connector', ['as' => 'files.connector', 'uses' => 'FilesController@connector']);

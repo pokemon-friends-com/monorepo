@@ -2,6 +2,7 @@
 
 namespace template\Http\Controllers\Auth;
 
+use GuzzleHttp\Client as GuzzleHttpClient;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
@@ -60,6 +61,25 @@ class RegisterController extends ControllerAbstract
      */
     protected function validator(array $data)
     {
+        if (
+            !app()->environment('local')
+            && !app()->environment('testing')
+        ) {
+            $remoteUrl = sprintf(
+                'https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s&remoteip=%s',
+                config('services.google_recaptcha.serverkey'),
+                $data['g-recaptcha-response'],
+                $_SERVER['REMOTE_ADDR']
+            );
+
+            $response = (new GuzzleHttpClient())
+                ->request('GET', $remoteUrl);
+
+            if (200 !== $response->getStatusCode()) {
+                abort(403, 'Recaptcha verification failed!');
+            }
+        }
+
         return $this->r_users->registrationValidator($data);
     }
 

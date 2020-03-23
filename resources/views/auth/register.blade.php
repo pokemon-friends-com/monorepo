@@ -79,6 +79,12 @@
                 <div class="text-danger text-sm">{{ $errors->first('password_confirmation') }}</div>
             @endif
         </div>
+        <div class="form-group">
+            <google-recaptcha-component></google-recaptcha-component>
+            @if ($errors && $errors->has('g-recaptcha-response'))
+                <span class="text-danger text-sm">{{ $errors->first('g-recaptcha-response') }}</span>
+            @endif
+        </div>
         <div class="sm-p-t-10 clearfix"></div>
         <div class="row">
             <div class="col-12">

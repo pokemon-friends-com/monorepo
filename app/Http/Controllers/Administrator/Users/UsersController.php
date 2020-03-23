@@ -10,7 +10,7 @@ use template\Domain\Users\Users\User;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use template\Http\Request\Administrator\Users\Users\
 {
-    UserFormRequest,
+    UserUpdateFormRequest,
     UsersFiltersFormRequest
 };
 use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
@@ -19,20 +19,20 @@ class UsersController extends ControllerAbstract
 {
 
     /**
-     * @var null|UsersRepositoryEloquent
+     * @var UsersRepositoryEloquent
      */
-    protected $r_users = null;
+    protected $r_users;
 
     /**
-     * @var null|ProfilesRepositoryEloquent
+     * @var ProfilesRepositoryEloquent
      */
-    protected $r_profiles = null;
-
+    protected $r_profiles;
 
     /**
      * UsersController constructor.
      *
      * @param UsersRepositoryEloquent $r_users
+     * @param ProfilesRepositoryEloquent $r_profiles
      */
     public function __construct(
         UsersRepositoryEloquent $r_users,
@@ -43,17 +43,13 @@ class UsersController extends ControllerAbstract
     }
 
     /**
+     * Current user dashboard.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function dashboard()
     {
-        try {
-            return view('administrator.users.users.dashboard', []);
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return abort('404');
+        return view('administrator.users.users.dashboard');
     }
 
     /**
@@ -61,19 +57,23 @@ class UsersController extends ControllerAbstract
      *
      * @param UsersFiltersFormRequest $request
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function index(UsersFiltersFormRequest $request)
     {
-        try {
-            $users = $this->r_users->getPaginatedUsers();
+        $f_email = $request->get('email');
+        $f_full_name = $request->get('full_name');
+        $users = $this
+            ->r_users
+            ->filterByEmail($f_email)
+            ->filterByName($f_full_name)
+            ->getPaginatedUsers();
 
-            return view('administrator.users.users.index', ['users' => $users]);
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return abort('404');
+        return view(
+            'administrator.users.users.index',
+            compact('users', 'f_email', 'f_full_name')
+        );
     }
 
     /**
@@ -82,74 +82,61 @@ class UsersController extends ControllerAbstract
      * @param User $user
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function show(User $user)
     {
-        try {
-            $user = $this->r_users->getUser($user->id);
+        $user = $this->r_users->getUser($user->id);
 
-            return view('administrator.users.users.show', ['user' => $user]);
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return abort('404');
+        return view(
+            'administrator.users.users.show',
+            compact('user')
+        );
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        try {
-            return view(
-                'administrator.users.users.create',
-                [
-                    'civilities' => $this->r_users->getCivilities(),
-                    'roles' => $this->r_users->getRoles(),
-                    'locales' => $this->r_users->getLocales(),
-                    'locale' => User::DEFAULT_LOCALE,
-                    'timezones' => $this->r_users->getTimezones(),
-                    'timezone' => User::DEFAULT_TZ,
-                ]
-            );
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return abort('404');
+        return view(
+            'administrator.users.users.create',
+            [
+                'civilities' => $this->r_users->getCivilities(),
+                'roles' => $this->r_users->getRoles(),
+                'locales' => $this->r_users->getLocales(),
+                'locale' => User::DEFAULT_LOCALE,
+                'timezones' => $this->r_users->getTimezones(),
+                'timezone' => User::DEFAULT_TZ,
+            ]
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param UserFormRequest $request
+     * @param UserUpdateFormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(UserFormRequest $request)
+    public function store(UserUpdateFormRequest $request)
     {
-        try {
-            $this
-                ->r_users
-                ->createUser(
-                    $request->get('civility'),
-                    $request->get('first_name'),
-                    $request->get('last_name'),
-                    $request->get('email'),
-                    $request->get('role'),
-                    $request->get('locale'),
-                    $request->get('timezone')
-                );
+        $this
+            ->r_users
+            ->createUser(
+                $request->get('civility'),
+                $request->get('first_name'),
+                $request->get('last_name'),
+                $request->get('email'),
+                $request->get('role'),
+                $request->get('locale'),
+                $request->get('timezone')
+            );
 
-            return redirect(route('administrator.users.users.index'));
-        } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return abort('404');
+        return redirect(route('administrator.users.index'));
     }
 
     /**
@@ -164,32 +151,39 @@ class UsersController extends ControllerAbstract
     {
         $user = $this->r_users->getUser($user->id);
 
-        return view('administrator.users.users.edit', [
-            'user' => $user,
-            'civilities' => $this->r_users->getCivilities(),
-            'roles' => $this->r_users->getRoles(),
-            'locales' => $this->r_users->getLocales(),
-            'timezones' => $this->r_users->getTimezones(),
-            'teams' => $this->r_profiles->getTeamsColors(),
-            'families_situations' => $this
-                ->r_profiles
-                ->getFamilySituations()
-                ->mapWithKeys(function ($item) {
-                    return [$item => trans("users.profiles.family_situation.{$item}")];
-                }),
-        ]);
+        return view(
+            'administrator.users.users.edit',
+            [
+                'user' => $user,
+                'roles' => $this->r_users->getRoles(),
+                'civilities' => $this->r_users->getCivilities(),
+                'locales' => $this->r_users->getLocales(),
+                'timezones' => $this->r_users->getTimezones(),
+                'teams' => $this->r_profiles->getTeamsColors(),
+                'families_situations' => $this
+                    ->r_profiles
+                    ->getFamilySituations()
+                    ->mapWithKeys(function ($item) {
+                        return [
+                            $item => trans("users.profiles.family_situation.{$item}")
+                        ];
+                    }),
+            ]
+        );
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param User $user
-     * @param UserFormRequest $request
+     * @param UserUpdateFormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(User $user, UserFormRequest $request)
+    public function update(User $user, UserUpdateFormRequest $request)
     {
+        $redirect_to = redirect(route('administrator.users.index'));
+
         try {
             $this
                 ->r_users
@@ -219,9 +213,10 @@ class UsersController extends ControllerAbstract
                 ]);
         } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
             app('sentry')->captureException($exception);
+            $redirect_to->withException($exception);
         }
 
-        return redirect(route('administrator.users.index'));
+        return $redirect_to;
     }
 
     /**
@@ -243,11 +238,23 @@ class UsersController extends ControllerAbstract
     }
 
     /**
-     * Export resources from storage.
+     * Export filtered resources.
+     *
+     * @param UsersFiltersFormRequest $request
+     *
+     * @throws \League\Csv\CannotInsertRecord
+     * @throws \League\Csv\Exception
      */
-    public function export()
+    public function export(UsersFiltersFormRequest $request)
     {
-        $this->r_users->with(['lead']);
+        $f_email = $request->get('email');
+        $f_full_name = $request->get('full_name');
+
+        $this
+            ->r_users
+            ->filterByEmail($f_email)
+            ->filterByName($f_full_name)
+            ->with(['lead']);
 
         $fd = fopen('php://output', 'w');
         $csv = Writer::createFromStream($fd);

@@ -24,11 +24,9 @@ class UsersFiltersFormRequest extends RequestAbstract
      */
     public function rules()
     {
-        $rules = [
-            'name' => 'max:255',
+        return [
+            'full_name' => 'max:255',
             'email' => 'max:255',
         ];
-
-        return $rules;
     }
 }
