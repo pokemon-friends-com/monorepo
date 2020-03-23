@@ -23,9 +23,9 @@ class ResetPasswordController extends ControllerAbstract
     */
 
     /**
-     * @var UsersResetPasswordRepositoryEloquent|null
+     * @var UsersResetPasswordRepositoryEloquent
      */
-    protected $r_users = null;
+    protected $r_users;
 
     /**
      * Create a new controller instance.

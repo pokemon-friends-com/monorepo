@@ -2,10 +2,11 @@
 
 namespace template\Http\Request\Administrator\Users\Users;
 
+use template\Domain\Users\Profiles\ProfilesTeamsColors;
 use template\Infrastructure\Contracts\Request\RequestAbstract;
 use template\Domain\Users\Users\User;
 
-class UserFormRequest extends RequestAbstract
+class UserUpdateFormRequest extends RequestAbstract
 {
 
     /**
@@ -25,19 +26,10 @@ class UserFormRequest extends RequestAbstract
      */
     public function rules()
     {
-        $id = $this->method() === 'PUT'  // only if updating
-            ? $this->segment(3)
-            : 0;
-
-        $rules = [
+        return [
             'first_name' => 'required|max:100',
             'last_name' => 'required|max:100',
-            'email' => 'required|email|max:80|unique:users,email'
-                . (
-                (($this->method() === 'PUT') && ($id > 0))
-                    ? ',' . $id
-                    : ''
-                ),
+            'email' => "required|email|max:80|unique:users,email,{$this->segment(3)},uniqid",
             'role' => 'required|in:'
                 . User::ROLE_ADMINISTRATOR . ','
                 . User::ROLE_CUSTOMER . ','
@@ -48,8 +40,10 @@ class UserFormRequest extends RequestAbstract
                 . User::CIVILITY_MISTER,
             'locale' => 'required|in:' . collect(User::LOCALES)->implode(','),
             'timezone' => 'required|in:' . collect(timezones())->implode(','),
+            'team_color' => 'in:'
+                . ProfilesTeamsColors::RED . ','
+                . ProfilesTeamsColors::BLUE . ','
+                . ProfilesTeamsColors::YELLOW,
         ];
-
-        return $rules;
     }
 }

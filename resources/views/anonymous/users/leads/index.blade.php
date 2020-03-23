@@ -35,12 +35,12 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <select name="civility" id="civility" class="form-control" {{ Auth::check() ? 'readonly' : '' }}>
-                                        @foreach ($civilities as $key => $trans)
+                                        @foreach ($civilities as $key)
                                         <option
                                                 value="{{ $key }}"
                                                 @if (Auth::check() && $key === Auth::user()->civility) selected="selected" @endif
                                         >
-                                            {{ $trans }}
+                                            {{ trans("users.civility.{$key}") }}
                                         </option>
                                         @endforeach
                                     </select>

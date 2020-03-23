@@ -114,23 +114,16 @@ class UsersRepositoryEloquentTest extends TestCase
         $this->assertEquals(
             [
                 User::ROLE_ADMINISTRATOR,
+                User::ROLE_CUSTOMER,
                 User::ROLE_ACCOUNTANT,
-                User::ROLE_CUSTOMER
             ],
-            $this->r_users->getRoles()->keys()->toArray()
+            $this->r_users->getRoles()->toArray()
         );
     }
 
     public function testCivilities()
     {
-        $this->assertEquals(
-            [
-                User::CIVILITY_MADAM,
-                User::CIVILITY_MISS,
-                User::CIVILITY_MISTER
-            ],
-            $this->r_users->getCivilities()->keys()->toArray()
-        );
+        $this->assertEquals(User::CIVILITIES, $this->r_users->getCivilities()->toArray());
     }
 
     public function testLocales()

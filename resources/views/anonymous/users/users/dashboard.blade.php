@@ -21,8 +21,7 @@
                             {{ trans('global.beta') }}
                         </div>
                     </div>
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header text-white" style="background:url(images/pokemon-banner.jpg) no-repeat center center;">
+                    <div class="widget-user-header text-white" style="background:url(/images/pokemon-banner.jpg) no-repeat center center;">
                         <h3 class="widget-user-username text-left">{{ trans('pokemon.welcome') }}</h3>
                     </div>
                     <div class="widget-user-image">
@@ -139,6 +138,12 @@
                             </div>
                             @if ($errors && $errors->has('password_confirmation'))
                                 <div class="text-danger text-sm">{{ $errors->first('password_confirmation') }}</div>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <google-recaptcha-component></google-recaptcha-component>
+                            @if ($errors && $errors->has('g-recaptcha-response'))
+                                <span class="text-danger text-sm">{{ $errors->first('g-recaptcha-response') }}</span>
                             @endif
                         </div>
                         <div class="sm-p-t-10 clearfix"></div>

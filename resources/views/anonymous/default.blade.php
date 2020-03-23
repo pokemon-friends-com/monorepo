@@ -62,6 +62,7 @@
         </div>
     </nav>
     <div class="content-wrapper">
+        @include('partials.session-message')
         @yield('content')
     </div>
     <footer class="main-footer">

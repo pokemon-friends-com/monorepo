@@ -78,14 +78,7 @@ class LeadsRepositoryEloquentTest extends TestCase
 
     public function testGetCivilities()
     {
-        $this->assertEquals(
-            [
-                User::CIVILITY_MADAM,
-                User::CIVILITY_MISS,
-                User::CIVILITY_MISTER
-            ],
-            $this->r_leads->getCivilities()->keys()->toArray()
-        );
+        $this->assertEquals(User::CIVILITIES, $this->r_leads->getCivilities()->toArray());
     }
 
     public function testAllWithTrashed()

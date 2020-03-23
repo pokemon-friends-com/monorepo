@@ -151,19 +151,32 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
      */
     public function qualifyLead($civility, $first_name, $last_name, $email): Lead
     {
-        $lead = $this->findByField('email', $email);
+        $lead = $this
+            ->with('user')
+            ->findByField('email', $email);
 
         if (0 === $lead->count()) {
-            return $this
+            $lead = $this
                 ->create([
                     'civility' => $civility,
                     'first_name' => $first_name,
                     'last_name' => $last_name,
                     'email' => $email,
                 ]);
+        } else {
+            $lead = $lead->first();
         }
 
-        return $lead->first();
+        if (!$lead->user) {
+            $user = $this->r_users->findByField('email', $email, ['id']);
+
+            if ($user->first()) {
+                $lead->user_id = $user->first()->id;
+                $lead->save();
+            }
+        }
+
+        return $lead;
     }
 
     /**

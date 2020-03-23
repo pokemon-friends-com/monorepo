@@ -54,7 +54,7 @@ class CreatedAccountByAdministrator extends Notification
     public function toMail($notifiable)
     {
         return (new CustomerMailMessage())
-            ->subject(trans('mails.created_account_by_administrator_subject'))
+            ->subject(trans('users.created_account_by_administrator_subject'))
             ->view(
                 'emails.users.users.created_account_by_administrator',
                 ['civility_name' => $this->user->civility_name]

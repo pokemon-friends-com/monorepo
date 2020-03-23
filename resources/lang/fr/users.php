@@ -8,6 +8,7 @@ return [
 	'civility.miss' => 'Mademoiselle',
 	'civility.mister' => 'Monsieur',
     'civility_name'      => 'Nom civile',
+    'full_name'      => 'Nom complet',
 
 	'roles' => 'Rôles',
 	'role' => 'Rôle',
@@ -49,6 +50,10 @@ return [
 	'message_password_reset_success' => "Le mot de passe a bien été changé",
 	'message_user_tried_to_delete_his_own_account_error' => 'Vous ne pouvez pas supprimer votre propre compte utilisateur',
 
+    'created_account_by_administrator_subject' => 'Votre compte vient d\'être créé',
+    'created_account_by_administrator_text_reset_password' => 'Votre compte utilisateur vient d\'être créé et est disponible dès maintenant.<br/>Vous devez mettre à jour votre mot de passe pour l\'utiliser.',
+    'created_account_by_administrator_text_login' => 'Une fois votre mot de passe mis à jour, utiliser le bouton ci-dessous pour vous connecter.',
+
     'profiles.family_situation' => 'Situation familiale',
     'profiles.family_situation.single' => 'Célibataire',
     'profiles.family_situation.married' => 'Marié(e)',
@@ -60,10 +65,13 @@ return [
     'profiles.providers_tokens' => 'Lier vos comptes sociaux',
     'profiles.edit.title' => 'Profil utilisateur',
     'profiles.friend_code' => 'Code ami',
-    'profiles.team_color' => 'Team color',
+    'profiles.team_color' => 'Couleur d\'équipe',
     'profiles.teams_colors.blue' => 'Sagesse, équipe bleu',
     'profiles.teams_colors.red' => 'Bravoure, équipe rouge',
     'profiles.teams_colors.yellow' => 'Intuition, équipe jaune',
+
+    'reports.title' => 'Rapports',
+    'reports.no_report' => 'Aucun rapport',
 
     'leads.title' => 'Leads',
     'leads.transformed_user' => 'Transformed user',
@@ -87,5 +95,6 @@ return [
     'leads.handshake_subject' => 'Nouvelle prise de contact, :subject',
     'leads.handshake_body_header' => 'Vous venez de nous contacter avec le message suivant :',
     'leads.handshake_body_footer' => 'Nous y repondrons dans les plus brefs délais.<br/><br/>L\'équipe :app_name',
+    'leads.handshake_sent_success' => 'Votre message a bien été envoyé',
 
 ];

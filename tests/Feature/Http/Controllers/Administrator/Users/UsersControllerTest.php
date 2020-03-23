@@ -70,6 +70,7 @@ class UsersControllerTest extends TestCase
     {
         $this->actingAsAdministrator();
         $user = factory(User::class)->create();
+        factory(Profile::class)->create(['user_id' => $user->id]);
         $this
             ->assertAuthenticated()
             ->get("/administrator/users/{$user->uniqid}/edit")

@@ -42,6 +42,12 @@
             <div class="text-danger text-sm">{{ $errors->first('password') }}</div>
         @endif
     </div>
+    <div class="form-group">
+        <google-recaptcha-component></google-recaptcha-component>
+        @if ($errors && $errors->has('g-recaptcha-response'))
+            <span class="text-danger text-sm">{{ $errors->first('g-recaptcha-response') }}</span>
+        @endif
+    </div>
     <div class="row">
         <div class="col-7">
             <div class="icheck-primary">

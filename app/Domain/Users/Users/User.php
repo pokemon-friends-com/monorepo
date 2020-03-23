@@ -2,12 +2,14 @@
 
 namespace template\Domain\Users\Users;
 
+use Illuminate\Contracts\Translation\HasLocalePreference;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
 use template\Domain\Users\Profiles\Profile;
 use template\Infrastructure\Interfaces\Domain\Users\{
     Users\HandshakableInterface,
     Users\UserCivilitiesInterface,
+    Users\UserGendersInterface,
     Users\UserRolesInterface
 };
 use template\Infrastructure\Interfaces\Domain\{
@@ -33,15 +35,18 @@ use template\Domain\Users\Users\
 {
     Notifications\CreatedAccountByAdministrator,
     Notifications\ResetPassword,
-    Traits\NamableTrait
+    Traits\NamableTrait,
+    Traits\GenrableTrait
 };
 
 class User extends AuthenticatableModelAbstract implements
     UserCivilitiesInterface,
+    UserGendersInterface,
     UserRolesInterface,
     LocalesInterface,
     TimeZonesInterface,
-    HandshakableInterface
+    HandshakableInterface,
+    HasLocalePreference
 {
     use HasApiTokens;
     use Notifiable;
@@ -49,6 +54,7 @@ class User extends AuthenticatableModelAbstract implements
     use SoftDeletes;
     use HandshakeNotificationTrait;
     use NamableTrait;
+    use GenrableTrait;
     use ProfileableTrait;
     use RouteKeyNameUniquidTrait;
     use TimeStampsTz;
@@ -94,6 +100,16 @@ class User extends AuthenticatableModelAbstract implements
     protected $with = [
         'profile',
     ];
+
+    /**
+     * Get the user's preferred locale.
+     *
+     * @return string
+     */
+    public function preferredLocale()
+    {
+        return $this->locale;
+    }
 
     /**
      * Send the password reset notification.
