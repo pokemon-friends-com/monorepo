@@ -28,7 +28,7 @@ $factory
             'first_name' => $faker->firstName,
             'last_name' => $faker->lastName,
             'email' => $faker->unique()->safeEmail,
-            'password' => $password ?: $password = bcrypt('secret1234'),
+            'password' => $password ?: $password = bcrypt('azerty42'),
             'remember_token' => str_random(10),
         ];
     })

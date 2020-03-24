@@ -9,7 +9,8 @@ use template\Console\Commands\{
     GetFileFromAwsCommand,
     PushFileToAwsCommand,
     RemoveFileOnAwsCommand,
-    TestLaravelEchoCommand
+    TestLaravelEchoCommand,
+    CrawlPokemonGoFriendCodesCommand
 };
 
 class Kernel extends ConsoleKernel
@@ -21,6 +22,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        CrawlPokemonGoFriendCodesCommand::class,
         GenerateSitemapCommand::class,
         GetFileFromAwsCommand::class,
         PushFileToAwsCommand::class,
@@ -40,6 +42,11 @@ class Kernel extends ConsoleKernel
         $schedule
             ->command('sitemap:generate')
             ->hourly()
+            ->withoutOverlapping();
+
+        $schedule
+            ->command('crawler:pokemongofriendcodes')
+            ->monthly()
             ->withoutOverlapping();
     }
 

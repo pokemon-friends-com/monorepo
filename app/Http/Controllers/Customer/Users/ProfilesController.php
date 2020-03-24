@@ -33,28 +33,22 @@ class ProfilesController extends ControllerAbstract
      */
     public function edit(User $user)
     {
-        try {
-            return view(
-                'customer.users.profiles.edit',
-                [
-                    'profile' => $this->r_profiles->getUserProfile($user),
-                    'teams' => $this->r_profiles->getTeamsColors(),
-                    'families_situations' => $this
-                        ->r_profiles
-                        ->getFamilySituations()
-                        ->mapWithKeys(function ($item) {
-                            return [$item => trans("users.profiles.family_situation.{$item}")];
-                        }),
-                    'timezones' => $this->r_profiles->getTimezones(),
-                    'locales' => $this->r_profiles->getLocales(),
-                    'civilities' => $this->r_profiles->getCivilities(),
-                ]
-            );
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
-
-            throw $exception;
-        }
+        return view(
+            'customer.users.profiles.edit',
+            [
+                'profile' => $this->r_profiles->getUserProfile($user),
+                'teams' => $this->r_profiles->getTeamsColors(),
+                'families_situations' => $this
+                    ->r_profiles
+                    ->getFamilySituations()
+                    ->mapWithKeys(function ($item) {
+                        return [$item => trans("users.profiles.family_situation.{$item}")];
+                    }),
+                'timezones' => $this->r_profiles->getTimezones(),
+                'locales' => $this->r_profiles->getLocales(),
+                'civilities' => $this->r_profiles->getCivilities(),
+            ]
+        );
     }
 
     /**
@@ -64,14 +58,11 @@ class ProfilesController extends ControllerAbstract
      * @param ProfileFormRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(User $user, ProfileFormRequest $request)
     {
-        try {
-            $this->r_profiles->updateUserProfileWithRequest($request, $user);
-        } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
-            app('sentry')->captureException($exception);
-        }
+        $this->r_profiles->updateUserProfileWithRequest($request, $user);
 
         return redirect(route('customer.users.profiles.edit', ['id' => $user->uniqid]));
     }
