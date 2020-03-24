@@ -26,10 +26,10 @@ class ResetPasswordControllerTest extends TestCase
         $this
             ->get(route('password.reset', ['token' => $token]))
             ->assertSuccessful()
-            ->assertSee('Changer votre mot de passe')
-            ->assertSee('Courriel')
-            ->assertSee('Mot de passe')
-            ->assertSee('Confirmer le mot de passe');
+            ->assertSee('Change your password')
+            ->assertSee('Email')
+            ->assertSee('Password')
+            ->assertSee('Confirm password');
     }
 
     /**
@@ -54,7 +54,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $newPassword,
             ])
             ->assertSuccessful()
-            ->assertSee('Le champ courriel doit être une adresse email valide.');
+            ->assertSee('The email must be a valid email address.');
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
@@ -82,7 +82,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $newPassword,
             ])
             ->assertSuccessful()
-            ->assertSee(e('Aucun utilisateur n\'a été trouvé avec ce courriel.'));
+            ->assertSee(e('We can\'t find a user with that e-mail address.'));
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
@@ -110,7 +110,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $this->faker->password(10),
             ])
             ->assertSuccessful()
-            ->assertSee('Le champ de confirmation mot de passe ne correspond pas.');
+            ->assertSee('The password confirmation does not match.');
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
@@ -138,7 +138,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $newPassword,
             ])
             ->assertSuccessful()
-            ->assertSee(e('Le texte mot de passe doit contenir au moins 8 caractères.'));
+            ->assertSee(e('The password must be at least 8 characters.'));
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));

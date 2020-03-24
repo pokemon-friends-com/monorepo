@@ -22,9 +22,9 @@ class ForgotPasswordControllerTest extends TestCase
         $this
             ->get('/password/reset')
             ->assertSuccessful()
-            ->assertSee('Changer votre mot de passe')
-            ->assertSee('Courriel')
-            ->assertSee('Envoyer');
+            ->assertSee('Change your password')
+            ->assertSee('Email')
+            ->assertSee('Send');
 	}
 
 	public function testIfForgotPasswordCanBeSubmittedWithValidUserEmail()

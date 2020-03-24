@@ -17,15 +17,16 @@
             <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="{{ route('anonymous.contact.index') }}" class="nav-link">
-                            {{ trans('users.leads.contacts') }}
-                        </a>
+                        <a href="{{ route('anonymous.dashboard') }}" class="nav-link @if (Route::currentRouteNamed('anonymous.dashboard')) active @endif"><i class="fas fa-home mr-2"></i>{{ trans('global.home') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('anonymous.contact.index') }}" class="nav-link @if (Route::currentRouteNamed('anonymous.contact.index')) active @endif"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contacts') }}</a>
                     </li>
                 </ul>
             </div>
             <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                 <li class="nav-item">
-                    <a href="{{ route('customer.users.dashboard') }}" class="nav-link"><i class="fa fa-user mr-2"></i>{{ trans('users.profiles.edit.title') }}</a>
+                    <a href="{{ route('customer.users.dashboard') }}" class="nav-link"><i class="fas fa-tachometer-alt mr-2"></i>{{ trans('users.dashboard') }}</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link"><i class="fa fa-sign-out-alt mr-2"></i>{{ trans('auth.logout') }}</a>
@@ -39,7 +40,11 @@
         </div>
     </nav>
     <div class="content-wrapper">
-        @include('partials.session-message')
+        <div class="content">
+            <div class="container">
+                @include('partials.session-message')
+            </div>
+        </div>
         @yield('content')
     </div>
     <footer class="main-footer">
@@ -50,7 +55,7 @@
                 <a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
-        <span class="mr-1">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span><a href="{{ route('anonymous.terms') }}">{{ trans('global.terms') }}</a>
+        <span class="mr-1">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span><a href="{{ route('anonymous.terms') }}"><i class="fas fa-file-signature mr-1"></i>{{ trans('global.terms') }}</a>
     </footer>
 </div>
 @include('partials.scripts')

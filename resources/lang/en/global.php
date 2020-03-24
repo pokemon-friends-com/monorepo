@@ -12,6 +12,10 @@ return [
     'fight_friend' => 'Fight your friends',
     'boost_xp' => 'Boost your XP',
 
+    'our_news' => 'Our news',// Notre actualité
+    'next_features' => 'Next features',// Prochaines fonctionnalités
+    'bugs_reported' => 'Bugs reported', // Bugs rapportés
+
     'beta' => 'Beta',
     'add' => 'Add',
     'cancel' => 'Cancel',
@@ -20,8 +24,8 @@ return [
     'record' => 'Save',
     'back' => 'Back',
     'actions' => 'Actions',
-    'filters'            => 'Filters',
-    'filter'            => 'Filter',
+    'filters' => 'Filters',
+    'filter' => 'Filter',
     'more_actions' => 'More actions',
     'id' => 'ID',
     'edit' => 'Edit',

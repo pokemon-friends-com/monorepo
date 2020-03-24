@@ -17,8 +17,7 @@ class UsersControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/users/dashboard')
-            ->assertStatus(302)
-            ->assertRedirect("/users/profiles/{$user->uniqid}/edit");
+            ->assertStatus(200);
     }
 
     public function testToVisitDashboardAsAnonymous()

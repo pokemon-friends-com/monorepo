@@ -2,7 +2,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="UTF-8">
-@if (Route::currentRouteNamed())
+@if (Route::currentRouteNamed(Route::currentRouteName()))
 @foreach(\template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::LOCALES as $locale)
     <link rel="alternate" hreflang="{{ $locale }}" href="{{ route(Route::currentRouteName(), ['locale' => $locale]) }}" />
 @endforeach
