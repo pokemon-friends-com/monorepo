@@ -25,7 +25,7 @@
                         <h3 class="widget-user-username text-left">{{ trans('pokemon.welcome') }}</h3>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle" src="{{ asset('images/avatar.png') }}" alt="User Avatar">
+                        <img class="img-circle" src="{{ asset('images/avatar.jpg') }}" alt="User Avatar">
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -46,18 +46,30 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-12">
-                                <p>Inscrivez-vous pour partager votre code ami et rejoindre vote communauté de dresseurs!</p>
-                                <p>L'équipe <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a> travail activement sur les prochaines fonctionnalités de votre plateforme pour votre plus grand plaisir</p>
-                            </div>
-                            <div class="col-12">
-                                <div class="alert alert-info">
-                                    <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a>, est un site communautaire qui n'est pas une filliale de Niantic.
-                                </div>
-                            </div>
+                        <p>
+                            <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a> est un annuaire communautaire de codes amis Pokemon Go
+                        </p>
+                        <ul>
+                            <li>Parcourez des dizaines de codes amis</li>
+                            <li>Ajoutez, en une photo, de nouveaux amis sur votre jeu Pokemon Go</li>
+                            <li>Inscrivez-vous et partagez votre code ami</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-widget widget-user">
+                    <div class="ribbon-wrapper ribbon-sm">
+                        <div class="ribbon bg-info">
+                            à venir
                         </div>
-                        <div class="row"></div>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            L'équipe <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a> travail activement sur les prochaines fonctionnalités de votre plateforme pour votre plus grand plaisir
+                        </p>
+                        <ul>
+                            <li>Enregistrez ou rejoingnez des équipes composées de vos amis</li>
+                            <li>Organiser votre équipe, donnez-vous rendez-vous pour les raids, créez des événement qu'aucun membre de votre équipe ne pourra louper</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -104,48 +116,6 @@
                                 <div class="text-danger text-sm">{{ $errors->first('email') }}</div>
                             @endif
                         </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input
-                                        type="password"
-                                        name="password"
-                                        class="form-control {{ $errors && $errors->has('password') ? 'is-invalid' : '' }}"
-                                        placeholder="{{ trans('users.password') }}"
-                                />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            @if ($errors && $errors->has('password'))
-                                <div class="text-danger text-sm">{{ $errors->first('password') }}</div>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input
-                                        type="password"
-                                        name="password_confirmation"
-                                        class="form-control {{ $errors && $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
-                                        placeholder="{{ trans('users.password_confirmation') }}"
-                                />
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            @if ($errors && $errors->has('password_confirmation'))
-                                <div class="text-danger text-sm">{{ $errors->first('password_confirmation') }}</div>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <google-recaptcha-component></google-recaptcha-component>
-                            @if ($errors && $errors->has('g-recaptcha-response'))
-                                <span class="text-danger text-sm">{{ $errors->first('g-recaptcha-response') }}</span>
-                            @endif
-                        </div>
                         <div class="sm-p-t-10 clearfix"></div>
                         <div class="row">
                             <div class="col-12">
@@ -168,6 +138,12 @@
                         >
                             La documentation officiel
                         </a>
+                    </div>
+                </div>
+                <div class="info-box bg-light">
+                    <div class="info-box-content">
+                        <span class="info-box-text text-center text-muted">{{ trans('global.our_news') }}</span>
+                        <span class="info-box-number text-center text-muted mb-0"><a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter mr-2"></i>Twitter</a></span>
                     </div>
                 </div>
             </div>

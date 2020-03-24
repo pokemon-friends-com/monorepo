@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\App\Console;
+namespace Tests\Feature\Console;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -9,7 +9,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class GenerateSitemapCommandTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     public function testSitemapGenerate()

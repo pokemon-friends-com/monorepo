@@ -13,7 +13,7 @@ trait ActingTestCaseTrait
 
     protected function getDefaultPassword()
     {
-        return 'secret1234';
+        return 'azerty42';
     }
 
     protected function getDefaultPasswordBcrypted()

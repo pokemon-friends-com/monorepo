@@ -35,7 +35,7 @@ class UsersController extends ControllerAbstract
      */
     public function dashboard(Request $request)
     {
-        return redirect(route('customer.users.profiles.edit', ['user' => $request->user()]));
+        return view('customer.users.users.dashboard');
     }
 
     /**

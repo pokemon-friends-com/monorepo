@@ -12,6 +12,10 @@ return [
     'fight_friend' => 'Combattez vos amis',
     'boost_xp' => 'Boostez votre XP',
 
+    'our_news' => 'Notre actualité',
+    'next_features' => 'Prochaines fonctionnalités',
+    'bugs_reported' => 'Bugs rapportés',
+
     'beta' => 'Beta',
     'add' => 'Ajouter',
     'cancel' => 'Annuler',
@@ -30,6 +34,8 @@ return [
     'date_format'        => 'd/m/Y',
     'datetime_format'    => 'd/m/Y H\hi',
     'today' => 'Aujourd\'hui',
+
+
 
     'automated_requested_email' => 'Ce courriel est un message automatique envoyé suite à votre demande.',
 

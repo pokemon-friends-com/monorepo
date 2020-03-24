@@ -3,6 +3,7 @@
 namespace template\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Support\Collection;
+use template\Domain\Users\Profiles\Criterias\WhereFriendCodeIsCriteria;
 use template\Domain\Users\Profiles\Profile;
 use template\Infrastructure\Contracts\Request\RequestAbstract;
 use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
@@ -94,6 +95,13 @@ interface ProfilesRepository extends RepositoryInterface
      * @return array
      */
     public function getUserProfile(User $user): array;
+
+    /**
+     * @param null|string $friend_code
+     *
+     * @return $this
+     */
+    public function filterByFriendCode(?string $friend_code): self;
 
     /**
      * Update the specified resource in storage.

@@ -3,7 +3,9 @@
 namespace template\Http\Controllers\Auth;
 
 use GuzzleHttp\Client as GuzzleHttpClient;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use template\Domain\Users\Users\User;
@@ -50,6 +52,31 @@ class RegisterController extends ControllerAbstract
         return view('auth.register', [
             'civilities' => $this->r_users->getCivilities(),
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return redirect(route('register'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $user = $this->create($request->all());
+        event(new Registered($user));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 
     /**

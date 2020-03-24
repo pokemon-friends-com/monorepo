@@ -52,7 +52,7 @@ class LeadsControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/administrator/users/leads')
-            ->assertSeeText('Aucune action')
+            ->assertSeeText('No action')
             ->assertSeeInOrder(['<tr id="lead_1">', '<i class="far fa-user-circle" title="Transformed user"></i>'])
             ->assertSeeText($lead->email)
             ->assertSeeText($lead->civility_name)
@@ -76,7 +76,7 @@ class LeadsControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->get('/administrator/users/leads')
-            ->assertSeeText('Aucune action')
+            ->assertSeeText('No action')
             ->assertSeeInOrder(['<tr id="lead_1">', '<i class="far fa-user-circle" title="Transformed user"></i>'])
             ->assertSeeText($lead->email)
             ->assertSeeText($lead->civility_name)

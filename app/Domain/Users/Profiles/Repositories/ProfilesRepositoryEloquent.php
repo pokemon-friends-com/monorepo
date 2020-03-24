@@ -19,6 +19,7 @@ use template\Domain\Users\Profiles\{
     Criterias\OrderByUpdateAtCriteria,
     Criterias\WhereFriendCodeNotNullCriteria,
     Criterias\WhereSponsoredCriteria,
+    Criterias\WhereFriendCodeIsCriteria,
     Profile,
     Events\ProfileUpdatedEvent,
     Presenters\ProfilesListPresenter
@@ -193,6 +194,19 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
         return $this
             ->setPresenter(new ProfilesListPresenter())
             ->find($user->profile->id);
+    }
+
+    /**
+     * {@inheritdoc}
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function filterByFriendCode(?string $friend_code): ProfilesRepository
+    {
+        if (!is_null($friend_code) && !empty($friend_code)) {
+            $this->pushCriteria(new WhereFriendCodeIsCriteria($friend_code));
+        }
+
+        return $this;
     }
 
     /**

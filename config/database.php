@@ -142,6 +142,14 @@ return [
             'database' => env('REDIS_CACHE_DB', 1),
         ],
 
+        'crawler' => [
+            'url' => env('REDIS_CRAWLER_URL', env('REDIS_URL')),
+            'host' => env('REDIS_CRAWLER_HOST', env('REDIS_HOST', '127.0.0.1')),
+            'password' => env('REDIS_CRAWLER_PASSWORD', env('REDIS_PASSWORD', null)),
+            'port' => env('REDIS_CRAWLER_PORT', env('REDIS_PORT', 6379)),
+            'database' => env('REDIS_CRAWLER_DB', env('REDIS_DB', 0)),
+        ],
+
     ],
 
 ];

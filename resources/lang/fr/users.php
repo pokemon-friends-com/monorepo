@@ -19,6 +19,10 @@ return [
 	'locale' => 'Langue',
     'locale.fr' => 'Français',
     'locale.en' => 'Anglais',
+    'locale.es' => 'Espagnol',
+    'locale.de' => 'Allemand',
+    'locale.zh-CN' => 'Chinois',
+    'locale.ru' => 'Russe',
 
 	'timezone' => 'Fuseau horaire',
 	'first_name' => 'Prénom',
@@ -88,13 +92,14 @@ return [
     'leads.send' => 'Envoyer',
     'leads.subject' => 'Sujet',
     'leads.message' => 'Message',
-    'leads.baseline' => 'Il vous manque une information ? Une question ? N\'hésitez pas à nous soliciter.',
+    'leads.baseline' => 'Il vous manque une information ? Une question ? N\'hésitez pas à nous soliciter, nous y répondrons dans les plus brefs délais.',
+    'leads.language_info' => '',
     'leads.certify' => 'Vous certifiez que les informations ci-dessus sont vraies et exactes.',
 
     'leads.handshake_title' => 'Nouvelle prise de contact, :civility_name',
     'leads.handshake_subject' => 'Nouvelle prise de contact, :subject',
     'leads.handshake_body_header' => 'Vous venez de nous contacter avec le message suivant :',
-    'leads.handshake_body_footer' => 'Nous y repondrons dans les plus brefs délais.<br/><br/>L\'équipe :app_name',
-    'leads.handshake_sent_success' => 'Votre message a bien été envoyé',
+    'leads.handshake_body_footer' => 'Nous y répondrons dans les plus brefs délais.<br/><br/>L\'équipe :app_name',
+    'leads.handshake_sent_success' => 'Votre message a été envoyé! Un courriel de confirmation vous a été envoyé.',
 
 ];

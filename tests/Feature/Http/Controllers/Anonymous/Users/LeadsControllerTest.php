@@ -46,11 +46,11 @@ class LeadsControllerTest extends TestCase
         $this
             ->get('/contact')
             ->assertSuccessful()
-            ->assertSee('Le champ prénom est obligatoire.')
-            ->assertSee('Le champ nom est obligatoire.')
-            ->assertSee('Le champ courriel est obligatoire.')
-            ->assertSee('Le champ sujet est obligatoire.')
-            ->assertSee('Le champ message est obligatoire.');
+            ->assertSee('The first name field is required.')
+            ->assertSee('The last name field is required.')
+            ->assertSee('The email field is required.')
+            ->assertSee('The subject field is required.')
+            ->assertSee('The message field is required.');
         Event::assertNotDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(0, HandshakeMailToConfirmReceptionToSender::class);
         $this->assertDatabaseMissing('users_leads', $lead);
@@ -77,7 +77,7 @@ class LeadsControllerTest extends TestCase
         $this
             ->get('/contact')
             ->assertSuccessful()
-            ->assertSee('Le champ courriel doit être une adresse email valide.');
+            ->assertSee('The email must be a valid email address.');
         Event::assertNotDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(0, HandshakeMailToConfirmReceptionToSender::class);
         $this->assertDatabaseMissing('users_leads', $lead);

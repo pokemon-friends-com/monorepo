@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92c68f57c6b3915964eca25c00b5fb4f",
+    "content-hash": "46e6559a846d9ed9a8cfd2eaf51ea29b",
     "packages": [
         {
             "name": "abenevaut/laravel-settings",
@@ -5286,6 +5286,56 @@
             "time": "2019-01-07T21:25:54+00:00"
         },
         {
+            "name": "repat/spatie-crawler-redis",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/repat/spatie-crawler-redis.git",
+                "reference": "135e43cc0d101b3e4acc425d981e2588bd8738b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/repat/spatie-crawler-redis/zipball/135e43cc0d101b3e4acc425d981e2588bd8738b9",
+                "reference": "135e43cc0d101b3e4acc425d981e2588bd8738b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "predis/predis": "^1.1",
+                "spatie/crawler": "^4.6"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.1",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Repat\\CrawlQueue\\": "src/Repat/CrawlQueue"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "repat",
+                    "email": "repat@repat.de"
+                }
+            ],
+            "description": "Redis CrawlQueue for spatie/crawler",
+            "homepage": "https://repat.de",
+            "keywords": [
+                "crawler",
+                "crawlqueue",
+                "predis",
+                "redis",
+                "spatie"
+            ],
+            "time": "2019-09-05T17:27:57+00:00"
+        },
+        {
             "name": "sentry/sdk",
             "version": "2.1.0",
             "source": {
@@ -5530,16 +5580,16 @@
         },
         {
             "name": "spatie/crawler",
-            "version": "4.6.6",
+            "version": "4.6.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "6f814a401cee20b24a1ffe53d8deddac90d1a42d"
+                "reference": "3c1eb2d38b4a18560d3f48087597f9786f95b694"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/6f814a401cee20b24a1ffe53d8deddac90d1a42d",
-                "reference": "6f814a401cee20b24a1ffe53d8deddac90d1a42d",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/3c1eb2d38b4a18560d3f48087597f9786f95b694",
+                "reference": "3c1eb2d38b4a18560d3f48087597f9786f95b694",
                 "shasum": ""
             },
             "require": {
@@ -5550,7 +5600,7 @@
                 "spatie/browsershot": "^3.14",
                 "spatie/robots-txt": "^1.0.1",
                 "symfony/dom-crawler": "^4.0 || ^5.0",
-                "tightenco/collect": "^5.6|^6.0"
+                "tightenco/collect": "^5.6|^6.0|^7.0"
             },
             "require-dev": {
                 "larapack/dd": "^1.1",
@@ -5585,7 +5635,7 @@
                 "spatie",
                 "website"
             ],
-            "time": "2020-01-31T10:51:58+00:00"
+            "time": "2020-03-13T10:56:11+00:00"
         },
         {
             "name": "spatie/db-dumper",

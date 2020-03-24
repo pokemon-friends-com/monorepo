@@ -198,6 +198,7 @@
       <path value="$PROJECT_DIR$/vendor/league/flysystem-aws-s3-v3" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-cookie-consent" />
       <path value="$PROJECT_DIR$/vendor/abenevaut/laravel-settings" />
+      <path value="$PROJECT_DIR$/vendor/repat/spatie-crawler-redis" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">
