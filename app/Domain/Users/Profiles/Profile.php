@@ -66,6 +66,11 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
     protected $hidden = [
     ];
 
+    static public function claimableEmail(string $friendCode): string
+    {
+        return "{$friendCode}@pokemon-friends.com";
+    }
+
     /**
      * Date mutator to obtain a variable "birth_date_carbon".
      *
@@ -77,6 +82,17 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         return is_null($this->birth_date)
             ? null
             : new Carbon($this->birth_date);
+    }
+
+    /**
+     * Claimable mutator.
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function getIsClaimableAttribute(): bool
+    {
+        return self::claimableEmail($this->friend_code) === $this->user->email;
     }
 
     /**

@@ -41,7 +41,7 @@ return [
     'create.title' => 'New user',
     'edit.title' => 'Edit user',
     'show.title' => 'User :username',
-    'index_total_users' => 'Total number of uuser(s): :total_user',
+    'index_total_users' => 'Total number of user(s): :total_user',
     'index_no_data_title' => 'No user',
     'index_no_data_description' => 'No user exist',
     'delete_message' => 'Are you sure you want to delete the user :username?',

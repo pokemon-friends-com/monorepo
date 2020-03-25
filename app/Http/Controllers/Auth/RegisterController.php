@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleHttpClient;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use template\Domain\Users\Users\User;
@@ -27,19 +28,28 @@ class RegisterController extends ControllerAbstract
     */
 
     /**
-     * @var UsersRegistrationsRepositoryEloquent|null
+     * @var UsersRegistrationsRepositoryEloquent
      */
-    protected $r_users = null;
+    protected $r_users;
+
+    /**
+     * @var ProfilesRepositoryEloquent
+     */
+    protected $r_profiles;
 
     /**
      * RegisterController constructor.
      *
      * @param UsersRegistrationsRepositoryEloquent $r_users
+     * @param ProfilesRepositoryEloquent $r_profiles
      */
-    public function __construct(UsersRegistrationsRepositoryEloquent $r_users)
-    {
+    public function __construct(
+        UsersRegistrationsRepositoryEloquent $r_users,
+        ProfilesRepositoryEloquent $r_profiles
+    ) {
         $this->middleware('guest');
         $this->r_users = $r_users;
+        $this->r_profiles = $r_profiles;
     }
 
     /**
@@ -120,6 +130,28 @@ class RegisterController extends ControllerAbstract
      */
     protected function create(array $data)
     {
+        $profile = $this
+            ->r_profiles
+            ->findByField('friend_code', $data['friend_code']);
+
+        if ($profile->count() && $profile->first()->is_claimable) {
+            return $this
+                ->r_users
+                ->update(
+                    [
+                        'civility' => User::CIVILITY_MADAM,
+                        'first_name' => null,
+                        'last_name' => null,
+                        'role' => User::ROLE_CUSTOMER,
+                        'locale' => User::DEFAULT_LOCALE,
+                        'timezone' => User::DEFAULT_TZ,
+                        'email' => $data['email'],
+                        'password' => bcrypt($data['password']),
+                    ],
+                    $profile->first()->user->id
+                );
+        }
+
         $user = $this
             ->r_users
             ->registerUser(
