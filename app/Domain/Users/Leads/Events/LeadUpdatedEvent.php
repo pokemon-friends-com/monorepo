@@ -2,7 +2,7 @@
 
 namespace template\Domain\Users\Leads\Events;
 
-use template\Infractucture\Contracts\Events\EventAbstract;
+use template\Infrastructure\Contracts\Events\EventAbstract;
 use template\Domain\Users\Leads\Lead;
 
 class LeadUpdatedEvent extends EventAbstract

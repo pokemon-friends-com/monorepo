@@ -2,7 +2,7 @@
 
 namespace template\Domain\Users\ProvidersTokens\Events;
 
-use template\Infractucture\Contracts\Events\EventAbstract;
+use template\Infrastructure\Contracts\Events\EventAbstract;
 use template\Domain\Users\ProvidersTokens\ProviderToken;
 
 class ProviderTokenCreatedEvent extends EventAbstract

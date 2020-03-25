@@ -2,7 +2,7 @@
 
 namespace template\Domain\Users\Profiles\Events;
 
-use template\Infractucture\Contracts\Events\EventAbstract;
+use template\Infrastructure\Contracts\Events\EventAbstract;
 use template\Domain\Users\Profiles\Profile;
 
 class ProfileUpdatedEvent extends EventAbstract
