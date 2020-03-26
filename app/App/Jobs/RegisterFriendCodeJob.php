@@ -21,7 +21,7 @@ class RegisterFriendCodeJob implements ShouldQueue
     use SerializesModels;
 
     /**
-     * @var mixed
+     * @var string
      */
     protected $friendCode;
 
@@ -34,7 +34,7 @@ class RegisterFriendCodeJob implements ShouldQueue
      * RegisterFriendCodeJob constructor.
      *
      * @param string $friendCode
-     * @param string $teamColor default ProfilesTeamsColors::BLUE
+     * @param string $teamColor default ProfilesTeamsColors::DEFAULT
      */
     public function __construct(
         string $friendCode,

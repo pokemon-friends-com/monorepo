@@ -207,7 +207,7 @@ class User extends AuthenticatableModelAbstract implements
     /**
      * Get the providers with tokens that owns the user.
      */
-    public function providers_tokens()
+    public function providersTokens()
     {
         return $this->hasMany(ProviderToken::class);
     }

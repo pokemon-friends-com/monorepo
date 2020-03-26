@@ -12,7 +12,9 @@ class PushFileToAwsCommand extends CommandAbstract
      *
      * @var string
      */
-    protected $signature = 'file:aws:push {file : The file path to push to AWS} {dest : The directory destination on AWS}';
+    protected $signature = 'file:aws:push
+     {file : The file path to push to AWS}
+     {dest : The directory destination on AWS}';
 
     /**
      * The console command description.

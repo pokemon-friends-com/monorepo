@@ -66,7 +66,7 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
     protected $hidden = [
     ];
 
-    static public function claimableEmail(string $friendCode): string
+    public static function claimableEmail(string $friendCode): string
     {
         return "{$friendCode}@pokemon-friends.com";
     }

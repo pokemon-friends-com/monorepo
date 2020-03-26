@@ -4,10 +4,10 @@ namespace template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens;
 
 interface ProvidersInterface
 {
-    const TWITTER = 'twitter';
-    const LINKEDIN = 'linkedin';
-    const GOOGLE = 'google';
-    const PROVIDERS = [
+    public const TWITTER = 'twitter';
+    public const LINKEDIN = 'linkedin';
+    public const GOOGLE = 'google';
+    public const PROVIDERS = [
         self::TWITTER,
         self::LINKEDIN,
         self::GOOGLE,

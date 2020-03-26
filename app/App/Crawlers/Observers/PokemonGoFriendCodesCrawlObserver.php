@@ -11,6 +11,12 @@ use template\Domain\Users\Profiles\ProfilesTeamsColors;
 
 class PokemonGoFriendCodesCrawlObserver extends CrawlObserver
 {
+
+    /**
+     * @var string
+     */
+    protected $friendCodePattern = '/([0-9]{4}[\s]{0,1}){3}/';
+
     /**
      * {@inheritDoc}
      */
@@ -25,6 +31,7 @@ class PokemonGoFriendCodesCrawlObserver extends CrawlObserver
         if ($doc->getElementsByTagName("img")) {
             foreach ($doc->getElementsByTagName("img") as $element) {
                 if (0 === strncmp($element->getAttribute('class'), 'img-thumbnail', strlen('img-thumbnail'))) {
+                    $results = [];
                     $alt = $element->getAttribute('alt');
                     $style = $element->getAttribute('style');
                     $teamColor = ProfilesTeamsColors::DEFAULT;
@@ -37,18 +44,9 @@ class PokemonGoFriendCodesCrawlObserver extends CrawlObserver
                         $teamColor = ProfilesTeamsColors::BLUE;
                     }
 
-                    $results = [];
-                    $isThereMatch = preg_match(
-                        '/([0-9]{4}[\s]{0,1}){3}/',
-                        $alt,
-                        $results
-                    );
-
-                    if ($isThereMatch) {
-                        RegisterFriendCodeJob::dispatch(
-                            filter_var($results[0], FILTER_SANITIZE_NUMBER_INT),
-                            $teamColor
-                        );
+                    if (preg_match($this->friendCodePattern, $alt, $results)) {
+                        $friendCode = filter_var($results[0], FILTER_SANITIZE_NUMBER_INT);
+                        RegisterFriendCodeJob::dispatch($friendCode, $teamColor);
                     }
                 }
             }

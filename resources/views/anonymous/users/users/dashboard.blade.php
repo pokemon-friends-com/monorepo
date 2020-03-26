@@ -12,7 +12,6 @@
 </div>
 <div class="content">
     <div class="container">
-        @if(!Auth::check())
         <div class="row">
             <div class="d-none d-md-block col-lg-8">
                 <div class="card card-widget widget-user">
@@ -148,7 +147,6 @@
                 </div>
             </div>
         </div>
-        @endif
         <trainers-profiles-list-component></trainers-profiles-list-component>
     </div>
 </div>

@@ -14,7 +14,6 @@ use Prettus\Repository\Traits\CacheableRepository;
 
 abstract class RepositoryEloquentAbstract extends BaseRepository implements RepositoryInterface, CacheableInterface
 {
-
     use CacheableRepository;
 
     /**

@@ -12,7 +12,9 @@ class GetFileFromAwsCommand extends CommandAbstract
      *
      * @var string
      */
-    protected $signature = 'file:aws:get {file : The file path to get from AWS} {dest : The directory destination on local storage}';
+    protected $signature = 'file:aws:get
+     {file : The file path to get from AWS}
+     {dest : The directory destination on local storage}';
 
     /**
      * The console command description.

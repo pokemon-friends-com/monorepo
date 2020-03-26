@@ -4,11 +4,11 @@ namespace template\Domain\Users\Profiles;
 
 interface ProfilesTeamsColors
 {
-    const RED = 'red';
-    const BLUE = 'blue';
-    const YELLOW = 'yellow';
-    const DEFAULT = 'default';
-    const COLORS = [
+    public const RED = 'red';
+    public const BLUE = 'blue';
+    public const YELLOW = 'yellow';
+    public const DEFAULT = 'default';
+    public const COLORS = [
         self::DEFAULT,
         self::RED,
         self::BLUE,

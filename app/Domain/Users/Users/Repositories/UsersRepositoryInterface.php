@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Users\Repositories;
+<?php
+
+namespace template\Domain\Users\Users\Repositories;
 
 use Illuminate\Support\Collection;
 use template\Domain\Users\Users\User;

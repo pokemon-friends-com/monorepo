@@ -2,6 +2,7 @@
 
 namespace template\Console\Commands;
 
+use Predis\Client as PredisClient;
 use Repat\CrawlQueue\RedisCrawlQueue;
 use Spatie\Crawler\Crawler;
 use Spatie\Crawler\CrawlInternalUrls;
@@ -16,7 +17,8 @@ class CrawlPokemonGoFriendCodesCommand extends CommandAbstract
      *
      * @var string
      */
-    protected $signature = 'crawler:pokemongofriendcodes {--maximum-crawl= : Maximum crawled page(s) (integer)}';
+    protected $signature = 'crawler:pokemongofriendcodes
+     {--maximum-crawl= : Maximum crawled page(s) (integer)}';
 
     /**
      * The console command description.
@@ -54,7 +56,7 @@ class CrawlPokemonGoFriendCodesCommand extends CommandAbstract
                 ->setCrawlProfile(new CrawlInternalUrls($this->urlToCrawl))
                 ->setCrawlQueue(
                     new RedisCrawlQueue(
-                        new \Predis\Client(config('database.redis.crawler')),
+                        new PredisClient(config('database.redis.crawler')),
                         $this->crawlerPrefix
                     )
                 )

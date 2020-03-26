@@ -27,7 +27,7 @@ Route::group(
             Route::get('files/thumbnail/{path}', ['as' => 'files.thumbnail', 'uses' => 'FilesController@thumbnail'])->where('path', '.+');
         });
         Route::group(['namespace' => 'Users'], function () {
-            Route::get('/', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard']);
+            Route::get('/', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard'])->middleware('guest');
             Route::resource('contact', 'LeadsController')->middleware(ProtectAgainstSpam::class);
         });
     });

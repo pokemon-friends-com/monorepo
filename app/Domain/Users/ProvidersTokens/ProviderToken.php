@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\ProvidersTokens;
+<?php
+
+namespace template\Domain\Users\ProvidersTokens;
 
 use template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
 use template\Infrastructure\Contracts\{

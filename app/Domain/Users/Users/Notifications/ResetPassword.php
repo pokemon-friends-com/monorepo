@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Users\Notifications;
+<?php
+
+namespace template\Domain\Users\Users\Notifications;
 
 use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
 use template\Infrastructure\Contracts\{

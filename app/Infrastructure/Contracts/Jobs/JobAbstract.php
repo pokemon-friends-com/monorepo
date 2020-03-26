@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 
 abstract class JobAbstract
 {
-
     /*
     |--------------------------------------------------------------------------
     | Queueable Jobs
@@ -17,6 +16,5 @@ abstract class JobAbstract
     | provides access to the "onQueue" and "delay" queue helper methods.
     |
     */
-
     use Queueable;
 }

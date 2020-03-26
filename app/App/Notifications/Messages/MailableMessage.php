@@ -8,7 +8,6 @@ use Illuminate\Queue\SerializesModels;
 
 class MailableMessage extends Mailable
 {
-
     use Queueable;
     use SerializesModels;
 

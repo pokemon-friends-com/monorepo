@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Users\Repositories;
+<?php
+
+namespace template\Domain\Users\Users\Repositories;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Validation\Validator as ContractsValidator;
@@ -8,7 +10,8 @@ use template\Domain\Users\Users\{
     Repositories\UsersRegistrationsRepositoryInterface
 };
 
-class UsersRegistrationsRepositoryEloquent extends UsersRepositoryEloquent implements UsersRegistrationsRepositoryInterface
+class UsersRegistrationsRepositoryEloquent extends UsersRepositoryEloquent implements
+    UsersRegistrationsRepositoryInterface
 {
 
     /**

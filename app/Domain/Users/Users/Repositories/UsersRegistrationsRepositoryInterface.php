@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Users\Repositories;
+<?php
+
+namespace template\Domain\Users\Users\Repositories;
 
 use Illuminate\Contracts\Validation\Validator as ContractsValidator;
 use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
