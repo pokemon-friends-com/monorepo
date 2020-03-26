@@ -156,7 +156,7 @@ jobs:
     before_script:
       - php artisan elfinder:publish
     script:
-      - npm run prod --env=production
+      - npm run production --env=production
     before_deploy:
       - chmod 777 bin/*.sh
       - bash bin/decrypt_travis_enc_files.sh
