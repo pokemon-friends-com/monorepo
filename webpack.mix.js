@@ -4,6 +4,7 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const S3Plugin = require('webpack-s3-plugin');
 
 mix
   .autoload({
