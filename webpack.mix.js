@@ -6,6 +6,32 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const S3Plugin = require('webpack-s3-plugin');
 
+let webpackPlugins = [
+  new StyleLintPlugin({
+    configFile: '.stylelintrc',
+    context: 'resources/sass',
+  }),
+  new CopyWebpackPlugin([
+    {
+      from: 'resources/images',
+      to: 'images',
+    },
+  ]),
+  new ImageminPlugin({
+    test: /\.(jpe?g|png|gif)$/i, // |svg
+    pngquant: {
+      quality: '65-80',
+    },
+    plugins: [
+      imageminMozjpeg({
+        quality: 65,
+        // Set the maximum memory to use in kbytes
+        maxMemory: 1000 * 512,
+      }),
+    ],
+  }),
+];
+
 mix
   .autoload({
     jquery: ['$', 'window.jQuery', 'jQuery', 'window.$', 'jquery', 'window.jquery'],
@@ -57,31 +83,7 @@ mix
         },
       ],
     },
-    plugins: [
-      new StyleLintPlugin({
-        configFile: '.stylelintrc',
-        context: 'resources/sass',
-      }),
-      new CopyWebpackPlugin([
-        {
-          from: 'resources/images',
-          to: 'images',
-        },
-      ]),
-      new ImageminPlugin({
-        test: /\.(jpe?g|png|gif)$/i, // |svg
-        pngquant: {
-          quality: '65-80',
-        },
-        plugins: [
-          imageminMozjpeg({
-            quality: 65,
-            // Set the maximum memory to use in kbytes
-            maxMemory: 1000 * 512,
-          }),
-        ],
-      }),
-    ],
+    plugins: [],
   });
 
 /*
@@ -99,32 +101,31 @@ mix
   .js('resources/js/app.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css');
 
-if (mix.config.production) {
+if (mix.inProduction()) {
   mix.version();
 } else {
   mix.sourceMaps();
 }
 
-// S3Plugin config
-if (process.env.npm_config_env === 'production') {
-  mix.webpackConfig({
-    plugins: [
-      new S3Plugin({
-        // Only upload css and js
-        include: /.*\.(css|js)/,
-        s3Options: {
-          accessKeyId: process.env.OBJECT_STORAGE_KEY,
-          secretAccessKey: process.env.OBJECT_STORAGE_SECRET,
-          endpoint: process.env.OBJECT_STORAGE_SERVER,
-          region: process.env.OBJECT_STORAGE_REGION,
-          signatureVersion: 'v2'
-        },
-        s3UploadOptions: {
-          Bucket: process.env.OBJECT_STORAGE_BUCKET
-        },
-        // the source dir
-        directory: 'public'
-      })
-    ]
-  });
+if (mix.inProduction() && process.env.UPLOAD_FORTRABBIT) {
+  webpackPlugins.push(
+    new S3Plugin({
+      include: /.*\.(css|js)/,
+      s3Options: {
+        accessKeyId: process.env.OBJECT_STORAGE_KEY,
+        secretAccessKey: process.env.OBJECT_STORAGE_SECRET,
+        endpoint: process.env.OBJECT_STORAGE_SERVER,
+        region: process.env.OBJECT_STORAGE_REGION,
+        signatureVersion: 'v2'
+      },
+      s3UploadOptions: {
+        Bucket: process.env.OBJECT_STORAGE_BUCKET
+      },
+      directory: 'public'
+    })
+  );
 }
+
+mix.webpackConfig({
+  plugins: webpackPlugins
+});

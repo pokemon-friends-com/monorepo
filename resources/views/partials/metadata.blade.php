@@ -54,7 +54,7 @@
 <meta name="twitter:card" content="@yield('card', config('services.twitter.card'))" />
 <meta name="twitter:creator" content="{{ config('services.twitter.username') }}" />
 <meta name="twitter:site" content="{{ config('services.twitter.username') }}" />
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 <link rel="sitemap" type="application/xml" title="sitemap" href="{{ url('/sitemap.xml') }}" />
 @yield('css')
 @include('partials.googletag-head')

@@ -150,13 +150,10 @@ jobs:
       - nvm use
     install:
       - cp .env.example .env
-      - npm install
       - composer install -o --no-interaction --prefer-dist --no-suggest
       - npm install
-    before_script:
-      - php artisan elfinder:publish
     script:
-      - npm run production --env=production
+      - npm run fortrabbit
     before_deploy:
       - chmod 777 bin/*.sh
       - bash bin/decrypt_travis_enc_files.sh
