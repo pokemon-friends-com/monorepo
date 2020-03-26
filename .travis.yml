@@ -66,7 +66,7 @@ jobs:
         if [[ "$CODECLIMATE" = "on" ]]; then
           ./cc-test-reporter before-build
         fi
-      - npm run prod
+      - npm run dev
       - php artisan elfinder:publish
     script:
       - vendor/bin/phpunit
@@ -156,7 +156,7 @@ jobs:
     before_script:
       - php artisan elfinder:publish
     script:
-      - npm run prod
+      - npm run prod --env=production
     before_deploy:
       - chmod 777 bin/*.sh
       - bash bin/decrypt_travis_enc_files.sh

@@ -63,7 +63,8 @@
         "underscore": "^1.9.2",
         "vue": "^2.6.11",
         "vue-eslint-parser": "^7.0.0",
-        "vue-template-compiler": "^2.6.11"
+        "vue-template-compiler": "^2.6.11",
+        "webpack-s3-plugin": "^1.0.3"
     },
     "dependencies": {}
 }

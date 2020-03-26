@@ -103,3 +103,27 @@ if (mix.config.production) {
 } else {
   mix.sourceMaps();
 }
+
+// S3Plugin config
+if (process.env.npm_config_env === 'production') {
+  mix.webpackConfig({
+    plugins: [
+      new S3Plugin({
+        // Only upload css and js
+        include: /.*\.(css|js)/,
+        s3Options: {
+          accessKeyId: process.env.OBJECT_STORAGE_KEY,
+          secretAccessKey: process.env.OBJECT_STORAGE_SECRET,
+          endpoint: process.env.OBJECT_STORAGE_SERVER,
+          region: process.env.OBJECT_STORAGE_REGION,
+          signatureVersion: 'v2'
+        },
+        s3UploadOptions: {
+          Bucket: process.env.OBJECT_STORAGE_BUCKET
+        },
+        // the source dir
+        directory: 'public'
+      })
+    ]
+  });
+}

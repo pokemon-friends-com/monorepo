@@ -196,6 +196,9 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/finder-facade" />
       <path value="$PROJECT_DIR$/vendor/sebastian/phpcpd" />
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/fortrabbit/laravel-object-storage" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">
