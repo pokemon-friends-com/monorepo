@@ -42,7 +42,6 @@ class Kernel extends HttpKernel
             \template\Http\Middleware\TimeZones::class,
         ],
         'api' => [
-            \Barryvdh\Cors\HandleCors::class,
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
@@ -75,6 +74,5 @@ class Kernel extends HttpKernel
         'guest' => \template\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \template\Http\Middleware\AuthenticatedUserHasRole::class,
-        'cors' => \Barryvdh\Cors\HandleCors::class,
     ];
 }
