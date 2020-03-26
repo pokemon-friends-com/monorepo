@@ -28,8 +28,9 @@ class ProfileFormRequest extends RequestAbstract
     public function rules()
     {
         $rules = [
-            'friend_code' => 'min:12|max:12',
+            'friend_code' => 'string|numeric|digits:12',
             'team_color' => 'in:'
+                . ProfilesTeamsColors::DEFAULT . ','
                 . ProfilesTeamsColors::RED . ','
                 . ProfilesTeamsColors::BLUE . ','
                 . ProfilesTeamsColors::YELLOW,

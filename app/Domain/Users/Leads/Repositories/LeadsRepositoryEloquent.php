@@ -8,11 +8,12 @@ use template\Infrastructure\Contracts\{
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use template\Domain\Users\{
-    Users\User,
-    Users\Repositories\UsersRepositoryEloquent
+use template\Domain\Users\Users\{
+    User,
+    Repositories\UsersRepositoryEloquent
 };
-use template\Domain\Users\Leads\{Repositories\LeadsRepositoryInterface,
+use template\Domain\Users\Leads\{
+    Repositories\LeadsRepositoryInterface,
     Lead,
     Criterias\EmailLikeCriteria,
     Criterias\FullNameLikeCriteria,
@@ -26,9 +27,9 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
 {
 
     /**
-     * @var UsersRepositoryEloquent|null
+     * @var UsersRepositoryEloquent
      */
-    protected $r_users = null;
+    protected $r_users;
 
     /**
      * LeadsRepositoryEloquent constructor.

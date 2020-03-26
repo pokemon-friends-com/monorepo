@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Users\Notifications;
+<?php
+
+namespace template\Domain\Users\Users\Notifications;
 
 use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
 use template\Infrastructure\Contracts\
@@ -18,9 +20,9 @@ class CreatedAccountByAdministrator extends Notification
 {
 
     /**
-     * @var User|null
+     * @var User
      */
-    protected $user = null;
+    protected $user;
 
     /**
      * CreatedAccountByAdministrator constructor.

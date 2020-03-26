@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Users\Criterias;
+<?php
+
+namespace template\Domain\Users\Users\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 use template\Infrastructure\Contracts\Criterias\CriteriaAbstract;

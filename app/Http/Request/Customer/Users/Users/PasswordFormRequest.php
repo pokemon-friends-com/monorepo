@@ -20,10 +20,33 @@ class PasswordFormRequest extends RequestAbstract
      * PasswordFormRequest constructor.
      *
      * @param UsersResetPasswordRepositoryEloquent $r_users
+     * @param array $query
+     * @param array $request
+     * @param array $attributes
+     * @param array $cookies
+     * @param array $files
+     * @param array $server
+     * @param null $content
      */
-    public function __construct(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null, UsersResetPasswordRepositoryEloquent $r_users)
-    {
-        parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
+    public function __construct(
+        UsersResetPasswordRepositoryEloquent $r_users,
+        array $query = [],
+        array $request = [],
+        array $attributes = [],
+        array $cookies = [],
+        array $files = [],
+        array $server = [],
+        $content = null
+    ) {
+        parent::__construct(
+            $query,
+            $request,
+            $attributes,
+            $cookies,
+            $files,
+            $server,
+            $content
+        );
 
         $this->r_users = $r_users;
     }

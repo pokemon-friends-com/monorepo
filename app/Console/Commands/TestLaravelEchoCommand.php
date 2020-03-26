@@ -3,32 +3,7 @@
 namespace template\Console\Commands;
 
 use template\Infrastructure\Contracts\Commands\CommandAbstract;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-
-class LaravelEchoEvent implements ShouldBroadcast
-{
-    use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public $message;
-
-    public function __construct($message)
-    {
-        $this->message = $message;
-    }
-
-    public function broadcastOn()
-    {
-        return ['my-channel'];
-    }
-
-    public function broadcastAs()
-    {
-        return 'my-event';
-    }
-}
+use template\App\Events\LaravelEchoEvent;
 
 class TestLaravelEchoCommand extends CommandAbstract
 {

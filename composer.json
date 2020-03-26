@@ -20,7 +20,6 @@
         "ext-json": "*",
         "abenevaut/laravel-settings": "^7.0",
         "babenkoivan/scout-elasticsearch-driver": "^4.0",
-        "barryvdh/laravel-cors": "^0.11.4",
         "barryvdh/laravel-elfinder": "^0.4.2",
         "fedeisas/laravel-mail-css-inliner": "^2.3",
         "fideloper/proxy": "^4.0",

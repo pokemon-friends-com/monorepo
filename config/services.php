@@ -44,7 +44,7 @@ return [
         |
         */
         'card' => 'summary_large_image',
-        'image' => '/images/og-image.jpeg',
+        'image' => '/images/og-image.jpg',
     ],
 
     'facebook' => [
@@ -57,7 +57,7 @@ return [
         |
         */
         'og:type' => 'website',
-        'og:image' => '/images/og-image.jpeg',
+        'og:image' => '/images/og-image.jpg',
     ],
 
 ];

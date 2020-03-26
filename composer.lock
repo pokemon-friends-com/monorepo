@@ -252,16 +252,16 @@
         },
         {
             "name": "babenkoivan/scout-elasticsearch-driver",
-            "version": "v4.0.4",
+            "version": "v4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/babenkoivan/scout-elasticsearch-driver.git",
-                "reference": "2821233736c8d6482501f6cc17fcb93bd8b3a075"
+                "reference": "fe3e9a8ec08b00be002248cbf6ea168ccd6a82bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/babenkoivan/scout-elasticsearch-driver/zipball/2821233736c8d6482501f6cc17fcb93bd8b3a075",
-                "reference": "2821233736c8d6482501f6cc17fcb93bd8b3a075",
+                "url": "https://api.github.com/repos/babenkoivan/scout-elasticsearch-driver/zipball/fe3e9a8ec08b00be002248cbf6ea168ccd6a82bb",
+                "reference": "fe3e9a8ec08b00be002248cbf6ea168ccd6a82bb",
                 "shasum": ""
             },
             "require": {
@@ -309,7 +309,7 @@
                 "scout",
                 "search"
             ],
-            "time": "2020-03-17T20:17:08+00:00"
+            "time": "2020-03-24T14:38:38+00:00"
         },
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -3520,16 +3520,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.31.0",
+            "version": "2.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "bbc0ab53f41a4c6f223c18efcdbd9bc725eb5d2d"
+                "reference": "7410a349613bf32d02d8aaed1c669698ddd2b718"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bbc0ab53f41a4c6f223c18efcdbd9bc725eb5d2d",
-                "reference": "bbc0ab53f41a4c6f223c18efcdbd9bc725eb5d2d",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/7410a349613bf32d02d8aaed1c669698ddd2b718",
+                "reference": "7410a349613bf32d02d8aaed1c669698ddd2b718",
                 "shasum": ""
             },
             "require": {
@@ -3538,6 +3538,7 @@
                 "symfony/translation": "^3.4 || ^4.0 || ^5.0"
             },
             "require-dev": {
+                "doctrine/orm": "^2.7",
                 "friendsofphp/php-cs-fixer": "^2.14 || ^3.0",
                 "kylekatarnls/multi-tester": "^1.1",
                 "phpmd/phpmd": "^2.8",
@@ -3586,7 +3587,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2020-03-01T11:11:58+00:00"
+            "time": "2020-03-24T16:01:47+00:00"
         },
         {
             "name": "nicmart/tree",
@@ -4339,20 +4340,20 @@
         },
         {
             "name": "phpoption/phpoption",
-            "version": "1.7.2",
+            "version": "1.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "77f7c4d2e65413aff5b5a8cc8b3caf7a28d81959"
+                "reference": "4acfd6a4b33a509d8c88f50e5222f734b6aeebae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/77f7c4d2e65413aff5b5a8cc8b3caf7a28d81959",
-                "reference": "77f7c4d2e65413aff5b5a8cc8b3caf7a28d81959",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/4acfd6a4b33a509d8c88f50e5222f734b6aeebae",
+                "reference": "4acfd6a4b33a509d8c88f50e5222f734b6aeebae",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9 || ^7.0"
+                "php": "^5.5.9 || ^7.0 || ^8.0"
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.3",
@@ -4390,7 +4391,7 @@
                 "php",
                 "type"
             ],
-            "time": "2019-12-15T19:35:24+00:00"
+            "time": "2020-03-21T18:07:53+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -4891,16 +4892,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801"
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
-                "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/0f73288fd15629204f9d42b7055f72dacbe811fc",
+                "reference": "0f73288fd15629204f9d42b7055f72dacbe811fc",
                 "shasum": ""
             },
             "require": {
@@ -4934,7 +4935,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2019-11-01T11:05:21+00:00"
+            "time": "2020-03-23T09:12:05+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -9129,16 +9130,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v5.10.0",
+            "version": "v5.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "38776592d7c427a10eff69b15ba911f629a69ed8"
+                "reference": "e07cc46a1e39767739e8197189780b4c2639806d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/38776592d7c427a10eff69b15ba911f629a69ed8",
-                "reference": "38776592d7c427a10eff69b15ba911f629a69ed8",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/e07cc46a1e39767739e8197189780b4c2639806d",
+                "reference": "e07cc46a1e39767739e8197189780b4c2639806d",
                 "shasum": ""
             },
             "require": {
@@ -9193,7 +9194,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2020-03-17T17:00:25+00:00"
+            "time": "2020-03-24T16:21:49+00:00"
         },
         {
             "name": "m6web/redis-mock",

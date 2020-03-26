@@ -30,6 +30,19 @@ jobs:
   fast_finish: true
   include:
   - stage: test
+    name: pokemon-friends-com/www PHP Standard PSR12
+    language: php
+    php: 7.3
+    env:
+      - CODECLIMATE=off
+      - APP_ENV=testing
+    before_install:
+      - printf "\n" | pecl install imagick
+    install:
+      - composer install -o --no-interaction --prefer-dist --no-suggest
+    script:
+      - vendor/bin/phpcs --standard=PSR12 app
+  - stage: test
     name: pokemon-friends-com/www PHP
     language: php
     php: 7.3

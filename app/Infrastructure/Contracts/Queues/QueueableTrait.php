@@ -6,6 +6,5 @@ use Illuminate\Bus\Queueable;
 
 trait QueueableTrait
 {
-
     use Queueable;
 }

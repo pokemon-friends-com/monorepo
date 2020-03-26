@@ -17,7 +17,7 @@ class AlterUsersProfilesTableToAddTeamColorColumn extends Migration
         Schema::table('users_profiles', function (Blueprint $table) {
             $table
                 ->enum('team_color', ProfilesTeamsColors::COLORS)
-                ->default(ProfilesTeamsColors::RED)
+                ->default(ProfilesTeamsColors::DEFAULT)
                 ->index();
         });
     }

@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Users\Repositories;
+<?php
+
+namespace template\Domain\Users\Users\Repositories;
 
 use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 

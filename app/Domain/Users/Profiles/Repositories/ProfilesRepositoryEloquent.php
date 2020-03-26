@@ -230,7 +230,12 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
             'team_color' => $request->get('team_color'),
             'is_sidebar_pined' => $request->get('is_sidebar_pined'),
         ];
-        $data = array_filter($data, function($v) { return !is_null($v); });
+        $data = array_filter(
+            $data,
+            function ($v) {
+                return !is_null($v);
+            }
+        );
 
         if ($data) {
             $this->update($data, $user->profile->id);
@@ -243,7 +248,12 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
         ];
-        $data = array_filter($data, function($v) { return !is_null($v); });
+        $data = array_filter(
+            $data,
+            function ($v) {
+                return !is_null($v);
+            }
+        );
 
         if ($data) {
             $user = $this->r_users->update($data, $user->id);

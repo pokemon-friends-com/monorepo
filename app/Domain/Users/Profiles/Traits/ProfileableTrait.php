@@ -1,4 +1,6 @@
-<?php namespace template\Domain\Users\Profiles\Traits;
+<?php
+
+namespace template\Domain\Users\Profiles\Traits;
 
 use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 use template\Domain\Users\

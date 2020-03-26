@@ -6,7 +6,8 @@ use template\Domain\Users\Users\{
     Repositories\UsersResetPasswordRepositoryInterface
 };
 
-class UsersResetPasswordRepositoryEloquent extends UsersRepositoryEloquent implements UsersResetPasswordRepositoryInterface
+class UsersResetPasswordRepositoryEloquent extends UsersRepositoryEloquent implements
+    UsersResetPasswordRepositoryInterface
 {
 
     /**
