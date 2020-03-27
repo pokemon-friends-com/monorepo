@@ -154,7 +154,7 @@ jobs:
       - npm install
       - php artisan elfinder:publish
     script:
-      - npm run fortrabbit
+      - npm run production
     before_deploy:
       - chmod 777 bin/*.sh
       - bash bin/decrypt_travis_enc_files.sh
