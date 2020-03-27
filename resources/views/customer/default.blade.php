@@ -43,6 +43,11 @@
                             <p>{{ trans('users.dashboard') }}</p>
                         </a>
                     </li>
+                    @impersonating
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{{ route('impersonate.leave') }}"><i class="fa fa-user-times mr-2"></i>{{ trans('users.stop_impersonation') }}</a>
+                    </li>
+                    @endImpersonating
                 </ul>
             </nav>
         </div>
