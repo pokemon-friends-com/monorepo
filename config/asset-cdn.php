@@ -4,7 +4,7 @@ return [
 
     'use_cdn' => env('USE_CDN', false),
 
-    'cdn_url' => 'https://objects.eu2.frbit.com',
+    'cdn_url' => '',
 
     'filesystem' => [
         'disk' => 'asset-cdn',
