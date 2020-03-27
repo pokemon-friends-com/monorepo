@@ -40,10 +40,16 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule
-            ->command('sitemap:generate')
-            ->hourly()
+            ->command('queue:work', [
+                '--sleep' => 3,
+                '--tries' => 3,
+            ])
+            ->everyMinute()
             ->withoutOverlapping();
-
+        $schedule
+            ->command('sitemap:generate')
+            ->everyFiveMinutes()
+            ->withoutOverlapping();
         $schedule
             ->command('crawler:pokemongofriendcodes')
             ->monthly()
