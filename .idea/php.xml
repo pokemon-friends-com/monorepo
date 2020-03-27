@@ -199,6 +199,7 @@
       <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/fortrabbit/laravel-object-storage" />
+      <path value="$PROJECT_DIR$/vendor/arubacao/asset-cdn" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">

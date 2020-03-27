@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6aa5a40cc4199ca4e51374bd9a91440",
+    "content-hash": "f7c274536be16ffbce8a339c8d0e7156",
     "packages": [
         {
             "name": "abenevaut/laravel-settings",
@@ -113,6 +113,67 @@
                 "twitter"
             ],
             "time": "2019-11-29T14:55:32+00:00"
+        },
+        {
+            "name": "arubacao/asset-cdn",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arubacao/asset-cdn.git",
+                "reference": "a7e8f963c14300d8b3730f042b4f3a5a3871e3f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arubacao/asset-cdn/zipball/a7e8f963c14300d8b3730f042b4f3a5a3871e3f9",
+                "reference": "a7e8f963c14300d8b3730f042b4f3a5a3871e3f9",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.4|^6.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "league/flysystem-aws-s3-v3": "^1.0",
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "~3.4|^4.0",
+                "phpunit/phpunit": "~5.7|~6.0|^7.0|^8.0",
+                "spatie/temporary-directory": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Arubacao\\AssetCdn\\AssetCdnServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Arubacao\\AssetCdn\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Lass",
+                    "homepage": "https://c-lass.com/"
+                }
+            ],
+            "description": "Serve Laravel Assets from a Content Delivery Network (CDN)",
+            "homepage": "https://github.com/arubacao/asset-cdn",
+            "keywords": [
+                "AWS Cloudfront",
+                "cdn",
+                "content delivery network",
+                "laravel"
+            ],
+            "time": "2019-09-04T11:09:50+00:00"
         },
         {
             "name": "aws/aws-sdk-php",

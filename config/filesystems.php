@@ -64,6 +64,15 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'asset-cdn' => [
+            'url' => env('OBJECT_STORAGE_SERVER'),
+            'driver' => 'object-storage',
+            'key' => env('OBJECT_STORAGE_KEY'),
+            'secret' => env('OBJECT_STORAGE_SECRET'),
+            'region' => env('OBJECT_STORAGE_REGION', 'eu-west-1'),
+            'bucket' => env('OBJECT_STORAGE_BUCKET'),
+        ],
+
     ],
 
 ];

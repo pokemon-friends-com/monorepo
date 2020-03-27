@@ -110,7 +110,7 @@ if (mix.inProduction()) {
 if (mix.inProduction() && process.env.UPLOAD_FORTRABBIT) {
   webpackPlugins.push(
     new S3Plugin({
-      include: /.*\.(css|js)/,
+      include: /.*\.(css|js|wav|png|gif|jpg|jpeg|svg|eot|ttf|woff|woff2)/,
       s3Options: {
         accessKeyId: process.env.OBJECT_STORAGE_KEY,
         secretAccessKey: process.env.OBJECT_STORAGE_SECRET,
