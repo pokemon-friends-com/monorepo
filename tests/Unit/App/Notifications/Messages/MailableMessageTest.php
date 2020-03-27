@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\App\Notifications\Channels;
+namespace Tests\Unit\App\Notifications\Messages;
 
 use template\App\Notifications\Messages\MailableMessage;
 use Tests\TestCase;
