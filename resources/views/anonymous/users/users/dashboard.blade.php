@@ -24,7 +24,7 @@
                         <h3 class="widget-user-username text-left">{{ trans('pokemon.welcome') }}</h3>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle" src="{{ asset('images/avatar.jpg') }}" alt="User Avatar">
+                        <img class="img-circle" src="{{ asset_cdn('images/avatar.jpg') }}" alt="User Avatar">
                     </div>
                     <div class="card-body">
                         <div class="row">
