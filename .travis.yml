@@ -152,6 +152,7 @@ jobs:
       - cp .env.example .env
       - composer install -o --no-interaction --prefer-dist --no-suggest
       - npm install
+      - php artisan elfinder:publish
     script:
       - npm run fortrabbit
     before_deploy:
@@ -160,6 +161,7 @@ jobs:
       - eval "$(ssh-agent -s)"
       - chmod 600 /tmp/deploy_rsa
       - ssh-add /tmp/deploy_rsa
+      - php artisan asset-cdn:sync
     deploy:
       - provider: script
         skip_cleanup: true

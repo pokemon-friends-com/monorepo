@@ -2,15 +2,15 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="<?= asset($dir . '/css/elfinder.min.css') ?>">
-    <link rel="stylesheet" type="text/css" href="<?= asset($dir . '/css/theme.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset_cdn($dir . '/css/elfinder.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset_cdn($dir . '/css/theme.css') ?>">
 @endsection
 
 @section('js')
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous" defer></script>
-    <script src="<?= asset($dir . '/js/elfinder.full.js') ?>" defer></script>
+    <script src="<?= asset_cdn($dir . '/js/elfinder.full.js') ?>" defer></script>
     @if ($locale)
-        <script src="<?= asset($dir . "/js/i18n/elfinder.$locale.js") ?>" defer></script>
+        <script src="<?= asset_cdn($dir . "/js/i18n/elfinder.$locale.js") ?>" defer></script>
     @endif
     <script type="text/javascript">
       (function (W, D, $) {
@@ -25,7 +25,7 @@
               _token: '<?= csrf_token() ?>'
             },
             url: '<?= route("administrator.files.connector") ?>',  // connector URL
-            soundPath: '<?= asset($dir . '/sounds') ?>'
+            soundPath: '<?= asset_cdn($dir . '/sounds') ?>'
           });
         });
       })(window, document, jQuery);

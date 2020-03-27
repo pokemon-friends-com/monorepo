@@ -11,7 +11,6 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "fortrabbit": "cross-env NODE_ENV=production UPLOAD_FORTRABBIT=true node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "mocha": "cross-env NODE_ENV=testing mocha-webpack --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require tests/bootstrap.js tests/Unit/Vue/\\\\*.spec.js",
         "test": "cross-env NODE_ENV=testing nyc --reporter=lcov npm run mocha"
     },
@@ -64,8 +63,7 @@
         "underscore": "^1.9.2",
         "vue": "^2.6.11",
         "vue-eslint-parser": "^7.0.0",
-        "vue-template-compiler": "^2.6.11",
-        "webpack-s3-plugin": "^1.0.3"
+        "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {}
 }

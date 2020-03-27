@@ -27,19 +27,20 @@ return [
 	*/
 	'disks' => [
 		\template\Domain\Users\Users\User::ROLE_ADMINISTRATOR => [
-			'public' => [
-				'alias' => 'Public',
-				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
-				'URL' => 'files/document',
-				'tmbURL' => env('APP_URL'),
-				'glideURL' => 'files/thumbnail',
-			],
+//			'public' => [
+//				'alias' => 'Public',
+//				'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
+//				'URL' => 'files/document',
+//				'tmbURL' => env('APP_URL'),
+//				'glideURL' => 'files/thumbnail',
+//			],
             's3' => [
                 'alias' => 'Cloud',
                 'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
-//                'URL' => 'files/document',
-//                'tmbURL' => env('APP_URL'),
-//                'glideURL' => 'files/thumbnail',
+            ],
+            'asset-cdn' => [
+                'alias' => 'CDN Assets',
+                'accessControl' => 'template\Domain\Files\Files\Access\ReadOnly::checkAccess',
             ],
 		],
 	],

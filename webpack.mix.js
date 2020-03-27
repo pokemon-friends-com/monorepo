@@ -4,7 +4,6 @@ const imageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const S3Plugin = require('webpack-s3-plugin');
 
 let webpackPlugins = [
   new StyleLintPlugin({
@@ -102,28 +101,11 @@ mix
   .sass('resources/sass/app.scss', 'public/css');
 
 if (mix.inProduction()) {
-  mix.version();
+  mix
+    .version()
+    .setResourceRoot('/assets.pokemon-friends.com/');
 } else {
   mix.sourceMaps();
-}
-
-if (mix.inProduction() && process.env.UPLOAD_FORTRABBIT) {
-  webpackPlugins.push(
-    new S3Plugin({
-      include: /.*\.(css|js|wav|png|gif|jpg|jpeg|svg|eot|ttf|woff|woff2)/,
-      s3Options: {
-        accessKeyId: process.env.OBJECT_STORAGE_KEY,
-        secretAccessKey: process.env.OBJECT_STORAGE_SECRET,
-        endpoint: process.env.OBJECT_STORAGE_SERVER,
-        region: process.env.OBJECT_STORAGE_REGION,
-        signatureVersion: 'v2'
-      },
-      s3UploadOptions: {
-        Bucket: process.env.OBJECT_STORAGE_BUCKET
-      },
-      directory: 'public'
-    })
-  );
 }
 
 mix.webpackConfig({
