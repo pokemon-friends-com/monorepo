@@ -16,7 +16,4 @@ return [
     '500_title' => 'Erreur serveur',
     '500_description' => '500 - Merci de rapporter cette erreur à votre administrateur.',
 
-    '503_title' => 'Page temporairement indisponible',
-    '503_description' => '503 - Page temporairement indisponible.',
-
 ];

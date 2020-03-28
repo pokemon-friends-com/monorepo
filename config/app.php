@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'pokemon-friends'),
+    'name' => env('APP_NAME', 'pkmn-friends'),
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return [
     |
     */
 
-    'keywords' => 'pokemon,pokemon go,go,community,friends,pokemon go friends,pokemon friends',
+    'keywords' => 'pokemon,pokemon go,community,friends,pokemon go friends,pokemon friends, friend code, pokemon go code',
 
     /*
     |--------------------------------------------------------------------------

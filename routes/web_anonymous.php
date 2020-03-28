@@ -20,7 +20,6 @@ Route::group(
         'namespace' => 'Anonymous',
     ],
     function () {
-        Route::get('terms-of-services', ['as' => 'terms', 'uses' => 'AboutController@terms']);
         Route::group(['namespace' => 'Files'], function () {
             Route::get('files/media/{hash}', ['as' => 'files.media', 'uses' => 'MediasController@media']);
             Route::get('files/document/{path}', ['as' => 'files.document', 'uses' => 'FilesController@document'])->where('path', '.+');
@@ -28,6 +27,7 @@ Route::group(
         });
         Route::group(['namespace' => 'Users'], function () {
             Route::get('/', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard'])->middleware('guest');
+            Route::get('terms-of-services', ['as' => 'terms', 'uses' => 'UsersController@terms']);
             Route::resource('contact', 'LeadsController')->middleware(ProtectAgainstSpam::class);
         });
     });

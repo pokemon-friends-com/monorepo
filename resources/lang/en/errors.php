@@ -16,7 +16,7 @@ return [
     '500_title' => 'Server Error',
     '500_description' => '500 - Please report this error to your administrator.',
 
-    '503_title' => 'Page temporarily unavailable',
-    '503_description' => '503 - Page temporarily unavailable.',
+    '503_title' => 'We are offline',
+    '503_description' => 'Routine maintenance usually takes less than an hour. If this turns into an extended outage, we will <b>post details on <a href=":news_feed" target="_blank" rel="noopener" title="twitter.com">the news feed</a></b>.',
 
 ];

@@ -22,12 +22,12 @@
                             @if(Auth::check())
                             <i class="fas fa-tachometer-alt mr-2"></i>{{ trans('users.dashboard') }}
                             @else
-                            <i class="fas fa-home mr-2"></i>{{ trans('global.home') }}
+                            <i class="fas fa-home mr-2"></i>{{ trans('users.home') }}
                             @endif
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('anonymous.contact.index') }}" class="nav-link @if (Route::currentRouteNamed('anonymous.contact.index')) active @endif"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contacts') }}</a>
+                        <a href="{{ route('anonymous.contact.index') }}" class="nav-link @if (Route::currentRouteNamed('anonymous.contact.index')) active @endif"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contact') }}</a>
                     </li>
                 </ul>
             </div>
@@ -79,7 +79,7 @@
                 <a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
-        <span class="mr-1">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span><span class="mr-1"><a href="{{ route('anonymous.terms') }}">{{ trans('global.terms') }}</a></span>
+        <span class="mr-1">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span><span class="mr-1"><a href="{{ route('anonymous.terms') }}">{{ trans('users.terms') }}</a></span>
     </footer>
 </div>
 @if(!Auth::check())

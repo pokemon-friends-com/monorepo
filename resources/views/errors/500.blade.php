@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="content-header">
-        <div class="container-fluid">
+        <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>{{ trans('errors.500_title') }}</h1>

@@ -1,18 +1,27 @@
 @extends('anonymous.default')
 
+@section('title', $metadata['title'])
+@section('description', $metadata['description'])
+
 @section('content')
 <div class="content-header">
     <div class="container">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contacts') }}</h1>
+                <h1 class="m-0 text-dark"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contact') }}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('anonymous.dashboard') }}"><i class="fas fa-home mr-2"></i>{{ trans('global.home') }}</a>
+                        <a href="{{ route('anonymous.dashboard') }}">
+                            @if(Auth::check())
+                                <i class="fas fa-tachometer-alt mr-2"></i>{{ trans('users.dashboard') }}
+                            @else
+                                <i class="fas fa-home mr-2"></i>{{ trans('users.home') }}
+                            @endif
+                        </a>
                     </li>
-                    <li class="breadcrumb-item active"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contacts') }}</li>
+                    <li class="breadcrumb-item active"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contact') }}</li>
                 </ol>
             </div>
         </div>
@@ -24,37 +33,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <p>{!! trans('users.leads.baseline') !!}</p>
+                        {!! trans('users.leads.baseline') !!}
                     </div>
                 </div>
             </div>
             <div class="col-12">
-                <div class="row">
-                    <div class="col-12 col-sm-4">
-                        <div class="info-box bg-light">
-                            <div class="info-box-content">
-                                <span class="info-box-text text-center text-muted">{{ trans('global.our_news') }}</span>
-                                <span class="info-box-number text-center text-muted mb-0"><a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter mr-2"></i>Twitter</a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4">
-                        <div class="info-box bg-light">
-                            <div class="info-box-content">
-                                <span class="info-box-text text-center text-muted">{{ trans('global.next_features') }}</span>
-                                <span class="info-box-number text-center text-muted mb-0"><a href="{{ config('services.github.nextgen') }}" target="_blank" rel="noopener" title="github.com"><i class="fab fa-github mr-2"></i>Github</a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-4">
-                        <div class="info-box bg-light">
-                            <div class="info-box-content">
-                                <span class="info-box-text text-center text-muted">{{ trans('global.bugs_reported') }}</span>
-                                <span class="info-box-number text-center text-muted mb-0"><a href="{{ config('services.github.issues') }}" target="_blank" rel="noopener" title="github.com"><i class="fab fa-github mr-2"></i>Github</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('partials.row_socials_news')
             </div>
             <div class="col-8">
                 <div class="card">
@@ -179,19 +163,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <iframe width="100%" src="https://www.youtube.com/embed/2GNw1j7fepI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <a
-                                class="btn btn-primary btn-block"
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                                href="https://niantic.helpshift.com/a/pokemon-go/?p=web&l={{ Session::get('locale') }}&s=friends-gifting-and-trading&f=friend-list-friendship-levels"
-                        >
-                            La documentation officiel
-                        </a>
-                    </div>
-                </div>
+                @include('partials.card_official_doc')
                 <div class="card">
                     <div class="card-body">
                         {{ trans('global.social_networks_baseline') }}

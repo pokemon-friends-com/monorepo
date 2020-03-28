@@ -2,9 +2,6 @@
 
 namespace template\Http\Controllers\Anonymous\Users;
 
-use Illuminate\Support\Collection;
-use template\Domain\Users\Profiles\Presenters\ProfilesListPresenter;
-use template\Domain\Users\Profiles\Profile;
 use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
@@ -27,7 +24,7 @@ class UsersController extends ControllerAbstract
     }
 
     /**
-     * Display anonymous dashboard.
+     * Display anonymous users dashboard.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -37,9 +34,25 @@ class UsersController extends ControllerAbstract
             'anonymous.users.users.dashboard',
             [
                 'metadata' => [
-                    'title' => 'Pokemon friends',
+                    'title' => config('app.name'),
+                    'description' => config('app.description'),
                 ],
             ]
         );
+    }
+
+    /**
+     * Display users terms.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function terms()
+    {
+        return view('anonymous.users.users.terms', [
+            'metadata' => [
+                'title' => trans('users.terms'),
+                'description' => trans('users.anonymous.meta.description_terms'),
+            ],
+        ]);
     }
 }

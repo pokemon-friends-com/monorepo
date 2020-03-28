@@ -3,33 +3,27 @@
 @section('title', trans('errors.503_title'))
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>{{ trans('errors.503_title') }}</h1>
+<div class="content-header">
+    <div class="container">
+        <div class="row mb-2">
+            <h1 class="m-0 text-dark"><i class="fas fa-power-off mr-2"></i>{{ trans('errors.503_title') }}</h1>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {!! trans('errors.503_description', ['news_feed' => config('services.twitter.url')]) !!}
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="content">
-        <div class="error-page">
-            <h2 class="headline text-warning">503</h2>
-            <div class="error-content">
-                <h3>
-                    <i class="fas fa-exclamation-triangle text-warning mr-2"></i>{{ trans('errors.503_title') }}
-                </h3>
-                <p>
-                    {{ trans('errors.503_description') }}
-                </p>
-                @if (app()->bound('sentry') && !empty(app('sentry')->getLastEventID()))
-                    <div>Error ID: {{ app('sentry')->getLastEventID() }}</div>
-                    <sentry-dialog-component event-id="{{ app('sentry')->getLastEventID() }}"></sentry-dialog-component>
-                @endif
-                <p>
-                    <a class="btn btn-primary btn-sm" href="{{ route('anonymous.dashboard') }}">{{ trans('home') }}</a>
-                </p>
+            <div class="col-12">
+                @include('partials.row_socials_news')
             </div>
         </div>
-    </section>
+    </div>
+</div>
 @endsection

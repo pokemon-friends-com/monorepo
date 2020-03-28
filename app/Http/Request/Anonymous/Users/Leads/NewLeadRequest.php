@@ -2,6 +2,7 @@
 
 namespace template\Http\Request\Anonymous\Users\Leads;
 
+use template\Domain\Users\Users\User;
 use template\Infrastructure\Contracts\Request\RequestAbstract;
 
 class NewLeadRequest extends RequestAbstract
@@ -27,11 +28,14 @@ class NewLeadRequest extends RequestAbstract
     {
         return $this->recaptchaRule()
             + [
-                'civility' => 'required',
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'email' => 'required|email',
-                'subject' => 'required',
+                'civility' => 'required|in:'
+                    . User::CIVILITY_MADAM . ','
+                    . User::CIVILITY_MISS . ','
+                    . User::CIVILITY_MISTER,
+                'first_name' => 'required|max:100',
+                'last_name' => 'required|max:100',
+                'email' => 'required|email|max:80',
+                'subject' => 'required|max:255',
                 'message' => 'required',
                 'certify' => 'required',
             ];

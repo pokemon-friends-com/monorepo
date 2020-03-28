@@ -13,7 +13,7 @@
           <button type="button"
                   v-show="nextUrl"
                   @click.prevent="page++"
-                  class="btn btn-default btn-sm"
+                  class="btn btn-default btn-sm float-right"
           >
             Next <i class="fas fa-chevron-right"></i>
           </button>
