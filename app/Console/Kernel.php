@@ -41,8 +41,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule
             ->command('queue:work', [
-                '--sleep' => 3,
-                '--tries' => 3,
+                env('QUEUE_CONNECTION'),
+                '--stop-when-empty',
             ])
             ->everyMinute()
             ->withoutOverlapping();
