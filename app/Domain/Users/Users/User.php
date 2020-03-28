@@ -31,10 +31,10 @@ use template\Domain\Users\Leads\{
 };
 use template\Domain\Users\Profiles\Traits\ProfileableTrait;
 use template\Domain\Users\ProvidersTokens\ProviderToken;
-use template\Domain\Users\Users\
-{
+use template\Domain\Users\Users\{
     Notifications\CreatedAccountByAdministrator,
     Notifications\ResetPassword,
+    Notifications\SponsoredFriendCode,
     Traits\NamableTrait,
     Traits\GenrableTrait
 };
@@ -134,6 +134,18 @@ class User extends AuthenticatableModelAbstract implements
     public function sendCreatedAccountByAdministratorNotification()
     {
         $this->notify(new CreatedAccountByAdministrator($this));
+
+        return $this;
+    }
+
+    /**
+     * Send the sponsored friend code to twitter..
+     *
+     * @return $this
+     */
+    public function sendSponsoredFriendCodeNotification()
+    {
+        $this->notify(new SponsoredFriendCode($this));
 
         return $this;
     }
