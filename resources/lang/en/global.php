@@ -2,25 +2,21 @@
 
 return [
 
-    'baseline' => 'Sign up to share your friend code and join your trainer community!',
+    'official_documentation' => 'Official documentation',
     'changelog' => 'Changelog',
     'copyright' => '&copy; :date <a href=":route">:name</a>. All rights reserved.',
     'environment' => '<b>Environment</b> :environment',
-    'terms' => 'Terms of Service',
     'social_networks_baseline' => 'Follow us on social media',
-    'share_gift' => 'Share gifts',
-    'fight_friend' => 'Fight your friends',
-    'boost_xp' => 'Boost your XP',
 
-    'our_news' => 'Our news',// Notre actualité
-    'next_features' => 'Next features',// Prochaines fonctionnalités
-    'bugs_reported' => 'Bugs reported', // Bugs rapportés
+    'our_news' => 'Our news',
+    'next_features' => 'Next features',
+    'bugs_reported' => 'Bugs reported',
 
+    'to_come_up' => 'to come up',
     'beta' => 'Beta',
     'add' => 'Add',
     'cancel' => 'Cancel',
     'export' => 'Export',
-    'home' => 'Home',
     'record' => 'Save',
     'back' => 'Back',
     'actions' => 'Actions',

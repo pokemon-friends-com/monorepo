@@ -28,9 +28,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('anonymous.dashboard') }}">
-                                {{ trans('global.home') }}
-                            </a>
+                            <a href="{{ route('anonymous.dashboard') }}">{{ trans('users.home') }}</a>
                         </li>
                         <li class="breadcrumb-item active"><i class="fa fa-user mr-2"></i>{{ trans('users.profiles.edit.title') }}</li>
                     </ol>
@@ -198,14 +196,14 @@
                         <div class="card-body">
                             <div class="form-group row">
                                 <label for="current_password"
-                                       class="col-sm-3 col-form-label text-sm-right">{{ trans('users.current_password') }}</label>
+                                       class="col-sm-3 col-form-label text-sm-right">{{ trans('users.password_current') }}</label>
                                 <div class="col-sm-9">
                                     <input
                                             type="password"
                                             name="current_password"
                                             class="form-control"
                                             id="current_password"
-                                            placeholder="{{ trans('users.current_password') }}"
+                                            placeholder="{{ trans('users.password_current') }}"
                                             value=""/>
                                 </div>
                             </div>

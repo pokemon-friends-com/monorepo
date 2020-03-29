@@ -1,11 +1,13 @@
 @extends('anonymous.default')
 
+@section('title', $metadata['title'])
+
 @section('content')
 <div class="content-header">
     <div class="container">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1 class="m-0 text-dark text-center">{{ trans('global.baseline') }}</h1>
+                <h1 class="m-0 text-dark text-center">{{ trans('users.baseline') }}</h1>
             </div>
         </div>
     </div>
@@ -15,60 +17,39 @@
         <div class="row">
             <div class="d-none d-md-block col-lg-8">
                 <div class="card card-widget widget-user">
-                    <div class="ribbon-wrapper ribbon-lg">
-                        <div class="ribbon bg-danger">
-                            {{ trans('global.beta') }}
-                        </div>
-                    </div>
+                    <div class="ribbon-wrapper ribbon-lg"><div class="ribbon bg-danger">{{ trans('global.beta') }}</div></div>
                     <div class="widget-user-header text-white" style="background:url(/images/pokemon-banner.jpg) no-repeat center center;">
-                        <h3 class="widget-user-username text-left">{{ trans('pokemon.welcome') }}</h3>
+                        <h3 class="widget-user-username text-left">{{ trans('users.welcome') }}</h3>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle" src="{{ asset_cdn('images/avatar.jpg') }}" alt="User Avatar">
+                        <img class="img-circle" src="{{ asset_cdn('images/avatar.jpg') }}" alt="Avatar">
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <span class="description-text">{{ trans('global.share_gift') }}</span>
+                                    <span class="description-text">{{ trans('users.anonymous.dashboard.share_gift') }}</span>
                                 </div>
                             </div>
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <span class="description-text">{{ trans('global.fight_friend') }}</span>
+                                    <span class="description-text">{{ trans('users.anonymous.dashboard.fight_friend') }}</span>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="description-block">
-                                    <span class="description-text">{{ trans('global.boost_xp') }}</span>
+                                    <span class="description-text">{{ trans('users.anonymous.dashboard.boost_xp') }}</span>
                                 </div>
                             </div>
                         </div>
                         <hr>
-                        <p>
-                            <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a> est un annuaire communautaire de codes amis Pokemon Go
-                        </p>
-                        <ul>
-                            <li>Parcourez des dizaines de codes amis</li>
-                            <li>Ajoutez, en une photo, de nouveaux amis sur votre jeu Pokemon Go</li>
-                            <li>Inscrivez-vous et partagez votre code ami</li>
-                        </ul>
+                        {!! trans('users.anonymous.dashboard.features', ['home_url' => route('anonymous.dashboard'), 'app_name' => config('app.name')]) !!}
                     </div>
                 </div>
                 <div class="card card-widget widget-user">
-                    <div class="ribbon-wrapper ribbon-sm">
-                        <div class="ribbon bg-info">
-                            à venir
-                        </div>
-                    </div>
+                    <div class="ribbon-wrapper ribbon-lg"><div class="ribbon bg-info">{{ trans('global.to_come_up') }}</div></div>
                     <div class="card-body">
-                        <p>
-                            L'équipe <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a> travail activement sur les prochaines fonctionnalités de votre plateforme pour votre plus grand plaisir
-                        </p>
-                        <ul>
-                            <li>Enregistrez ou rejoingnez des équipes composées de vos amis</li>
-                            <li>Organiser votre équipe, donnez-vous rendez-vous pour les raids, créez des événement qu'aucun membre de votre équipe ne pourra louper</li>
-                        </ul>
+                        {!! trans('users.anonymous.dashboard.to_come_up', ['home_url' => route('anonymous.dashboard'), 'app_name' => config('app.name')]) !!}
                     </div>
                 </div>
             </div>
@@ -126,25 +107,8 @@
                     </div>
                     {!! Form::close() !!}
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <iframe width="100%" src="https://www.youtube.com/embed/2GNw1j7fepI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <a
-                                class="btn btn-primary btn-block"
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                                href="https://niantic.helpshift.com/a/pokemon-go/?p=web&l={{ Session::get('locale') }}&s=friends-gifting-and-trading&f=friend-list-friendship-levels"
-                        >
-                            La documentation officiel
-                        </a>
-                    </div>
-                </div>
-                <div class="info-box bg-light">
-                    <div class="info-box-content">
-                        <span class="info-box-text text-center text-muted">{{ trans('global.our_news') }}</span>
-                        <span class="info-box-number text-center text-muted mb-0"><a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter mr-2"></i>Twitter</a></span>
-                    </div>
-                </div>
+                @include('partials.card_official_doc')
+                @include('partials.card_our_news')
             </div>
         </div>
         <trainers-profiles-list-component></trainers-profiles-list-component>

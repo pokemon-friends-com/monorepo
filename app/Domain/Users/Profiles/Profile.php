@@ -96,6 +96,21 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
     }
 
     /**
+     * Formated friend_code mutator.
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function getFormatedFriendCodeAttribute(): string
+    {
+        $firstPart = substr($this->friend_code, 0, 4);
+        $secondPart = substr($this->friend_code, 4, 4);
+        $thirdPart = substr($this->friend_code, 8, 4);
+
+        return "{$firstPart}-{$secondPart}-{$thirdPart}";
+    }
+
+    /**
      * Get the user record associated with the trainer profile.
      */
     public function user()

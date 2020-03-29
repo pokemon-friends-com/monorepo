@@ -31,7 +31,7 @@ class UsersController extends ControllerAbstract
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function dashboard(Request $request)
     {
