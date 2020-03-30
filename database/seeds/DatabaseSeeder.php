@@ -31,16 +31,6 @@ class DatabaseSeeder extends Seeder
             });
 
         factory(User::class)
-            ->states(User::ROLE_ACCOUNTANT)
-            ->create([
-                'email' => 'accountant@pokemon-friends.com',
-                'locale' => 'en',
-            ])
-            ->each(function ($user) {
-                factory(Profile::class)->create(['user_id' => $user->id]);
-            });
-
-        factory(User::class)
             ->states(User::ROLE_CUSTOMER)
             ->create([
                 'email' => 'customer@pokemon-friends.com',

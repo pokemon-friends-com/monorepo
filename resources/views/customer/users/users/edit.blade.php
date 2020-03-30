@@ -39,8 +39,8 @@
     <section class="content">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    {!! Form::open(['route' => ['customer.users.profiles.update', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
+                <div class="col-12 col-md-8">
+                    {!! Form::open(['route' => ['customer.users.update', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
                     <div class="card">
                         <div class="card-header">
                             Join the friend code list
@@ -73,9 +73,6 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header">
-                            Optional data to field
-                        </div>
                         <div class="card-body">
                             <div class="form-group row">
                                 <label for="locale" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.locale') }}</label>
@@ -99,8 +96,19 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Optional data to field
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <h5><i class="icon fas fa-info mr-2"></i>{{ trans('global.information') }}</h5>
+                                Seul vous et les administrateurs peuvent consulter les informations suivantes.
+                            </div>
                             <div class="form-group row">
-                                <label for="first_name" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.civility') }}</label>
+                                <label for="civility" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.civility') }}</label>
                                 <div class="col-sm-9">
                                     <select name="civility" id="civility" class="select2 w-100 form-control">
                                         @foreach ($civilities as $key => $trans)
@@ -113,9 +121,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class="alert alert-info">
-                                Les informations suivante ne sont pas public (affichées sur internet) et ne sont pas transmisent à des services tiers.
                             </div>
                             <div class="form-group row">
                                 <label for="first_name" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.first_name') }}</label>
@@ -151,87 +156,90 @@
 {{--                                    <input type="text" class="form-control" id="birth_date" placeholder="{{ trans('users.profiles.birth_date') }}" name="birth_date" value="{{ $profile['data']['birth_date'] }}" data-target="#birth_date" data-toggle="datetimepicker">--}}
 {{--                                </div>--}}
 {{--                            </div>--}}
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="providers_tokens" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.providers_tokens') }}</label>--}}
-{{--                                <div class="col-sm-9">--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-sm-4">--}}
-{{--                                            <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}">--}}
-{{--                                                <span class="pull-left"><i class="fab fa-twitter"></i></span>--}}
-{{--                                                <span class="bold">Lier Twitter</span>--}}
-{{--                                            </a>--}}
-{{--                                            <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}">--}}
-{{--                                                <span class="pull-left"><i class="fab fa-google-plus"></i></span>--}}
-{{--                                                <span class="bold">Lier Google+</span>--}}
-{{--                                            </a>--}}
-{{--                                            <a class="btn btn-block btn-info" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::LINKEDIN]) }}">--}}
-{{--                                                <span class="pull-left"><i class="fab fa-linkedin"></i></span>--}}
-{{--                                                <span class="bold">Lier Linkedin</span>--}}
-{{--                                            </a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
+                    </div>
+                    <div class="card">
                         <div class="card-footer">
                             <button class="btn btn-primary" type="submit">{{ trans('global.record') }}</button>
                         </div>
                     </div>
                     {{ Form::close() }}
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-info">
-                        <h5><i class="icon fas fa-info"></i> Information</h5>
-                        Il n'est pas encore possible de changer son adresse email, mais vous pouvez en faire la demande sur <a href="{{ route('anonymous.contact.index') }}">la page de contact</a>.
-                    </div>
-                </div>
-                <div class="col-12">
-                    {!! Form::open(['route' => ['customer.users.update-password', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
+                <div class="d-none d-md-block col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            Update password
+                            {{ trans('users.profiles.providers_tokens') }}
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-block btn-primary btn-twitter" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}">
+                                <span class="pull-left"><i class="fab fa-twitter"></i></span>
+                                <span class="bold">Lier Twitter</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="alert alert-info">
+                        <h5><i class="icon fas fa-info mr-2"></i>{{ trans('global.information') }}</h5>
+                        {!! trans('users.change_email', ['contact_rul' => route('anonymous.contact.index')]) !!}
+                    </div>
+                    {!! Form::open(['route' => ['customer.users.password', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
+                    <div class="card">
+                        <div class="card-header">
+                            {{ trans('users.change_password') }}
                         </div>
                         <div class="card-body">
                             <div class="form-group row">
-                                <label for="current_password"
-                                       class="col-sm-3 col-form-label text-sm-right">{{ trans('users.password_current') }}</label>
-                                <div class="col-sm-9">
+                                <div class="input-group">
                                     <input
                                             type="password"
-                                            name="current_password"
-                                            class="form-control"
-                                            id="current_password"
+                                            name="password_current"
+                                            class="form-control {{ $errors && $errors->has('password_current') ? 'is-invalid' : '' }}"
                                             placeholder="{{ trans('users.password_current') }}"
-                                            value=""/>
+                                    />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-lock"></span>
+                                        </div>
+                                    </div>
                                 </div>
+                                @if ($errors && $errors->has('password_current'))
+                                    <div class="text-danger text-sm">{{ $errors->first('password_current') }}</div>
+                                @endif
                             </div>
                             <div class="form-group row">
-                                <label for="password"
-                                       class="col-sm-3 col-form-label text-sm-right">{{ trans('users.password') }}</label>
-                                <div class="col-sm-9">
+                                <div class="input-group">
                                     <input
                                             type="password"
                                             name="password"
-                                            class="form-control"
-                                            id="password"
+                                            class="form-control {{ $errors && $errors->has('password') ? 'is-invalid' : '' }}"
                                             placeholder="{{ trans('users.password') }}"
-                                            value=""/>
+                                    />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-lock"></span>
+                                        </div>
+                                    </div>
                                 </div>
+                                @if ($errors && $errors->has('password'))
+                                    <div class="text-danger text-sm">{{ $errors->first('password') }}</div>
+                                @endif
                             </div>
                             <div class="form-group row">
-                                <label for="password_confirmation"
-                                       class="col-sm-3 col-form-label text-sm-right">{{ trans('users.password_confirmation') }}</label>
-                                <div class="col-sm-9">
+                                <div class="input-group">
                                     <input
                                             type="password"
                                             name="password_confirmation"
-                                            class="form-control"
-                                            id="password_confirmation"
+                                            class="form-control {{ $errors && $errors->has('password_confirmation') ? 'is-invalid' : '' }}"
                                             placeholder="{{ trans('users.password_confirmation') }}"
-                                            value=""/>
+                                    />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-lock"></span>
+                                        </div>
+                                    </div>
                                 </div>
+                                @if ($errors && $errors->has('password_confirmation'))
+                                    <div class="text-danger text-sm">{{ $errors->first('password_confirmation') }}</div>
+                                @endif
                             </div>
                         </div>
                         <div class="card-footer">

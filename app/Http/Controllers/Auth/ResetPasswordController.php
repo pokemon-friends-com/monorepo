@@ -9,7 +9,6 @@ use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 class ResetPasswordController extends ControllerAbstract
 {
     use ResetsPasswords;
-    use AuthRedirectTrait;
 
     /*
     |--------------------------------------------------------------------------
@@ -26,6 +25,11 @@ class ResetPasswordController extends ControllerAbstract
      * @var UsersResetPasswordRepositoryEloquent
      */
     protected $r_users;
+
+    /**
+     * @var string
+     */
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

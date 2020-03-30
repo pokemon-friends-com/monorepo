@@ -116,7 +116,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
-    'recaptcha' => 'The :attribute field is invalid.',
+    'validpassword' => 'The password entered is not your password.',
 
     /*
     |--------------------------------------------------------------------------
@@ -179,6 +179,7 @@ return [
         /**
          * Specifics
          */
+        'password_current' => 'current password',
         'subject' => 'subject',
         'recaptcha' => 'recaptcha',
         'friend_code' => 'friend code',

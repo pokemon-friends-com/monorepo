@@ -15,11 +15,11 @@ class CrawlPokemonGoFriendCodesCommandTest extends TestCase
 
     public function testCrawlerPokemonGoFriendCodes()
     {
-        $this->markTestSkipped('Could not be executed in testing env; `Predis\Connection\ConnectionException: Connection refused [tcp://127.0.0.1:6379]`');
+        $this->markTestSkipped('Could not be executed in testing env');
 
         Bus::fake();
         $this
-            ->artisan('crawler:pokemongofriendcodes', ['--maximum-crawl' => 1])
+            ->artisan('crawler:pokemongofriendcodes', ['--maximum-crawl' => 5])
             ->assertExitCode(0);
         Bus::assertDispatched(RegisterFriendCodeJob::class);
     }

@@ -13,7 +13,7 @@ class AdministratorMailableChannelTest extends TestCase
 
     public function testToSendNotificationFromAdministratorChannel()
     {
-        $notifiable = new TestNotifiable;
+        $notifiable = new TestNotifiable();
         $notification = \Mockery::mock(TestNotification::class);
         $message = (new MailableMessage())
             ->subject($this->faker->text(50))
@@ -27,9 +27,9 @@ class AdministratorMailableChannelTest extends TestCase
     }
 }
 
+// phpcs:disable
 class TestNotifiable
 {
-
     use Notifiable;
 }
 
@@ -41,3 +41,4 @@ class TestNotification extends Notification
         return new MailableMessage();
     }
 }
+// phpcs:enable

@@ -22,7 +22,8 @@ class LeadsControllerTest extends TestCase
     {
         $this
             ->get('/contact')
-            ->assertSuccessful();
+            ->assertSuccessful()
+            ->assertSeeText('Contact');
     }
 
     public function testStoreWithEmptyForm()
@@ -31,53 +32,47 @@ class LeadsControllerTest extends TestCase
         Event::fake();
         Notification::fake();
         $this
-            ->call('POST', '/contact', [
+            ->followingRedirects()
+            ->from('/contact')
+            ->post('/contact', [
                 'civility' => $lead['civility'],
                 'first_name' => '',
                 'last_name' => '',
                 'email' => '',
                 'subject' => '',
                 'message' => '',
-                'g-recaptcha-response' => '',
                 'certify' => '',
-            ], [], [], ['HTTP_REFERER' => '/contact'])
-            ->assertStatus(302)
-            ->assertRedirect('/contact');
-        $this
-            ->get('/contact')
+            ])
             ->assertSuccessful()
-            ->assertSee('The first name field is required.')
-            ->assertSee('The last name field is required.')
-            ->assertSee('The email field is required.')
-            ->assertSee('The subject field is required.')
-            ->assertSee('The message field is required.');
+            ->assertSeeText('The first name field is required.')
+            ->assertSeeText('The last name field is required.')
+            ->assertSeeText('The email field is required.')
+            ->assertSeeText('The subject field is required.')
+            ->assertSeeText('The message field is required.');
         Event::assertNotDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(0, HandshakeMailToConfirmReceptionToSender::class);
         $this->assertDatabaseMissing('users_leads', $lead);
     }
 
-    public function testStoreWithBadEmail()
+    public function testStoreWithInvalidEmail()
     {
         $lead = factory(Lead::class)->raw();
         Event::fake();
         Notification::fake();
         $this
-            ->call('POST', '/contact', [
+            ->followingRedirects()
+            ->from('/contact')
+            ->post('/contact', [
                 'civility' => $lead['civility'],
                 'first_name' => $lead['first_name'],
                 'last_name' => $lead['last_name'],
                 'email' => $this->faker->text,
                 'subject' => $this->faker->text,
                 'message' => $this->faker->text,
-                'g-recaptcha-response' => '',
                 'certify' => true,
-            ], [], [], ['HTTP_REFERER' => '/contact'])
-            ->assertStatus(302)
-            ->assertRedirect('/contact');
-        $this
-            ->get('/contact')
+            ])
             ->assertSuccessful()
-            ->assertSee('The email must be a valid email address.');
+            ->assertSeeText('The email must be a valid email address.');
         Event::assertNotDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(0, HandshakeMailToConfirmReceptionToSender::class);
         $this->assertDatabaseMissing('users_leads', $lead);
@@ -89,6 +84,7 @@ class LeadsControllerTest extends TestCase
         Event::fake();
         Notification::fake();
         $this
+            ->from('/contact')
             ->post('/contact', [
                 'civility' => $lead['civility'],
                 'first_name' => $lead['first_name'],
@@ -96,10 +92,8 @@ class LeadsControllerTest extends TestCase
                 'email' => $lead['email'],
                 'subject' => $this->faker->text,
                 'message' => $this->faker->text,
-                'g-recaptcha-response' => '',
                 'certify' => true,
             ])
-            ->assertStatus(302)
             ->assertRedirect('/contact');
         Event::assertDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(1, HandshakeMailToConfirmReceptionToSender::class);
@@ -120,6 +114,7 @@ class LeadsControllerTest extends TestCase
         Notification::fake();
         $this
             ->assertAuthenticated()
+            ->from('/contact')
             ->post('/contact', [
                 'civility' => $lead['civility'],
                 'first_name' => $lead['first_name'],
@@ -127,10 +122,8 @@ class LeadsControllerTest extends TestCase
                 'email' => $lead['email'],
                 'subject' => $this->faker->text,
                 'message' => $this->faker->text,
-                'g-recaptcha-response' => '',
                 'certify' => true,
             ])
-            ->assertStatus(302)
             ->assertRedirect('/contact');
         Event::assertNotDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(1, HandshakeMailToConfirmReceptionToSender::class);
@@ -150,6 +143,7 @@ class LeadsControllerTest extends TestCase
         Notification::fake();
         $this
             ->assertAuthenticated()
+            ->from('/contact')
             ->post('/contact', [
                 'civility' => $lead['civility'],
                 'first_name' => $lead['first_name'],
@@ -157,10 +151,8 @@ class LeadsControllerTest extends TestCase
                 'email' => $lead['email'],
                 'subject' => $this->faker->text,
                 'message' => $this->faker->text,
-                'g-recaptcha-response' => '',
                 'certify' => true,
             ])
-            ->assertStatus(302)
             ->assertRedirect('/contact');
         Event::assertNotDispatched(LeadCreatedEvent::class);
         Notification::assertTimesSent(1, HandshakeMailToConfirmReceptionToSender::class);

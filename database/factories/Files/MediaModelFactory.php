@@ -13,20 +13,22 @@
 
 use template\Domain\Files\Medias\Media;
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/**
+ * @var \Illuminate\Database\Eloquent\Factory $factory
+ */
 $factory
     ->define(Media::class, function (Faker\Generator $faker) {
         return [
-            'model_type' => null,
             'model_id' => null,
+            'model_type' => '',
             'collection_name' => $faker->text,
             'name' => $faker->text,
             'file_name' => null,
             'mime_type' => null,
-            'disk' => $faker->text,
-            'size',
-            'manipulations',
-            'custom_properties',
-            'order_column',
+            'disk' => $faker->randomElements(['local', 'public']),
+            'size' => 0,
+            'manipulations' => '',
+            'custom_properties' => '',
+            'order_column' => $faker->randomDigit,
         ];
     });

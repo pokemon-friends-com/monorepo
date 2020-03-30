@@ -23,7 +23,7 @@ class UsersResetPasswordRepositoryEloquent extends UsersRepositoryEloquent imple
      * @var array
      */
     protected $changePasswordRules = [
-        'current_password' => 'required|validpassword',
+        'password_current' => 'required|validpassword',
         'password' => 'required|confirmed|min:8',
     ];
 

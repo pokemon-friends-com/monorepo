@@ -9,6 +9,7 @@
     <div class="login-logo">
         <a href="{{ route('anonymous.dashboard') }}">{{ config('app.name') }}</a>
     </div>
+    @include('partials.session-message')
     <div class="card">
         @yield('content')
     </div>

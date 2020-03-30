@@ -16,7 +16,7 @@ class NewLeadRequest extends RequestAbstract
      */
     public function authorize()
     {
-        return $this->recaptcha();
+        return true;
     }
 
     /**
@@ -26,8 +26,7 @@ class NewLeadRequest extends RequestAbstract
      */
     public function rules()
     {
-        return $this->recaptchaRule()
-            + [
+        return [
                 'civility' => 'required|in:'
                     . User::CIVILITY_MADAM . ','
                     . User::CIVILITY_MISS . ','

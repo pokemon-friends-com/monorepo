@@ -53,10 +53,6 @@ class Kernel extends HttpKernel
             \Illuminate\Auth\Middleware\Authenticate::class,
             'role:' => UserRolesInterface::ROLE_CUSTOMER,
         ],
-        UserRolesInterface::ROLE_ACCOUNTANT => [
-            \Illuminate\Auth\Middleware\Authenticate::class,
-            'role:' => UserRolesInterface::ROLE_ACCOUNTANT,
-        ],
     ];
 
     /**

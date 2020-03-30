@@ -6,9 +6,9 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use template\Console\Commands\{
     GenerateSitemapCommand,
-    GetFileFromAwsCommand,
-    PushFileToAwsCommand,
-    RemoveFileOnAwsCommand,
+    Files\GetFileFromCloudCommand,
+    Files\PushFileToCloudCommand,
+    Files\RemoveFileFromCloudCommand,
     TestLaravelEchoCommand,
     CrawlPokemonGoFriendCodesCommand
 };
@@ -24,10 +24,11 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         CrawlPokemonGoFriendCodesCommand::class,
         GenerateSitemapCommand::class,
-        GetFileFromAwsCommand::class,
-        PushFileToAwsCommand::class,
-        RemoveFileOnAwsCommand::class,
+        GetFileFromCloudCommand::class,
+        PushFileToCloudCommand::class,
+        RemoveFileFromCloudCommand::class,
         TestLaravelEchoCommand::class,
+        \checkCoverage\Console\Commands\CheckCoverageCommand::class,
     ];
 
     /**

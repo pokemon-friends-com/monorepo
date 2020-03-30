@@ -32,7 +32,7 @@
                     <img src="{{ asset_cdn('images/avatar.jpg') }}" class="img-circle elevation-2" alt="{{ Auth::user()->full_name }}">
                 </div>
                 <div class="info">
-                    <a href="{{ route('customer.users.profiles.edit', ['id' => Auth::user()->uniqid]) }}" class="d-block">{{ Auth::user()->full_name }}</a>
+                    <a href="{{ route('customer.users.edit', ['id' => Auth::user()->uniqid]) }}" class="d-block">{{ Auth::user()->full_name }}</a>
                 </div>
             </div>
             <nav class="mt-2">

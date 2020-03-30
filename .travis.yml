@@ -7,6 +7,7 @@ git:
 addons:
   chrome: stable
   hosts:
+    - localhost
     - www.pokemon-friends.com.local
   ssh_known_hosts:
     - github.com
@@ -42,6 +43,10 @@ jobs:
       - composer install -o --no-interaction --prefer-dist --no-suggest
     script:
       - vendor/bin/phpcs --standard=PSR12 app
+      - vendor/bin/phpcs --standard=PSR12 components
+      - vendor/bin/phpcs --standard=PSR12 database/factories
+      - vendor/bin/phpcs --standard=PSR12 routes
+      - vendor/bin/phpcs --standard=PSR12 tests --extensions=php
   - stage: test
     name: pokemon-friends-com/www PHP
     language: php
@@ -70,10 +75,11 @@ jobs:
       - php artisan elfinder:publish
     script:
       - vendor/bin/phpunit
+      - php artisan test:check-coverage ./coverage/clover.xml 80
     after_script:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:aws:push coverage/clover.xml coverages/${TRAVIS_COMMIT}/clover.xml
+          php artisan file:cloud:push coverage/clover.xml coverages/${TRAVIS_COMMIT}/clover.xml
         fi
   - stage: test
     name: pokemon-friends-com/www JS&TS
@@ -105,7 +111,7 @@ jobs:
     after_script:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:aws:push coverage/lcov.info coverages/${TRAVIS_COMMIT}/lcov.info
+          php artisan file:cloud:push coverage/lcov.info coverages/${TRAVIS_COMMIT}/lcov.info
         fi
   - stage: coverage
     name: Send codeclimate coverage
@@ -127,8 +133,8 @@ jobs:
     script:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:aws:get coverages/${TRAVIS_COMMIT}/clover.xml coverage/clover.xml
-          php artisan file:aws:get coverages/${TRAVIS_COMMIT}/lcov.info coverage/lcov.info
+          php artisan file:cloud:get coverages/${TRAVIS_COMMIT}/clover.xml coverage/clover.xml
+          php artisan file:cloud:get coverages/${TRAVIS_COMMIT}/lcov.info coverage/lcov.info
           ./cc-test-reporter format-coverage -t clover -o coverage/codeclimate.php.json coverage/clover.xml
           ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.js.json coverage/lcov.info
           ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
@@ -137,8 +143,8 @@ jobs:
     after_script:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:aws:rm coverages/${TRAVIS_COMMIT}/clover.xml
-          php artisan file:aws:rm coverages/${TRAVIS_COMMIT}/lcov.info
+          php artisan file:cloud:rm coverages/${TRAVIS_COMMIT}/clover.xml
+          php artisan file:cloud:rm coverages/${TRAVIS_COMMIT}/lcov.info
         fi
   - stage: deploy
     name: pokemon-friends-com/www

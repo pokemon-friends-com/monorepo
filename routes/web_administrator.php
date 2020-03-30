@@ -17,22 +17,23 @@ Route::group(
         'namespace' => 'Administrator',
         'prefix' => \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR,
         'domain' => env('APP_DOMAIN'),
-        'middleware' => ['auth', 'role:'.\template\Domain\Users\Users\User::ROLE_ADMINISTRATOR],
+        'middleware' => [
+            'auth',
+            'role:' . \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR
+        ],
     ],
     function () {
-        Route::resource('settings', 'Settings\SettingsController', ['only' => ['index', 'store']]);
         Route::group(['namespace' => 'Files'], function () {
             Route::get('files', ['as' => 'files.index', 'uses' => 'FilesController@index']);
             Route::any('files/connector', ['as' => 'files.connector', 'uses' => 'FilesController@connector']);
         });
         Route::group(['namespace' => 'Users'], function () {
-            Route::model('profile', \template\Domain\Users\Users\User::class);
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard']);
                 Route::get('export', ['as' => 'export', 'uses' => 'UsersController@export']);
-                Route::resource('profiles', 'ProfilesController');
-                Route::resource('leads', 'LeadsController');
+                Route::resource('leads', 'LeadsController')->only(['index', 'update']);
             });
             Route::resource('users', 'UsersController');
         });
-    });
+    }
+);

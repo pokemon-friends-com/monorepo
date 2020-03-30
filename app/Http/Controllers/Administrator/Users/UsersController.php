@@ -249,6 +249,9 @@ class UsersController extends ControllerAbstract
     {
         $f_email = $request->get('email');
         $f_full_name = $request->get('full_name');
+        $fileName = trans('users.export_sheet_title', [
+            'date' => date('Y-m-d_H-i')
+        ]);
 
         $this
             ->r_users
@@ -256,62 +259,52 @@ class UsersController extends ControllerAbstract
             ->filterByName($f_full_name)
             ->with(['lead']);
 
-        $fd = fopen('php://output', 'w');
-        $csv = Writer::createFromStream($fd);
+        $csv = Writer::createFromFileObject(new \SplTempFileObject(128));
         $csv->setDelimiter(';');
-
-        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-        header('Content-Description: File Transfer');
-        header("Content-type: text/csv");
-        header(
-            "Content-Disposition: attachment; filename="
-            . trans('users.export_sheet_title', ['date' => date('Y-m-d_H-i-s')])
-        );
-        header("Expires: 0");
-        header("Pragma: public");
-
-        $nb_users = $this->r_users->count();
-
+        $csv->chunk(1024);
         $csv->insertOne([
             trans('global.id'),
             trans('users.civility'),
             trans('users.last_name'),
             trans('users.first_name'),
-            trans('profiles.family_situation'),
-            trans('profiles.maiden_name'),
-            trans('profiles.birth_date'),
-            trans('global.email'),
+            trans('users.profiles.family_situation'),
+            trans('users.profiles.maiden_name'),
+            trans('users.profiles.birth_date'),
+            trans('users.email'),
             trans('users.role'),
             trans('users.locale'),
             trans('users.timezone'),
         ]);
 
-        $this
-            ->r_users
-            ->all()
-            ->each(function ($model) use ($csv) {
-                $csv->insertOne([
-                    $model->uniqid,
-                    trans('users.civility.' . $model->civility),
-                    $model->last_name,
-                    $model->first_name,
-                    trans('profiles.family_situation.' . $model->profile->family_situation),
-                    $model->profile->maiden_name,
-                    is_null($model->profile->birth_date_carbon)
-                        ?: $model
-                        ->profile
-                        ->birth_date_carbon
-                        ->format(trans('global.date_format')),
-                    $model->email,
-                    trans('users.role.' . $model->role),
-                    $model->locale,
-                    $model->timezone,
-                ]);
-            });
+        $callback = function () use ($csv) {
+            $this
+                ->r_users
+                ->chunk(100, function ($users) use ($csv) {
+                    $users->each(function ($model) use ($csv) {
+                        $csv->insertOne([
+                            $model->uniqid,
+                            trans('users.civility.' . $model->civility),
+                            $model->last_name,
+                            $model->first_name,
+                            trans('profiles.family_situation.' . $model->profile->family_situation),
+                            $model->profile->maiden_name,
+                            is_null($model->profile->birth_date_carbon)
+                                ?: $model
+                                ->profile
+                                ->birth_date_carbon
+                                ->format(trans('global.date_format')),
+                            $model->email,
+                            trans('users.role.' . $model->role),
+                            $model->locale,
+                            $model->timezone,
+                        ]);
+                    });
 
-        $csv->insertOne([
-            trans('users.export_total_user', ['nb_users' => $nb_users]),
-        ]);
-        exit;
+                    echo $csv->getContent();
+                    flush();
+                });
+        };
+
+        return response()->streamDownload($callback, $fileName);
     }
 }

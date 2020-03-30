@@ -10,13 +10,14 @@ use Illuminate\Support\Fluent;
 
 trait SqliteHotfixTestCaseTrait
 {
+
     /**
      * https://github.com/laravel/framework/issues/25475#issuecomment-439342648
      */
     public function hotfixSqlite()
     {
         Connection::resolverFor('sqlite', function ($connection, $database, $prefix, $config) {
-            return new class($connection, $database, $prefix, $config) extends SQLiteConnection
+            return new class ($connection, $database, $prefix, $config) extends SQLiteConnection
             {
                 public function getSchemaBuilder()
                 {
@@ -24,11 +25,11 @@ trait SqliteHotfixTestCaseTrait
                         $this->useDefaultSchemaGrammar();
                     }
 
-                    return new class($this) extends SQLiteBuilder
+                    return new class ($this) extends SQLiteBuilder
                     {
                         protected function createBlueprint($table, \Closure $callback = null)
                         {
-                            return new class($table, $callback) extends Blueprint
+                            return new class ($table, $callback) extends Blueprint
                             {
                                 public function dropForeign($index)
                                 {

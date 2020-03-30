@@ -1,0 +1,34 @@
+{
+    "name": "abenevaut/laravel-check-coverage",
+    "type": "project",
+    "description": "Laravel command to verify coverage percentage.",
+    "keywords": [
+        "laravel",
+        "phpunit",
+        "coverage"
+    ],
+    "license": "GPL-3.0",
+    "require": {
+        "php": "^7.3.0",
+        "ext-simplexml": "*"
+    },
+    "require-dev": {
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "checkCoverage\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

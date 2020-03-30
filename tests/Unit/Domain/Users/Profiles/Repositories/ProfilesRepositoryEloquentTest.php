@@ -1,4 +1,6 @@
-<?php namespace Tests\Unit\Domain\Users\Profiles\Repositories;
+<?php
+
+namespace Tests\Unit\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Support\Collection;
 use template\Domain\Users\Profiles\Events\ProfileUpdatedEvent;
@@ -14,7 +16,6 @@ use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 
 class ProfilesRepositoryEloquentTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
@@ -33,7 +34,6 @@ class ProfilesRepositoryEloquentTest extends TestCase
     {
         $this->assertTrue($this->r_profiles instanceof ProfilesRepositoryEloquent);
     }
-
 
     public function testModel()
     {

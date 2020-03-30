@@ -32,8 +32,7 @@ class UserUpdateFormRequest extends RequestAbstract
             'email' => "required|email|max:80|unique:users,email,{$this->segment(3)},uniqid",
             'role' => 'required|in:'
                 . User::ROLE_ADMINISTRATOR . ','
-                . User::ROLE_CUSTOMER . ','
-                . User::ROLE_ACCOUNTANT,
+                . User::ROLE_CUSTOMER,
             'civility' => 'required|in:'
                 . User::CIVILITY_MADAM . ','
                 . User::CIVILITY_MISS . ','

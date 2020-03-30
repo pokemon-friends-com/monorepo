@@ -26,7 +26,7 @@ class UsersControllerTest extends TestCase
         $this
             ->getJson('/api/v1/users/user')
             ->assertSuccessful()
-            ->assertExactJson((new UserTransformer)->transform($user));
+            ->assertExactJson((new UserTransformer())->transform($user));
     }
 
     public function testUserAsAnonymousEndpoint()

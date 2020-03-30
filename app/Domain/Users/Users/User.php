@@ -191,16 +191,6 @@ class User extends AuthenticatableModelAbstract implements
     }
 
     /**
-     * Is the user accountant ?
-     *
-     * @return bool
-     */
-    public function getIsAccountantAttribute()
-    {
-        return self::ROLE_ACCOUNTANT === $this->role;
-    }
-
-    /**
      * Get the lead that owns the user.
      */
     public function lead()

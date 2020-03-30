@@ -24,14 +24,6 @@
             <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
         </a>
         <div class="sidebar">
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ asset_cdn('images/avatar.jpg') }}" class="img-circle elevation-2" alt="{{ Auth::user()->full_name }}">
-                </div>
-                <div class="info">
-                    <a href="{{ route('administrator.users.profiles.edit', ['id' => Auth::user()->uniqid]) }}" class="d-block">{{ Auth::user()->full_name }}</a>
-                </div>
-            </div>
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
@@ -81,12 +73,6 @@
                         <a href="{{ route('administrator.files.index') }}" class="nav-link @if (Route::currentRouteNamed('administrator.files.index')) active @endif">
                             <i class="nav-icon fa fa-folder-open"></i>
                             <p>{{ trans('files.title') }}</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('administrator.settings.index') }}" class="nav-link @if (Route::currentRouteNamed('administrator.settings.index')) active @endif">
-                            <i class="nav-icon fas fa-cogs"></i>
-                            <p>{{ trans('settings.title') }}</p>
                         </a>
                     </li>
                 </ul>

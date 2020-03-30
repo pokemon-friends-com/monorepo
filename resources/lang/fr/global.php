@@ -30,6 +30,7 @@ return [
     'date_format' => 'd/m/Y',
     'datetime_format' => 'd/m/Y H\hi',
     'today' => 'Aujourd\'hui',
+    'information' => 'Information',
 
 
     'automated_requested_email' => 'Ce courriel est un message automatique envoyé suite à votre demande.',

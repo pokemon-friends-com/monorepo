@@ -27,8 +27,10 @@ Route::group(
             ],
             function () {
                 Route::get('logout', 'LoginController@logout');
-            });
-    });
+            }
+        );
+    }
+);
 
 Route::group(
     [
@@ -42,7 +44,8 @@ Route::group(
                 Route::resource('profiles', 'ProfilesController', ['only' => ['index']]);
             });
         });
-    });
+    }
+);
 
 Route::group(
     [
@@ -62,4 +65,5 @@ Route::group(
             });
             Route::resource('users', 'UsersController', ['only' => ['show']]);
         });
-    });
+    }
+);

@@ -37,6 +37,9 @@ return [
         'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
         'access_token' => env('TWITTER_ACCESS_TOKEN'),
         'access_secret' => env('TWITTER_ACCESS_SECRET'),
+        'client_id' => env('TWITTER_CONSUMER_KEY'),
+        'client_secret' => env('TWITTER_CONSUMER_SECRET'),
+        'redirect' => env('TWITTER_REDIRECT_URI', '/login/twitter/callback'),
         'username' => '@pkmn_friends',
         'url' => 'https://twitter.com/pkmn_friends',
         /*
