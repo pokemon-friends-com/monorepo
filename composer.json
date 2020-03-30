@@ -12,13 +12,12 @@
         "coverage",
         "cms"
     ],
-    "license": "MIT",
+    "license": "GPL-3.0",
     "require": {
         "php": "^7.3.0",
         "ext-gd": "*",
         "ext-imagick": "*",
         "ext-json": "*",
-        "abenevaut/laravel-settings": "^7.0",
         "arubacao/asset-cdn": "^0.2.2",
         "babenkoivan/scout-elasticsearch-driver": "^4.0",
         "barryvdh/laravel-elfinder": "^0.4.2",
@@ -50,6 +49,8 @@
         "spatie/laravel-sitemap": "^5.3"
     },
     "require-dev": {
+        "ext-simplexml": "*",
+        "abenevaut/laravel-check-coverage": "dev-feat/test-anonymous",
         "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
@@ -105,5 +106,11 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
+    },
+    "repositories": {
+        "abenevaut/laravel-check-coverage": {
+            "type": "path",
+            "url": "./components/abenevaut/laravel-check-coverage"
+        }
     }
 }

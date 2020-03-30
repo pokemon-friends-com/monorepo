@@ -14,11 +14,11 @@ class FilesControllerTest extends TestCase
     use OAuthTestCaseTrait;
     use DatabaseMigrations;
 
-    public function testDocumentEndpoint()
+    public function testToGetDocument()
     {
         File::copy(
-            '/'.base_path('resources/images/test.jpg'),
-            '/'.storage_path('app/public/file001.jpg')
+            '/' . base_path('resources/images/test.jpg'),
+            '/' . storage_path('app/public/file001.jpg')
         );
 
         $this
@@ -29,14 +29,12 @@ class FilesControllerTest extends TestCase
         File::delete(storage_path('app/public/file001.jpg'));
     }
 
-    public function testDocumentEndpointWhereDocumentDoesNotExist()
+    public function testToGetDocumentWhenDocumentDoesNotExist()
     {
-        $this
-            ->get('files/document/file003.jpg')
-            ->assertStatus(404);
+        $this->get('files/document/file003.jpg')->assertStatus(404);
     }
 
-    public function testThumbnailEndpoint()
+    public function testToGetThumbnail()
     {
         File::copy(
             base_path('resources/images/test.jpg'),
@@ -50,14 +48,12 @@ class FilesControllerTest extends TestCase
 
         File::delete([
             storage_path('app/public/file002.jpg'),
-            storage_path('app/thumbnails/file002.jpg')
+            storage_path('app/thumbnails/file002.jpg'),
         ]);
     }
 
-    public function testThumbnailEndpointWhereDocumentDoesNotExist()
+    public function testToGetThumbnailWhenDocumentDoesNotExist()
     {
-        $this
-            ->get('files/thumbnail/file004.jpg')
-            ->assertStatus(404);
+        $this->get('files/thumbnail/file004.jpg')->assertStatus(404);
     }
 }

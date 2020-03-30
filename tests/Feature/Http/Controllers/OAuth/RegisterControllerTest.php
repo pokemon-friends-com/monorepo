@@ -19,13 +19,11 @@ class RegisterControllerTest extends TestCase
     {
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->make();
         $profile = factory(Profile::class)->make();
-
         $this
             ->postJson('/api/oauth/register', $user->toArray() + $profile->toArray() + [
-                    'password' => $this->getDefaultPassword(),
-                    'password_confirmation' => $this->getDefaultPassword()
-                ]
-            )
+                'password' => $this->getDefaultPassword(),
+                'password_confirmation' => $this->getDefaultPassword()
+            ])
             ->assertStatus(201)
             ->assertJsonStructure(['access_token', 'token_type', 'expires_at']);
     }

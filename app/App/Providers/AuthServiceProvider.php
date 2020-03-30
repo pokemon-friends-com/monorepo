@@ -28,10 +28,6 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes();
 
-        Gate::define(UserRolesInterface::ROLE_ACCOUNTANT, function ($user) {
-            return $user->is_accountant;
-        });
-
         Gate::define(UserRolesInterface::ROLE_ADMINISTRATOR, function ($user) {
             return $user->is_administrator;
         });

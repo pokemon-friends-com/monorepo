@@ -1,4 +1,6 @@
-<?php namespace Tests\Feature\Http\Controllers\Auth;
+<?php
+
+namespace Tests\Feature\Http\Controllers\Auth;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -7,58 +9,60 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\{
     Notification
 };
-use template\Domain\Users\{
-    Users\User,
-    Users\Notifications\ResetPassword
+use template\Domain\Users\Users\{
+    User,
+    Notifications\ResetPassword
 };
 
 class ForgotPasswordControllerTest extends TestCase
 {
+    use DatabaseMigrations;
 
-	use DatabaseMigrations;
-
-	public function testIfForgotPasswordIsCorrectlyDisplayed()
-	{
+    public function testToVisitForgotPassword()
+    {
         $this
             ->get('/password/reset')
             ->assertSuccessful()
-            ->assertSee('Change your password')
+            ->assertSeeText('Change your password')
             ->assertSee('Email')
-            ->assertSee('Send');
-	}
+            ->assertSeeText('Send');
+    }
 
-	public function testIfForgotPasswordCanBeSubmittedWithValidUserEmail()
-	{
+    public function testToSubmitForgotPasswordWithValidUserEmail()
+    {
         $user = factory(User::class)->create();
         Notification::fake();
-		$this
-			->post('/password/email', ['email' => $user->email])
-			->assertStatus(302)
-			->assertRedirect('/');
-		$user->refresh();
-		Notification::assertSentTo($user, ResetPassword::class);
-	}
+        $this
+            ->from('/password/reset')
+            ->post('/password/email', ['email' => $user->email])
+            ->assertStatus(302)
+            ->assertRedirect('/password/reset');
+        $user->refresh();
+        Notification::assertSentTo($user, ResetPassword::class);
+    }
 
-	public function testIfForgotPasswordCanBeSubmittedWithNotValidEmail()
-	{
+    public function testToSubmitForgotPasswordWithNotValidEmail()
+    {
         $email = $this->faker->word(20);
         Notification::fake();
         $this
-			->post('/password/email', ['email' => $email])
-			->assertStatus(302)
-			->assertRedirect('/');
-		Notification::assertNotSentTo([], ResetPassword::class);
-	}
+            ->from('/password/reset')
+            ->post('/password/email', ['email' => $email])
+            ->assertStatus(302)
+            ->assertRedirect('/password/reset');
+        Notification::assertNotSentTo([], ResetPassword::class);
+    }
 
-	public function testIfForgotPasswordCanBeSubmittedWithNotValidUserEmail()
-	{
+    public function testToSubmitForgotPasswordWithNotValidUserEmail()
+    {
         $email = $this->faker->email;
-		Notification::fake();
-		$this
-			->post('/password/email', ['email' => $email])
-			->assertStatus(302)
-			->assertRedirect('/')
-			->assertSessionHasErrors(['email' => trans('passwords.user')]);
-		Notification::assertNotSentTo([], ResetPassword::class);
-	}
+        Notification::fake();
+        $this
+            ->from('/password/reset')
+            ->post('/password/email', ['email' => $email])
+            ->assertStatus(302)
+            ->assertRedirect('/password/reset')
+            ->assertSessionHasErrors(['email' => 'We can\'t find a user with that e-mail address.']);
+        Notification::assertNotSentTo([], ResetPassword::class);
+    }
 }

@@ -22,8 +22,6 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             if (Auth::user()->is_administrator) {
                 return redirect('/administrator/users/dashboard');
-            } elseif (Auth::user()->is_accountant) {
-                return redirect('/accountant/users/dashboard');
             } else {
                 return redirect('/users/dashboard');
             }

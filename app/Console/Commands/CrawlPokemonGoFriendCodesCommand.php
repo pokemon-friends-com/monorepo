@@ -44,32 +44,27 @@ class CrawlPokemonGoFriendCodesCommand extends CommandAbstract
      */
     public function handle()
     {
-        try {
-            $maximumCrawl = $this->option('maximum-crawl');
-
-            $crawler = Crawler::create()
-                ->setUserAgent(config('app.name'))
-                ->respectRobots()
-                ->doNotExecuteJavaScript()
-                ->setConcurrency(1)
-                ->setDelayBetweenRequests(300)
-                ->setCrawlProfile(new CrawlInternalUrls($this->urlToCrawl))
-                ->setCrawlQueue(
-                    new RedisCrawlQueue(
-                        new PredisClient(config('database.redis.crawler')),
-                        $this->crawlerPrefix
-                    )
+        $maximumCrawl = $this->option('maximum-crawl');
+        $crawler = Crawler::create()
+            ->setUserAgent(config('app.name'))
+            ->respectRobots()
+            ->doNotExecuteJavaScript()
+            ->setConcurrency(1)
+            ->setDelayBetweenRequests(300)
+            ->setCrawlProfile(new CrawlInternalUrls($this->urlToCrawl))
+            ->setCrawlQueue(
+                new RedisCrawlQueue(
+                    new PredisClient(config('database.redis.crawler')),
+                    $this->crawlerPrefix
                 )
-                ->setCrawlObserver(new PokemonGoFriendCodesCrawlObserver());
+            )
+            ->setCrawlObserver(new PokemonGoFriendCodesCrawlObserver());
 
-            if ($maximumCrawl && is_numeric($maximumCrawl)) {
-                $crawler->setMaximumCrawlCount(intval($maximumCrawl, 10));
-            }
-
-            $crawler->startCrawling($this->urlToCrawl);
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
+        if ($maximumCrawl && is_numeric($maximumCrawl)) {
+            $crawler->setMaximumCrawlCount(intval($maximumCrawl, 10));
         }
+
+        $crawler->startCrawling($this->urlToCrawl);
 
         return 0;
     }

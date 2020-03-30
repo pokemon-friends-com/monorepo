@@ -7,9 +7,11 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Notification;
+use template\Domain\Users\Users\{
+    Notifications\CreatedAccountByAdministrator,
+    User
+};
 use template\Domain\Users\{
-    Users\Notifications\CreatedAccountByAdministrator,
-    Users\User,
     Profiles\Profile,
     Leads\Lead
 };
@@ -68,7 +70,6 @@ class LeadsControllerTest extends TestCase
         $this
             ->assertAuthenticated()
             ->put("/administrator/users/leads/{$lead->id}")
-            ->assertStatus(302)
             ->assertRedirect('administrator/users/leads');
         $lead->refresh();
         Notification::assertSentTo($lead->user, CreatedAccountByAdministrator::class);

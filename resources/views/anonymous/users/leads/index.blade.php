@@ -137,12 +137,6 @@
                                 <span class="text-danger text-sm">{{ $errors->first('message') }}</span>
                             @endif
                         </div>
-                        <div>
-                            <google-recaptcha-component></google-recaptcha-component>
-                            @if ($errors && $errors->has('g-recaptcha-response'))
-                                <span class="text-danger text-sm">{{ $errors->first('g-recaptcha-response') }}</span>
-                            @endif
-                        </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">

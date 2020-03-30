@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use Illuminate\{
-    Foundation\Testing\TestCase as BaseTestCase,
-    Foundation\Testing\WithFaker,
+use Illuminate\Foundation\{
+    Testing\TestCase as BaseTestCase,
+    Testing\WithFaker,
 };
 
 abstract class TestCase extends BaseTestCase

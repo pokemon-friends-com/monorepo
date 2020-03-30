@@ -28,14 +28,11 @@ class LeadsController extends ControllerAbstract
      * Display list of resources.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
     public function index()
     {
-        try {
-            $leads = $this->r_leads->getLeadsPaginated();
-        } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
-        }
+        $leads = $this->r_leads->getLeadsPaginated();
 
         return view('administrator.users.leads.index', compact('leads'));
     }
@@ -46,18 +43,13 @@ class LeadsController extends ControllerAbstract
      * @param Lead $lead
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(Lead $lead)
     {
-        $response = redirect(route('administrator.users.leads.index'));
+        $this->r_leads->createUserFromLead($lead);
 
-        try {
-            $this->r_leads->createUserFromLead($lead);
-            $response->with('message-success', trans('users.leads.lead_succefully_transformed_to_user'));
-        } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
-            app('sentry')->captureException($exception);
-        }
-
-        return $response;
+        return redirect(route('administrator.users.leads.index'))
+            ->with('message-success', trans('users.leads.lead_succefully_transformed_to_user'));
     }
 }

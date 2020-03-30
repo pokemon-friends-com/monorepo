@@ -34,17 +34,7 @@ class UsersRegistrationsRepositoryEloquent extends UsersRepositoryEloquent imple
      */
     public function registrationValidator(array $data): ContractsValidator
     {
-        $rules = $this->registrationRules;
-        $rules['g-recaptcha-response'] = 'required';
-
-        if (
-            app()->environment('local')
-            || app()->environment('testing')
-        ) {
-            unset($rules['g-recaptcha-response']);
-        }
-
-        return Validator::make($data, $rules);
+        return Validator::make($data, $this->registrationRules);
     }
 
     /**

@@ -2,8 +2,7 @@
 
 namespace Tests;
 
-use template\Domain\Users\
-{
+use template\Domain\Users\{
     Users\User,
     Profiles\Profile
 };
@@ -11,12 +10,12 @@ use template\Domain\Users\
 trait ActingTestCaseTrait
 {
 
-    protected function getDefaultPassword()
+    protected function getDefaultPassword(): string
     {
         return 'azerty42';
     }
 
-    protected function getDefaultPasswordBcrypted()
+    protected function getDefaultPasswordBcrypted(): string
     {
         return bcrypt($this->getDefaultPassword());
     }
@@ -26,15 +25,9 @@ trait ActingTestCaseTrait
      *
      * @return User
      */
-    protected function actingAsAdministrator()
+    protected function actingAsAdministrator(): User
     {
-        $administrator = factory(User::class)
-            ->states(User::ROLE_ADMINISTRATOR)
-            ->create();
-        factory(Profile::class)->create(['user_id' => $administrator->id]);
-        $this->actingAs($administrator);
-
-        return $administrator;
+        return $this->actingAsUser(User::ROLE_ADMINISTRATOR);
     }
 
     /**
@@ -42,14 +35,24 @@ trait ActingTestCaseTrait
      *
      * @return User
      */
-    protected function actingAsCustomer()
+    protected function actingAsCustomer(): User
     {
-        $customer = factory(User::class)
-            ->states(User::ROLE_CUSTOMER)
-            ->create();
-        factory(Profile::class)->create(['user_id' => $customer->id]);
-        $this->actingAs($customer);
+        return $this->actingAsUser(User::ROLE_CUSTOMER);
+    }
 
-        return $customer;
+    /**
+     * Acting as logged in user.
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    protected function actingAsUser(string $role = User::ROLE_CUSTOMER): User
+    {
+        $user = factory(User::class)->states($role)->create();
+        factory(Profile::class)->create(['user_id' => $user->id]);
+        $this->actingAs($user);
+
+        return $user;
     }
 }

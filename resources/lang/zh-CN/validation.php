@@ -116,6 +116,7 @@ return [
     'uploaded' => ':attribute 上传失败。',
     'url' => ':attribute 格式不正确。',
     'uuid' => ':attribute 必须是有效的 UUID。',
+    'validpassword' => '输入的密码不是您的密码。',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +179,7 @@ return [
         /**
          * Specifics
          */
+        'password_current' => '当前密码',
         'subject' => '学科',
         'recaptcha' => '重新捕获',
         'friend_code' => '朋友代码',

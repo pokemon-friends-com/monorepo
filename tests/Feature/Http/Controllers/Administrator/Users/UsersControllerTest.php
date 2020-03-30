@@ -2,20 +2,38 @@
 
 namespace Tests\Feature\Http\Controllers\Administrator\Users;
 
+use Illuminate\Support\Facades\Event;
+use League\Csv\Reader;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use template\Domain\Users\
-{
-    Users\User,
-    Profiles\Profile
+use template\Domain\Users\Users\{
+    Events\UserTriedToDeleteHisOwnAccountEvent,
+    User,
 };
+use template\Domain\Users\Profiles\Profile;
 
 class UsersControllerTest extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
+
+    public function testToVisitDashboardAsAnonymous()
+    {
+        $this
+            ->get('/administrator/users/dashboard')
+            ->assertRedirect('/login');
+    }
+
+    public function testToVisitDashboardAsCustomer()
+    {
+        $this->actingAsCustomer();
+        $this
+            ->assertAuthenticated()
+            ->get('/administrator/users/dashboard')
+            ->assertStatus(403);
+    }
 
     public function testToVisitDashboardAsAdministrator()
     {
@@ -27,27 +45,34 @@ class UsersControllerTest extends TestCase
             ->assertSuccessful();
     }
 
-    public function testToVisitDashboardAsAnonymous()
+    public function testToVisitAnonymousDashboardAsAdministrator()
     {
+        $this->actingAsAdministrator();
         $this
-            ->get('/administrator/users/dashboard')
-            ->assertStatus(302)
-            ->assertRedirect('/login');
+            ->assertAuthenticated()
+            ->get('/')
+            ->assertRedirect('/administrator/users/dashboard');
     }
 
-    public function testIndex()
+    public function testToVisitIndex()
     {
         $administrator = $this->actingAsAdministrator();
-        $user = factory(User::class)->create();
+        $users = factory(User::class)
+            ->times(30)
+            ->create()
+            ->each(function (User $user) {
+                factory(Profile::class)->create(['user_id' => $user->id]);
+            });
         $this
             ->assertAuthenticated()
             ->get('/administrator/users')
             ->assertSuccessful()
-            ->assertSee($administrator->uniqid)
-            ->assertSee($user->uniqid);
+            ->assertSeeText($administrator->email)
+            ->assertSeeText($users->first()->email)
+            ->assertDontSeeText($users->last()->email);
     }
 
-    public function testCreate()
+    public function testToCreate()
     {
         $this->actingAsAdministrator();
         $this
@@ -56,7 +81,7 @@ class UsersControllerTest extends TestCase
             ->assertSuccessful();
     }
 
-    public function testShow()
+    public function testToShow()
     {
         $this->actingAsAdministrator();
         $user = factory(User::class)->create();
@@ -66,7 +91,7 @@ class UsersControllerTest extends TestCase
             ->assertSuccessful();
     }
 
-    public function testEdit()
+    public function testToEdit()
     {
         $this->actingAsAdministrator();
         $user = factory(User::class)->create();
@@ -77,20 +102,72 @@ class UsersControllerTest extends TestCase
             ->assertSuccessful();
     }
 
-    public function testDestroy()
+    public function testToDestroy()
     {
-        $administrator = $this->actingAsAdministrator();
+        $this->actingAsAdministrator();
         $user = factory(User::class)->create();
-        $this
-            ->assertDatabaseHas('users', ['deleted_at' => null, 'uniqid' => $administrator->uniqid])
-            ->assertDatabaseHas('users', ['deleted_at' => null, 'uniqid' => $user->uniqid]);
         $this
             ->assertAuthenticated()
             ->delete("/administrator/users/{$user->uniqid}")
-            ->assertStatus(302)
             ->assertRedirect('/administrator/users');
+        $this->assertSoftDeleted('users', ['uniqid' => $user->uniqid]);
+    }
+
+    public function testToDestroyWhenDeletingOwnAccount()
+    {
+        $user = $this->actingAsAdministrator();
+        Event::fake();
         $this
-            ->assertDatabaseHas('users', ['deleted_at' => null, 'uniqid' => $administrator->uniqid])
-            ->assertSoftDeleted('users', ['uniqid' => $user->uniqid]);
+            ->assertAuthenticated()
+            ->delete("/administrator/users/{$user->uniqid}")
+            ->assertRedirect('/administrator/users');
+        Event::assertDispatched(UserTriedToDeleteHisOwnAccountEvent::class);
+        $this->assertDatabaseHas('users', ['deleted_at' => null, 'uniqid' => $user->uniqid]);
+    }
+
+    public function testToExport()
+    {
+        $this->actingAsAdministrator();
+        factory(User::class)
+            ->times(30)
+            ->create()
+            ->each(function (User $user) {
+                factory(Profile::class)->create(['user_id' => $user->id]);
+            });
+        $response = $this->get('/administrator/users/export');
+        $response->assertHeader('Content-Disposition');
+
+        $reader = Reader::createFromString($response->streamedContent());
+        $reader->setDelimiter(';');
+        $reader->setHeaderOffset(0);
+
+        $this->assertCount(User::all()->count(), $reader);
+
+        foreach ($reader->getRecords() as $record) {
+            $this->assertEquals(array_keys($record), [
+                trans('global.id'),
+                trans('users.civility'),
+                trans('users.last_name'),
+                trans('users.first_name'),
+                trans('users.profiles.family_situation'),
+                trans('users.profiles.maiden_name'),
+                trans('users.profiles.birth_date'),
+                trans('users.email'),
+                trans('users.role'),
+                trans('users.locale'),
+                trans('users.timezone'),
+            ]);
+
+            $index = User::all()->search(function ($user) use ($record) {
+                return $user->uniqid === $record[trans('global.id')];
+            });
+
+            $this->assertNotFalse($index);
+            $this->assertEquals(
+                User::all()->get($index)->uniqid,
+                $record[trans('global.id')]
+            );
+            User::all()->forget($index);
+        }
     }
 }

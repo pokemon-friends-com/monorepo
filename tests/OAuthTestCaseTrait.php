@@ -2,8 +2,7 @@
 
 namespace Tests;
 
-use template\Domain\Users\
-{
+use template\Domain\Users\{
     Users\User,
     Profiles\Profile
 };
@@ -25,8 +24,7 @@ trait OAuthTestCaseTrait
                 ->artisan('passport:client', ['--personal' => true])
                 ->expectsQuestion('What should we name the personal access client?', 'Testing')
                 ->assertExitCode(0);
-        }
-        elseif (
+        } elseif (
             app()->environment('testing')
             && (
                 env('CI')

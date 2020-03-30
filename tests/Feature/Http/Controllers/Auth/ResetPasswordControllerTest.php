@@ -16,37 +16,46 @@ class ResetPasswordControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    /**
-     * Testing showing the reset password page.
-     */
-    public function testShowPasswordResetPage()
+    public function testToVisitPasswordReset()
     {
         $user = factory(User::class)->create();
         $token = Password::broker()->createToken($user);
         $this
-            ->get(route('password.reset', ['token' => $token]))
+            ->get("/password/reset/{$token}")
             ->assertSuccessful()
-            ->assertSee('Change your password')
+            ->assertSeeText('Change your password')
             ->assertSee('Email')
             ->assertSee('Password')
             ->assertSee('Confirm password');
     }
 
-    /**
-     * Testing submitting the password reset page with an invalid
-     * email address.
-     */
-    public function testSubmitPasswordResetInvalidEmail()
+    public function testToSubmitPasswordReset()
     {
         $newPassword = $this->faker->password(8);
-        $user = factory(User::class)->create([
-            'role' => User::ROLE_CUSTOMER,
-            'password' => $this->getDefaultPasswordBcrypted(),
-        ]);
+        $user = factory(User::class)->state(User::ROLE_CUSTOMER)->create();
+        $token = Password::broker()->createToken($user);
+        $this
+            ->from("/password/reset/{$token}")
+            ->post('password/reset', [
+                'token' => $token,
+                'email' => $user->email,
+                'password' => $newPassword,
+                'password_confirmation' => $newPassword,
+            ])
+            ->assertRedirect('/');
+        $user->refresh();
+        $this->assertFalse(Hash::check($this->getDefaultPassword(), $user->password));
+        $this->assertTrue(Hash::check($newPassword, $user->password));
+    }
+
+    public function testToSubmitPasswordResetWithInvalidEmail()
+    {
+        $newPassword = $this->faker->password(8);
+        $user = factory(User::class)->state(User::ROLE_CUSTOMER)->create();
         $token = Password::broker()->createToken($user);
         $this
             ->followingRedirects()
-            ->from(route('password.reset', ['token' => $token]))
+            ->from("/password/reset/{$token}")
             ->post('password/reset', [
                 'token' => $token,
                 'email' => $this->faker->word,
@@ -60,21 +69,14 @@ class ResetPasswordControllerTest extends TestCase
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
     }
 
-    /**
-     * Testing submitting the password reset page with an email
-     * address not in the database.
-     */
-    public function testSubmitPasswordResetEmailNotFound()
+    public function testToSubmitPasswordResetWithEmailNotFound()
     {
         $newPassword = $this->faker->password(8);
-        $user = factory(User::class)->create([
-            'role' => User::ROLE_CUSTOMER,
-            'password' => $this->getDefaultPasswordBcrypted(),
-        ]);
+        $user = factory(User::class)->state(User::ROLE_CUSTOMER)->create();
         $token = Password::broker()->createToken($user);
         $this
             ->followingRedirects()
-            ->from(route('password.reset', ['token' => $token]))
+            ->from("/password/reset/{$token}")
             ->post('password/reset', [
                 'token' => $token,
                 'email' => $this->faker->unique()->safeEmail,
@@ -88,21 +90,14 @@ class ResetPasswordControllerTest extends TestCase
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
     }
 
-    /**
-     * Testing submitting the password reset page with a password
-     * that doesn't match the password confirmation.
-     */
-    public function testSubmitPasswordResetPasswordMismatch()
+    public function testToSubmitPasswordResetWithPasswordMismatch()
     {
         $newPassword = $this->faker->password(8);
-        $user = factory(User::class)->create([
-            'role' => User::ROLE_CUSTOMER,
-            'password' => $this->getDefaultPasswordBcrypted(),
-        ]);
+        $user = factory(User::class)->state(User::ROLE_CUSTOMER)->create();
         $token = Password::broker()->createToken($user);
         $this
             ->followingRedirects()
-            ->from(route('password.reset', ['token' => $token]))
+            ->from("/password/reset/{$token}")
             ->post('password/reset', [
                 'token' => $token,
                 'email' => $user->email,
@@ -116,21 +111,14 @@ class ResetPasswordControllerTest extends TestCase
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
     }
 
-    /**
-     * Testing submitting the password reset page with a password
-     * that is not long enough.
-     */
-    public function testSubmitPasswordResetPasswordTooShort()
+    public function testToSubmitPasswordResetWithPasswordTooShort()
     {
         $newPassword = $this->faker->password(3, 7);
-        $user = factory(User::class)->create([
-            'role' => User::ROLE_CUSTOMER,
-            'password' => $this->getDefaultPasswordBcrypted(),
-        ]);
+        $user = factory(User::class)->state(User::ROLE_CUSTOMER)->create();
         $token = Password::broker()->createToken($user);
         $this
             ->followingRedirects()
-            ->from(route('password.reset', ['token' => $token]))
+            ->from("/password/reset/{$token}")
             ->post('password/reset', [
                 'token' => $token,
                 'email' => $user->email,
@@ -138,34 +126,9 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $newPassword,
             ])
             ->assertSuccessful()
-            ->assertSee(e('The password must be at least 8 characters.'));
+            ->assertSeeText('The password must be at least 8 characters.');
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));
-    }
-
-    /**
-     * Testing submitting the password reset page.
-     */
-    public function testSubmitPasswordReset()
-    {
-        $newPassword = $this->faker->password(8);
-        $user = factory(User::class)->create([
-            'role' => User::ROLE_CUSTOMER,
-            'password' => $this->getDefaultPasswordBcrypted(),
-        ]);
-        $token = Password::broker()->createToken($user);
-        $this
-            ->from(route('password.reset', ['token' => $token]))
-            ->post('password/reset', [
-                'token' => $token,
-                'email' => $user->email,
-                'password' => $newPassword,
-                'password_confirmation' => $newPassword,
-            ])
-            ->assertRedirect('users/dashboard');
-        $user->refresh();
-        $this->assertFalse(Hash::check($this->getDefaultPassword(), $user->password));
-        $this->assertTrue(Hash::check($newPassword, $user->password));
     }
 }

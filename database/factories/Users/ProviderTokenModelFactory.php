@@ -11,17 +11,18 @@
 |
 */
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-
 use template\Domain\Users\ProvidersTokens\ProviderToken;
 
+/**
+ * @var \Illuminate\Database\Eloquent\Factory $factory
+ */
 $factory
     ->define(template\Domain\Users\ProvidersTokens\ProviderToken::class, function (Faker\Generator $faker) {
         return [
             'user_id' => 0,
             'provider' => $faker->randomElement(ProviderToken::PROVIDERS),
             'provider_id' => $faker->randomDigitNotNull,
-            'provider_token' => str_random(10),
+            'provider_token' => $faker->randomDigitNotNull,
         ];
     })
     ->state(ProviderToken::class, ProviderToken::GOOGLE, [

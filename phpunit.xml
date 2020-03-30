@@ -32,6 +32,8 @@
         <env name="MAIL_DRIVER" value="array"/>
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/>
+        <env name="REDIS_HOST" value="localhost"/>
+        <env name="REDIS_CRAWLER_HOST" value="localhost"/>
         <env name="REDIS_CLIENT" value="mock"/>
         <env name="SCOUT_DRIVER" value="null"/>
         <env name="BROADCAST_DRIVER" value="null"/>

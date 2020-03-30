@@ -116,6 +116,7 @@ return [
     'uploaded'    => ':attribute konnte nicht hochgeladen werden.',
     'url'         => ':attribute muss eine URL sein.',
     'uuid'        => ':attribute muss ein UUID sein.',
+    'validpassword' => 'Das eingegebene Passwort ist nicht Ihr Passwort.',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +179,7 @@ return [
         /**
          * Specifics
          */
+        'password_current' => 'Jetziges Passwort',
         'subject' => 'gegenstand',
         'recaptcha' => 'recaptcha',
         'friend_code' => 'freundescode',

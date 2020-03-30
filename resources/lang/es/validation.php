@@ -116,6 +116,7 @@ return [
     'uploaded' => 'Subir :attribute ha fallado.',
     'url' => 'El formato :attribute es inválido.',
     'uuid' => 'El campo :attribute debe ser un UUID válido.',
+    'validpassword' => 'La contraseña ingresada no es su contraseña.',
 
     /*
     |--------------------------------------------------------------------------
@@ -184,6 +185,7 @@ return [
         /**
          * Specifics
          */
+        'password_current' => 'contraseña actual',
         'subject' => 'sujeto',
         'recaptcha' => 'Recaptcha',
         'friend_code' => 'código de amigo',

@@ -14,7 +14,9 @@
 use template\Domain\Users\Leads\Lead;
 use template\Domain\Users\Users\User;
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/**
+ * @var \Illuminate\Database\Eloquent\Factory $factory
+ */
 $factory
     ->define(Lead::class, function (Faker\Generator $faker) {
         return [

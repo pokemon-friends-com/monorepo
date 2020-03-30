@@ -55,10 +55,10 @@
                     <span class="fas fa-lock"></span>
                 </div>
             </div>
-            @if ($errors && $errors->has('password_confirmation'))
-            <div class="text-danger text-sm">{{ $errors->first('password_confirmation') }}</div>
-            @endif
         </div>
+        @if ($errors && $errors->has('password_confirmation'))
+            <div class="text-danger text-sm">{{ $errors->first('password_confirmation') }}</div>
+        @endif
     </div>
     <div class="row">
         <div class="col-12">

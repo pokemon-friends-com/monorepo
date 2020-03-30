@@ -115,7 +115,7 @@ return [
     'uploaded' => "Le fichier du champ :attribute n'a pu être téléversé.",
     'url' => "Le format de l'URL de :attribute n'est pas valide.",
     'uuid' => 'Le champ :attribute doit être un UUID valide',
-    'recaptcha' => "Le champ :attribute n'est pas valide.",
+    'validpassword' => 'Le mot de passe renseigné n\'est pas votre mot de passe.',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,7 @@ return [
         /**
          * Specifics
          */
+        'password_current' => 'mot de passe actuel',
         'subject' => 'sujet',
         'recaptcha' => 'recaptcha',
         'friend_code' => 'code ami',

@@ -1,4 +1,6 @@
-<?php namespace Tests\Unit\Domain\Users\ProvidersTokens\Repositories;
+<?php
+
+namespace Tests\Unit\Domain\Users\ProvidersTokens\Repositories;
 
 use template\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent;
 use template\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent;
@@ -15,7 +17,6 @@ use template\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepository
 
 class ProvidersTokensRepositoryEloquentTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     protected $r_providers_tokens = null;
