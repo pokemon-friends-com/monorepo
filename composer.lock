@@ -261,16 +261,16 @@
         },
         {
             "name": "babenkoivan/scout-elasticsearch-driver",
-            "version": "v4.0.5",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/babenkoivan/scout-elasticsearch-driver.git",
-                "reference": "fe3e9a8ec08b00be002248cbf6ea168ccd6a82bb"
+                "reference": "68446794dd4ea00a2c1a1216d1c53a63ee29c493"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/babenkoivan/scout-elasticsearch-driver/zipball/fe3e9a8ec08b00be002248cbf6ea168ccd6a82bb",
-                "reference": "fe3e9a8ec08b00be002248cbf6ea168ccd6a82bb",
+                "url": "https://api.github.com/repos/babenkoivan/scout-elasticsearch-driver/zipball/68446794dd4ea00a2c1a1216d1c53a63ee29c493",
+                "reference": "68446794dd4ea00a2c1a1216d1c53a63ee29c493",
                 "shasum": ""
             },
             "require": {
@@ -318,7 +318,7 @@
                 "scout",
                 "search"
             ],
-            "time": "2020-03-24T14:38:38+00:00"
+            "time": "2020-03-27T19:14:26+00:00"
         },
         {
             "name": "barryvdh/elfinder-flysystem-driver",
