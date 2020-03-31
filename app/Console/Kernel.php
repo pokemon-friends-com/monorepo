@@ -64,6 +64,10 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
+        if (!$this->app->environment('production')) {
+            $this->registerCommand(new \checkCoverage\Console\Commands\CheckCoverageCommand());
+        }
+
         require base_path('routes/console.php');
     }
 }
