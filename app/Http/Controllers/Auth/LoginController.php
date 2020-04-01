@@ -5,6 +5,7 @@ namespace template\Http\Controllers\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use template\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
@@ -128,14 +129,14 @@ class LoginController extends ControllerAbstract
                             $providerUser->token
                         );
 
-                    return back()
+                    return redirect(route('customer.users.edit', ['user' => Auth::user()->uniqid]))
                         ->with(
                             'message-success',
                             trans('auth.link_provider_success', ['provider' => $provider])
                         );
                 }
 
-                return back()
+                return redirect(route('customer.users.edit', ['user' => Auth::user()->uniqid]))
                     ->with(
                         'message-error',
                         trans('auth.link_provider_failed', ['provider' => $provider])
@@ -158,19 +159,19 @@ class LoginController extends ControllerAbstract
 
                 Auth::login($providerToken->user, true);
 
-                return back();
+                return redirect(route('anonymous.dashboard'));
             }
         } catch (\InvalidArgumentException $exception) {
             app('sentry')->captureException($exception);
 
-            return back()
+            return redirect(route('login'))
                 ->with(
                     'message-error',
                     trans('auth.link_provider_failed', ['provider' => $provider])
                 );
         }
 
-        return back()
+        return redirect(route('login'))
             ->with(
                 'message-error',
                 trans('auth.login_with_provider_failed', ['provider' => $provider])
