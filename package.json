@@ -18,7 +18,7 @@
         "@sentry/browser": "^5.13.2",
         "@sentry/types": "^5.13.2",
         "@typescript-eslint/eslint-plugin": "^2.22.0",
-        "@typescript-eslint/parser": "^2.22.0",
+        "@typescript-eslint/parser": "^2.26.0",
         "@vue/babel-preset-app": "^3.11.0",
         "@vue/test-utils": "^1.0.0-beta.32",
         "admin-lte": "^3.0.2",
