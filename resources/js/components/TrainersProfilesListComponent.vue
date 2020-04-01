@@ -27,6 +27,7 @@
 
 <script>
 import axios from 'axios';
+import { forEach, replace, split } from 'lodash';
 
 export default {
   data() {
@@ -43,7 +44,7 @@ export default {
   },
   methods: {
     url(page = 1) {
-      if (page && page !== window.location.href.split('?')[1]) {
+      if (page && page !== split(window.location.href, '?')[1]) {
         // Set `page` query param in url.
         window.history.pushState({}, '', `?page=${page}`);
       }
@@ -55,13 +56,13 @@ export default {
         .get(this.url(page))
         .then((response) => {
           this.profiles = response.data;
-          this.profiles.data.forEach((profile, index) => {
+          forEach(this.profiles.data, (profile, index) => {
             // Do not focus on no-undef rule for `qrcodegen` var.
             // @seealso `resources/views/partials/scripts.blade.php`
             // eslint-disable-next-line no-undef
             const segments = qrcodegen
               .QrSegment
-              .makeSegments(profile.friend_code.replace(/ /g, ''));
+              .makeSegments(replace(profile.friend_code, / /g, ''));
               // eslint-disable-next-line no-undef
             this.profiles.data[index].qr_code = qrcodegen
               .QrCode
