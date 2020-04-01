@@ -16,6 +16,18 @@ require('admin-lte/plugins/select2/js/i18n/fr');
 require('admin-lte/plugins/select2/js/i18n/en');
 require('admin-lte/plugins/sweetalert2/sweetalert2.all');
 require('admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4');
+const Sentry = require('@sentry/browser');
+const Integrations = require('@sentry/integrations');
+
+Sentry.init({
+  dsn: process.env.MIX_SENTRY_PUBLIC_DSN,
+  integrations: [
+    new Integrations.Vue({
+      Vue,
+      attachProps: true,
+    }),
+  ],
+});
 
 /**
  * Vue i18n

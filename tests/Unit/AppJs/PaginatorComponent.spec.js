@@ -2,8 +2,6 @@ import { shallowMount } from '@vue/test-utils';
 // Define alias at webpack.mix.js.
 import PaginatorComponent from '@/components/PaginatorComponent.vue';
 
-const sinon = require('sinon');
-
 describe('PaginatorComponent.vue', () => {
 
   it('show pagination for page 2 and go to previous page', async () => {

@@ -6,12 +6,10 @@ import ExampleComponent from '@/components/ExampleComponent.vue';
 const apiMocks = require('./api-mocks');
 
 describe('ExampleComponent.vue', () => {
-
   let mockEcho;
 
   beforeEach(() => {
     apiMocks.beforeEach();
-
     mockEcho = new MockEcho();
     window.Echo = mockEcho;
   });
