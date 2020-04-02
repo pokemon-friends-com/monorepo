@@ -5,7 +5,6 @@ import AppComponent from '@/components/AppComponent.vue';
 const apiMocks = require('./api-mocks');
 
 describe('AppComponent.vue', () => {
-
   beforeEach(() => {
     apiMocks.beforeEach();
   });

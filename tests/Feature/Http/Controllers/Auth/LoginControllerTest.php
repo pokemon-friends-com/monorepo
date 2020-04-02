@@ -232,8 +232,9 @@ class LoginControllerTest extends TestCase
         $this
             ->from('/login')
             ->get("/login/twitter/callback")
-            ->assertRedirect('/login')
-            ->assertSessionDoesntHaveErrors('message-error');
+            ->assertRedirect('/')
+            ->assertSessionHas('message-success', 'You are now connected')
+            ->assertSessionMissing('message-error');
     }
 
     public function testToLogSocialProviderUserWithoutLinkedAccount()
@@ -301,7 +302,7 @@ class LoginControllerTest extends TestCase
         $this
             ->from('/login')
             ->get("/login/twitter/callback")
-            ->assertRedirect('/login')
+            ->assertRedirect("/users/{$user->uniqid}/edit")
             ->assertSessionHas(
                 'message-success',
                 'The link between your twitter account and your user account is correctly completed'
@@ -351,7 +352,7 @@ class LoginControllerTest extends TestCase
         $this
             ->from('/login')
             ->get("/login/twitter/callback")
-            ->assertRedirect('/login')
+            ->assertRedirect("/users/{$user->uniqid}/edit")
             ->assertSessionHas(
                 'message-error',
                 'The link of your twitter account with your user account could not be done'

@@ -7,13 +7,10 @@
         ".vue"
     ],
     "exclude": [
-        "**/test",
-        "**/tests"
+        "**/*.spec.js"
     ],
     "reporter": [
         "text-summary",
-        "html"
-    ],
-    "sourceMap": true,
-    "all": true
+        "lcov"
+    ]
 }

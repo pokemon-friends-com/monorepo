@@ -3,25 +3,23 @@ import { shallowMount } from '@vue/test-utils';
 import SentryDialogComponent from '@/components/SentryDialogComponent.vue';
 
 const sinon = require('sinon');
-const sentry = require('@sentry/browser');
 const apiMocks = require('./api-mocks');
 
 describe('SentryDialogComponent.vue', () => {
-
   beforeEach(() => {
     apiMocks.beforeEach();
   });
 
-  it('show sentry dialog', async () => {
+  it('watch user variable', async () => {
     apiMocks.getUser();
+
+    const user = sinon.stub();
     const wrapper = shallowMount(SentryDialogComponent, {
       props: { eventId: 'eventIdTest' },
+      watch: { user },
     });
 
-    var sentryMock = sinon.mock(sentry);
-
     await wrapper.vm.$nextTick();
-    // sentryMock.expects('showReportDialog').once();
-    sentryMock.verify();
+    expect(user.called).toBeTruthy();
   });
 });

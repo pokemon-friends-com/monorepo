@@ -199,6 +199,8 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/arubacao/asset-cdn" />
       <path value="$PROJECT_DIR$/vendor/abenevaut/laravel-check-coverage" />
+      <path value="$PROJECT_DIR$/vendor/abenevaut/laravel-settings" />
+      <path value="$PROJECT_DIR$/vendor/martinlindhe/laravel-vue-i18n-generator" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">

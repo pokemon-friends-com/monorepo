@@ -5,7 +5,6 @@ import CollapseSidebarComponent from '@/components/CollapseSidebarComponent.vue'
 const apiMocks = require('./api-mocks');
 
 describe('CollapseSidebarComponent.vue', () => {
-
   beforeEach(() => {
     apiMocks.beforeEach();
   });

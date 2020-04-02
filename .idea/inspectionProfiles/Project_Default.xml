@@ -6,5 +6,6 @@
       <option name="CODING_STANDARD" value="PSR12" />
       <option name="EXTENSIONS" value="php" />
     </inspection_tool>
+    <inspection_tool class="Stylelint" enabled="true" level="ERROR" enabled_by_default="true" />
   </profile>
 </component>

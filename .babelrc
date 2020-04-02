@@ -1,15 +1,12 @@
 {
-  "presets": ["@vue/app"],
+  "presets": [
+    "@vue/app"
+  ],
   "plugins": [],
   "env": {
-    "test": {
+    "testing": {
       "plugins": [
-        ["istanbul", {
-          "useInlineSourceMaps": false,
-          "exclude": [
-            "**/*.spec.js"
-          ]
-        }]
+        "istanbul"
       ]
     }
   }

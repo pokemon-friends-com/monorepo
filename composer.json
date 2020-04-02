@@ -59,6 +59,7 @@
         "fzaninotto/faker": "^1.4",
         "josiasmontag/laravel-redis-mock": "^1.2",
         "laravel/dusk": "^5.5",
+        "martinlindhe/laravel-vue-i18n-generator": "^0.1.46",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.3",
@@ -105,6 +106,10 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "vue-i18n": [
+            "@php artisan vue-i18n:generate --format es6",
+            "./node_modules/.bin/eslint resources/js/vue-i18n-locales.generated.js --fix"
         ]
     },
     "repositories": {

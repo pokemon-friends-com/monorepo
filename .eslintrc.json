@@ -1,0 +1,36 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2020": true,
+    "jquery": true,
+    "mocha": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:lodash/recommended",
+    "plugin:no-jquery/deprecated",
+    "plugin:vue/essential"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": false
+    }
+  },
+  "plugins": [
+    "lodash",
+    "no-jquery",
+    "vue"
+  ],
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "lodash/import-scope": [2, "member"],
+    "lodash/prefer-lodash-method": [2, {"ignoreObjects": ["Vue"]}]
+  }
+}

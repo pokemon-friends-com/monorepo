@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import _ from 'lodash';
+import { pick } from 'lodash';
 import axios from 'axios';
 import AppComponent from './AppComponent.vue';
 
@@ -20,7 +20,7 @@ export default {
   methods: {
     onClick() {
       this.user.is_sidebar_pined = !this.user.is_sidebar_pined;
-      axios.put(`/api/v1/users/profiles/${this.user.identifier}`, _.pick(this.user, ['is_sidebar_pined']));
+      axios.put(`/api/v1/users/profiles/${this.user.identifier}`, pick(this.user, ['is_sidebar_pined']));
 
       return this;
     },

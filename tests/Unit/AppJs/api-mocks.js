@@ -1,4 +1,4 @@
-const _ = require('underscore');
+const { assign } = require('lodash');
 const axios = require('axios');
 const sinon = require('sinon');
 
@@ -42,7 +42,7 @@ module.exports = {
    * @param dataOverload
    */
   getUser: (dataOverload) => {
-    const data = _.assign({}, userData, dataOverload);
+    const data = assign({}, userData, dataOverload);
 
     return sinon
       .stub(axios, 'get')
@@ -53,7 +53,7 @@ module.exports = {
    * @param dataOverload
    */
   putUserProfile: (dataOverload) => {
-    const data = _.assign({}, userData, dataOverload);
+    const data = assign({}, userData, dataOverload);
 
     return sinon
       .stub(axios, 'put')
