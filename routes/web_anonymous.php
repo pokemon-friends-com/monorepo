@@ -15,7 +15,6 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 
 Route::group(
     [
-        'domain' => env('APP_DOMAIN'),
         'as' => 'anonymous.',
         'namespace' => 'Anonymous',
     ],

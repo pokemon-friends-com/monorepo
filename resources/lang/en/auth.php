@@ -28,7 +28,6 @@ return [
     'password_reset_text' => 'Click on the button below, then complete the password update form.',
     'password_reset_footer_link' => 'If your mailbox does not allow you to click on the button above to update your password,<br/>copy this link directly to your browser:',
 
-
     'login' => 'Login',
     'login_twitter' => 'Sign in using Twitter',
     'keep_loged_in' => 'Stay connected',

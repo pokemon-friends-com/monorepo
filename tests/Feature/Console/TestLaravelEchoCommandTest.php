@@ -13,7 +13,7 @@ class TestLaravelEchoCommandTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function testCrawlerPokemonGoFriendCodes()
+    public function testLaravelEchoCommand()
     {
         Event::fake();
         $this

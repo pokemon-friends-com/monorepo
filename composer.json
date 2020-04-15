@@ -1,16 +1,12 @@
 {
-    "name": "abenevaut/www-template",
+    "name": "pokemon-friends-com/www",
     "type": "project",
-    "description": "A Laravel Framework template for web application.",
+    "description": "pokemon GO friends",
     "keywords": [
-        "laravel",
-        "laravel-passport",
-        "laravel-socialite",
-        "travis-ci",
-        "phpunit",
-        "mocha-tests",
-        "coverage",
-        "cms"
+        "pokemon",
+        "friends",
+        "pokemongo",
+        "community"
     ],
     "license": "GPL-3.0",
     "require": {
