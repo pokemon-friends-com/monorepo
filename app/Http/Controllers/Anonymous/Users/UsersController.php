@@ -34,23 +34,8 @@ class UsersController extends ControllerAbstract
      */
     public function show(User $user)
     {
-        if (!$user->profile->sponsored) {
+        if (!$user || $user->deleted_at || !$user->profile->sponsored) {
             abort(404);
-        }
-
-        if (Cache::has("qr_code_png.{$user->profile->friend_code}")) {
-            $qr = Cache::get("qr_code_png.{$user->profile->friend_code}");
-        } else {
-            $qr = (new Client([
-                'base_uri' => 'https://api.qrserver.com/v1/create-qr-code/'
-                    . "?size=300x300&format=png&data={$user->profile->friend_code}",
-            ]))
-                ->request('GET')
-                ->getBody()
-                ->getContents();
-            $qr = 'data:image/png;base64,' . base64_encode($qr);
-            $expiresAt = Carbon::now()->addMinutes(360);
-            Cache::put("qr_code_png.{$user->profile->friend_code}", $qr, $expiresAt);
         }
 
         return view(
@@ -66,7 +51,7 @@ class UsersController extends ControllerAbstract
                     ),
                 ],
                 'friend_code' => $user->profile->formated_friend_code,
-                'qr' => $qr,
+                'qr' => route('v1.users.qr', ['user' => $user->uniqid]),
             ]
         );
     }
