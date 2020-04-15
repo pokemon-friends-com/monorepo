@@ -18,7 +18,7 @@
             <div class="d-none d-md-block col-lg-8">
                 <div class="card card-widget widget-user">
                     <div class="ribbon-wrapper ribbon-lg"><div class="ribbon bg-danger">{{ trans('global.beta') }}</div></div>
-                    <div class="widget-user-header text-white" style="background:url(/images/pokemon-banner.jpg) no-repeat center center;">
+                    <div class="widget-user-header text-white" style="background:url({{ asset_cdn('images/pokemon-banner.jpg') }}) no-repeat center center;">
                         <h3 class="widget-user-username text-left">{{ trans('users.welcome') }}</h3>
                     </div>
                     <div class="widget-user-image">

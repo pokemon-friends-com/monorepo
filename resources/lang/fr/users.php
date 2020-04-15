@@ -130,6 +130,9 @@ return [
     L\'intégralité du code source de ce site internet est consultable sur <a href="https://github.com/pokemon-friends-com/www">Github.com</a>
 </p>',
 
+    'trainer.meta.title' => 'Soyons amis sur Pokemon Go!',
+    'trainer.meta.description' => 'Cet entraîneur, :friend_code, recherche de nouveaux amis Pokemon Go!',
+
     'title' => 'Utilisateurs',
     'create.title' => 'Nouvel utilisateur',
     'edit.title' => 'Éditer l\'utilisateur',

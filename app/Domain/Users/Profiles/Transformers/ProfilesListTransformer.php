@@ -20,6 +20,7 @@ class ProfilesListTransformer extends TransformerAbstract
         $data = [
             'friend_code' => $model->friend_code,
             'team_color' => $model->team_color,
+            'sponsored' => $model->sponsored,
             'family_situation' => [
                 'key' => $model->family_situation,
                 'trans' => trans('profiles.family_situation.' . $model->family_situation),

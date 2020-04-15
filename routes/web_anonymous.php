@@ -32,6 +32,7 @@ Route::group(
         });
         Route::group(['namespace' => 'Users'], function () {
             Route::get('/', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard'])->middleware('guest');
+            Route::get('trainer/{user}', ['as' => 'trainer', 'uses' => 'UsersController@show']);
             Route::get('terms-of-services', ['as' => 'terms', 'uses' => 'UsersController@terms']);
             Route::resource('contact', 'LeadsController')->middleware(ProtectAgainstSpam::class);
         });
