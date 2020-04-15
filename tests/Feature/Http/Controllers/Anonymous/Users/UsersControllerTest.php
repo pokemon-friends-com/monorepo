@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Anonymous\Users;
 
+use Carbon\Carbon;
 use template\Domain\Users\Profiles\Profile;
 use template\Domain\Users\Users\User;
 use Tests\OAuthTestCaseTrait;
@@ -41,10 +42,30 @@ class UsersControllerTest extends TestCase
             );
     }
 
+    public function testToVisitTrainerProfileWhenUserDoesNotExist()
+    {
+        $this
+            ->get('/trainer/DOESNOTEXIST')
+            ->assertNotFound();
+    }
+
     public function testToVisitTrainerProfileWhenUserNotSponsored()
     {
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
         factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => false]);
+        $this
+            ->get("/trainer/{$user->uniqid}")
+            ->assertNotFound();
+    }
+
+    public function testToVisitTrainerProfileWhenUserDeleted()
+    {
+        $user = factory(User::class)
+            ->states(User::ROLE_CUSTOMER)
+            ->create([
+                'deleted_at' => Carbon::now()->format('Y-m-d h:i:s'),
+            ]);
+        factory(Profile::class)->create(['user_id' => $user->id]);
         $this
             ->get("/trainer/{$user->uniqid}")
             ->assertNotFound();

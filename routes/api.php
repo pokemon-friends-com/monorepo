@@ -35,6 +35,7 @@ Route::group(
 Route::group(
     [
         'prefix' => 'v1',
+        'as' => 'v1.',
         'namespace' => 'Api\V1',
     ],
     function () {
@@ -42,6 +43,7 @@ Route::group(
             Route::model('profile', \template\Domain\Users\Users\User::class);
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::resource('profiles', 'ProfilesController', ['only' => ['index']]);
+                Route::get('qr/{user}.gif', ['as' => 'qr', 'uses' => 'UsersController@qr']);
             });
         });
     }
@@ -50,6 +52,7 @@ Route::group(
 Route::group(
     [
         'prefix' => 'v1',
+        'as' => 'v1.',
         'namespace' => 'Api\V1',
         'middleware' => 'auth:api'
     ],
@@ -61,7 +64,7 @@ Route::group(
                     Route::get('family-situations', 'ProfilesController@familySituations');
                 });
                 Route::resource('profiles', 'ProfilesController', ['only' => ['update']]);
-                Route::get('user', 'UsersController@user');
+                Route::get('user', ['as' => 'user', 'uses' => 'UsersController@user']);
             });
             Route::resource('users', 'UsersController', ['only' => ['show']]);
         });

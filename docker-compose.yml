@@ -19,7 +19,7 @@ services:
   ### Workspace Utilities Container ###########################
 
   workspace:
-    image: abenevaut/laradock-workspace:${APP_TAG:-latest}
+    image: abenevaut/laradock-workspace:0.1.2
     volumes:
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
     extra_hosts:
@@ -36,7 +36,7 @@ services:
   ### PHP-FPM Container #######################################
 
   php-fpm:
-    image: abenevaut/laradock-php-fpm:${APP_TAG:-latest}
+    image: abenevaut/laradock-php-fpm:0.1.2
     volumes:
       - ./laradock/php-fpm/php${DOCKER_PHP_VERSION}.ini:/usr/local/etc/php/php.ini
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
@@ -56,7 +56,7 @@ services:
   ### PHP Worker Container #####################################
 
   php-worker:
-    image: abenevaut/laradock-php-worker:${APP_TAG:-latest}
+    image: abenevaut/laradock-php-worker:0.1.2
     volumes:
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
       - ${DOCKER_STORAGE_PATH}/php-worker/supervisord.d:/etc/supervisord.d
@@ -70,7 +70,7 @@ services:
   ### Apache Server Container #################################
 
   apache2:
-    image: abenevaut/laradock-apache2:${APP_TAG:-latest}
+    image: abenevaut/laradock-apache2:0.1.2
     volumes:
       - ${DOCKER_PROJECT_PATH}:/var/www:cached
       - ${DOCKER_STORAGE_PATH}/apache2/logs:/var/log/apache2
@@ -87,7 +87,7 @@ services:
   ### MySQL Container #########################################
 
   mysql:
-    image: abenevaut/laradock-mysql:${APP_TAG:-latest}
+    image: abenevaut/laradock-mysql:0.1.2
     environment:
       - MYSQL_DATABASE=${DB_DATABASE}
       - MYSQL_USER=${DB_USERNAME}
@@ -105,7 +105,7 @@ services:
   ### Redis Container #########################################
 
   redis:
-    image: abenevaut/laradock-redis:${APP_TAG:-latest}
+    image: abenevaut/laradock-redis:0.1.2
     volumes:
       - ${DOCKER_STORAGE_PATH}/redis:/data
     ports:
@@ -116,7 +116,7 @@ services:
   ### Mailhog Container #########################################
 
   mailhog:
-    image: abenevaut/laradock-mailhog:${APP_TAG:-latest}
+    image: abenevaut/laradock-mailhog:0.1.2
     ports:
       - "${MAIL_PORT}:1025"
       - "${DOCKER_MAILHOG_PUBLIC_HTTP_PORT}:8025"
@@ -127,7 +127,7 @@ services:
   ### ElasticSearch ########################################
 
   elasticsearch:
-    image: abenevaut/laradock-elasticsearch:${APP_TAG:-latest}
+    image: abenevaut/laradock-elasticsearch:0.1.2
     ulimits:
       memlock:
         soft: -1
@@ -144,7 +144,7 @@ services:
   ### Kibana ##############################################
 
   kibana:
-    image: abenevaut/laradock-kibana:${APP_TAG:-latest}
+    image: abenevaut/laradock-kibana:0.1.2
     ports:
       - "${DOCKER_KIBANA_PUBLIC_PORT}:5601"
     depends_on:
