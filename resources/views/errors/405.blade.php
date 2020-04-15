@@ -1,6 +1,7 @@
 @extends('anonymous.default')
 
 @section('title', trans('errors.405_title'))
+@section('robots', 'noindex')
 
 @section('content')
     <section class="content-header">
