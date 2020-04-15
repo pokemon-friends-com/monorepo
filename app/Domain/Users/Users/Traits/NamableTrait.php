@@ -12,11 +12,15 @@ trait NamableTrait
      */
     public function getFullNameAttribute(): string
     {
-        return sprintf(
+        if (!$this->first_name && !$this->last_name) {
+            return $this->email;
+        }
+
+        return trim(sprintf(
             '%s %s',
             ucfirst(strtolower($this->first_name)),
             ucfirst(strtolower($this->last_name))
-        );
+        ));
     }
 
     /**
@@ -30,11 +34,11 @@ trait NamableTrait
             return $this->getFullNameAttribute();
         }
 
-        return sprintf(
+        return trim(sprintf(
             '%s %s %s',
             trans("users.civility.{$this->civility}"),
             ucfirst(strtolower($this->last_name)),
             ucfirst(strtolower($this->first_name))
-        );
+        ));
     }
 }

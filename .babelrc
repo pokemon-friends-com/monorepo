@@ -2,12 +2,9 @@
   "presets": [
     "@vue/app"
   ],
-  "plugins": [],
   "env": {
     "testing": {
-      "plugins": [
-        "istanbul"
-      ]
+      "plugins": ["istanbul"]
     }
   }
 }

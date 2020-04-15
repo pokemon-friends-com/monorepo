@@ -33,31 +33,25 @@ mix
       alias: {
         '@': path.resolve(__dirname, 'resources/js'),
       },
-      extensions: [
-        '.js',
-        '.vue',
-      ],
+      extensions: ['.js', '.vue'],
     },
     module: {
-      rules: [
-        {
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules|tests)/,
-        },
-        {
-          // Exposes jQuery for use outside Webpack build
-          test: require.resolve('jquery'),
-          use: [{
-            loader: 'expose-loader',
-            options: 'jQuery',
-          }, {
-            loader: 'expose-loader',
-            options: '$',
-          }],
-        },
-      ],
+      rules: [{
+        enforce: 'pre',
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        exclude: /(node_modules|tests)/,
+      }, {
+        // Exposes jQuery for use outside Webpack build
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'jQuery',
+        }, {
+          loader: 'expose-loader',
+          options: '$',
+        }],
+      }],
     },
     plugins: [
       new StyleLintPlugin({

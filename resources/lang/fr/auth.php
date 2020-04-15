@@ -1,4 +1,5 @@
 <?php
+
 return [
 
     /*
@@ -27,7 +28,6 @@ return [
     'password_reset_text' => 'Cliquer sur le bouton ci-dessous, puis compléter le formulaire de mise à jour de mot de passe.',
     'password_reset_footer_link' => 'Si votre boite mail ne vous permet pas de cliquer sur le bouton ci-dessus pour mettre à jour votre mot de passe,<br/>copier ce lien directement dans votre navigateur :',
 
-
     'login' => 'Se connecter',
     'login_twitter' => 'Connectez-vous via Twitter',
     'keep_loged_in' => 'Restez connecté',
@@ -40,4 +40,3 @@ return [
     'link_provider_failed' => 'La liaison de votre compte :provider avec votre compte utilisateur n\'a pas pu se faire',
 
 ];
-

@@ -16,7 +16,6 @@ Route::group(
         'as' => 'administrator.',
         'namespace' => 'Administrator',
         'prefix' => \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR,
-        'domain' => env('APP_DOMAIN'),
         'middleware' => [
             'auth',
             'role:' . \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR
