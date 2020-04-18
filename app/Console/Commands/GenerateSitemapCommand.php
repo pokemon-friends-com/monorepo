@@ -90,7 +90,7 @@ class GenerateSitemapCommand extends CommandAbstract
             ->chunk(100, function ($profiles) use ($sitemap) {
                 $profiles->each(function ($profile) use ($sitemap) {
                     $sitemap->add(
-                        Url::create(route('anonymous.trainer', ['user' => $profile->user->uniqid]))
+                        Url::create(route('anonymous.trainers.show', ['user' => $profile->user->uniqid]))
                             ->setLastModificationDate(Carbon::yesterday())
                             ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                             ->setPriority(1)
@@ -98,9 +98,7 @@ class GenerateSitemapCommand extends CommandAbstract
                 });
             });
 
-        $sitemap
-            ->writeToFile(public_path('sitemap.xml'))
-            ->writeToDisk('asset-cdn', 'sitemap.xml');
+        $sitemap->writeToDisk('asset-cdn', 'sitemap.xml');
 
         $this->info('sitemap:generate : success!');
 

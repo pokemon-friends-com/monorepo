@@ -29,6 +29,5 @@ class GenerateSitemapCommandTest extends TestCase
             ->expectsOutput('sitemap:generate : success!')
             ->assertExitCode(0);
         Storage::disk('asset-cdn')->assertExists('sitemap.xml');
-        $this->assertFileExists(public_path('sitemap.xml'));
     }
 }
