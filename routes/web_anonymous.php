@@ -26,7 +26,7 @@ Route::get('sitemap.xml', function () {
         Cache::put('sitemap.xml', $sitemap, $expiresAt);
     }
 
-    return response()->make(200, $sitemap, ['Content-type' => 'text/xml']);
+    return response()->make($sitemap, 200, ['Content-type' => 'text/xml']);
 });
 
 Route::group(
