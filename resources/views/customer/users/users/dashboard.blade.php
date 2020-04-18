@@ -25,18 +25,12 @@
                         <div class="row">
                             <div class="col-3 offset-2">
                                 <div class="h-100 d-flex flex-row justify-content-center align-items-center">
-                                    <div class="text-center text-sm mr-2">
-                                        {{ trans('users.trainer.social_share_qr') }}
-                                    </div>
+                                    <div class="text-center text-sm mr-2">{{ trans('users.trainer.social_share_qr') }}</div>
                                 </div>
                             </div>
                             <div class="col-2">
-                                <div class="card">
-                                    <div class="card-boddy text-center m-1">
-                                        <img src="{{ $user['qr'] }}" class="img-fluid" alt="{{ $user['friend_code'] }}">
-                                    </div>
-                                </div>
-                                <div class="text-center text-sm lead">{{ $user['friend_code'] }}</div>
+                                <div class="card"><div class="card-boddy text-center m-1"><img src="{{ $user['qr'] }}" class="img-fluid" alt="{{ $user['friend_code'] }}"></div></div>
+                                <div class="text-center text-sm lead"><a href="{{ route('anonymous.trainers.index', ['user' => $user['identifier']]) }}"><i class="fas fa-eye mr-1"></i>{{ $user['friend_code'] }}</a></div>
                             </div>
                             <div class="col-3">
                                 <div class="h-100 d-flex flex-row justify-content-center align-items-center">

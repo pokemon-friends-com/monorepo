@@ -55,6 +55,6 @@
 <meta name="twitter:creator" content="{{ config('services.twitter.username') }}" />
 <meta name="twitter:site" content="{{ config('services.twitter.username') }}" />
 <link href="{{ asset_cdn('css/app.css') }}" rel="stylesheet">
-<link rel="sitemap" type="application/xml" title="sitemap" href="{{ url('/sitemap.xml') }}" />
+<link rel="sitemap" type="application/xml" title="sitemap" href="{{ asset_cdn('sitemap.xml') }}" />
 @yield('css')
 @include('partials.googletag-head')
