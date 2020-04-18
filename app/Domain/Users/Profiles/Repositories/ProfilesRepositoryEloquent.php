@@ -5,7 +5,6 @@ namespace template\Domain\Users\Profiles\Repositories;
 use Carbon\Carbon;
 use Illuminate\Container\Container as Application;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 use template\Infrastructure\Contracts\{
     Request\RequestAbstract,
     Repositories\RepositoryEloquentAbstract

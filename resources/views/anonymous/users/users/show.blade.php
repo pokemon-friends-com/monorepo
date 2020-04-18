@@ -9,6 +9,7 @@
     <div class="card-body login-card-body text-center">
         <h1 class="text-primary">{{ $friend_code }}</h1>
         <img src="{{ $qr }}" alt="{{ $friend_code }}">
-        <a href="{{ route('anonymous.dashboard') }}" class="btn btn-primary btn-block mt-4">{{ trans('users.home') }}</a>
+        <a href="{{ route('register') }}" class="btn btn-primary btn-block mt-4">{{ trans('auth.register') }}</a>
+        <a href="{{ route('anonymous.dashboard') }}" class="btn btn-outline-secondary btn-block">{{ trans('users.home') }}</a>
     </div>
 @endsection

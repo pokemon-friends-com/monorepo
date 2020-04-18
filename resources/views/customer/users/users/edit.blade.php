@@ -28,7 +28,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('anonymous.dashboard') }}">{{ trans('users.home') }}</a>
+                            <a href="{{ route('anonymous.dashboard') }}"><i class="fas fa-tachometer-alt mr-2"></i>{{ trans('users.dashboard') }}</a>
                         </li>
                         <li class="breadcrumb-item active"><i class="fa fa-user mr-2"></i>{{ trans('users.profiles.edit.title') }}</li>
                     </ol>

@@ -194,5 +194,5 @@ jobs:
       - cp .env.example .env
       - export $(grep -v '^#' .env | xargs -0)
     script:
-      - git tag ${APP_VERSION} -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-      - git push -q https://$GITHUBKEY@github.com/pokemon-friends-com/www.git ${APP_VERSION}
+      - git tag ${APP_TAG} -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+      - git push -q https://$GITHUBKEY@github.com/pokemon-friends-com/www.git ${APP_TAG}

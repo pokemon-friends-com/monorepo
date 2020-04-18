@@ -35,6 +35,8 @@ Route::group(
             Route::get('trainer/{user}', ['as' => 'trainer', 'uses' => 'UsersController@show']);
             Route::get('terms-of-services', ['as' => 'terms', 'uses' => 'UsersController@terms']);
             Route::resource('contact', 'LeadsController')->middleware(ProtectAgainstSpam::class);
+            Route::model('trainer', \template\Domain\Users\Users\User::class);
+            Route::resource('trainers', 'UsersController')->only(['index', 'show']);
         });
     }
 );

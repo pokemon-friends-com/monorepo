@@ -5,7 +5,7 @@
 
     RewriteEngine On
 
-    RewriteCond %{HTTP_HOST} temlate\.benevaut\.fr$ [NC]
+    RewriteCond %{HTTP_HOST} www\.pokemon-friends\.com$ [NC]
     RewriteCond %{HTTP:X-Forwarded-Port} !=443
     RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
 

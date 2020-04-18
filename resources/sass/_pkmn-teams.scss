@@ -1,0 +1,65 @@
+.card-team-red,
+.card-team-valor {
+  @extend .card-danger !optional;
+}
+.card-team-blue,
+.card-team-mystic {
+  @extend .card-primary !optional;
+}
+.card-team-yellow,
+.card-team-instinct {
+  @extend .card-warning !optional;
+}
+.bg-team-default {
+  background-color: $gray-x-light !important;
+  color: $yiq-text-dark !important;
+}
+.bg-team-red,
+.bg-team-valor {
+  @extend .bg-danger !optional;
+}
+.bg-team-blue,
+.bg-team-mystic {
+  @extend .bg-primary !optional;
+}
+.bg-team-yellow,
+.bg-team-instinct {
+  @extend .bg-warning !optional;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?2wr7qv');
+  src:  url('../fonts/icomoon.eot?2wr7qv#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?2wr7qv') format('truetype'),
+  url('../fonts/icomoon.woff?2wr7qv') format('woff'),
+  url('../fonts/icomoon.svg?2wr7qv#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon', sans-serif !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-instinct:before,
+.icon-team-yellow:before {
+  content: "\e900";
+}
+.icon-mystic:before,
+.icon-team-blue:before {
+  content: "\e901";
+}
+.icon-valor:before,
+.icon-team-red:before {
+  content: "\e902";
+}
