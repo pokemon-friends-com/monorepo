@@ -98,7 +98,9 @@ class GenerateSitemapCommand extends CommandAbstract
                 });
             });
 
-        $sitemap->writeToFile(public_path('sitemap.xml'));
+        $sitemap
+            ->writeToFile(public_path('sitemap.xml'))
+            ->writeToDisk('asset-cdn', 'sitemap.xml');
 
         $this->info('sitemap:generate : success!');
 
