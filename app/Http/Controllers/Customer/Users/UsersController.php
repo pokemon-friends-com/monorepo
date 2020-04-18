@@ -5,7 +5,10 @@ namespace template\Http\Controllers\Customer\Users;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Auth;
 use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use template\Domain\Users\Users\Transformers\TrainerTransformer;
 use template\Domain\Users\Users\User;
 use template\Http\Request\Customer\Users\Profiles\ProfileFormRequest;
 use template\Http\Request\Customer\Users\Users\PasswordFormRequest;
@@ -16,17 +19,23 @@ class UsersController extends ControllerAbstract
     use ResetsPasswords;
 
     /**
-     * @var null|ProfilesRepositoryEloquent
+     * @var UsersRepositoryEloquent
      */
-    protected $r_profiles = null;
+    protected $r_users;
+
+
+    protected $r_profiles;
 
     /**
      * UsersController constructor.
      *
-     * @param ProfilesRepositoryEloquent $r_profiles
+     * @param UsersRepositoryEloquent $r_users
      */
-    public function __construct(ProfilesRepositoryEloquent $r_profiles)
-    {
+    public function __construct(
+        UsersRepositoryEloquent $r_users,
+        ProfilesRepositoryEloquent $r_profiles
+    ) {
+        $this->r_users = $r_users;
         $this->r_profiles = $r_profiles;
     }
 
@@ -49,9 +58,9 @@ class UsersController extends ControllerAbstract
                     ->mapWithKeys(function ($item) {
                         return [$item => trans("users.profiles.family_situation.{$item}")];
                     }),
-                'timezones' => $this->r_profiles->getTimezones(),
-                'locales' => $this->r_profiles->getLocales(),
-                'civilities' => $this->r_profiles->getCivilities(),
+                'timezones' => $this->r_users->getTimezones(),
+                'locales' => $this->r_users->getLocales(),
+                'civilities' => $this->r_users->getCivilities(),
             ]
         );
     }
@@ -79,7 +88,13 @@ class UsersController extends ControllerAbstract
      */
     public function dashboard(Request $request)
     {
-        return view('customer.users.users.dashboard');
+        $users = $this->r_users->getTrainers(false)->paginate(12);
+        $user = (new TrainerTransformer())->transform(Auth::user());
+
+        return view('customer.users.users.dashboard', compact(
+            'users',
+            'user',
+        ));
     }
 
     /**

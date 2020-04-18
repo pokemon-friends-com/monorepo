@@ -10,8 +10,6 @@
             <option value="mysql" />
             <option value="redis" />
             <option value="mailhog" />
-            <option value="elasticsearch" />
-            <option value="kibana" />
             <option value="workspace" />
           </list>
         </option>

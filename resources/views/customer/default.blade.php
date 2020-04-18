@@ -45,7 +45,10 @@
                     </li>
                     @impersonating
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{{ route('impersonate.leave') }}"><i class="fa fa-user-times mr-2"></i>{{ trans('users.stop_impersonation') }}</a>
+                        <a class="nav-link" href="{{ route('impersonate.leave') }}">
+                            <i class="fa fa-user-times mr-2"></i>
+                            <p>{{ trans('users.stop_impersonation') }}</p>
+                        </a>
                     </li>
                     @endImpersonating
                 </ul>

@@ -132,8 +132,10 @@ return [
 
     'trainer.meta.title' => 'Soyons amis sur Pokemon Go!',
     'trainer.meta.description' => 'Cet entraîneur, :friend_code, recherche de nouveaux amis Pokemon Go!',
+    'trainer.social_share_qr' => 'Partagez votre QR code sur vos réseaux sociaux',
 
     'title' => 'Utilisateurs',
+    'trainers.title' => 'Dresseurs',
     'create.title' => 'Nouvel utilisateur',
     'edit.title' => 'Éditer l\'utilisateur',
     'show.title' => 'Utilisateur :username',

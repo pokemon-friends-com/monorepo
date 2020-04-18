@@ -37,6 +37,7 @@
         "expect": "^25.1.0",
         "expose-loader": "^0.7.5",
         "false": "^0.0.4",
+        "imagehover.css": "^2.0.0",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-webpack-plugin": "^2.4.2",
         "jquery": "^3.2",
