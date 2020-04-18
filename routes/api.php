@@ -17,6 +17,7 @@ Route::group(
     [
         'prefix' => 'oauth',
         'namespace' => 'OAuth',
+        'middleware' => 'api',
     ],
     function () {
         Route::post('login', 'LoginController@login');
@@ -37,13 +38,30 @@ Route::group(
         'prefix' => 'v1',
         'as' => 'v1.',
         'namespace' => 'Api\V1',
+        'middleware' => [
+            'throttle:3000,1',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+    ],
+    function () {
+        Route::group(['namespace' => 'Users', 'prefix' => 'users', 'as' => 'users.'], function () {
+            Route::get('qr/{user}.png', ['as' => 'qr', 'uses' => 'UsersController@qr']);
+        });
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'v1',
+        'as' => 'v1.',
+        'namespace' => 'Api\V1',
+        'middleware' => 'api',
     ],
     function () {
         Route::group(['namespace' => 'Users'], function () {
             Route::model('profile', \template\Domain\Users\Users\User::class);
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::resource('profiles', 'ProfilesController', ['only' => ['index']]);
-                Route::get('qr/{user}.gif', ['as' => 'qr', 'uses' => 'UsersController@qr']);
             });
         });
     }
@@ -54,7 +72,7 @@ Route::group(
         'prefix' => 'v1',
         'as' => 'v1.',
         'namespace' => 'Api\V1',
-        'middleware' => 'auth:api'
+        'middleware' => ['api', 'auth:api'],
     ],
     function () {
         Route::group(['namespace' => 'Users'], function () {

@@ -43,9 +43,9 @@ class UsersControllerTest extends TestCase
         factory(Profile::class)->create(['user_id' => $user->id]);
         Passport::actingAs($user);
         $this
-            ->get("/api/v1/users/qr/{$user->uniqid}.gif")
+            ->get("/api/v1/users/qr/{$user->uniqid}.png")
             ->assertSuccessful()
-            ->assertHeader('Content-Type', 'image/gif');
+            ->assertHeader('Content-Type', 'image/png');
     }
 
     public function testToGetUserQrCodeAsAnonymous()
@@ -53,15 +53,15 @@ class UsersControllerTest extends TestCase
         $user = factory(User::class)->create();
         factory(Profile::class)->create(['user_id' => $user->id]);
         $this
-            ->get("/api/v1/users/qr/{$user->uniqid}.gif")
+            ->get("/api/v1/users/qr/{$user->uniqid}.png")
             ->assertSuccessful()
-            ->assertHeader('Content-Type', 'image/gif');
+            ->assertHeader('Content-Type', 'image/png');
     }
 
     public function testToGetUserQrCodeWhenUserDoesNotExist()
     {
         $this
-            ->get('/api/v1/users/qr/DOESNOTEXIST.gif')
+            ->get('/api/v1/users/qr/DOESNOTEXIST.png')
             ->assertNotFound();
     }
 
@@ -70,7 +70,7 @@ class UsersControllerTest extends TestCase
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
         factory(Profile::class)->create(['user_id' => $user->id, 'friend_code' => null]);
         $this
-            ->get("/api/v1/users/qr/{$user->uniqid}.gif")
+            ->get("/api/v1/users/qr/{$user->uniqid}.png")
             ->assertNotFound();
     }
 
@@ -83,7 +83,7 @@ class UsersControllerTest extends TestCase
             ]);
         factory(Profile::class)->create(['user_id' => $user->id]);
         $this
-            ->get("/api/v1/users/qr/{$user->uniqid}.gif")
+            ->get("/api/v1/users/qr/{$user->uniqid}.png")
             ->assertNotFound();
     }
 }

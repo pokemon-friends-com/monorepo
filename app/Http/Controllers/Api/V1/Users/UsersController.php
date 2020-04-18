@@ -69,20 +69,50 @@ class UsersController extends ControllerAbstract
             abort(404);
         }
 
-        if (Cache::has("qr_code_gif.{$user->profile->friend_code}")) {
-            $qr = Cache::get("qr_code_gif.{$user->profile->friend_code}");
+        if (Cache::has("qr_code_png.{$user->profile->friend_code}")) {
+            $qr = Cache::get("qr_code_png.{$user->profile->friend_code}");
         } else {
-            $qr = (new Client([
-                'base_uri' => 'https://api.qrserver.com/v1/create-qr-code/'
-                    . "?size=300x300&format=gif&data={$user->profile->friend_code}",
-            ]))
-                ->request('GET')
-                ->getBody()
-                ->getContents();
-            $expiresAt = Carbon::now()->addMinutes(360);
-            Cache::put("qr_code_gif.{$user->profile->friend_code}", $qr, $expiresAt);
+            $qr = $this->qrServer($user->profile->friend_code);
+            $expiresAt = Carbon::now()->addMinutes(4320); // 72 hours
+            Cache::put("qr_code_png.{$user->profile->friend_code}", $qr, $expiresAt);
         }
 
-        return response()->make($qr, 200, ['Content-Type' => 'image/gif']);
+        return response()->make($qr, 200, ['Content-Type' => 'image/png']);
     }
+
+    /**
+     * Get user QR code image from qrserver.
+     *
+     * @param string $data
+     *
+     * @return string
+     */
+    public function qrServer(string $data)
+    {
+        return (new Client([
+            'base_uri' => 'https://api.qrserver.com/v1/create-qr-code/'
+                . "?size=300x300&format=png&data={$data}",
+        ]))
+            ->request('GET')
+            ->getBody()
+            ->getContents();
+    }
+
+    /**
+     * Get user QR code image from google.
+     *
+     * @param string $data
+     *
+     * @return string
+     */
+    //public function qrGoogle(string $data)
+    //{
+    //    return (new Client([
+    //        'base_uri' => 'https://chart.googleapis.com/chart'
+    //            . "?cht=qr&chs=300x300&choe=UTF-8&chld=L|0&chl={$data}",
+    //    ]))
+    //        ->request('GET')
+    //        ->getBody()
+    //        ->getContents();
+    //}
 }
