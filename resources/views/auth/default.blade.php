@@ -14,6 +14,9 @@
         @yield('content')
     </div>
 </div>
+@if(!Auth::check())
+    @include('cookieConsent::index')
+@endif
 @include('partials.scripts')
 </body>
 </html>

@@ -46,7 +46,10 @@ class LeadsController extends ControllerAbstract
             'title' => trans('users.leads.contact'),
             'description' => trans('users.leads.anonymous.meta.description_contacts'),
         ];
-        $users = $this->r_users->getTrainers()->paginate(12);
+        $users = $this
+            ->r_users
+            ->getTrainers()
+            ->paginate(config('repository.pagination.limit'));
         $civilities = $this->r_leads->getCivilities();
         
         return view('anonymous.users.leads.index', compact(

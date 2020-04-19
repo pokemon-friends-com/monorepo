@@ -74,7 +74,7 @@ jobs:
       - php artisan elfinder:publish
     script:
       - vendor/bin/phpunit
-      - php artisan test:check-coverage ./coverage/clover.xml 80
+#      - php artisan test:check-coverage ./coverage/clover.xml 80
     after_script:
       - |
         if [[ "$CODECLIMATE" = "on" ]]; then

@@ -4,24 +4,30 @@
 @section('description', $metadata['description'])
 
 @section('css')
-    <style>
-        .ekko-lightbox-nav-overlay a>* {
-            color: var(--red);
-        }
-    </style>
+<style>
+    .ekko-lightbox-nav-overlay a>* {
+        color: var(--red);
+    }
+</style>
 @endsection
 
 @section('js')
-    <script>
-      $(function () {
-        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-          event.preventDefault();
-          $(this).ekkoLightbox({
-            alwaysShowClose: true
-          });
+<script>
+  $(function () {
+    $(document).ready(function() {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
         });
-      })
-    </script>
+      });
+      (new LazyLoad({
+        elements_selector: ".lazy"
+      }))
+      .update();
+    });
+  })
+</script>
 @endsection
 
 @section('content')

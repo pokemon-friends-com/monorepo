@@ -15,8 +15,9 @@ require('admin-lte/plugins/select2/js/select2.full');
 require('admin-lte/plugins/select2/js/i18n/fr');
 require('admin-lte/plugins/select2/js/i18n/en');
 require('admin-lte/plugins/sweetalert2/sweetalert2.all');
-require('admin-lte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4');
 require('admin-lte/plugins/ekko-lightbox/ekko-lightbox');
+require('flatpickr');
+require('vanilla-lazyload');
 const Sentry = require('@sentry/browser');
 const Integrations = require('@sentry/integrations');
 

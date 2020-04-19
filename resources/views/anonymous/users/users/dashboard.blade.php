@@ -13,11 +13,17 @@
 @section('js')
 <script>
   $(function () {
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox({
-        alwaysShowClose: true
+    $(document).ready(function() {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
+        });
       });
+      (new LazyLoad({
+        elements_selector: ".lazy"
+      }))
+      .update();
     });
   })
 </script>

@@ -14,13 +14,14 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\{Cache, Storage};
 use Spatie\Honeypot\ProtectAgainstSpam;
+use Spatie\Sitemap\{Sitemap, Tags\Url};
 
 Route::get('sitemap.xml', function () {
-    $sitemap = null;
+    $sitemap = Sitemap::create()->add(Url::create(url('/')))->render();
 
     if (Cache::has('sitemap.xml')) {
         $sitemap = Cache::get('sitemap.xml');
-    } else {
+    } elseif (Storage::disk('asset-cdn')->exists('sitemap.xml')) {
         $sitemap = Storage::disk('asset-cdn')->get('sitemap.xml');
         $expiresAt = Carbon::now()->addMinutes(180);
         Cache::put('sitemap.xml', $sitemap, $expiresAt);
