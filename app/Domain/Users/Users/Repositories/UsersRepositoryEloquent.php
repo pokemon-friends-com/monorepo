@@ -2,6 +2,7 @@
 
 namespace template\Domain\Users\Users\Repositories;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use template\Infrastructure\Contracts\
 {
@@ -257,10 +258,12 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
             ->setPresenter(TrainerPresenter::class)
             ->whereHas('profile', function ($model) use ($sponsoredOnly) {
                 if ($sponsoredOnly) {
-                    $model->where('sponsored', '=', '1');
+                    $model->whereDate('sponsored', '=', Carbon::now()->format('Y-m-d'));
                 }
 
-                return $model->orderBy('sponsored', 'desc');
+                return $model
+                    ->whereNotNull('friend_code')
+                    ->orderBy('sponsored', 'desc');
             });
     }
 

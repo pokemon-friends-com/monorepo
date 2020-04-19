@@ -15,7 +15,8 @@ return [
     |
     */
     'pagination' => [
-        'limit' => 12
+        'limit' => 12,
+        'trainers' => 48,
     ],
 
     /*

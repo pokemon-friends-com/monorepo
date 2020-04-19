@@ -27,6 +27,7 @@ mix
     jquery: ['$', 'window.jQuery', 'jQuery', 'window.$'],
     moment: ['moment', 'window.moment'],
     'pusher-js': ['Pusher', 'window.Pusher'],
+    'vanilla-lazyload': ['LazyLoad', 'window.LazyLoad'],
   })
   .webpackConfig({
     resolve: {
@@ -50,6 +51,13 @@ mix
         }, {
           loader: 'expose-loader',
           options: '$',
+        }],
+      }, {
+        // Exposes LazyLoad for use outside Webpack build
+        test: require.resolve('vanilla-lazyload'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'LazyLoad',
         }],
       }],
     },

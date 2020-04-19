@@ -42,7 +42,10 @@ class UsersController extends ControllerAbstract
             'title' => trans('users.trainer.meta.title'),
             'description' => config('app.description'),
         ];
-        $users = $this->r_users->getTrainers(!Auth::check())->paginate(48);
+        $users = $this
+            ->r_users
+            ->getTrainers(!Auth::check())
+            ->paginate(config('repository.pagination.trainers'));
 
         return view('anonymous.users.users.index', compact(
             'metadata',
@@ -91,7 +94,10 @@ class UsersController extends ControllerAbstract
             'title' => config('app.name'),
             'description' => config('app.description'),
         ];
-        $users = $this->r_users->getTrainers()->paginate(12);
+        $users = $this
+            ->r_users
+            ->getTrainers()
+            ->paginate(config('repository.pagination.limit'));
 
         return view('anonymous.users.users.dashboard', compact(
             'metadata',

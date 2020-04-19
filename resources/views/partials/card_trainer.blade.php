@@ -2,7 +2,7 @@
     <div class="card-header text-center">{{ $trainer['friend_code'] }}</div>
     <div class="card-boddy text-center">
         <figure class="imghvr-fade m-1">
-            <img src="{{ $trainer['qr'] }}" class="img-fluid" alt="{{ $trainer['friend_code'] }}">
+            <img src="{{ asset_cdn('images/pokeball.jpg') }}" data-src="{{ $trainer['qr'] }}" class="img-fluid lazy" alt="{{ $trainer['friend_code'] }}">
             <figcaption class="bg-team-{{ $trainer['team_color'] }}">
                 <i class="icon-team-{{ $trainer['team_color'] }}" style="font-size: 3em;"></i>
                 <div class="h-100 d-flex flex-row justify-content-center align-items-center">

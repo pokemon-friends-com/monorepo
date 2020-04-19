@@ -4,9 +4,10 @@
 @import "~admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.css";
 @import "~admin-lte/plugins/sweetalert2/sweetalert2.css";
 @import "~admin-lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4";
-@import "~admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4";
 @import "~admin-lte/plugins/ekko-lightbox/ekko-lightbox.css";
 @import "~admin-lte/build/scss/AdminLTE";
+@import "~flatpickr/dist/flatpickr.css";
+@import "~flatpickr/dist/themes/airbnb.css";
 
 $figcaption-bg: $blue;
 $text-color: #fff;

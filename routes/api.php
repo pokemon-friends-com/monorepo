@@ -44,7 +44,12 @@ Route::group(
         ],
     ],
     function () {
-        Route::group(['namespace' => 'Users', 'prefix' => 'users', 'as' => 'users.'], function () {
+        Route::group([
+            'namespace' => 'Users',
+            'prefix' => 'users',
+            'as' => 'users.',
+            'middleware' => 'cache.headers:public;max_age=2628000;etag'
+        ], function () {
             Route::get('qr/{user}.png', ['as' => 'qr', 'uses' => 'UsersController@qr']);
         });
     }

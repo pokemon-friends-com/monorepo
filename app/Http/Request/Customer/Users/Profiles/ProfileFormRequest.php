@@ -28,15 +28,16 @@ class ProfileFormRequest extends RequestAbstract
     public function rules()
     {
         $rules = [
-            'friend_code' => 'string|numeric|digits:12',
-            'team_color' => 'in:'
+            'friend_code' => 'required|string|numeric|digits:12',
+            'team_color' => 'required|in:'
                 . ProfilesTeamsColors::DEFAULT . ','
                 . ProfilesTeamsColors::RED . ','
                 . ProfilesTeamsColors::BLUE . ','
                 . ProfilesTeamsColors::YELLOW,
-            'first_name' => 'max:100',
-            'last_name' => 'max:100',
-            'civility' => 'in:'
+            'first_name' => 'required|max:100',
+            'last_name' => 'required|max:100',
+            'birth_date' => 'required|date_format:' . trans('global.date_format'),
+            'civility' => 'required|in:'
                 . User::CIVILITY_MADAM . ','
                 . User::CIVILITY_MISS . ','
                 . User::CIVILITY_MISTER,

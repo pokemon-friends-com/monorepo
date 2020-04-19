@@ -2,7 +2,6 @@
 
 namespace template\Console\Commands;
 
-use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
@@ -27,6 +26,11 @@ class GenerateSitemapCommand extends CommandAbstract
     protected $description = 'Generate the sitemap.';
 
     /**
+     * @var UsersRepositoryEloquent
+     */
+    protected $r_users;
+
+    /**
      * @var ProfilesRepositoryEloquent
      */
     protected $r_profiles;
@@ -34,13 +38,16 @@ class GenerateSitemapCommand extends CommandAbstract
     /**
      * GenerateSitemapCommand constructor.
      *
+     * @param UsersRepositoryEloquent $r_users
      * @param ProfilesRepositoryEloquent $r_profiles
      */
     public function __construct(
+        UsersRepositoryEloquent $r_users,
         ProfilesRepositoryEloquent $r_profiles
     ) {
         parent::__construct();
 
+        $this->r_users = $r_users;
         $this->r_profiles = $r_profiles;
     }
 
@@ -54,34 +61,49 @@ class GenerateSitemapCommand extends CommandAbstract
         $sitemap = Sitemap::create()
             ->add(
                 Url::create(url('/'))
-                    ->setLastModificationDate(Carbon::yesterday())
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                     ->setPriority(0.1)
             )
             ->add(
                 Url::create(url('/terms-of-services'))
-                    ->setLastModificationDate(Carbon::yesterday())
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setPriority(1)
             )
             ->add(
                 Url::create(url('/contact'))
-                    ->setLastModificationDate(Carbon::yesterday())
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                     ->setPriority(0.3)
             )
             ->add(
                 Url::create(url('/login'))
-                    ->setLastModificationDate(Carbon::yesterday())
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setPriority(0.2)
             )
             ->add(
                 Url::create(url('/register'))
-                    ->setLastModificationDate(Carbon::yesterday())
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                     ->setPriority(0.2)
+            )
+            ->add(
+                Url::create(route('anonymous.trainers.index'))
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_HOURLY)
+                    ->setPriority(0)
             );
+
+        $trainers = $this
+            ->r_users
+            ->getTrainers()
+            ->paginate(config('repository.pagination.trainers'));
+
+        if (1 < $trainers['meta']['pagination']['total_pages']) {
+            for ($index = 2; $index < $trainers['meta']['pagination']['total_pages']; ++$index) {
+                $sitemap->add(
+                    Url::create(route('anonymous.trainers.index', ['page' => $index]))
+                        ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                        ->setPriority(0.1)
+                );
+            }
+        }
 
         $this
             ->r_profiles
@@ -91,9 +113,9 @@ class GenerateSitemapCommand extends CommandAbstract
                 $profiles->each(function ($profile) use ($sitemap) {
                     $sitemap->add(
                         Url::create(route('anonymous.trainers.show', ['user' => $profile->user->uniqid]))
-                            ->setLastModificationDate(Carbon::yesterday())
-                            ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                            ->setPriority(1)
+                            ->setLastModificationDate($profile->user->updated_at)
+                            ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                            ->setPriority(0.1)
                     );
                 });
             });
