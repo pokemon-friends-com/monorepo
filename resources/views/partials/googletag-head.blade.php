@@ -1,6 +1,7 @@
 <script>
   dataLayer = [{
     'env': '{{ config('app.env') }}',
+    'release': '{{ config('version.app_tag') }}',
     'debug': '{{ config('app.debug') }}',
     'user': '{{ Auth::check() ? Auth::user()->uniqid : 'anonymous' }}',
     'locale': '{{ Session::get('locale') }}',

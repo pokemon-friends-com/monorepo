@@ -38,14 +38,9 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {
         // @codeCoverageIgnoreStart
-        if (
-            app()->environment('production')
-            && app()->bound('sentry')
-            && $this->shouldReport($exception)
-        ) {
+        if (app()->bound('sentry') && $this->shouldReport($exception)) {
             // bind the event ID for Feedback
-            $this->sentryID = app('sentry')
-                ->captureException($exception);
+            $this->sentryID = app('sentry')->captureException($exception);
         }
         // @codeCoverageIgnoreEnd
 
@@ -63,10 +58,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // @codeCoverageIgnoreStart
-        if (
-            app()->environment('production')
-            && $this->shouldReport($exception)
-        ) {
+        if ($this->shouldReport($exception)) {
             return response()
                 ->view(
                     'errors.500',

@@ -23,6 +23,9 @@ const Integrations = require('@sentry/integrations');
 
 Sentry.init({
   dsn: process.env.MIX_SENTRY_PUBLIC_DSN,
+  debug: process.env.MIX_APP_DEBUG,
+  release: process.env.MIX_APP_TAG,
+  environment: process.env.MIX_APP_ENV,
   integrations: [
     new Integrations.Vue({
       Vue,
