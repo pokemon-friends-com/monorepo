@@ -11,6 +11,7 @@ use template\Console\Commands\{
     Files\RemoveFileFromCloudCommand,
     TestLaravelEchoCommand,
     CrawlPokemonGoFriendCodesCommand,
+    VersionCommand,
     DailySponsorshipCommand
 };
 
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
         PushFileToCloudCommand::class,
         RemoveFileFromCloudCommand::class,
         TestLaravelEchoCommand::class,
+        VersionCommand::class,
         DailySponsorshipCommand::class,
     ];
 
@@ -45,6 +47,7 @@ class Kernel extends ConsoleKernel
             ->command('queue:work', [
                 env('QUEUE_CONNECTION'),
                 '--stop-when-empty',
+                '--queue' => 'high,default,low',
             ])
             ->everyMinute()
             ->withoutOverlapping();

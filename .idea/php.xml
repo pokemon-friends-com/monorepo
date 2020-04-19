@@ -201,6 +201,15 @@
       <path value="$PROJECT_DIR$/vendor/abenevaut/laravel-check-coverage" />
       <path value="$PROJECT_DIR$/vendor/abenevaut/laravel-settings" />
       <path value="$PROJECT_DIR$/vendor/martinlindhe/laravel-vue-i18n-generator" />
+      <path value="$PROJECT_DIR$/vendor/shakurov/coinbase" />
+      <path value="$PROJECT_DIR$/vendor/mollie/mollie-api-php" />
+      <path value="$PROJECT_DIR$/vendor/mollie/laravel-mollie" />
+      <path value="$PROJECT_DIR$/vendor/moneyphp/money" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/laravel/cashier-mollie" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">
