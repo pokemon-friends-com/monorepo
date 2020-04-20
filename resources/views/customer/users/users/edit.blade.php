@@ -4,16 +4,15 @@
 <script type="text/javascript">
   (function (W, D, $) {
     $(D).ready(function() {
-
-      // $('.select2').select2({
-      //   theme: 'bootstrap4'
-      // });
-
       $('#birth_date').flatpickr({
         enableTime: false,
         dateFormat: '{{ trans('global.date_format') }}',
-        minDate: '{{ \Carbon\Carbon::create(date('Y'), 1, 1, 0, 0, 0, $profile['data']['locale']['timezone'])->subYears(80)->format('Y-m') }}',
-        maxDate: 'today',
+        defaultDate: '{{ old('birth_date', $profile['data']['birth_date']) ?? Carbon\Carbon::create(date('Y'), 1, 1, 0, 0, 0, $profile['data']['locale']['timezone'])->subYears(18)->format(trans('global.date_format')) }}',
+        minDate: '{{ Carbon\Carbon::create(date('Y'), 1, 1, 0, 0, 0, $profile['data']['locale']['timezone'])->subYears(80)->format(trans('global.date_format')) }}',
+        maxDate: '{{ Carbon\Carbon::create(date('Y'), 1, 1, 0, 0, 0, $profile['data']['locale']['timezone'])->subYears(8)->format(trans('global.date_format')) }}',
+        locale: {
+          firstDayOfWeek: 1
+        },
       });
     });
   })(window, document, jQuery);
@@ -44,20 +43,20 @@
             <div class="col-12 col-md-8">
                 {!! Form::open(['route' => ['customer.users.update', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
                 <div class="card">
-                    <div class="card-header">
-                        Join the friend code list
-                    </div>
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="friend_code" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.friend_code') }}</label>
                             <div class="col-sm-9">
                                 <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control {{ $errors && $errors->has('friend_code') ? 'is-invalid' : '' }}"
                                         id="friend_code"
                                         placeholder="{{ trans('users.profiles.friend_code') }}"
                                         name="friend_code"
                                         value="{{ old('friend_code', $profile['data']['friend_code']) }}" />
+                                @if ($errors && $errors->has('friend_code'))
+                                    <div class="text-danger text-sm">{{ $errors->first('friend_code') }}</div>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
@@ -100,15 +99,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        Optional data to field
-                    </div>
+                <div class="card card-info">
+                    <div class="card-header">{{ trans('users.profile.info.only_admin_can_view_following_data') }}</div>
                     <div class="card-body">
-                        <div class="alert alert-info">
-                            <h5><i class="icon fas fa-info mr-2"></i>{{ trans('global.information') }}</h5>
-                            Seul vous et les administrateurs peuvent consulter les informations suivantes.
-                        </div>
                         <div class="form-group row">
                             <label for="civility" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.civility') }}</label>
                             <div class="col-sm-9">
@@ -161,7 +154,7 @@
                         <div class="form-group row">
                             <label for="birth_date" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.birth_date') }}</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control {{ $errors && $errors->has('birth_date') ? 'is-invalid' : '' }}" id="birth_date" placeholder="{{ trans('users.profiles.birth_date') }}" name="birth_date" value="{{ old('birth_date', $profile['data']['birth_date']) }}"/>
+                                <input type="text" class="form-control {{ $errors && $errors->has('birth_date') ? 'is-invalid' : '' }}" id="birth_date" placeholder="{{ trans('users.profiles.birth_date') }}" name="birth_date" value="{{ old('birth_date', $profile['data']['birth_date']) }}" readonly="readonly"/>
                                 @if ($errors && $errors->has('birth_date'))
                                     <div class="text-danger text-sm">{{ $errors->first('birth_date') }}</div>
                                 @endif
@@ -184,14 +177,37 @@
                     <div class="card-body">
                         <a class="btn btn-block btn-primary btn-twitter" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}">
                             <span class="pull-left"><i class="fab fa-twitter"></i></span>
-                            <span class="bold">Lier Twitter</span>
+                            <span class="bold">{{ trans('auth.link_twitter') }}</span>
                         </a>
                     </div>
                 </div>
-                <div class="alert alert-info">
-                    <h5><i class="icon fas fa-info mr-2"></i>{{ trans('global.information') }}</h5>
-                    {!! trans('users.change_email', ['contact_rul' => route('anonymous.contact.index')]) !!}
+
+                {!! Form::open(['route' => ['customer.users.email', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'POST']) !!}
+                <div class="card">
+                    <div class="card-header">
+                        {{ trans('users.change_email') }}
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="input-group">
+                                <input
+                                        type="text"
+                                        name="email"
+                                        class="form-control {{ $errors && $errors->has('email') ? 'is-invalid' : '' }}"
+                                        placeholder="{{ trans('users.email') }}"
+                                />
+                            </div>
+                            @if ($errors && $errors->has('email'))
+                                <div class="text-danger text-sm">{{ $errors->first('email') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" type="submit">{{ trans('global.record') }}</button>
+                    </div>
                 </div>
+                {{ Form::close() }}
+
                 {!! Form::open(['route' => ['customer.users.password', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
                 <div class="card">
                     <div class="card-header">

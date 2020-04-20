@@ -28,8 +28,13 @@ return [
     'password_reset_text' => 'Click on the button below, then complete the password update form.',
     'password_reset_footer_link' => 'If your mailbox does not allow you to click on the button above to update your password,<br/>copy this link directly to your browser:',
 
+    'email_reset_title' => 'Change your email',
+    'email_reset_text' => 'Click on the button below, then complete the email update form.',
+    'email_reset_footer_link' => 'If your mailbox does not allow you to click on the button above to update your email,<br/>copy this link directly to your browser:',
+
     'login' => 'Login',
     'login_twitter' => 'Sign in using Twitter',
+    'link_twitter' => 'Link Twitter',
     'keep_loged_in' => 'Stay connected',
     'logout' => 'Sign out',
     'login_message_success' => 'You are now connected',
@@ -38,5 +43,8 @@ return [
     'login_with_provider_failed' => 'This :provider account is not linked to any user account, please log in with your usual credentials then link your account to use the social login system',
     'link_provider_success' => 'The link between your :provider account and your user account is correctly completed',
     'link_provider_failed' => 'The link of your :provider account with your user account could not be done',
+
+    'message_email_validation' => 'An email just sent to yout to validate your new email',
+    'message_email_changed' => 'Your new email just be validated',
 
 ];

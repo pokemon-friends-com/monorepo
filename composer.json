@@ -44,7 +44,8 @@
         "spatie/laravel-cookie-consent": "^2.11",
         "spatie/laravel-honeypot": "^2.0",
         "spatie/laravel-medialibrary": "^7.10",
-        "spatie/laravel-sitemap": "^5.3"
+        "spatie/laravel-sitemap": "^5.3",
+        "yaquawa/laravel-email-reset": "dev-feat/configure-callback"
     },
     "require-dev": {
         "ext-simplexml": "*",
@@ -114,6 +115,10 @@
         "abenevaut/laravel-check-coverage": {
             "type": "path",
             "url": "./components/abenevaut/laravel-check-coverage"
+        },
+        "yaquawa/laravel-email-reset": {
+            "type": "vcs",
+            "url": "git@github.com:abenevaut/laravel-email-reset.git"
         }
     }
 }

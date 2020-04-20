@@ -108,7 +108,7 @@ class GenerateSitemapCommand extends CommandAbstract
         $this
             ->r_profiles
             ->with(['user'])
-            ->where('sponsored', '=', '1')
+            ->whereNotNull('friend_code')
             ->chunk(100, function ($profiles) use ($sitemap) {
                 $profiles->each(function ($profile) use ($sitemap) {
                     $sitemap->add(

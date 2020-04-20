@@ -19,7 +19,7 @@ class UsersControllerTest extends TestCase
     public function testToVisitTrainerProfile()
     {
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
-        factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => true]);
+        factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => Carbon::now()->format('Y-m-d')]);
         $this
             ->get("/trainer/{$user->uniqid}")
             ->assertSuccessful()
@@ -32,7 +32,7 @@ class UsersControllerTest extends TestCase
     public function testToVisitTrainerProfileInFrench()
     {
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
-        factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => true]);
+        factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' =>  Carbon::now()->format('Y-m-d')]);
         $this
             ->get("/trainer/{$user->uniqid}?locale=fr")
             ->assertSuccessful()
@@ -52,10 +52,10 @@ class UsersControllerTest extends TestCase
     public function testToVisitTrainerProfileWhenUserNotSponsored()
     {
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
-        factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => false]);
+        factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => null]);
         $this
             ->get("/trainer/{$user->uniqid}")
-            ->assertNotFound();
+            ->assertSuccessful();
     }
 
     public function testToVisitTrainerProfileWhenUserDeleted()
