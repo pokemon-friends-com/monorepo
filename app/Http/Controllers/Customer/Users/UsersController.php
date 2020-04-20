@@ -12,6 +12,7 @@ use template\Domain\Users\Users\Transformers\TrainerTransformer;
 use template\Domain\Users\Users\User;
 use template\Http\Request\Customer\Users\Profiles\ProfileFormRequest;
 use template\Http\Request\Customer\Users\Users\PasswordFormRequest;
+use template\Http\Request\Customer\Users\Users\ChangeEmailFormRequest;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class UsersController extends ControllerAbstract
@@ -47,22 +48,31 @@ class UsersController extends ControllerAbstract
      */
     public function edit(User $user)
     {
-        return view(
-            'customer.users.users.edit',
-            [
-                'profile' => $this->r_profiles->getUserProfile($user),
-                'teams' => $this->r_profiles->getTeamsColors(),
-                'families_situations' => $this
-                    ->r_profiles
-                    ->getFamilySituations()
-                    ->mapWithKeys(function ($item) {
-                        return [$item => trans("users.profiles.family_situation.{$item}")];
-                    }),
-                'timezones' => $this->r_users->getTimezones(),
-                'locales' => $this->r_users->getLocales(),
-                'civilities' => $this->r_users->getCivilities(),
-            ]
-        );
+        $profile = $this->r_profiles->getUserProfile($user);
+        $teams = $this->r_profiles->getTeamsColors();
+        $families_situations = $this
+            ->r_profiles
+            ->getFamilySituations()
+            ->mapWithKeys(function ($item) {
+                return [$item => trans("users.profiles.family_situation.{$item}")];
+            });
+        $timezones = $this->r_users->getTimezones();
+        $locales = $this->r_users->getLocales();
+        $civilities = $this
+            ->r_users
+            ->getCivilities()
+            ->mapWithKeys(function ($item) {
+                return [$item => trans("users.civility.{$item}")];
+            });
+
+        return view('customer.users.users.edit', compact(
+            'profile',
+            'teams',
+            'families_situations',
+            'timezones',
+            'locales',
+            'civilities',
+        ));
     }
 
     /**
@@ -76,9 +86,10 @@ class UsersController extends ControllerAbstract
      */
     public function update(User $user, ProfileFormRequest $request)
     {
+        $id = $user->uniqid;
         $this->r_profiles->updateUserProfileWithRequest($request, $user);
 
-        return redirect(route('customer.users.edit', ['id' => $user->uniqid]));
+        return redirect(route('customer.users.edit', compact('id')));
     }
 
     /**
@@ -112,5 +123,21 @@ class UsersController extends ControllerAbstract
         event(new PasswordReset($user));
 
         return redirect(route('customer.users.edit', ['id' => $user->uniqid]));
+    }
+
+    /**
+     * Request email update.
+     *
+     * @param User $user
+     * @param ChangeEmailFormRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function changeEmail(User $user, ChangeEmailFormRequest $request)
+    {
+        $user->resetEmail($request->get('email'));
+
+        return redirect(route('customer.users.edit', ['id' => $user->uniqid]))
+            ->with('message-success', trans('auth.message_email_validation'));
     }
 }

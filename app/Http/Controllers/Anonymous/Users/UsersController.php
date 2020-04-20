@@ -60,7 +60,7 @@ class UsersController extends ControllerAbstract
      */
     public function show(User $user)
     {
-        if (!$user || $user->deleted_at || !$user->profile || !$user->profile->sponsored) {
+        if (!$user || $user->deleted_at || !$user->profile) {
             abort(404);
         }
 

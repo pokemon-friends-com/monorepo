@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        'email-reset' => 'default',
     ],
 
     /*
@@ -97,6 +98,17 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+    ],
+
+    // https://github.com/yaquawa/laravel-email-reset
+    'email-reset' => [
+        'default' => [
+            'table'  => 'email_resets',
+            'expire' => 60,
+            'callback' => 'template\Http\Controllers\Auth\ResetEmailController@reset',
+            // 'ignore-migrations' => true,
+            // 'route' => 'email/reset/{token}',
+        ]
     ],
 
 ];

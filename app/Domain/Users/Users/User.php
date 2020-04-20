@@ -5,6 +5,7 @@ namespace template\Domain\Users\Users;
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
+use Yaquawa\Laravel\EmailReset\CanResetEmail;
 use template\Domain\Users\Profiles\Profile;
 use template\Infrastructure\Interfaces\Domain\Users\{
     Users\HandshakableInterface,
@@ -60,6 +61,7 @@ class User extends AuthenticatableModelAbstract implements
     use TimeStampsTz;
     use SoftDeletesTz;
     use Impersonate;
+    use CanResetEmail;
 
     /**
      * The attributes that are mass assignable.

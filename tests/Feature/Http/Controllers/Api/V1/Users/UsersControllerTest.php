@@ -65,7 +65,7 @@ class UsersControllerTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testToGetUserQrCodeWhenUserNotSponsored()
+    public function testToGetUserQrCodeWhenUserHasNoFriendCode()
     {
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
         factory(Profile::class)->create(['user_id' => $user->id, 'friend_code' => null]);

@@ -210,6 +210,8 @@
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
       <path value="$PROJECT_DIR$/vendor/laravel/cashier-mollie" />
+      <path value="$PROJECT_DIR$/vendor/yaquawa/laravel-token-repository" />
+      <path value="$PROJECT_DIR$/vendor/yaquawa/laravel-email-reset" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">
