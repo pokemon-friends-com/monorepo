@@ -212,6 +212,7 @@
       <path value="$PROJECT_DIR$/vendor/laravel/cashier-mollie" />
       <path value="$PROJECT_DIR$/vendor/yaquawa/laravel-token-repository" />
       <path value="$PROJECT_DIR$/vendor/yaquawa/laravel-email-reset" />
+      <path value="$PROJECT_DIR$/vendor/fortrabbit/laravel-object-storage" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">
