@@ -11,24 +11,7 @@
 |
 */
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\{Cache, Storage};
 use Spatie\Honeypot\ProtectAgainstSpam;
-use Spatie\Sitemap\{Sitemap, Tags\Url};
-
-Route::get('sitemap.xml', function () {
-    $sitemap = Sitemap::create()->add(Url::create(url('/')))->render();
-
-    if (Cache::has('sitemap.xml')) {
-        $sitemap = Cache::get('sitemap.xml');
-    } elseif (Storage::disk('asset-cdn')->exists('sitemap.xml')) {
-        $sitemap = Storage::disk('asset-cdn')->get('sitemap.xml');
-        $expiresAt = Carbon::now()->addMinutes(180);
-        Cache::put('sitemap.xml', $sitemap, $expiresAt);
-    }
-
-    return response()->make($sitemap, 200, ['Content-type' => 'text/xml']);
-});
 
 Route::group(
     [
@@ -36,6 +19,7 @@ Route::group(
         'namespace' => 'Anonymous',
     ],
     function () {
+        Route::get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'SitemapController@index']);
         Route::group(['namespace' => 'Files'], function () {
             Route::get('files/media/{hash}', ['as' => 'files.media', 'uses' => 'MediasController@media']);
             Route::get('files/document/{path}', [

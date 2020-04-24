@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d96af1585b1a4d1e79f888539447885",
+    "content-hash": "054e66279a1a3674fe655a546215e6db",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1150,6 +1150,64 @@
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
             "time": "2017-06-27T22:17:23+00:00"
+        },
+        {
+            "name": "fortrabbit/laravel-object-storage",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fortrabbit/laravel-object-storage.git",
+                "reference": "909f3109bdf282da53857af0465077cd6a1af2ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fortrabbit/laravel-object-storage/zipball/909f3109bdf282da53857af0465077cd6a1af2ea",
+                "reference": "909f3109bdf282da53857af0465077cd6a1af2ea",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-sdk-php": "^3.0.0",
+                "illuminate/filesystem": "^5.5 | 6.0",
+                "illuminate/support": "^5.5 | 6.0",
+                "league/flysystem": "^1.0.40",
+                "league/flysystem-aws-s3-v3": "^1.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.10.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "fortrabbit\\ObjectStorage\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "fortrabbit\\ObjectStorage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Stark",
+                    "email": "os@fortrabbit.com"
+                }
+            ],
+            "description": "Flysystem adapter for fortrabbit Object Storage",
+            "keywords": [
+                "Flysystem",
+                "fortrabbit",
+                "laravel",
+                "object-storage",
+                "s3"
+            ],
+            "time": "2019-11-27T14:20:46+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

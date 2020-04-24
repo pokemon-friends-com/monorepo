@@ -19,6 +19,7 @@
         "barryvdh/laravel-elfinder": "^0.4.2",
         "fedeisas/laravel-mail-css-inliner": "^2.3",
         "fideloper/proxy": "^4.0",
+        "fortrabbit/laravel-object-storage": "^1.0",
         "lab404/laravel-impersonate": "^1.4",
         "laravel-notification-channels/twitter": "^3.0",
         "laravel/cashier-mollie": "^1.0",
