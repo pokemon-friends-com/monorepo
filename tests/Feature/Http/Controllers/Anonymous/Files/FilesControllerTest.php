@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Storage;
 use Tests\OAuthTestCaseTrait;
 use Tests\TestCase;
 
@@ -16,48 +17,40 @@ class FilesControllerTest extends TestCase
 
     public function testToGetDocument()
     {
-        $this->markTestSkipped('need to be fixed');
-        File::copy(
-            '/' . base_path('resources/images/test.jpg'),
-            '/' . storage_path('app/public/file001.jpg')
-        );
+        $cloudFilePath = 'file001.jpg';
+        $cloudFileContent = file_get_contents($this->faker->imageUrl());
+
+        Storage::fake('object-storage');
+        Storage::cloud()->put($cloudFilePath, $cloudFileContent);
 
         $this
-            ->get('files/document/file001.jpg')
+            ->get("files/document/{$cloudFilePath}")
             ->assertSuccessful()
             ->assertHeader('Content-Type', 'image/jpeg');
-
-        File::delete(storage_path('app/public/file001.jpg'));
     }
 
     public function testToGetDocumentWhenDocumentDoesNotExist()
     {
-        $this->markTestSkipped('need to be fixed');
         $this->get('files/document/file003.jpg')->assertStatus(404);
     }
 
     public function testToGetThumbnail()
     {
-        $this->markTestSkipped('need to be fixed');
-        File::copy(
-            base_path('resources/images/test.jpg'),
-            storage_path('app/public/file002.jpg')
-        );
+        $cloudFilePath = 'file002.jpg';
+        $cloudFileContent = file_get_contents($this->faker->imageUrl());
+
+        Storage::fake('object-storage');
+        Storage::fake('thumbnails');
+        Storage::cloud()->put($cloudFilePath, $cloudFileContent);
 
         $this
             ->get('files/thumbnail/file002.jpg')
             ->assertSuccessful()
             ->assertHeader('Content-Type', 'image/jpeg');
-
-        File::delete([
-            storage_path('app/public/file002.jpg'),
-            storage_path('app/thumbnails/file002.jpg'),
-        ]);
     }
 
     public function testToGetThumbnailWhenDocumentDoesNotExist()
     {
-        $this->markTestSkipped('need to be fixed');
         $this->get('files/thumbnail/file004.jpg')->assertStatus(404);
     }
 }

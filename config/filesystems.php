@@ -46,10 +46,25 @@ return [
             'driver' => 'production' === env('APP_ENV', 'production')
                 ? 'object-storage'
                 : 'local',
-            'root' => storage_path('app'),
+            'root' => 'production' === env('APP_ENV', 'production')
+                ? 'private'
+                : storage_path('app'),
+        ],
+        'thumbnails' => [
+            'driver' => 'production' === env('APP_ENV', 'production')
+                ? 'object-storage'
+                : 'local',
+            'root' => 'production' === env('APP_ENV', 'production')
+                ? 'private/thumbnails'
+                : storage_path('app/thumbnails'),
         ],
         'asset-cdn' => [
-            'driver' => 'object-storage',
+            'driver' => 'production' === env('APP_ENV', 'production')
+                ? 'object-storage'
+                : 'local',
+            'root' => 'production' === env('APP_ENV', 'production')
+                ? null
+                : public_path(),
         ],
     ],
 

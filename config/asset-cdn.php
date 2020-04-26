@@ -1,11 +1,8 @@
 <?php
 
 return [
-
     'use_cdn' => env('USE_CDN', false),
-
     'cdn_url' => env('OBJECT_STORAGE_URL', 'https://pkmn-friends.objects.frb.io'),
-
     'filesystem' => [
         'disk' => 'asset-cdn',
         'options' => [
@@ -15,12 +12,9 @@ return [
             'CacheControl' => 'max-age=31536000, public',
         ],
     ],
-
     'files' => [
         'ignoreDotFiles' => true,
-
         'ignoreVCS' => true,
-
         'include' => [
             'paths' => [
                 'css',
@@ -29,17 +23,10 @@ return [
                 'js',
                 'packages',
             ],
-            'files' => [
-                //
-            ],
-            'extensions' => [
-                //
-            ],
-            'patterns' => [
-                //
-            ],
+            'files' => [],
+            'extensions' => [],
+            'patterns' => [],
         ],
-
         'exclude' => [
             'paths' => [
                 'trainers'
@@ -48,13 +35,8 @@ return [
                 'README.md',
                 'sitemap.xml',
             ],
-            'extensions' => [
-                //
-            ],
-            'patterns' => [
-                //
-            ],
+            'extensions' => [],
+            'patterns' => [],
         ],
     ],
-
 ];
