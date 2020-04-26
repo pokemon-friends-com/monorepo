@@ -55,13 +55,13 @@ class GetFileFromCloudCommand extends CommandAbstract
         $localDestination = $this->argument('destination');
 
         try {
-            if (!Storage::disk('s3')->exists($cloudFilePath)) {
-                throw new FileNotFoundException("File does not exist on s3.");
+            if (!Storage::disk('object-storage')->exists($cloudFilePath)) {
+                throw new FileNotFoundException("File does not exist on object storage.");
             }
 
             File::put(
                 $localDestination,
-                Storage::disk('s3')->get($cloudFilePath)
+                Storage::disk('object-storage')->get($cloudFilePath)
             );
 
             $this->info('files:cloud:get : success!');

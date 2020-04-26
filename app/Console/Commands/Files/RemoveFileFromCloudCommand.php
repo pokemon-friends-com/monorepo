@@ -52,11 +52,11 @@ class RemoveFileFromCloudCommand extends CommandAbstract
         $cloudFile = $this->argument('file');
 
         try {
-            if (!Storage::disk('s3')->exists($cloudFile)) {
+            if (!Storage::disk('object-storage')->exists($cloudFile)) {
                 throw new FileNotFoundException("File does not exist.");
             }
 
-            Storage::disk('s3')->delete($cloudFile);
+            Storage::disk('object-storage')->delete($cloudFile);
 
             $this->info('files:cloud:rm : success!');
 

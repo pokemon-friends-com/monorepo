@@ -17,7 +17,7 @@ class SitemapController extends ControllerAbstract
      */
     public function index()
     {
-        $sitemap = Sitemap::create()->add(Url::create(url('/')))->render();
+        $sitemap = null;
 
         if (Cache::has('sitemap.xml')) {
             $sitemap = Cache::get('sitemap.xml');
@@ -25,6 +25,10 @@ class SitemapController extends ControllerAbstract
             $sitemap = Storage::disk('asset-cdn')->get('sitemap.xml');
             $expiresAt = Carbon::now()->addMinutes(180);
             Cache::put('sitemap.xml', $sitemap, $expiresAt);
+        } else {
+            $sitemap = Sitemap::create()
+                ->add(Url::create(url('/')))
+                ->render();
         }
 
         return response()->make($sitemap, 200, ['Content-type' => 'text/xml']);

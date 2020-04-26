@@ -30,4 +30,23 @@ class GenerateSitemapCommandTest extends TestCase
             ->assertExitCode(0);
         Storage::disk('asset-cdn')->assertExists('sitemap.xml');
     }
+
+    public function testSitemapGenerateOnLocalEnvironment()
+    {
+        $this->markTestSkipped('need to be fixed');
+
+        factory(User::class)
+            ->times(30)
+            ->create()
+            ->each(function (User $user) {
+                factory(Profile::class)->create(['user_id' => $user->id]);
+            });
+        Storage::fake('asset-cdn');
+        Storage::disk('asset-cdn')->assertMissing('sitemap.xml');
+        $this
+            ->artisan('sitemap:generate', ['--env' => 'local'])
+            ->expectsOutput('sitemap:generate : could not be launched on local environment!')
+            ->assertExitCode(1);
+        Storage::disk('asset-cdn')->assertMissing('sitemap.xml');
+    }
 }

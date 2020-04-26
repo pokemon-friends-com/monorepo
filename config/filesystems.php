@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 'object-storage',
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'cloud' => 's3',
+    'cloud' => 'object-storage',
 
     /*
     |--------------------------------------------------------------------------
@@ -42,45 +42,15 @@ return [
     */
 
     'disks' => [
-
-        'local' => [
-            'driver' => 'local',
+        'object-storage' => [
+            'driver' => 'production' === env('APP_ENV', 'production')
+                ? 'object-storage'
+                : 'local',
             'root' => storage_path('app'),
         ],
-
-        'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL') . '/storage',
-            'visibility' => 'public',
-        ],
-
-        's3' => [
-            'driver' => 'object-storage'
-//            'driver' => 's3',
-//            'key' => env('AWS_ACCESS_KEY_ID'),
-//            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-//            'region' => env('AWS_DEFAULT_REGION', 'eu-west-3'),
-//            'bucket' => env('AWS_FILES_BUCKET', 'www.pokemon-friends.com.local'),
-//            'url' => sprintf(
-//                'https://s3.%s.amazonaws.com',
-//                env('AWS_DEFAULT_REGION', 'eu-west-3')
-//            ),
-        ],
-
         'asset-cdn' => [
-            'driver' => 'object-storage'
-//            'driver' => 's3',
-//            'key' => env('AWS_ACCESS_KEY_ID'),
-//            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-//            'region' => env('AWS_DEFAULT_REGION', 'eu-west-3'),
-//            'bucket' => env('AWS_ASSETS_BUCKET', 'assets.pokemon-friends.com.local'),
-//            'url' => sprintf(
-//                'https://s3.%s.amazonaws.com',
-//                env('AWS_DEFAULT_REGION', 'eu-west-3')
-//            ),
+            'driver' => 'object-storage',
         ],
-
     ],
 
 ];

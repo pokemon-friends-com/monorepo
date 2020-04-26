@@ -30,14 +30,14 @@ class MediasController extends ControllerAbstract
      */
     public function media($hash)
     {
+        $media = null;
+
         try {
-            return $this
-                ->r_medias
-                ->streamPrivateDocument($hash);
+            $media = $this->r_medias->streamPrivateDocument($hash);
         } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
+            abort(404);
         }
 
-        return abort(404);
+        return $media;
     }
 }

@@ -4,11 +4,7 @@ namespace template\Domain\Files\Files\Repositories;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Filesystem\FilesystemAdapter;
-use Illuminate\Support\Facades\
-{
-    File,
-    Response
-};
+use Illuminate\Support\Facades\{File, Response, Storage};
 use League\Glide\{
     Responses\LaravelResponseFactory,
     ServerFactory
@@ -130,14 +126,8 @@ class FilesRepository
      */
     public function streamPublicDocument(string $path)
     {
-        $path = storage_path('app/public/' . $path);
-
-        if (File::exists($path)) {
-            $file = File::get($path);
-            $type = File::mimeType($path);
-
-            return Response::make($file, 200)
-                ->header("Content-Type", $type);
+        if (Storage::cloud()->exists($path)) {
+            return Storage::cloud()->response(basename($path));
         }
 
         throw new \Exception();
@@ -151,8 +141,8 @@ class FilesRepository
     public function streamPublicThumbnail(string $path)
     {
         return ServerFactory::create([
-            'source' => app('filesystem')->disk('public')->getDriver(),
-            'cache' => storage_path('app/thumbnails'),
+            'source' => app('filesystem')->cloud()->getDriver(),
+            'cache' => public_path('thumbnails'),
             'driver' => 'imagick',
             'response' => new LaravelResponseFactory(app('request')),
         ])

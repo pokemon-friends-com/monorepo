@@ -26,32 +26,36 @@ class FilesController extends ControllerAbstract
     /**
      * @param $path
      *
-     * @return \Illuminate\Http\Response|void
+     * @return \Illuminate\Http\Response
      */
     public function document($path)
     {
+        $document = null;
+
         try {
-            return $this->r_files->streamPublicDocument($path);
+            $document = $this->r_files->streamPublicDocument($path);
         } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
+            abort(404);
         }
 
-        return abort(404);
+        return $document;
     }
 
     /**
      * @param string $path
      *
-     * @return mixed|void
+     * @return mixed
      */
     public function thumbnail(string $path)
     {
+        $thumbnail = null;
+
         try {
-            return $this->r_files->streamPublicThumbnail($path);
+            $thumbnail = $this->r_files->streamPublicThumbnail($path);
         } catch (\Exception $exception) {
-            app('sentry')->captureException($exception);
+            abort(404);
         }
 
-        return abort(404);
+        return $thumbnail;
     }
 }

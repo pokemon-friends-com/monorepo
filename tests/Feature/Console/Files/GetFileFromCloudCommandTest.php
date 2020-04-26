@@ -19,9 +19,9 @@ class GetFileFromCloudCommandTest extends TestCase
         $cloudFileContent = $this->faker->text;
         $localFilePath = '/path/to/local/file.txt';
 
-        Storage::fake('s3');
-        Storage::disk('s3')->put($cloudFilePath, $cloudFileContent);
-        Storage::disk('s3')->assertExists($cloudFilePath);
+        Storage::fake('object-storage');
+        Storage::disk('object-storage')->put($cloudFilePath, $cloudFileContent);
+        Storage::disk('object-storage')->assertExists($cloudFilePath);
         File::shouldReceive('put')
             ->with($localFilePath, $cloudFileContent)
             ->once()
@@ -38,11 +38,11 @@ class GetFileFromCloudCommandTest extends TestCase
         $cloudFilePath = '/path/to/file.txt';
         $localFilePath = '/path/to/local/file.txt';
 
-        Storage::fake('s3');
+        Storage::fake('object-storage');
 
         $this
             ->artisan("files:cloud:get {$cloudFilePath} {$localFilePath}")
-            ->expectsOutput('File does not exist on s3.')
+            ->expectsOutput('File does not exist on object storage.')
             ->assertExitCode(1);
     }
 }

@@ -59,7 +59,7 @@ class PushFileToCloudCommand extends CommandAbstract
                 throw new FileNotFoundException("File does not exist.");
             }
 
-            Storage::disk('s3')->put($cloudDestination, File::get($localFile));
+            Storage::disk('object-storage')->put($cloudDestination, File::get($localFile));
 
             $this->info('files:cloud:push : success!');
 

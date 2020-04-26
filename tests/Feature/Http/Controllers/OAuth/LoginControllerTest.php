@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Http\Controllers\OAuth;
+namespace Tests\Feature\Http\Controllers\OAuth;
 
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;

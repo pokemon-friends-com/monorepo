@@ -58,6 +58,12 @@ class GenerateSitemapCommand extends CommandAbstract
      */
     public function handle()
     {
+        if (app()->environment('local')) {
+            $this->error('sitemap:generate : could not be launched on local environment!');
+
+            return 1;
+        }
+
         $sitemap = Sitemap::create()
             ->add(
                 Url::create(url('/'))

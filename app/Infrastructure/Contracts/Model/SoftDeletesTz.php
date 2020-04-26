@@ -3,6 +3,7 @@
 namespace template\Infrastructure\Contracts\Model;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 trait SoftDeletesTz
 {
@@ -14,6 +15,6 @@ trait SoftDeletesTz
      */
     public function getDeletedAtTzAttribute()
     {
-        return $this->deleted_at->setTimezone(\Session::get('timezone'));
+        return $this->deleted_at->setTimezone(Session::get('timezone'));
     }
 }

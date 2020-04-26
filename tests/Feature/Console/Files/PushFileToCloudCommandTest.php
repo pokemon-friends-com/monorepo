@@ -18,8 +18,8 @@ class PushFileToCloudCommandTest extends TestCase
         $cloudFilePath = '/path/to/file.txt';
         $localFilePath = '/path/to/local/file.txt';
 
-        Storage::fake('s3');
-        Storage::disk('s3')->assertMissing($cloudFilePath);
+        Storage::fake('object-storage');
+        Storage::disk('object-storage')->assertMissing($cloudFilePath);
         File::shouldReceive('exists')
             ->with($localFilePath)
             ->once()
@@ -34,7 +34,7 @@ class PushFileToCloudCommandTest extends TestCase
             ->expectsOutput('files:cloud:push : success!')
             ->assertExitCode(0);
 
-        Storage::disk('s3')->assertExists($cloudFilePath);
+        Storage::disk('object-storage')->assertExists($cloudFilePath);
     }
 
     public function testToPushFileToCloudStorageWhenLocalFileDoesNotExist()
@@ -42,7 +42,7 @@ class PushFileToCloudCommandTest extends TestCase
         $cloudFilePath = '/path/to/file.txt';
         $localFilePath = '/path/to/local/file.txt';
 
-        Storage::fake('s3');
+        Storage::fake('object-storage');
         File::shouldReceive('exists')
             ->with($localFilePath)
             ->once()
@@ -53,6 +53,6 @@ class PushFileToCloudCommandTest extends TestCase
             ->expectsOutput('File does not exist.')
             ->assertExitCode(1);
 
-        Storage::disk('s3')->assertMissing($cloudFilePath);
+        Storage::disk('object-storage')->assertMissing($cloudFilePath);
     }
 }

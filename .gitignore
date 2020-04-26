@@ -8,6 +8,7 @@
 /public/images
 /public/ico
 /public/packages
+/public/thumbnails
 /public/plugins
 /public/mix-manifest.json
 /storage/*.key

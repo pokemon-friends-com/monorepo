@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'app_tag' => '1.1.16',
+	'app_tag' => '1.1.17',
 ];
