@@ -17,9 +17,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
  */
 
 if (mix.inProduction()) {
-  mix
-    .version()
-    .setResourceRoot('/assets.pokemon-friends.com/');
+  mix.version();
 }
 
 mix

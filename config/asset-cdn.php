@@ -4,13 +4,7 @@ return [
 
     'use_cdn' => env('USE_CDN', false),
 
-    'cdn_url' => env('OBJECT_STORAGE_URL'),
-
-//    'cdn_url' => sprintf(
-//        'https://s3.%s.amazonaws.com/%s',
-//        env('AWS_DEFAULT_REGION', 'eu-west-3'),
-//        env('AWS_ASSETS_BUCKET', 'assets.pokemon-friends.com.local')
-//    ),
+    'cdn_url' => env('OBJECT_STORAGE_URL', 'https://pkmn-friends.objects.frb.io'),
 
     'filesystem' => [
         'disk' => 'asset-cdn',
