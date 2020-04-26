@@ -15,6 +15,11 @@
     <script type="text/javascript">
       (function (W, D, $) {
         $(D).ready(function() {
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
           // Documentation for client options: https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
           $('#elfinder').elfinder({
             // Set your elFinder options here.

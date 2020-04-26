@@ -31,7 +31,6 @@ class MediasRepositoryEloquent extends RepositoryEloquentAbstract implements Med
         'aiff' => 'audio/x-aiff',
         'asc' => 'text/plain',
         'atom' => 'application/atom+xml',
-        'atom' => 'application/atom+xml',
         'au' => 'audio/basic',
         'avi' => 'video/x-msvideo',
         'bcpio' => 'application/x-bcpio',

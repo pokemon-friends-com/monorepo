@@ -84,6 +84,6 @@ class LoginController extends ControllerAbstract
     {
         $request->user()->token()->revoke();
 
-        return abort(204);
+        return response(null, 204);
     }
 }

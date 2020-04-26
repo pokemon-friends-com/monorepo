@@ -16,23 +16,23 @@ class RemoveFileFromCloudCommandTest extends TestCase
     {
         $cloudFilePath = '/path/to/file.txt';
 
-        Storage::fake('s3');
-        Storage::disk('s3')->put($cloudFilePath, $this->faker->text);
-        Storage::disk('s3')->assertExists($cloudFilePath);
+        Storage::fake('object-storage');
+        Storage::disk('object-storage')->put($cloudFilePath, $this->faker->text);
+        Storage::disk('object-storage')->assertExists($cloudFilePath);
 
         $this
             ->artisan("files:cloud:rm {$cloudFilePath}")
             ->expectsOutput('files:cloud:rm : success!')
             ->assertExitCode(0);
 
-        Storage::disk('s3')->assertMissing($cloudFilePath);
+        Storage::disk('object-storage')->assertMissing($cloudFilePath);
     }
 
     public function testToDeleteFileFromCloudStorageWhenCloudFileDoesNotExist()
     {
         $cloudFilePath = '/path/to/file.txt';
 
-        Storage::fake('s3');
+        Storage::fake('object-storage');
 
         $this
             ->artisan("files:cloud:rm {$cloudFilePath}")

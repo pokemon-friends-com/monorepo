@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Http\Controllers\Api\V1\Users;
+namespace Tests\Feature\Http\Controllers\Api\V1\Users;
 
 use template\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
 use Tests\TestCase;

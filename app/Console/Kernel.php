@@ -43,6 +43,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        if (app()->environment('production')) {
+            $schedule
+                ->command('sitemap:generate')
+                ->everyFiveMinutes()
+                ->withoutOverlapping();
+        }
+
         $schedule
             ->command('queue:work', [
                 env('QUEUE_CONNECTION'),
@@ -50,10 +57,6 @@ class Kernel extends ConsoleKernel
                 '--queue' => 'high,default,low',
             ])
             ->everyMinute()
-            ->withoutOverlapping();
-        $schedule
-            ->command('sitemap:generate')
-            ->everyFiveMinutes()
             ->withoutOverlapping();
         $schedule
             ->command('pkmn:daily-sponsor')

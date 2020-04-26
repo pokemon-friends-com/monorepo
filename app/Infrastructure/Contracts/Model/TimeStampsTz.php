@@ -3,6 +3,7 @@
 namespace template\Infrastructure\Contracts\Model;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 trait TimeStampsTz
 {
@@ -14,7 +15,7 @@ trait TimeStampsTz
      */
     public function getCreatedAtTzAttribute()
     {
-        return $this->created_at->setTimezone(\Session::get('timezone'));
+        return $this->created_at->setTimezone(Session::get('timezone'));
     }
 
     /**
@@ -24,6 +25,6 @@ trait TimeStampsTz
      */
     public function getUpdatedAtTzAttribute()
     {
-        return $this->updated_at->setTimezone(\Session::get('timezone'));
+        return $this->updated_at->setTimezone(Session::get('timezone'));
     }
 }
