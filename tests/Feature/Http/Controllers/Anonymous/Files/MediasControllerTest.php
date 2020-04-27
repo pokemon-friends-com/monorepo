@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Http\Controllers\Anonymous\Files;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Storage;
 use template\Domain\Files\Medias\Media;
 use template\Domain\Users\Profiles\Profile;
 use template\Domain\Users\Users\User;
@@ -21,23 +21,22 @@ class MediasControllerTest extends TestCase
 
     public function testMediaEndpoint()
     {
-        $this->markTestSkipped('need to be fixed');
         $user = factory(User::class)->create();
         $profile = factory(Profile::class)->create([
             'user_id' => $user->id
         ]);
         $media = factory(Media::class)->create([
-            'disk' => 'public',
             'file_name' => 'file001.jpg',
+            'mime_type' => 'image/jpeg',
             'model_id' => $profile->id,
             'model_type' => Profile::class,
         ]);
 
-        File::makeDirectory(storage_path("app/public/{$media->id}"));
-        File::copy(
-            '/' . base_path('resources/images/test.jpg'),
-            '/' . storage_path("app/public/{$media->id}/file001.jpg")
-        );
+        $cloudFilePath = "{$media->id}/file001.jpg";
+        $cloudFileContent = file_get_contents($this->faker->imageUrl());
+
+        Storage::fake('object-storage');
+        Storage::cloud()->put($cloudFilePath, $cloudFileContent);
 
         $hash = $this->createHash([
             'id' => $media->id,
@@ -48,14 +47,10 @@ class MediasControllerTest extends TestCase
             ->get("files/media/{$hash}")
             ->assertSuccessful()
             ->assertHeader('Content-Type', 'image/jpeg');
-
-        File::delete('/' . storage_path("app/public/{$media->id}/file001.jpg"));
-        File::deleteDirectory('/' . storage_path("app/public/{$media->id}"));
     }
 
     public function testMediaEndpointWithBadHash()
     {
-        $this->markTestSkipped('need to be fixed');
         $this->get('/files/media/bad_hash')->assertStatus(404);
     }
 }

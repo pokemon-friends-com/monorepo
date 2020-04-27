@@ -25,7 +25,7 @@ $factory
             'name' => $faker->text,
             'file_name' => null,
             'mime_type' => null,
-            'disk' => $faker->randomElements(['local', 'public']),
+            'disk' => 'object-storage',
             'size' => 0,
             'manipulations' => '',
             'custom_properties' => '',
