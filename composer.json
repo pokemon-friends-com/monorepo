@@ -24,6 +24,7 @@
         "laravel-notification-channels/twitter": "^3.0",
         "laravel/cashier-mollie": "^1.0",
         "laravel/framework": "^6.0",
+        "laravel/helpers": "^1.2",
         "laravel/passport": "^7.4",
         "laravel/scout": "^7.1",
         "laravel/socialite": "^4.1",
