@@ -1,9 +1,11 @@
+require('dotenv').config();
 const mix = require('laravel-mix');
 const path = require('path');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 /*
  |--------------------------------------------------------------------------
@@ -16,8 +18,35 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
  |
  */
 
+const faviconConfig = {
+  logo: path.resolve(__dirname, 'resources/images/pokeball.png'),
+  prefix: 'images/',
+  cache: true,
+  inject: false,
+  mode: 'webapp',
+  devMode: 'webapp',
+  favicons: {
+    background: '#fff',
+    theme_color: '#fff',
+    icons: {
+      coast: false,
+      yandex: false,
+    },
+  },
+};
+
 if (mix.inProduction()) {
   mix.version();
+
+  if (process.env.USE_CDN) {
+    faviconConfig.publicPath = process.env.OBJECT_STORAGE_URL
+      ? process.env.OBJECT_STORAGE_URL
+      : 'https://pkmn-friends.objects.frb.io/';
+
+    // Amazon S3 way.
+    // faviconConfig.publicPath = `https://s3.${process.env.AWS_DEFAULT_REGION}.amazonaws.com/${process.env.AWS_ASSETS_BUCKET}/`;
+    // mix.version().setResourceRoot(`/${process.env.AWS_ASSETS_BUCKET}/`);
+  }
 }
 
 mix
@@ -83,6 +112,7 @@ mix
           }),
         ],
       }),
+      new FaviconsWebpackPlugin(faviconConfig),
     ],
   })
   .sourceMaps(false, 'eval')
