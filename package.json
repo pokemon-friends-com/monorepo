@@ -41,7 +41,7 @@
         "imagehover.css": "^2.0.0",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-webpack-plugin": "^2.4.2",
-        "jquery": "^3.2",
+        "jquery": "^3.5",
         "jsdom": "^16.2.2",
         "jsdom-global": "^3.0.2",
         "laravel-echo": "^1.6.1",
