@@ -58,61 +58,31 @@ class UsersController extends ControllerAbstract
     /**
      * Get user QR code image.
      *
+     * @param Request $request
      * @param User $user
      *
      * @return \Illuminate\Http\Response|mixed
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function qr(User $user)
+    public function qr(Request $request, User $user)
     {
         if (!$user || $user->deleted_at || !$user->profile->friend_code) {
             abort(404);
         }
 
-        if (Cache::has("qr_code_png.{$user->profile->friend_code}")) {
-            $qr = Cache::get("qr_code_png.{$user->profile->friend_code}");
-        } else {
-            $qr = $this->qrServer($user->profile->friend_code);
-            $expiresAt = Carbon::now()->addMinutes(4320); // 72 hours
-            Cache::put("qr_code_png.{$user->profile->friend_code}", $qr, $expiresAt);
+        if (!$user->profile->hasMedia('trainer')) {
+            return $user
+                ->profile
+                ->addMediaFromUrl(
+                    'https://api.qrserver.com/v1/create-qr-code/'
+                    . "?size=300x300&format=png&data={$user->profile->friend_code}"
+                )
+                ->setName($user->profile->friend_code)
+                ->setFileName("{$user->profile->friend_code}.png")
+                ->toMediaCollection('trainer')
+                ->toResponse($request);
         }
 
-        return response()->make($qr, 200, ['Content-Type' => 'image/png']);
+        return $user->profile->getMedia('trainer')->first()->toResponse($request);
     }
-
-    /**
-     * Get user QR code image from qrserver.
-     *
-     * @param string $data
-     *
-     * @return string
-     */
-    public function qrServer(string $data)
-    {
-        return (new Client([
-            'base_uri' => 'https://api.qrserver.com/v1/create-qr-code/'
-                . "?size=300x300&format=png&data={$data}",
-        ]))
-            ->request('GET')
-            ->getBody()
-            ->getContents();
-    }
-
-    /**
-     * Get user QR code image from google.
-     *
-     * @param string $data
-     *
-     * @return string
-     */
-    //public function qrGoogle(string $data)
-    //{
-    //    return (new Client([
-    //        'base_uri' => 'https://chart.googleapis.com/chart'
-    //            . "?cht=qr&chs=300x300&choe=UTF-8&chld=L|0&chl={$data}",
-    //    ]))
-    //        ->request('GET')
-    //        ->getBody()
-    //        ->getContents();
-    //}
 }

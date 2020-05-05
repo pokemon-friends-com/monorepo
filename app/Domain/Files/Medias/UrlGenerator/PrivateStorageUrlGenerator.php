@@ -22,6 +22,6 @@ class PrivateStorageUrlGenerator extends LocalUrlGenerator
                 'timestamp' => time(),
             ]);
 
-        return route('frontend.medias.document.media', ['hash' => $hash]);
+        return route('anonymous.files.media', ['hash' => $hash]);
     }
 }

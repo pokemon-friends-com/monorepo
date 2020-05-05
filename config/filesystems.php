@@ -56,7 +56,7 @@ return [
                 : 'local',
             'root' => 'production' === env('APP_ENV', 'production')
                 ? 'private/thumbnails'
-                : storage_path('app/thumbnails'),
+                : public_path('app/thumbnails'),
         ],
         'asset-cdn' => [
             'driver' => 'production' === env('APP_ENV', 'production')

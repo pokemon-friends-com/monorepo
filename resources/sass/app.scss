@@ -22,3 +22,7 @@ $text-color: #fff;
 @import 'pkmn-teams';
 @import 'cookie-consent';
 @import 'buttons/twitter';
+
+.ekko-lightbox-nav-overlay a>* {
+  color: var(--red);
+}
