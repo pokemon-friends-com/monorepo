@@ -18,7 +18,7 @@ class FilesControllerTest extends TestCase
     public function testToGetDocument()
     {
         $cloudFilePath = 'file001.jpg';
-        $cloudFileContent = file_get_contents($this->faker->imageUrl());
+        $cloudFileContent = file_get_contents(base_path('resources/images/test.jpg'));
 
         Storage::fake('object-storage');
         Storage::cloud()->put($cloudFilePath, $cloudFileContent);
@@ -37,7 +37,7 @@ class FilesControllerTest extends TestCase
     public function testToGetThumbnail()
     {
         $cloudFilePath = 'file002.jpg';
-        $cloudFileContent = file_get_contents($this->faker->imageUrl());
+        $cloudFileContent = file_get_contents(base_path('resources/images/test.jpg'));
 
         Storage::fake('object-storage');
         Storage::fake('thumbnails');

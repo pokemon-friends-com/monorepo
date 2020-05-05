@@ -33,7 +33,7 @@ class MediasControllerTest extends TestCase
         ]);
 
         $cloudFilePath = "{$media->id}/file001.jpg";
-        $cloudFileContent = file_get_contents($this->faker->imageUrl());
+        $cloudFileContent = file_get_contents(base_path('resources/images/test.jpg'));
 
         Storage::fake('object-storage');
         Storage::cloud()->put($cloudFilePath, $cloudFileContent);
