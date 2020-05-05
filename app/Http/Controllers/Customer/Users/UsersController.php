@@ -86,10 +86,9 @@ class UsersController extends ControllerAbstract
      */
     public function update(User $user, ProfileFormRequest $request)
     {
-        $id = $user->uniqid;
         $this->r_profiles->updateUserProfileWithRequest($request, $user);
 
-        return redirect(route('customer.users.edit', compact('id')));
+        return redirect(route('customer.users.edit', ['user' => $user->uniqid]));
     }
 
     /**
@@ -122,7 +121,7 @@ class UsersController extends ControllerAbstract
 
         event(new PasswordReset($user));
 
-        return redirect(route('customer.users.edit', ['id' => $user->uniqid]));
+        return redirect(route('customer.users.edit', ['user' => $user->uniqid]));
     }
 
     /**
@@ -137,7 +136,7 @@ class UsersController extends ControllerAbstract
     {
         $user->resetEmail($request->get('email'));
 
-        return redirect(route('customer.users.edit', ['id' => $user->uniqid]))
+        return redirect(route('customer.users.edit', ['user' => $user->uniqid]))
             ->with('message-success', trans('auth.message_email_validation'));
     }
 }

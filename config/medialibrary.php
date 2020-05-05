@@ -2,11 +2,13 @@
 
 return [
 
+    'version_urls' => true,
+
     /*
      * The disk on which to store added files and derived images by default. Choose
      * one or more of the disks you've configured in config/filesystems.php.
      */
-    'disk_name' => 'public',
+    'disk_name' => 'object-storage',
 
     /*
      * The maximum file size of an item in bytes.
@@ -18,7 +20,7 @@ return [
      * This queue will be used to generate derived and responsive images.
      * Leave empty to use the default queue.
      */
-    'queue_name' => 'media',
+    'queue_name' => 'high',
 
     /*
      * The class names of the models that should be used.
@@ -30,6 +32,13 @@ return [
          * The domain that should be prepended when generating urls.
          */
         'domain' => 'https://'.env('AWS_BUCKET').'.s3.amazonaws.com',
+    ],
+
+    'fortrabbit' => [
+        /*
+         * The domain that should be prepended when generating urls.
+         */
+        'domain' => env('OBJECT_STORAGE_URL', 'https://pkmn-friends.objects.frb.io'),
     ],
 
     'remote' => [

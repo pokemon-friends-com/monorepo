@@ -3,6 +3,8 @@
 namespace Tests\Feature\Http\Controllers\Api\V1\Users;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use template\Domain\Files\Medias\Media;
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -52,6 +54,30 @@ class UsersControllerTest extends TestCase
     {
         $user = factory(User::class)->create();
         factory(Profile::class)->create(['user_id' => $user->id]);
+        $this
+            ->get("/api/v1/users/qr/{$user->uniqid}.png")
+            ->assertSuccessful()
+            ->assertHeader('Content-Type', 'image/png');
+    }
+
+    public function testToGetUserQrCodeWhenQrCodeAlreadyExists()
+    {
+        $user = factory(User::class)->create();
+        $profile = factory(Profile::class)->create(['user_id' => $user->id]);
+        $media = factory(Media::class)->create([
+            'file_name' => 'file001.png',
+            'mime_type' => 'image/png',
+            'model_id' => $profile->id,
+            'model_type' => Profile::class,
+        ]);
+
+        $cloudFilePath = "{$media->id}/file001.png";
+        $cloudFileContent = file_get_contents(base_path('resources/images/test.jpg'));
+
+        Storage::fake('object-storage');
+        Storage::cloud()->put($cloudFilePath, $cloudFileContent);
+
+        Passport::actingAs($user);
         $this
             ->get("/api/v1/users/qr/{$user->uniqid}.png")
             ->assertSuccessful()

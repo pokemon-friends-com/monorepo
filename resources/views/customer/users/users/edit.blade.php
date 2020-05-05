@@ -175,6 +175,10 @@
                         {{ trans('users.profiles.providers_tokens') }}
                     </div>
                     <div class="card-body">
+                        <a class="btn btn-block btn-default btn-google" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}">
+                            <span class="pull-left"><i class="fab fa-google"></i></span>
+                            <span class="bold">{{ trans('auth.link_google') }}</span>
+                        </a>
                         <a class="btn btn-block btn-primary btn-twitter" href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}">
                             <span class="pull-left"><i class="fab fa-twitter"></i></span>
                             <span class="bold">{{ trans('auth.link_twitter') }}</span>

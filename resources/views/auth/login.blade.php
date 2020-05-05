@@ -63,23 +63,18 @@
     {!! Form::close() !!}
     <div class="social-auth-links text-center mb-3">
         <hr/>
-        <a href="{{ route('login_provider', ['provider' => 'twitter']) }}" class="btn btn-block btn-primary btn-twitter">
+        <a href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}" class="btn btn-block btn-default btn-google">
+            <i class="fab fa-google mr-2"></i>{{ trans('auth.login_google') }}
+        </a>
+        <a href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}" class="btn btn-block btn-primary btn-twitter">
             <i class="fab fa-twitter mr-2"></i>{{ trans('auth.login_twitter') }}
         </a>
     </div>
     @if (Route::has('password.request'))
-    <p class="mt-3 mb-1">
-        <a href="{{ route('password.request') }}">
-            {{ trans('auth.forgot_password') }}
-        </a>
-    </p>
+    <p class="mt-3 mb-1"><a href="{{ route('password.request') }}">{{ trans('auth.forgot_password') }}</a></p>
     @endif
     @if (Route::has('register'))
-    <p class="mb-0">
-        <a href="{{ route('register') }}" class="text-center">
-            {{ trans('auth.register') }}
-        </a>
-    </p>
+    <p class="mb-0"><a href="{{ route('register') }}" class="text-center">{{ trans('auth.register') }}</a></p>
     @endif
 </div>
 @endsection

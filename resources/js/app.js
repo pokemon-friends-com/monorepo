@@ -17,7 +17,8 @@ require('admin-lte/plugins/select2/js/i18n/en');
 require('admin-lte/plugins/sweetalert2/sweetalert2.all');
 require('admin-lte/plugins/ekko-lightbox/ekko-lightbox');
 require('flatpickr');
-require('vanilla-lazyload');
+require('qrcode');
+const LazyLoad = require('vanilla-lazyload');
 const Sentry = require('@sentry/browser');
 const Integrations = require('@sentry/integrations');
 
@@ -52,6 +53,18 @@ const i18n = new VueInternationalization({
 Vue.filter('pkmnFriendCode', (code) => `${code.slice(0, 4)}-${code.slice(4, 8)}-${code.slice(8, 12)}`);
 
 /**
+ * Vue directives
+ */
+
+Vue.directive('ekko-lightbox', () => {
+  jQuery(document).on('click', '[data-toggle="lightbox"]', () => {
+    jQuery(this).ekkoLightbox({
+      alwaysShowClose: true,
+    });
+  });
+});
+
+/**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
@@ -82,3 +95,8 @@ const app = new Vue({
   el: '#template',
   i18n,
 });
+
+(new LazyLoad({
+  elements_selector: '.lazy',
+}))
+  .update();

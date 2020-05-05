@@ -4,15 +4,9 @@ namespace template\Domain\Files\Files\Repositories;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Filesystem\FilesystemAdapter;
-use Illuminate\Support\Facades\{File, Response, Storage};
-use League\Glide\{
-    Responses\LaravelResponseFactory,
-    ServerFactory
-};
-use Barryvdh\Elfinder\{
-    Connector,
-    Session\LaravelSession
-};
+use Illuminate\Support\Facades\Storage;
+use League\Glide\{Responses\LaravelResponseFactory, ServerFactory};
+use Barryvdh\Elfinder\{Connector, Session\LaravelSession};
 use template\Domain\Users\Users\User;
 
 define('ELFINDER_DROPBOX_CONSUMERKEY', '');
@@ -111,7 +105,7 @@ class FilesRepository
         $dir = 'packages/barryvdh/' . $this->package;
         $locale = str_replace("-", "_", $this->app->config->get('app.locale'));
 
-        if (!file_exists(public_path("/$dir/js/i18n/elfinder.$locale.js"))) {
+        if (!file_exists(public_path("/{$dir}/js/i18n/elfinder.{$locale}.js"))) {
             $locale = false;
         }
 
@@ -141,8 +135,8 @@ class FilesRepository
     public function streamPublicThumbnail(string $path)
     {
         return ServerFactory::create([
-            'source' => app('filesystem')->cloud()->getDriver(),
-            'cache' => public_path('thumbnails'),
+            'source' => Storage::cloud()->getDriver(),
+            'cache' => Storage::disk('thumbnails')->getDriver(),
             'driver' => 'imagick',
             'response' => new LaravelResponseFactory(app('request')),
         ])

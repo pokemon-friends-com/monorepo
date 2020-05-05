@@ -35,6 +35,8 @@ return [
     'login' => 'Login',
     'login_twitter' => 'Sign in using Twitter',
     'link_twitter' => 'Link Twitter',
+    'login_google' => 'Sign in using Google',
+    'link_google' => 'Link Google',
     'keep_loged_in' => 'Stay connected',
     'logout' => 'Sign out',
     'login_message_success' => 'You are now connected',

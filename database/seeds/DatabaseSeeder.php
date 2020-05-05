@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
 
-        factory(User::class, 50)
+        factory(User::class, 200)
             ->states(User::ROLE_CUSTOMER)
             ->create()
             ->each(function ($user) {
