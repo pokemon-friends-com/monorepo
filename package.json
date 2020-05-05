@@ -20,7 +20,7 @@
         "@sentry/integrations": "^5.15.5",
         "@sentry/types": "^5.13.2",
         "@vue/babel-preset-app": "^3.11.0",
-        "@vue/test-utils": "^1.0.0-beta.32",
+        "@vue/test-utils": "^1.0.0",
         "admin-lte": "^3.0.2",
         "axios": "^0.19",
         "babel-plugin-istanbul": "^6.0.0",
