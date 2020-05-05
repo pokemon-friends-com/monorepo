@@ -1,2 +1,2 @@
-<script src="{{ asset_cdn('js/app.js') }}" defer></script>
+<script src="{{ asset_cdn('js/app.js') }}"></script>
 @yield('js')
