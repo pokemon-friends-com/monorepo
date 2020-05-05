@@ -35,6 +35,8 @@ return [
     'login' => 'Se connecter',
     'login_twitter' => 'Connectez-vous via Twitter',
     'link_twitter' => 'Lier Twitter',
+    'login_google' => 'Connectez-vous via Google',
+    'link_google' => 'Lier Google',
     'keep_loged_in' => 'Restez connecté',
     'logout' => 'Se déconnecter',
     'login_message_success' => 'Vous êtes maintenant connecté(e)',

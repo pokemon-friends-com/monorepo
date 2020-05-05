@@ -28,9 +28,6 @@ $factory
     ->state(ProviderToken::class, ProviderToken::GOOGLE, [
         'provider' => ProviderToken::GOOGLE,
     ])
-    ->state(ProviderToken::class, ProviderToken::LINKEDIN, [
-        'provider' => ProviderToken::LINKEDIN,
-    ])
     ->state(ProviderToken::class, ProviderToken::TWITTER, [
         'provider' => ProviderToken::TWITTER,
     ]);

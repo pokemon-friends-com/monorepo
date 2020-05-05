@@ -87,7 +87,6 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         $user = factory(User::class)->create();
         factory(ProviderToken::class)->state(ProviderToken::GOOGLE)->create(['user_id' => $user->id]);
         $providerToken = factory(ProviderToken::class)->state(ProviderToken::TWITTER)->create(['user_id' => $user->id]);
-        factory(ProviderToken::class)->state(ProviderToken::LINKEDIN)->create(['user_id' => $user->id]);
         $repositoryProviderToken = $this
             ->r_providers_tokens
             ->skipPresenter()

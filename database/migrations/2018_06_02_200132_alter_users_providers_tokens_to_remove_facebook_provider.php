@@ -21,7 +21,7 @@ class AlterUsersProvidersTokensToRemoveFacebookProvider extends Migration
             });
 
         if ('sqlite' !== config('database.default')) {
-            DB::statement('ALTER TABLE users_providers_tokens CHANGE COLUMN provider provider ENUM("'.ProvidersInterface::TWITTER.'", "'.ProvidersInterface::GOOGLE.'", "'.ProvidersInterface::LINKEDIN.'")');
+            DB::statement('ALTER TABLE users_providers_tokens CHANGE COLUMN provider provider ENUM("'.ProvidersInterface::TWITTER.'", "'.ProvidersInterface::GOOGLE.'")');
         }
     }
 
