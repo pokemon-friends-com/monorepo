@@ -28,9 +28,7 @@ return [
             'patterns' => [],
         ],
         'exclude' => [
-            'paths' => [
-                'trainers'
-            ],
+            'paths' => [],
             'files' => [
                 'README.md',
                 'sitemap.xml',
