@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-2">
                                 <div class="card elevation-2"><div class="card-boddy text-center m-1"><img src="{{ $user['qr'] }}" class="img-fluid" alt="{{ $user['friend_code'] }}"></div></div>
-                                <div class="text-center text-sm lead"><a href="{{ route('anonymous.trainers.show', ['user' => $user['identifier']]) }}"><i class="fas fa-eye mr-1"></i>{{ $user['friend_code'] }}</a></div>
+                                <div class="text-center text-sm lead"><a href="{{ route('anonymous.trainers.show', ['trainer' => $user['identifier']]) }}"><i class="fas fa-eye mr-1"></i>{{ $user['friend_code'] }}</a></div>
                             </div>
                             <div class="col-3">
                                 <div class="h-100 d-flex flex-row justify-content-center align-items-center">
