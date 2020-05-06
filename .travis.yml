@@ -167,7 +167,7 @@ jobs:
       - eval "$(ssh-agent -s)"
       - chmod 600 /tmp/deploy_rsa
       - ssh-add /tmp/deploy_rsa
-      - php artisan asset-cdn:sync --env=production
+      - APP_ENV=production php artisan asset-cdn:sync --env=production
     deploy:
       - provider: script
         skip_cleanup: true
