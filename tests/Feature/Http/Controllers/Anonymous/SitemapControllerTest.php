@@ -17,8 +17,8 @@ class SitemapControllerTest extends TestCase
     {
         $url = $this->faker->url;
         $sitemap = Sitemap::create()->add($url)->render();
-        Storage::fake('asset-cdn');
-        Storage::disk('asset-cdn')->put('sitemap.xml', $sitemap);
+        Storage::fake('object-storage');
+        Storage::cloud()->put('sitemap.xml', $sitemap);
         $this
             ->get("/sitemap.xml")
             ->assertSuccessful()
@@ -28,7 +28,7 @@ class SitemapControllerTest extends TestCase
     public function testToVisitSitemapWhenSitemapFileDoesNotExist()
     {
         $this->markTestSkipped('need to be fixed');
-        Storage::fake('asset-cdn');
+        Storage::fake('object-storage');
         $this
             ->get("/sitemap.xml")
             ->assertSuccessful()

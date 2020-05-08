@@ -63,8 +63,8 @@ return [
                 ? 'object-storage'
                 : 'local',
             'root' => 'production' === env('APP_ENV', 'production')
-                ? null
-                : public_path(),
+                ? 'assets'
+                : public_path('assets'),
         ],
     ],
 

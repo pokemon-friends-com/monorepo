@@ -9,7 +9,7 @@
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
         <div class="container">
             <a href="{{ route('anonymous.dashboard') }}" class="navbar-brand">
-                <img src="{{ asset_cdn('images/pokeball.jpg') }}" alt="{{ config('app.name') }}" class="brand-image img-circle">
+                <img src="{{ asset_cdn('assets/images/pokeball.jpg') }}" alt="{{ config('app.name') }}" class="brand-image img-circle">
                 <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
             </a>
             <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

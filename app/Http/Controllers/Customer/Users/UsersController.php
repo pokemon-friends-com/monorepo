@@ -24,7 +24,9 @@ class UsersController extends ControllerAbstract
      */
     protected $r_users;
 
-
+    /**
+     * @var ProfilesRepositoryEloquent
+     */
     protected $r_profiles;
 
     /**
@@ -132,7 +134,7 @@ class UsersController extends ControllerAbstract
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function changeEmail(User $user, ChangeEmailFormRequest $request)
+    public function email(User $user, ChangeEmailFormRequest $request)
     {
         $user->resetEmail($request->get('email'));
 

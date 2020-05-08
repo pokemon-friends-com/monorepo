@@ -25,7 +25,7 @@ Route::group(
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard']);
                 Route::put('password/{user}', ['as' => 'password', 'uses' => 'UsersController@password']);
-                Route::post('email/{user}', ['as' => 'email', 'uses' => 'UsersController@changeEmail']);
+                Route::post('email/{user}', ['as' => 'email', 'uses' => 'UsersController@email']);
             });
             Route::resource('users', 'UsersController');
         });

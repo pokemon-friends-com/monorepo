@@ -23,13 +23,13 @@
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <a href="{{ route('anonymous.dashboard') }}" class="brand-link">
-            <img src="{{ asset_cdn('images/pokeball.jpg') }}" alt="{{ config('app.name') }}" class="brand-image img-circle elevation-3">
+            <img src="{{ asset_cdn('assets/images/pokeball.jpg') }}" alt="{{ config('app.name') }}" class="brand-image img-circle elevation-3">
             <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
         </a>
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset_cdn('images/avatar.jpg') }}" class="img-circle elevation-2" alt="{{ Auth::user()->full_name }}">
+                    <img src="{{ asset_cdn('assets/images/avatar.jpg') }}" class="img-circle elevation-2" alt="{{ Auth::user()->full_name }}">
                 </div>
                 <div class="info">
                     <a href="{{ route('customer.users.edit', ['user' => Auth::user()->uniqid]) }}" class="d-block">{{ Auth::user()->full_name }}</a>

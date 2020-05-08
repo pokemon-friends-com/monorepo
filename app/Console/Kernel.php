@@ -45,13 +45,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        if (app()->environment('production')) {
-            $schedule
-                ->command('sitemap:generate')
-                ->everyFiveMinutes()
-                ->withoutOverlapping();
-        }
-
+        $schedule
+            ->command('sitemap:generate')
+            ->everyFiveMinutes()
+            ->withoutOverlapping();
         $schedule
             ->command('queue:work', [
                 env('QUEUE_CONNECTION'),
