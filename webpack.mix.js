@@ -92,7 +92,7 @@ mix
       }),
       new FaviconsWebpackPlugin({
         logo: path.resolve(__dirname, 'resources/images/pokeball.png'),
-        prefix: 'images/',
+        prefix: 'assets/images/',
         cache: true,
         inject: false,
         mode: 'webapp',

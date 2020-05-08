@@ -17,22 +17,21 @@ return [
         'ignoreVCS' => true,
         'include' => [
             'paths' => [
-                'css',
-                'fonts',
-                'images',
-                'js',
-                'packages',
+                public_path('assets/css'),
+                public_path('assets/fonts'),
+                public_path('assets/images'),
+                public_path('assets/js'),
+                public_path('packages'),
             ],
             'files' => [],
             'extensions' => [],
             'patterns' => [],
         ],
         'exclude' => [
-            'paths' => [],
-            'files' => [
-                'README.md',
-                'sitemap.xml',
+            'paths' => [
+                public_path('private')
             ],
+            'files' => [],
             'extensions' => [],
             'patterns' => [],
         ],
