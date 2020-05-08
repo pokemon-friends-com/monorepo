@@ -25,7 +25,7 @@ if (mix.inProduction() && process.env.USE_CDN) {
     : 'https://pkmn-friends.objects.frb.io/';
 }
 
-mix.config.fileLoaderDirs.fonts = 'assets/fonts';
+mix.config.fileLoaderDirs.fonts = 'assets/assets/fonts';
 
 mix
   .autoload({
