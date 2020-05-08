@@ -21,8 +21,8 @@ class SitemapController extends ControllerAbstract
 
         if (Cache::has('sitemap.xml')) {
             $sitemap = Cache::get('sitemap.xml');
-        } elseif (Storage::disk('asset-cdn')->exists('sitemap.xml')) {
-            $sitemap = Storage::disk('asset-cdn')->get('sitemap.xml');
+        } elseif (Storage::cloud()->exists('sitemap.xml')) {
+            $sitemap = Storage::cloud()->get('sitemap.xml');
             $expiresAt = Carbon::now()->addMinutes(180);
             Cache::put('sitemap.xml', $sitemap, $expiresAt);
         } else {

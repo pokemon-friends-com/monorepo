@@ -58,12 +58,6 @@ class GenerateSitemapCommand extends CommandAbstract
      */
     public function handle()
     {
-        if (app()->environment('local')) {
-            $this->error('sitemap:generate : could not be launched on local environment!');
-
-            return 1;
-        }
-
         $sitemap = Sitemap::create()
             ->add(
                 Url::create(url('/'))
@@ -118,7 +112,7 @@ class GenerateSitemapCommand extends CommandAbstract
             ->chunk(100, function ($profiles) use ($sitemap) {
                 $profiles->each(function ($profile) use ($sitemap) {
                     $sitemap->add(
-                        Url::create(route('anonymous.trainers.show', ['user' => $profile->user->uniqid]))
+                        Url::create(route('anonymous.trainers.show', ['trainer' => $profile->user->uniqid]))
                             ->setLastModificationDate($profile->user->updated_at)
                             ->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
                             ->setPriority(0.1)
@@ -126,7 +120,7 @@ class GenerateSitemapCommand extends CommandAbstract
                 });
             });
 
-        $sitemap->writeToDisk('asset-cdn', 'sitemap.xml');
+        $sitemap->writeToDisk('object-storage', 'sitemap.xml');
 
         $this->info('sitemap:generate : success!');
 

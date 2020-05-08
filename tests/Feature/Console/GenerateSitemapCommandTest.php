@@ -22,13 +22,13 @@ class GenerateSitemapCommandTest extends TestCase
             ->each(function (User $user) {
                 factory(Profile::class)->create(['user_id' => $user->id]);
             });
-        Storage::fake('asset-cdn');
-        Storage::disk('asset-cdn')->assertMissing('sitemap.xml');
+        Storage::fake('object-storage');
+        Storage::cloud()->assertMissing('sitemap.xml');
         $this
             ->artisan('sitemap:generate')
             ->expectsOutput('sitemap:generate : success!')
             ->assertExitCode(0);
-        Storage::disk('asset-cdn')->assertExists('sitemap.xml');
+        Storage::cloud()->assertExists('sitemap.xml');
     }
 
     public function testSitemapGenerateOnLocalEnvironment()
@@ -41,12 +41,12 @@ class GenerateSitemapCommandTest extends TestCase
             ->each(function (User $user) {
                 factory(Profile::class)->create(['user_id' => $user->id]);
             });
-        Storage::fake('asset-cdn');
-        Storage::disk('asset-cdn')->assertMissing('sitemap.xml');
+        Storage::fake('object-storage');
+        Storage::cloud()->assertMissing('sitemap.xml');
         $this
             ->artisan('sitemap:generate', ['--env' => 'local'])
             ->expectsOutput('sitemap:generate : could not be launched on local environment!')
             ->assertExitCode(1);
-        Storage::disk('asset-cdn')->assertMissing('sitemap.xml');
+        Storage::cloud()->assertMissing('sitemap.xml');
     }
 }

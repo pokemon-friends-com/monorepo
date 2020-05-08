@@ -8,7 +8,7 @@
 @section('content')
     <div class="card-body login-card-body text-center">
         <h1 class="text-primary">{{ $friend_code }}</h1>
-        <img class="img-fluid lazy" src="{{ asset_cdn('images/pokeball.jpg') }}" data-src="{{ $qr }}" alt="{{ $friend_code }}">
+        <img class="img-fluid lazy" src="{{ asset_cdn('assets/images/pokeball.jpg') }}" data-src="{{ $qr }}" alt="{{ $friend_code }}">
         @if (Auth::check())
             <a href="{{ route('anonymous.dashboard') }}" class="btn btn-primary btn-block mt-4">{{ trans('users.home') }}</a>
         @else

@@ -1,2 +1,2 @@
-<script src="{{ asset_cdn('js/app.js?v=' . config('version.app_tag')) }}"></script>
+<script src="{{ asset_cdn('assets/js/app.js?v=' . config('version.app_tag')) }}"></script>
 @yield('js')
