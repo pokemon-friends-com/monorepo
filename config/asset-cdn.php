@@ -17,11 +17,8 @@ return [
         'ignoreVCS' => true,
         'include' => [
             'paths' => [
-                public_path('assets/css'),
-                public_path('assets/fonts'),
-                public_path('assets/images'),
-                public_path('assets/js'),
-                public_path('packages'),
+                'assets',
+                'packages',
             ],
             'files' => [],
             'extensions' => [],
@@ -29,7 +26,7 @@ return [
         ],
         'exclude' => [
             'paths' => [
-                public_path('private')
+                'private',
             ],
             'files' => [],
             'extensions' => [],
