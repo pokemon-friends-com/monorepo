@@ -2,7 +2,7 @@
 
 return [
     'use_cdn' => env('USE_CDN', false),
-    'cdn_url' => env('OBJECT_STORAGE_URL', 'https://pkmn-friends.objects.frb.io/assets'),
+    'cdn_url' => env('OBJECT_STORAGE_URL', 'https://pkmn-friends.objects.frb.io'),
     'filesystem' => [
         'disk' => 'asset-cdn',
         'options' => [
@@ -17,12 +17,13 @@ return [
         'ignoreVCS' => true,
         'include' => [
             'paths' => [
-                'assets',
                 'packages',
             ],
             'files' => [],
             'extensions' => [],
-            'patterns' => [],
+            'patterns' => [
+                'assets/*'
+            ],
         ],
         'exclude' => [
             'paths' => [

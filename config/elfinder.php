@@ -34,10 +34,6 @@ return [
                 'tmbURL' => env('APP_URL'),
                 'glideURL' => 'files/thumbnail',
             ],
-            'asset-cdn' => [
-                'alias' => 'Assets',
-                'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
-            ],
         ],
     ],
 
