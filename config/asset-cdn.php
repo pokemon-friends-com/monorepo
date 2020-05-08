@@ -17,13 +17,15 @@ return [
         'ignoreVCS' => true,
         'include' => [
             'paths' => [
+                'assets/css',
+                'assets/fonts',
+                'assets/images',
+                'assets/js',
                 'packages',
             ],
             'files' => [],
             'extensions' => [],
-            'patterns' => [
-                'assets/*'
-            ],
+            'patterns' => [],
         ],
         'exclude' => [
             'paths' => [
