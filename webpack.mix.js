@@ -22,10 +22,11 @@ let publicPath = '';
 if (mix.inProduction() && process.env.USE_CDN) {
   publicPath = process.env.OBJECT_STORAGE_URL
     ? process.env.OBJECT_STORAGE_URL
-    : 'https://pkmn-friends.objects.frb.io/';
+    : 'https://pkmn-friends.objects.frb.io/assets/';
+  mix
+    .version()
+    .setResourceRoot('/assets/');
 }
-
-mix.config.fileLoaderDirs.fonts = 'assets/assets/fonts';
 
 mix
   .autoload({
@@ -74,7 +75,7 @@ mix
       new CopyWebpackPlugin([
         {
           from: 'resources/images',
-          to: 'assets/images',
+          to: 'images',
         },
       ]),
       new ImageminPlugin({
@@ -92,7 +93,7 @@ mix
       }),
       new FaviconsWebpackPlugin({
         logo: path.resolve(__dirname, 'resources/images/pokeball.png'),
-        prefix: 'assets/images/',
+        prefix: 'images/',
         cache: true,
         inject: false,
         mode: 'webapp',
@@ -110,5 +111,5 @@ mix
     ],
   })
   .sourceMaps(false, 'eval')
-  .js('resources/js/app.js', 'public/assets/js')
-  .sass('resources/sass/app.scss', 'public/assets/css');
+  .js('resources/js/app.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css');

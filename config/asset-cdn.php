@@ -17,10 +17,10 @@ return [
         'ignoreVCS' => true,
         'include' => [
             'paths' => [
-                'assets/css',
-                'assets/fonts',
-                'assets/images',
-                'assets/js',
+                'css',
+                'fonts',
+                'images',
+                'js',
                 'packages',
             ],
             'files' => [],
