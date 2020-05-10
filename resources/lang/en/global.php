@@ -9,6 +9,7 @@ return [
     'social_networks_baseline' => 'Follow us on social media',
 
     'our_news' => 'Our news',
+    'our_discord' => 'Our discord',
     'next_features' => 'Next features',
     'bugs_reported' => 'Bugs reported',
 

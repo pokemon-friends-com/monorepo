@@ -9,6 +9,7 @@ return [
     'social_networks_baseline' => 'Suivez nous sur les réseaux sociaux',
 
     'our_news' => 'Notre actualité',
+    'our_discord' => 'Notre discord',
     'next_features' => 'Prochaines fonctionnalités',
     'bugs_reported' => 'Bugs rapportés',
 

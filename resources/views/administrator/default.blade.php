@@ -11,6 +11,9 @@
             <li class="nav-item">
                 <collapse-sidebar-component></collapse-sidebar-component>
             </li>
+          <li class="nav-item">
+            <a href="{{ config('services.discord.url') }}" target="_blank" rel="noopener" class="nav-link"><i class="fab fa-discord mr-2"></i>Discord</a>
+          </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
