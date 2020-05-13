@@ -14,6 +14,9 @@
             <li class="nav-item">
                 <a href="{{ route('anonymous.contact.index') }}" class="nav-link @if (Route::currentRouteNamed('anonymous.contact.index')) active @endif"><i class="fas fa-envelope mr-2"></i>{{ trans('users.leads.contact') }}</a>
             </li>
+            <li class="nav-item">
+                <a href="{{ config('services.discord.url') }}" target="_blank" rel="noopener" class="nav-link"><i class="fab fa-discord mr-2"></i>Discord</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -69,6 +72,7 @@
                 {{ trans('global.social_networks_baseline') }}
                 <a href="{{ config('services.github.url') }}" target="_blank" rel="noopener" title="github.com"><i class="fab fa-github"></i></a>
                 <a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter"></i></a>
+                <a href="{{ config('services.discord.url') }}" target="_blank" rel="noopener" title="discord.com"><i class="fab fa-discord"></i></a>
             </div>
         </div>
         <span class="mr-1">{!! trans('global.copyright', ['date' => date('Y'), 'route' => route('anonymous.dashboard'), 'name' => config('app.name')]) !!}</span><span class="mr-1"><a href="{{ route('anonymous.terms') }}">{{ trans('users.terms') }}</a></span>

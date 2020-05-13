@@ -47,6 +47,7 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         'is_sidebar_pined',
         'friend_code',
         'team_color',
+        'nickname',
     ];
 
     /**

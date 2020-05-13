@@ -223,6 +223,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
                     $request->get('birth_date')
                 )->format('Y-m-d')
                 : null,
+            'nickname' => $request->get('nickname'),
             'family_situation' => $request->get('family_situation'),
             'maiden_name' => $request->get('maiden_name'),
             'friend_code' => $request->get('friend_code'),

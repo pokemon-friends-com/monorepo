@@ -185,15 +185,7 @@
             </div>
             <div class="col-4">
                 @include('partials.card_official_doc')
-                <div class="card">
-                    <div class="card-body">
-                        {{ trans('global.social_networks_baseline') }}
-                        <ul>
-                            <li><a href="{{ config('services.twitter.url') }}" target="_blank" rel="noopener" title="twitter.com"><i class="fab fa-twitter mr-2"></i>Twitter</a></li>
-                            <li><a href="{{ config('services.github.url') }}" target="_blank" rel="noopener" title="github.com"><i class="fab fa-github mr-2"></i>Github</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @include('partials.card_our_discord')
             </div>
         </div>
         @include('partials.row_trainers', ['trainers' => $users])

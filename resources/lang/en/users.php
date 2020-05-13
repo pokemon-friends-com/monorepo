@@ -27,6 +27,7 @@ return [
     'impersonate' => 'Impersonate',
     'stop_impersonation' => 'Admin session',
 
+    'nickname' => 'Nickname',
     'full_name' => 'Full name',
     'first_name' => 'First name',
     'last_name' => 'Last name',

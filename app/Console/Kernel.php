@@ -50,20 +50,8 @@ class Kernel extends ConsoleKernel
             ->everyFiveMinutes()
             ->withoutOverlapping();
         $schedule
-            ->command('queue:work', [
-                env('QUEUE_CONNECTION'),
-                '--stop-when-empty',
-                '--queue' => 'high,default,low',
-            ])
-            ->everyMinute()
-            ->withoutOverlapping();
-        $schedule
             ->command('pkmn:daily-sponsor')
             ->daily()
-            ->withoutOverlapping();
-        $schedule
-            ->command('crawler:pokemongofriendcodes')
-            ->monthly()
             ->withoutOverlapping();
     }
 

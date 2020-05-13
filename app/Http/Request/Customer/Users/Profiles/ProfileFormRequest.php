@@ -28,6 +28,7 @@ class ProfileFormRequest extends RequestAbstract
     public function rules()
     {
         $rules = [
+            'nickname' => 'required|string|max:35',
             'friend_code' => 'required|string|numeric|digits:12',
             'team_color' => 'required|in:'
                 . ProfilesTeamsColors::DEFAULT . ','

@@ -45,6 +45,15 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group row">
+                            <label for="nickname" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.nickname') }}</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control {{ $errors && $errors->has('nickname') ? 'is-invalid' : '' }}" id="nickname" placeholder="{{ trans('users.nickname') }}" name="nickname" value="{{ old('nickname', $profile['data']['nickname']) }}">
+                                @if ($errors && $errors->has('nickname'))
+                                    <div class="text-danger text-sm">{{ $errors->first('nickname') }}</div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="friend_code" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.friend_code') }}</label>
                             <div class="col-sm-9">
                                 <input
