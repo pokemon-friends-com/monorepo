@@ -193,6 +193,26 @@ class User extends AuthenticatableModelAbstract implements
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function getFullNameAttribute(): string
+    {
+        if (isset($this->profile->nickname)) {
+            return $this->profile->nickname;
+        }
+
+        if (!$this->first_name && !$this->last_name) {
+            return $this->email;
+        }
+
+        return trim(sprintf(
+            '%s %s',
+            ucfirst(strtolower($this->first_name)),
+            ucfirst(strtolower($this->last_name))
+        ));
+    }
+
+    /**
      * Get the lead that owns the user.
      */
     public function lead()

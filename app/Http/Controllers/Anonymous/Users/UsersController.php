@@ -74,11 +74,13 @@ class UsersController extends ControllerAbstract
             ),
         ];
         $friend_code = $user->profile->formated_friend_code;
+        $nickname = $user->profile->nickname;
         $qr = route('v1.users.qr', ['user' => $user->uniqid]);
 
         return view('anonymous.users.users.show', compact(
             'metadata',
             'friend_code',
+            'nickname',
             'qr',
         ));
     }
