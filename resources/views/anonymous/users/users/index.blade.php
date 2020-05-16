@@ -29,20 +29,14 @@
 <section class="content">
     <div class="container">
         @if (!Auth::check())
-        <div class="row pt-2 pb-2">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body"></div>
+        <div class="container-fluid">
+            <div class="row pt-2 pb-2 align-items-center">
+                <div class="col-4">@include('partials.card_amazon')</div>
+                <div class="col-4">@include('partials.card_official_doc')</div>
+                <div class="col-4">
+                    <div class="alert alert-warning pt-2 pb-2 mb-1">Register to see more trainers friends codes!</div>
+                    @include('partials.card_register')
                 </div>
-            </div>
-            <div class="col-4">
-                @include('partials.card_official_doc')
-            </div>
-            <div class="col-4">
-                <div class="alert alert-warning pt-2 pb-2 mb-1">
-                    Register to see more trainers friends codes!
-                </div>
-                @include('partials.card_register')
             </div>
         </div>
         @endif
@@ -53,6 +47,7 @@
             </div>
             @endforeach
         </div>
+        @include('partials.row_amazon')
         @if ($users['meta']['pagination']['total'] > $users['meta']['pagination']['count'])
         <div class="row">
             <div class="col-12">

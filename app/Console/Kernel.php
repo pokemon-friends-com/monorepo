@@ -12,8 +12,7 @@ use template\Console\Commands\{
     TestLaravelEchoCommand,
     CrawlPokemonGoFriendCodesCommand,
     VersionCommand,
-    DailySponsorshipCommand,
-    GetQrCodeForFriendCodesCommand
+    DailySponsorshipCommand
 };
 
 class Kernel extends ConsoleKernel
@@ -33,7 +32,6 @@ class Kernel extends ConsoleKernel
         TestLaravelEchoCommand::class,
         VersionCommand::class,
         DailySponsorshipCommand::class,
-        GetQrCodeForFriendCodesCommand::class,
     ];
 
     /**
