@@ -5,7 +5,6 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="template\" />
       <excludeFolder url="file://$MODULE_DIR$/coverage" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/abenevaut/laravel-check-coverage" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/abraham/twitteroauth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/arubacao/asset-cdn" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/aws/aws-sdk-php" />

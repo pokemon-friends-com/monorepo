@@ -21,7 +21,6 @@ cache:
 
 stages:
   - test
-  - coverage
   - name: deploy
     if: (NOT type IN (pull_request)) AND (branch = master)
   - tag
@@ -52,14 +51,8 @@ jobs:
     language: php
     php: 7.3
     env:
-      - CODECLIMATE=off
       - APP_ENV=testing
     before_install:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-        fi
       - printf "\n" | pecl install imagick
       - nvm install
       - nvm use
@@ -67,33 +60,19 @@ jobs:
       - composer install -o --no-interaction --prefer-dist --no-suggest
       - npm install
     before_script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          ./cc-test-reporter before-build
-        fi
       - npm run dev
       - php artisan elfinder:publish
     script:
       - vendor/bin/phpunit
-#      - php artisan test:check-coverage ./coverage/clover.xml 80
     after_script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:cloud:push coverage/clover.xml coverages/${TRAVIS_COMMIT}/clover.xml
-        fi
+      - bash <(curl -s https://codecov.io/bash) -f coverage/clover.xml
   - stage: test
     name: pokemon-friends-com/www JS&TS
     language: php
     php: 7.3
     env:
-      - CODECLIMATE=off
       - APP_ENV=testing
     before_install:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-        fi
       - printf "\n" | pecl install imagick
       - nvm install
       - nvm use
@@ -101,51 +80,11 @@ jobs:
       - composer install -o --no-interaction --prefer-dist --no-suggest
       - npm install
     before_script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          ./cc-test-reporter before-build
-        fi
       - npm run dev
     script:
       - npm test
     after_script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:cloud:push coverage/lcov.info coverages/${TRAVIS_COMMIT}/lcov.info
-        fi
-  - stage: coverage
-    name: Send codeclimate coverage
-    language: php
-    php: 7.3
-    env:
-      - CODECLIMATE=off
-      - APP_ENV=testing
-    before_install:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-        fi
-      - printf "\n" | pecl install imagick
-      - mkdir coverage
-    install:
-      - composer install -o --no-interaction --prefer-dist --no-suggest
-    script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:cloud:get coverages/${TRAVIS_COMMIT}/clover.xml coverage/clover.xml
-          php artisan file:cloud:get coverages/${TRAVIS_COMMIT}/lcov.info coverage/lcov.info
-          ./cc-test-reporter format-coverage -t clover -o coverage/codeclimate.php.json coverage/clover.xml
-          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.js.json coverage/lcov.info
-          ./cc-test-reporter sum-coverage coverage/codeclimate.*.json -p 2
-          ./cc-test-reporter upload-coverage
-        fi
-    after_script:
-      - |
-        if [[ "$CODECLIMATE" = "on" ]]; then
-          php artisan file:cloud:rm coverages/${TRAVIS_COMMIT}/clover.xml
-          php artisan file:cloud:rm coverages/${TRAVIS_COMMIT}/lcov.info
-        fi
+      - bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
   - stage: deploy
     name: pokemon-friends-com/www
     language: php

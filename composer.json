@@ -50,7 +50,6 @@
     },
     "require-dev": {
         "ext-simplexml": "*",
-        "abenevaut/laravel-check-coverage": "dev-feat/test-anonymous",
         "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
@@ -114,10 +113,6 @@
         ]
     },
     "repositories": {
-        "abenevaut/laravel-check-coverage": {
-            "type": "path",
-            "url": "./components/abenevaut/laravel-check-coverage"
-        },
         "yaquawa/laravel-email-reset": {
             "type": "vcs",
             "url": "git@github.com:abenevaut/laravel-email-reset.git"
