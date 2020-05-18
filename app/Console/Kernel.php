@@ -22,10 +22,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         CrawlPokemonGoFriendCodesCommand::class,
+        DailySponsorshipCommand::class,
         GenerateSitemapCommand::class,
         TestLaravelEchoCommand::class,
-        VersionCommand::class,
-        DailySponsorshipCommand::class,
     ];
 
     /**
@@ -54,6 +53,10 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
+        if (!$this->app->environment('production')) {
+            $this->registerCommand(new VersionCommand());
+        }
+
         require base_path('routes/console.php');
     }
 }

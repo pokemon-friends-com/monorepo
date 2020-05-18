@@ -29,7 +29,7 @@ jobs:
   fast_finish: true
   include:
   - stage: test
-    name: pokemon-friends-com/www PHP Standard PSR12
+    name: PHP standard PSR12
     language: php
     php: 7.3
     env:
@@ -47,7 +47,7 @@ jobs:
       - vendor/bin/phpcs --standard=PSR12 tests --extensions=php
       - vendor/bin/phpstan analyse -l 0 app components tests
   - stage: test
-    name: pokemon-friends-com/www PHP
+    name: PHP tests
     language: php
     php: 7.3
     env:
@@ -67,7 +67,7 @@ jobs:
     after_script:
       - bash <(curl -s https://codecov.io/bash) -f coverage/clover.xml
   - stage: test
-    name: pokemon-friends-com/www JS&TS
+    name: JS tests
     language: php
     php: 7.3
     env:
@@ -113,16 +113,6 @@ jobs:
         script: bash bin/push_to_fortrabbit.sh
         on:
           branch: master
-  - stage: tag
-    if: (NOT type IN (pull_request)) AND (branch = develop)
-    name: pokemon-friends-com/www tag staging
-    language: generic
-    before_install:
-      - git config --global user.email "builds@travis-ci.com"
-      - git config --global user.name "Travis CI"
-    script:
-      - git tag staging -f -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
-      - git push -f -q https://$GITHUBKEY@github.com/pokemon-friends-com/www.git staging
   - stage: tag
     if: (NOT type IN (pull_request)) AND (branch = master)
     name: pokemon-friends-com/www tag master
