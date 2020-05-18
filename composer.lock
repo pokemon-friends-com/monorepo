@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce721eed95c7fe02ff4d80968820c04d",
+    "content-hash": "ba5e8afd1ccea6909d98b9052675279d",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -62,26 +62,26 @@
         },
         {
             "name": "arubacao/asset-cdn",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/arubacao/asset-cdn.git",
-                "reference": "a7e8f963c14300d8b3730f042b4f3a5a3871e3f9"
+                "reference": "51a25412b973bfa3a28be50fde5b8fb6b2141afd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/arubacao/asset-cdn/zipball/a7e8f963c14300d8b3730f042b4f3a5a3871e3f9",
-                "reference": "a7e8f963c14300d8b3730f042b4f3a5a3871e3f9",
+                "url": "https://api.github.com/repos/arubacao/asset-cdn/zipball/51a25412b973bfa3a28be50fde5b8fb6b2141afd",
+                "reference": "51a25412b973bfa3a28be50fde5b8fb6b2141afd",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "~5.4|^6.0",
+                "laravel/framework": "~5.4|^6.0|^7.0",
                 "php": "^7.0"
             },
             "require-dev": {
                 "league/flysystem-aws-s3-v3": "^1.0",
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "~3.4|^4.0",
+                "orchestra/testbench": "~3.4|^4.0|^5.0",
                 "phpunit/phpunit": "~5.7|~6.0|^7.0|^8.0",
                 "spatie/temporary-directory": "^1.1"
             },
@@ -119,7 +119,7 @@
                 "content delivery network",
                 "laravel"
             ],
-            "time": "2019-09-04T11:09:50+00:00"
+            "time": "2020-04-01T10:58:38+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
@@ -12032,6 +12032,5 @@
     },
     "platform-dev": {
         "ext-simplexml": "*"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
