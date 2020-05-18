@@ -3,10 +3,8 @@
 namespace template\App\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 use template\App\Listeners\{
     AuthEventsListener,
-    CoinBaseEventsListener,
     UsersEventsListener
 };
 
@@ -27,7 +25,6 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $subscribe = [
         AuthEventsListener::class,
-        CoinBaseEventsListener::class,
         UsersEventsListener::class,
     ];
 
