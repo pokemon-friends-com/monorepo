@@ -5921,16 +5921,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.35.0",
+            "version": "3.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "adb9e91c409462152b0baff473b2fa47cf413150"
+                "reference": "5e5210438857148c126fa1867eb037e98b73ebc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/adb9e91c409462152b0baff473b2fa47cf413150",
-                "reference": "adb9e91c409462152b0baff473b2fa47cf413150",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/5e5210438857148c126fa1867eb037e98b73ebc2",
+                "reference": "5e5210438857148c126fa1867eb037e98b73ebc2",
                 "shasum": ""
             },
             "require": {
@@ -5973,20 +5973,20 @@
                 "screenshot",
                 "webpage"
             ],
-            "time": "2020-03-05T08:48:51+00:00"
+            "time": "2020-04-20T10:33:41+00:00"
         },
         {
             "name": "spatie/crawler",
-            "version": "4.6.8",
+            "version": "4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "3c1eb2d38b4a18560d3f48087597f9786f95b694"
+                "reference": "ed7301f6865c2064854cd429a75fcc31f4a5042d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/3c1eb2d38b4a18560d3f48087597f9786f95b694",
-                "reference": "3c1eb2d38b4a18560d3f48087597f9786f95b694",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/ed7301f6865c2064854cd429a75fcc31f4a5042d",
+                "reference": "ed7301f6865c2064854cd429a75fcc31f4a5042d",
                 "shasum": ""
             },
             "require": {
@@ -6032,7 +6032,7 @@
                 "spatie",
                 "website"
             ],
-            "time": "2020-03-13T10:56:11+00:00"
+            "time": "2020-05-06T11:35:29+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -6588,16 +6588,16 @@
         },
         {
             "name": "spatie/robots-txt",
-            "version": "1.0.5",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/robots-txt.git",
-                "reference": "dbd8d2048114f81813a57d21da594dbde77fdac7"
+                "reference": "20d4cae45061f46bcce8e85106a10aeee4b0591f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/dbd8d2048114f81813a57d21da594dbde77fdac7",
-                "reference": "dbd8d2048114f81813a57d21da594dbde77fdac7",
+                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/20d4cae45061f46bcce8e85106a10aeee4b0591f",
+                "reference": "20d4cae45061f46bcce8e85106a10aeee4b0591f",
                 "shasum": ""
             },
             "require": {
@@ -6631,7 +6631,7 @@
                 "robots-txt",
                 "spatie"
             ],
-            "time": "2019-08-07T22:29:10+00:00"
+            "time": "2020-04-29T08:03:48+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -6986,16 +6986,16 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v5.0.5",
+            "version": "v5.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "4368bdd61b83af365b8f23e9616d2a2ed52cbe7c"
+                "reference": "892311d23066844a267ac1a903d8a9d79968a1a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/4368bdd61b83af365b8f23e9616d2a2ed52cbe7c",
-                "reference": "4368bdd61b83af365b8f23e9616d2a2ed52cbe7c",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/892311d23066844a267ac1a903d8a9d79968a1a7",
+                "reference": "892311d23066844a267ac1a903d8a9d79968a1a7",
                 "shasum": ""
             },
             "require": {
@@ -7043,7 +7043,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2020-02-29T10:07:09+00:00"
+            "time": "2020-03-30T11:42:42+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -7541,16 +7541,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.14.0",
+            "version": "v1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38"
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
-                "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
                 "shasum": ""
             },
             "require": {
@@ -7562,7 +7562,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.14-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -7595,7 +7595,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2020-01-13T11:15:53+00:00"
+            "time": "2020-05-12T16:14:59+00:00"
         },
         {
             "name": "symfony/polyfill-iconv",
@@ -7658,16 +7658,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.15.0",
+            "version": "v1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf"
+                "reference": "3bff59ea7047e925be6b7f2059d60af31bb46d6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
-                "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/3bff59ea7047e925be6b7f2059d60af31bb46d6a",
+                "reference": "3bff59ea7047e925be6b7f2059d60af31bb46d6a",
                 "shasum": ""
             },
             "require": {
@@ -7681,7 +7681,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -7716,20 +7716,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-03-09T19:04:49+00:00"
+            "time": "2020-05-12T16:47:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.15.0",
+            "version": "v1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac"
+                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
-                "reference": "81ffd3a9c6d707be22e3012b827de1c9775fc5ac",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fa79b11539418b02fc5e1897267673ba2c19419c",
+                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c",
                 "shasum": ""
             },
             "require": {
@@ -7741,7 +7741,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -7775,20 +7775,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-03-09T19:04:49+00:00"
+            "time": "2020-05-12T16:47:27+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.15.0",
+            "version": "v1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "37b0976c78b94856543260ce09b460a7bc852747"
+                "reference": "f048e612a3905f34931127360bdd2def19a5e582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/37b0976c78b94856543260ce09b460a7bc852747",
-                "reference": "37b0976c78b94856543260ce09b460a7bc852747",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
+                "reference": "f048e612a3905f34931127360bdd2def19a5e582",
                 "shasum": ""
             },
             "require": {
@@ -7797,7 +7797,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.15-dev"
+                    "dev-master": "1.17-dev"
                 }
             },
             "autoload": {
@@ -7830,7 +7830,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-02-27T09:26:54+00:00"
+            "time": "2020-05-12T16:47:27+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -8332,16 +8332,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.4.5",
+            "version": "v4.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "2572839911702b0405479410ea7a1334bfab0b96"
+                "reference": "c587e04ce5d1aa62d534a038f574d9a709e814cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2572839911702b0405479410ea7a1334bfab0b96",
-                "reference": "2572839911702b0405479410ea7a1334bfab0b96",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/c587e04ce5d1aa62d534a038f574d9a709e814cf",
+                "reference": "c587e04ce5d1aa62d534a038f574d9a709e814cf",
                 "shasum": ""
             },
             "require": {
@@ -8404,20 +8404,20 @@
                 "debug",
                 "dump"
             ],
-            "time": "2020-02-24T13:10:00+00:00"
+            "time": "2020-04-12T16:14:02+00:00"
         },
         {
             "name": "tightenco/collect",
-            "version": "v6.17.0",
+            "version": "v7.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "bc554bfb79fc02b4e6e1dd463a7fa8470119e9ab"
+                "reference": "ba504e959241f1f408867ffd03159b040f66e00b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/bc554bfb79fc02b4e6e1dd463a7fa8470119e9ab",
-                "reference": "bc554bfb79fc02b4e6e1dd463a7fa8470119e9ab",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/ba504e959241f1f408867ffd03159b040f66e00b",
+                "reference": "ba504e959241f1f408867ffd03159b040f66e00b",
                 "shasum": ""
             },
             "require": {
@@ -8454,7 +8454,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2020-02-25T19:45:47+00:00"
+            "time": "2020-05-08T22:25:37+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
