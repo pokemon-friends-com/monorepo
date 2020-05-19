@@ -1628,35 +1628,34 @@
         },
         {
             "name": "laravel/cashier-mollie",
-            "version": "v1.11.0",
+            "version": "v1.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-mollie.git",
-                "reference": "63b30bd886a51aef2f877c8f27d163d3f6fd72c1"
+                "reference": "5f5a8e326595659b6cc47f99c618fba1621a2587"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-mollie/zipball/63b30bd886a51aef2f877c8f27d163d3f6fd72c1",
-                "reference": "63b30bd886a51aef2f877c8f27d163d3f6fd72c1",
+                "url": "https://api.github.com/repos/laravel/cashier-mollie/zipball/5f5a8e326595659b6cc47f99c618fba1621a2587",
+                "reference": "5f5a8e326595659b6cc47f99c618fba1621a2587",
                 "shasum": ""
             },
             "require": {
                 "dompdf/dompdf": "^0.8.0",
                 "ext-intl": "*",
                 "ext-json": "*",
-                "illuminate/database": "~5.8.0|^6.0",
-                "illuminate/support": "~5.8.0|^6.0",
-                "mollie/laravel-mollie": "^2.5",
-                "mollie/mollie-api-php": "v2.11.0",
+                "illuminate/database": "^6.0|^7.0",
+                "illuminate/support": "^6.0|^7.0",
+                "mollie/laravel-mollie": "^2.9",
                 "moneyphp/money": "^3.2",
-                "nesbot/carbon": "^1.33 || ^2.0",
+                "nesbot/carbon": "^2.0",
                 "php": ">=7.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "~3.0|~4.0",
-                "phpunit/phpunit": "^6.5|^7.5|^8.3",
-                "vlucas/phpdotenv": "^2.0|^3.3"
+                "orchestra/testbench": "^4.0|^5.0",
+                "phpunit/phpunit": "^8.3|^9.0",
+                "vlucas/phpdotenv": "^3.3|^4.0"
             },
             "type": "library",
             "extra": {
@@ -1706,7 +1705,7 @@
                 "sepa",
                 "subscriptions"
             ],
-            "time": "2020-02-27T13:20:24+00:00"
+            "time": "2020-04-02T19:14:45+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2876,16 +2875,16 @@
         },
         {
             "name": "mollie/laravel-mollie",
-            "version": "v2.9.0",
+            "version": "v2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mollie/laravel-mollie.git",
-                "reference": "8ba80f38dcd606300f89d6c60cd42ffdfad73553"
+                "reference": "6083771ac8c6faf02732fbd6efa0e1df1a37897d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mollie/laravel-mollie/zipball/8ba80f38dcd606300f89d6c60cd42ffdfad73553",
-                "reference": "8ba80f38dcd606300f89d6c60cd42ffdfad73553",
+                "url": "https://api.github.com/repos/mollie/laravel-mollie/zipball/6083771ac8c6faf02732fbd6efa0e1df1a37897d",
+                "reference": "6083771ac8c6faf02732fbd6efa0e1df1a37897d",
                 "shasum": ""
             },
             "require": {
@@ -2965,20 +2964,20 @@
                 "sofortbanking",
                 "subscriptions"
             ],
-            "time": "2020-03-05T14:38:52+00:00"
+            "time": "2020-05-18T07:46:34+00:00"
         },
         {
             "name": "mollie/mollie-api-php",
-            "version": "v2.11.0",
+            "version": "2.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mollie/mollie-api-php.git",
-                "reference": "1d86de562449be26093b28bf03e608cd46fab1d2"
+                "reference": "8da462ff79fc5875cd1393bbc3602aebff73444d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mollie/mollie-api-php/zipball/1d86de562449be26093b28bf03e608cd46fab1d2",
-                "reference": "1d86de562449be26093b28bf03e608cd46fab1d2",
+                "url": "https://api.github.com/repos/mollie/mollie-api-php/zipball/8da462ff79fc5875cd1393bbc3602aebff73444d",
+                "reference": "8da462ff79fc5875cd1393bbc3602aebff73444d",
                 "shasum": ""
             },
             "require": {
@@ -3051,7 +3050,7 @@
                 "sofortbanking",
                 "subscriptions"
             ],
-            "time": "2019-09-20T10:11:48+00:00"
+            "time": "2020-05-18T07:42:25+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -3615,20 +3614,20 @@
         },
         {
             "name": "phenx/php-font-lib",
-            "version": "0.5.1",
+            "version": "0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PhenX/php-font-lib.git",
-                "reference": "760148820110a1ae0936e5cc35851e25a938bc97"
+                "reference": "ca6ad461f032145fff5971b5985e5af9e7fa88d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/760148820110a1ae0936e5cc35851e25a938bc97",
-                "reference": "760148820110a1ae0936e5cc35851e25a938bc97",
+                "url": "https://api.github.com/repos/PhenX/php-font-lib/zipball/ca6ad461f032145fff5971b5985e5af9e7fa88d8",
+                "reference": "ca6ad461f032145fff5971b5985e5af9e7fa88d8",
                 "shasum": ""
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8"
+                "phpunit/phpunit": "^4.8.35 || ^5 || ^6 || ^7"
             },
             "type": "library",
             "autoload": {
@@ -3648,7 +3647,7 @@
             ],
             "description": "A library to read, parse, export and make subsets of different types of font files.",
             "homepage": "https://github.com/PhenX/php-font-lib",
-            "time": "2017-09-13T16:14:37+00:00"
+            "time": "2020-03-08T15:31:32+00:00"
         },
         {
             "name": "phenx/php-svg-lib",
