@@ -29,21 +29,21 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     /**
      * @var UsersRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * LeadsRepositoryEloquent constructor.
      *
      * @param Application $app
-     * @param UsersRepositoryEloquent $r_users
+     * @param UsersRepositoryEloquent $rUsers
      */
     public function __construct(
         Application $app,
-        UsersRepositoryEloquent $r_users
+        UsersRepositoryEloquent $rUsers
     ) {
         parent::__construct($app);
 
-        $this->r_users = $r_users;
+        $this->rUsers = $rUsers;
     }
 
     /**
@@ -101,7 +101,7 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
      */
     public function getCivilities(): Collection
     {
-        return $this->r_users->getCivilities();
+        return $this->rUsers->getCivilities();
     }
 
     /**
@@ -169,7 +169,7 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
         }
 
         if (!$lead->user) {
-            $user = $this->r_users->findByField('email', $email, ['id']);
+            $user = $this->rUsers->findByField('email', $email, ['id']);
 
             if ($user->first()) {
                 $lead->user_id = $user->first()->id;
@@ -200,7 +200,7 @@ class LeadsRepositoryEloquent extends RepositoryEloquentAbstract implements Lead
     public function createUserFromLead(Lead $lead): User
     {
         $user = $this
-            ->r_users
+            ->rUsers
             ->createUser(
                 $lead->civility,
                 $lead->first_name,

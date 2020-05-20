@@ -21,25 +21,25 @@ class UsersController extends ControllerAbstract
     /**
      * @var UsersRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * @var ProfilesRepositoryEloquent
      */
-    protected $r_profiles;
+    protected $rProfiles;
 
     /**
      * UsersController constructor.
      *
-     * @param UsersRepositoryEloquent $r_users
-     * @param ProfilesRepositoryEloquent $r_profiles
+     * @param UsersRepositoryEloquent $rUsers
+     * @param ProfilesRepositoryEloquent $rProfiles
      */
     public function __construct(
-        UsersRepositoryEloquent $r_users,
-        ProfilesRepositoryEloquent $r_profiles
+        UsersRepositoryEloquent $rUsers,
+        ProfilesRepositoryEloquent $rProfiles
     ) {
-        $this->r_users = $r_users;
-        $this->r_profiles = $r_profiles;
+        $this->rUsers = $rUsers;
+        $this->rProfiles = $rProfiles;
     }
 
     /**
@@ -65,7 +65,7 @@ class UsersController extends ControllerAbstract
         $f_email = $request->get('email');
         $f_full_name = $request->get('full_name');
         $users = $this
-            ->r_users
+            ->rUsers
             ->filterByEmail($f_email)
             ->filterByName($f_full_name)
             ->getPaginatedUsers();
@@ -86,7 +86,7 @@ class UsersController extends ControllerAbstract
      */
     public function show(User $user)
     {
-        $user = $this->r_users->getUser($user->id);
+        $user = $this->rUsers->getUser($user->id);
 
         return view(
             'administrator.users.users.show',
@@ -104,11 +104,11 @@ class UsersController extends ControllerAbstract
         return view(
             'administrator.users.users.create',
             [
-                'civilities' => $this->r_users->getCivilities(),
-                'roles' => $this->r_users->getRoles(),
-                'locales' => $this->r_users->getLocales(),
+                'civilities' => $this->rUsers->getCivilities(),
+                'roles' => $this->rUsers->getRoles(),
+                'locales' => $this->rUsers->getLocales(),
                 'locale' => User::DEFAULT_LOCALE,
-                'timezones' => $this->r_users->getTimezones(),
+                'timezones' => $this->rUsers->getTimezones(),
                 'timezone' => User::DEFAULT_TZ,
             ]
         );
@@ -125,7 +125,7 @@ class UsersController extends ControllerAbstract
     public function store(UserUpdateFormRequest $request)
     {
         $this
-            ->r_users
+            ->rUsers
             ->createUser(
                 $request->get('civility'),
                 $request->get('first_name'),
@@ -149,19 +149,19 @@ class UsersController extends ControllerAbstract
      */
     public function edit(User $user)
     {
-        $user = $this->r_users->getUser($user->id);
+        $user = $this->rUsers->getUser($user->id);
 
         return view(
             'administrator.users.users.edit',
             [
                 'user' => $user,
-                'roles' => $this->r_users->getRoles(),
-                'civilities' => $this->r_users->getCivilities(),
-                'locales' => $this->r_users->getLocales(),
-                'timezones' => $this->r_users->getTimezones(),
-                'teams' => $this->r_profiles->getTeamsColors(),
+                'roles' => $this->rUsers->getRoles(),
+                'civilities' => $this->rUsers->getCivilities(),
+                'locales' => $this->rUsers->getLocales(),
+                'timezones' => $this->rUsers->getTimezones(),
+                'teams' => $this->rProfiles->getTeamsColors(),
                 'families_situations' => $this
-                    ->r_profiles
+                    ->rProfiles
                     ->getFamilySituations()
                     ->mapWithKeys(function ($item) {
                         return [
@@ -182,11 +182,11 @@ class UsersController extends ControllerAbstract
      */
     public function update(User $user, UserUpdateFormRequest $request)
     {
-        $redirect_to = redirect(route('administrator.users.index'));
+        $redirectTo = redirect(route('administrator.users.index'));
 
         try {
             $this
-                ->r_users
+                ->rUsers
                 ->update(
                     [
                         'role' => $request->get('role'),
@@ -213,10 +213,10 @@ class UsersController extends ControllerAbstract
                 ]);
         } catch (\Prettus\Validator\Exceptions\ValidatorException $exception) {
             app('sentry')->captureException($exception);
-            $redirect_to->withException($exception);
+            $redirectTo->withException($exception);
         }
 
-        return $redirect_to;
+        return $redirectTo;
     }
 
     /**
@@ -228,11 +228,11 @@ class UsersController extends ControllerAbstract
      */
     public function destroy(User $user)
     {
-        if ($this->r_users->isUserDeletingHisAccount(Auth::user(), $user)) {
+        if ($this->rUsers->isUserDeletingHisAccount(Auth::user(), $user)) {
             return redirect(route('administrator.users.index'));
         }
 
-        $this->r_users->delete($user->id);
+        $this->rUsers->delete($user->id);
 
         return redirect(route('administrator.users.index'));
     }
@@ -254,7 +254,7 @@ class UsersController extends ControllerAbstract
         ]);
 
         $this
-            ->r_users
+            ->rUsers
             ->filterByEmail($f_email)
             ->filterByName($f_full_name)
             ->with(['lead']);
@@ -278,7 +278,7 @@ class UsersController extends ControllerAbstract
 
         $callback = function () use ($csv) {
             $this
-                ->r_users
+                ->rUsers
                 ->chunk(100, function ($users) use ($csv) {
                     $users->each(function ($model) use ($csv) {
                         $csv->insertOne([

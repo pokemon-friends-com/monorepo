@@ -19,23 +19,23 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
 {
     use DatabaseMigrations;
 
-    protected $r_providers_tokens = null;
+    protected $rProvidersTokens = null;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->r_providers_tokens = app()->make(ProvidersTokensRepositoryEloquent::class);
+        $this->rProvidersTokens = app()->make(ProvidersTokensRepositoryEloquent::class);
     }
 
     public function testCheckIfRepositoryIsCorrectlyInstantiated()
     {
-        $this->assertTrue($this->r_providers_tokens instanceof ProvidersTokensRepositoryEloquent);
+        $this->assertTrue($this->rProvidersTokens instanceof ProvidersTokensRepositoryEloquent);
     }
 
     public function testModel()
     {
-        $this->assertEquals(ProviderToken::class, $this->r_providers_tokens->model());
+        $this->assertEquals(ProviderToken::class, $this->rProvidersTokens->model());
     }
 
     public function testCreate()
@@ -43,7 +43,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         $user = factory(User::class)->create();
         $providerToken = factory(ProviderToken::class)->raw(['user_id' => $user->id]);
         Event::fake();
-        $providerToken = $this->r_providers_tokens->create($providerToken);
+        $providerToken = $this->rProvidersTokens->create($providerToken);
         Event::assertDispatched(ProviderTokenCreatedEvent::class, function ($event) use ($providerToken) {
             return $event->provider_token->id === $providerToken->id;
         });
@@ -56,7 +56,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         $providerToken = factory(ProviderToken::class)->create(['user_id' => $user->id]);
         $newProviderToken = factory(ProviderToken::class)->raw(['user_id' => $user->id]);
         Event::fake();
-        $providerToken = $this->r_providers_tokens->update($newProviderToken, $providerToken->id);
+        $providerToken = $this->rProvidersTokens->update($newProviderToken, $providerToken->id);
         Event::assertDispatched(ProviderTokenUpdatedEvent::class, function ($event) use ($providerToken) {
             return $event->provider_token->id === $providerToken->id;
         });
@@ -70,7 +70,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         $user = factory(User::class)->create();
         $providerToken = factory(ProviderToken::class)->create(['user_id' => $user->id]);
         Event::fake();
-        $providerToken = $this->r_providers_tokens->delete($providerToken->id);
+        $providerToken = $this->rProvidersTokens->delete($providerToken->id);
         Event::assertDispatched(ProviderTokenDeletedEvent::class, function ($event) use ($providerToken) {
             return $event->provider_token->id === $providerToken->id;
         });
@@ -79,7 +79,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
 
     public function testGetProviders()
     {
-        $this->assertEquals(ProviderToken::PROVIDERS, $this->r_providers_tokens->getProviders()->toArray());
+        $this->assertEquals(ProviderToken::PROVIDERS, $this->rProvidersTokens->getProviders()->toArray());
     }
 
     public function testFilterByProvider()
@@ -88,7 +88,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         factory(ProviderToken::class)->state(ProviderToken::GOOGLE)->create(['user_id' => $user->id]);
         $providerToken = factory(ProviderToken::class)->state(ProviderToken::TWITTER)->create(['user_id' => $user->id]);
         $repositoryProviderToken = $this
-            ->r_providers_tokens
+            ->rProvidersTokens
             ->skipPresenter()
             ->filterByProvider($providerToken->provider_id, $providerToken->provider)
             ->get();
@@ -101,7 +101,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         $providerToken = factory(ProviderToken::class)->raw();
         Event::fake();
         $providerToken = $this
-            ->r_providers_tokens
+            ->rProvidersTokens
             ->saveUserTokenForProvider(
                 $user,
                 $providerToken['provider'],
@@ -119,7 +119,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         $user = factory(User::class)->create();
         $providerToken = factory(ProviderToken::class)->create(['user_id' => $user->id]);
         $providerToken = $this
-            ->r_providers_tokens
+            ->rProvidersTokens
             ->checkIfTokenIsAvailableForUser(
                 $user,
                 $providerToken['provider_id'],
@@ -133,7 +133,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         $user = factory(User::class)->create();
         $providerToken = factory(ProviderToken::class)->create(['user_id' => $user->id]);
         $providerToken = $this
-            ->r_providers_tokens
+            ->rProvidersTokens
             ->findUserForProvider(
                 $providerToken['provider_id'],
                 $providerToken['provider']

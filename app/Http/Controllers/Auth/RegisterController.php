@@ -29,12 +29,12 @@ class RegisterController extends ControllerAbstract
     /**
      * @var UsersRegistrationsRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * @var ProfilesRepositoryEloquent
      */
-    protected $r_profiles;
+    protected $rProfiles;
 
     /**
      * @var string
@@ -44,16 +44,16 @@ class RegisterController extends ControllerAbstract
     /**
      * RegisterController constructor.
      *
-     * @param UsersRegistrationsRepositoryEloquent $r_users
-     * @param ProfilesRepositoryEloquent $r_profiles
+     * @param UsersRegistrationsRepositoryEloquent $rUsers
+     * @param ProfilesRepositoryEloquent $rProfiles
      */
     public function __construct(
-        UsersRegistrationsRepositoryEloquent $r_users,
-        ProfilesRepositoryEloquent $r_profiles
+        UsersRegistrationsRepositoryEloquent $rUsers,
+        ProfilesRepositoryEloquent $rProfiles
     ) {
         $this->middleware('guest');
-        $this->r_users = $r_users;
-        $this->r_profiles = $r_profiles;
+        $this->rUsers = $rUsers;
+        $this->rProfiles = $rProfiles;
     }
 
     /**
@@ -64,7 +64,7 @@ class RegisterController extends ControllerAbstract
     public function showRegistrationForm()
     {
         return view('auth.register', [
-            'civilities' => $this->r_users->getCivilities(),
+            'civilities' => $this->rUsers->getCivilities(),
         ]);
     }
 
@@ -102,7 +102,7 @@ class RegisterController extends ControllerAbstract
      */
     protected function validator(array $data)
     {
-        return $this->r_users->registrationValidator($data);
+        return $this->rUsers->registrationValidator($data);
     }
 
     /**
@@ -116,12 +116,12 @@ class RegisterController extends ControllerAbstract
     protected function create(array $data)
     {
         $profile = $this
-            ->r_profiles
+            ->rProfiles
             ->findByField('friend_code', $data['friend_code']);
 
         if ($profile->count() && $profile->first()->is_claimable) {
             return $this
-                ->r_users
+                ->rUsers
                 ->update(
                     [
                         'civility' => User::CIVILITY_MADAM,
@@ -138,7 +138,7 @@ class RegisterController extends ControllerAbstract
         }
 
         $user = $this
-            ->r_users
+            ->rUsers
             ->registerUser(
                 $data['email'],
                 $data['password']

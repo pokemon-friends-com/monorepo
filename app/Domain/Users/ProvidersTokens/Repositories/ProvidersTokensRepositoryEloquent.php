@@ -29,19 +29,19 @@ class ProvidersTokensRepositoryEloquent extends RepositoryEloquentAbstract imple
     /**
      * @var UsersRepositoryEloquent|null
      */
-    protected $r_users = null;
+    protected $rUsers = null;
 
     /**
      * ProvidersTokensRepositoryEloquent constructor.
      *
      * @param Application $app
-     * @param UsersRepositoryEloquent $r_users
+     * @param UsersRepositoryEloquent $rUsers
      */
-    public function __construct(Application $app, UsersRepositoryEloquent $r_users)
+    public function __construct(Application $app, UsersRepositoryEloquent $rUsers)
     {
         parent::__construct($app);
 
-        $this->r_users = $r_users;
+        $this->rUsers = $rUsers;
     }
 
     /**

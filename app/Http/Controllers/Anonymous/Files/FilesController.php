@@ -11,16 +11,16 @@ class FilesController extends ControllerAbstract
     /**
      * @var FilesRepository|null
      */
-    public $r_files = null;
+    public $rFiles = null;
 
     /**
      * MediasController constructor.
      *
-     * @param FilesRepository $r_files
+     * @param FilesRepository $rFiles
      */
-    public function __construct(FilesRepository $r_files)
+    public function __construct(FilesRepository $rFiles)
     {
-        $this->r_files = $r_files;
+        $this->rFiles = $rFiles;
     }
 
     /**
@@ -33,7 +33,7 @@ class FilesController extends ControllerAbstract
         $document = null;
 
         try {
-            $document = $this->r_files->streamPublicDocument($path);
+            $document = $this->rFiles->streamPublicDocument($path);
         } catch (\Exception $exception) {
             abort(404);
         }
@@ -51,7 +51,7 @@ class FilesController extends ControllerAbstract
         $thumbnail = null;
 
         try {
-            $thumbnail = $this->r_files->streamPublicThumbnail($path);
+            $thumbnail = $this->rFiles->streamPublicThumbnail($path);
         } catch (\Exception $exception) {
             abort(404);
         }

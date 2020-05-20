@@ -14,12 +14,12 @@ class PasswordFormRequest extends RequestAbstract
     /**
      * @var UsersResetPasswordRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * PasswordFormRequest constructor.
      *
-     * @param UsersResetPasswordRepositoryEloquent $r_users
+     * @param UsersResetPasswordRepositoryEloquent $rUsers
      * @param array $query
      * @param array $request
      * @param array $attributes
@@ -29,7 +29,7 @@ class PasswordFormRequest extends RequestAbstract
      * @param null $content
      */
     public function __construct(
-        UsersResetPasswordRepositoryEloquent $r_users,
+        UsersResetPasswordRepositoryEloquent $rUsers,
         array $query = [],
         array $request = [],
         array $attributes = [],
@@ -48,11 +48,12 @@ class PasswordFormRequest extends RequestAbstract
             $content
         );
 
-        $this->r_users = $r_users;
+        $this->rUsers = $rUsers;
     }
 
     /**
      * Determine if the user is authorized to make this request.
+     * @SuppressWarnings("unused")
      *
      * @return bool
      */
@@ -75,6 +76,6 @@ class PasswordFormRequest extends RequestAbstract
      */
     public function rules()
     {
-        return $this->r_users->getChangePasswordRules();
+        return $this->rUsers->getChangePasswordRules();
     }
 }

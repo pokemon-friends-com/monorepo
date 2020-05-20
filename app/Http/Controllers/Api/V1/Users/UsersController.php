@@ -17,16 +17,16 @@ class UsersController extends ControllerAbstract
     /**
      * @var UsersRepositoryEloquent|null
      */
-    protected $r_users = null;
+    protected $rUsers = null;
 
     /**
      * UserController constructor.
      *
-     * @param UsersRepositoryEloquent $r_users
+     * @param UsersRepositoryEloquent $rUsers
      */
-    public function __construct(UsersRepositoryEloquent $r_users)
+    public function __construct(UsersRepositoryEloquent $rUsers)
     {
-        $this->r_users = $r_users;
+        $this->rUsers = $rUsers;
     }
 
     /**

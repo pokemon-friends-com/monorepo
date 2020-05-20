@@ -85,6 +85,7 @@ class Handler extends ExceptionHandler
 
     /**
      * Convert an authentication exception into an unauthenticated response.
+     * @SuppressWarnings("unused")
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Illuminate\Auth\AuthenticationException $exception

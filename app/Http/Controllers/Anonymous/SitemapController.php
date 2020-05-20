@@ -4,16 +4,18 @@ namespace template\Http\Controllers\Anonymous;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\{Cache, Storage};
+use Illuminate\Http\Response;
 use Spatie\Sitemap\{Sitemap, Tags\Url};
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
-class SitemapController extends ControllerAbstract
+class SiteMapController extends ControllerAbstract
 {
 
     /**
      * Display resources list.
+     * @SuppressWarnings("PHPMD.ElseExpression")
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Response
      */
     public function index()
     {

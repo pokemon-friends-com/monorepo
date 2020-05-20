@@ -58,7 +58,7 @@ return [
 </ul>",
 
     'terms' => "Conditions générales d'utilisation",
-    'anonymous.meta.description_terms' => "www.pokemon-friends.com est une plateforme de partage de code ami du jeu Pokemon Go. La société n'est pas liée à la sociétè éditrice du jeu.",
+    'terms.description' => "www.pokemon-friends.com est une plateforme de partage de code ami du jeu Pokemon Go. La société n'est pas liée à la sociétè éditrice du jeu.",
     'terms-of-services' => '<h2>Introduction</h2>
 <p>
     <a href=":home_url">www.pokemon-friends.com</a> est une plateforme de partage de code ami du jeu Pokemon Go.
@@ -131,12 +131,14 @@ return [
     L\'intégralité du code source de ce site internet est consultable sur <a href="https://github.com/pokemon-friends-com/www">Github.com</a>
 </p>',
 
-    'trainer.meta.title' => 'Soyons amis sur Pokemon Go!',
-    'trainer.meta.description' => 'Cet entraîneur, :friend_code, recherche de nouveaux amis Pokemon Go!',
+    'trainer' => 'Soyons amis sur Pokemon Go! :friend_code',
+    'trainer.description' => 'Cet entraîneur, :friend_code, recherche de nouveaux amis Pokemon Go!',
     'trainer.social_share_qr' => 'Partagez votre QR code sur vos réseaux sociaux',
 
     'title' => 'Utilisateurs',
-    'trainers.title' => 'Dresseurs',
+    'trainers' => 'Dresseurs',
+    'trainers.title' => 'Dresseurs - page :page',
+    'trainers.description' => 'Liste des dresseurs - page :page',
     'create.title' => 'Nouvel utilisateur',
     'edit.title' => 'Éditer l\'utilisateur',
     'show.title' => 'Utilisateur :username',

@@ -29,22 +29,22 @@ class LoginController extends ControllerAbstract
     /**
      * @var UsersRepositoryEloquent|null
      */
-    protected $r_users = null;
+    protected $rUsers = null;
 
     /**
      * @var ProvidersTokensRepositoryEloquent|null
      */
-    protected $r_providers_tokens = null;
+    protected $rProvidersTokens = null;
 
     /**
      * LoginController constructor.
      *
-     * @param UsersRepositoryEloquent $r_users
-     * @param ProvidersTokensRepositoryEloquent $r_providers_tokens
+     * @param UsersRepositoryEloquent $rUsers
+     * @param ProvidersTokensRepositoryEloquent $rProvidersTokens
      */
     public function __construct(
-        UsersRepositoryEloquent $r_users,
-        ProvidersTokensRepositoryEloquent $r_providers_tokens
+        UsersRepositoryEloquent $rUsers,
+        ProvidersTokensRepositoryEloquent $rProvidersTokens
     ) {
         $this->middleware('guest', [
             'except' => [
@@ -54,8 +54,8 @@ class LoginController extends ControllerAbstract
             ],
         ]);
 
-        $this->r_users = $r_users;
-        $this->r_providers_tokens = $r_providers_tokens;
+        $this->rUsers = $rUsers;
+        $this->rProvidersTokens = $rProvidersTokens;
     }
 
     /**
@@ -68,7 +68,7 @@ class LoginController extends ControllerAbstract
      */
     protected function authenticated(Request $request, $user)
     {
-        $this->r_users->refreshSession($user);
+        $this->rUsers->refreshSession($user);
 
         return redirect(route('anonymous.dashboard'));
     }
@@ -112,7 +112,7 @@ class LoginController extends ControllerAbstract
 
             if ($providerUser && Auth::check()) {
                 $isTokenAvailableForUser = $this
-                    ->r_providers_tokens
+                    ->rProvidersTokens
                     ->checkIfTokenIsAvailableForUser(
                         Auth::user(),
                         $providerUser->id,
@@ -121,7 +121,7 @@ class LoginController extends ControllerAbstract
 
                 if ($isTokenAvailableForUser) {
                     $this
-                        ->r_providers_tokens
+                        ->rProvidersTokens
                         ->saveUserTokenForProvider(
                             Auth::user(),
                             $provider,
@@ -144,12 +144,12 @@ class LoginController extends ControllerAbstract
             }
 
             $providerToken = $this
-                ->r_providers_tokens
+                ->rProvidersTokens
                 ->findUserForProvider($providerUser->id, $provider);
 
             if ($providerToken) {
                 $this
-                    ->r_providers_tokens
+                    ->rProvidersTokens
                     ->update(
                         [
                             'provider_token' => $providerUser->token,

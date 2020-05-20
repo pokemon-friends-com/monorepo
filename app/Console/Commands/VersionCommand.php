@@ -33,23 +33,23 @@ class VersionCommand extends Command
      */
     public function handle()
     {
-        if (app()->environment('local')) {
-            $version = env('APP_TAG');
-            $file = base_path('config/version.php');
-            $bytes_written = File::put(
-                $file,
-                "<?php\n\nreturn [\n\t'app_tag' => '{$version}',\n];"
-            );
-
-            $this->info("Version {$version}");
-
-            if ($bytes_written === false) {
-                $this->error("Error writing to file");
-            }
-        } else {
+        if (!app()->environment('local')) {
             $this->error(
                 'You must to be in "local" environment to use this command!'
             );
+        }
+
+        $version = env('APP_TAG');
+        $file = base_path('config/version.php');
+        $bytesWritten = File::put(
+            $file,
+            "<?php\n\nreturn [\n\t'app_tag' => '{$version}',\n];"
+        );
+
+        $this->info("Version {$version}");
+
+        if ($bytesWritten === false) {
+            $this->error("Error writing to file");
         }
     }
 }

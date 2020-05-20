@@ -21,9 +21,16 @@ class UsersControllerTest extends TestCase
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
         factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => Carbon::now()->format('Y-m-d')]);
         $this
+            ->get("/trainers/{$user->uniqid}")
+            ->assertSuccessful()
+            ->assertSee(e("Let's be friends on Pokemon Go! {$user->formated_friend_code}"))
+            ->assertSee(
+                "This trainer, {$user->profile->formated_friend_code}, is looking for new Pokemon Go friends!"
+            );
+        $this
             ->get("/trainer/{$user->uniqid}")
             ->assertSuccessful()
-            ->assertSee(e('Let\'s be friends on Pokemon Go!'))
+            ->assertSee(e("Let's be friends on Pokemon Go! {$user->formated_friend_code}"))
             ->assertSee(
                 "This trainer, {$user->profile->formated_friend_code}, is looking for new Pokemon Go friends!"
             );
@@ -34,9 +41,16 @@ class UsersControllerTest extends TestCase
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
         factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' =>  Carbon::now()->format('Y-m-d')]);
         $this
+            ->get("/trainers/{$user->uniqid}?locale=fr")
+            ->assertSuccessful()
+            ->assertSee("Soyons amis sur Pokemon Go! {$user->formated_friend_code}")
+            ->assertSee(
+                "Cet entraîneur, {$user->profile->formated_friend_code}, recherche de nouveaux amis Pokemon Go!"
+            );
+        $this
             ->get("/trainer/{$user->uniqid}?locale=fr")
             ->assertSuccessful()
-            ->assertSee('Soyons amis sur Pokemon Go!')
+            ->assertSee("Soyons amis sur Pokemon Go! {$user->formated_friend_code}")
             ->assertSee(
                 "Cet entraîneur, {$user->profile->formated_friend_code}, recherche de nouveaux amis Pokemon Go!"
             );
@@ -44,6 +58,9 @@ class UsersControllerTest extends TestCase
 
     public function testToVisitTrainerProfileWhenUserDoesNotExist()
     {
+        $this
+            ->get('/trainers/DOESNOTEXIST')
+            ->assertNotFound();
         $this
             ->get('/trainer/DOESNOTEXIST')
             ->assertNotFound();
@@ -53,6 +70,9 @@ class UsersControllerTest extends TestCase
     {
         $user = factory(User::class)->states(User::ROLE_CUSTOMER)->create();
         factory(Profile::class)->create(['user_id' => $user->id, 'sponsored' => null]);
+        $this
+            ->get("/trainers/{$user->uniqid}")
+            ->assertSuccessful();
         $this
             ->get("/trainer/{$user->uniqid}")
             ->assertSuccessful();
@@ -66,6 +86,9 @@ class UsersControllerTest extends TestCase
                 'deleted_at' => Carbon::now()->format('Y-m-d h:i:s'),
             ]);
         factory(Profile::class)->create(['user_id' => $user->id]);
+        $this
+            ->get("/trainers/{$user->uniqid}")
+            ->assertNotFound();
         $this
             ->get("/trainer/{$user->uniqid}")
             ->assertNotFound();

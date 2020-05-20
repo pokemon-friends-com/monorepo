@@ -1,6 +1,7 @@
 @extends('anonymous.default')
 
 @section('title', $metadata['title'])
+@section('description', $metadata['description'])
 
 @section('content')
 <div class="content-header">

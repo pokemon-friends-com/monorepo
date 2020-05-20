@@ -14,25 +14,25 @@ class LeadsController extends ControllerAbstract
     /**
      * @var UsersRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * @var LeadsRepositoryEloquent
      */
-    public $r_leads;
+    public $rLeads;
 
     /**
      * LeadsController constructor.
      *
-     * @param UsersRepositoryEloquent $r_users
-     * @param LeadsRepositoryEloquent $r_leads
+     * @param UsersRepositoryEloquent $rUsers
+     * @param LeadsRepositoryEloquent $rLeads
      */
     public function __construct(
-        UsersRepositoryEloquent $r_users,
-        LeadsRepositoryEloquent $r_leads
+        UsersRepositoryEloquent $rUsers,
+        LeadsRepositoryEloquent $rLeads
     ) {
-        $this->r_users = $r_users;
-        $this->r_leads = $r_leads;
+        $this->rUsers = $rUsers;
+        $this->rLeads = $rLeads;
     }
 
     /**
@@ -47,10 +47,10 @@ class LeadsController extends ControllerAbstract
             'description' => trans('users.leads.anonymous.meta.description_contacts'),
         ];
         $users = $this
-            ->r_users
+            ->rUsers
             ->getTrainers()
             ->paginate(config('repository.pagination.limit'));
-        $civilities = $this->r_leads->getCivilities();
+        $civilities = $this->rLeads->getCivilities();
         
         return view('anonymous.users.leads.index', compact(
             'metadata',
@@ -73,7 +73,7 @@ class LeadsController extends ControllerAbstract
 
         if (!$lead) {
             $lead = $this
-                ->r_leads
+                ->rLeads
                 ->qualifyLead(
                     $request->get('civility'),
                     $request->get('first_name'),

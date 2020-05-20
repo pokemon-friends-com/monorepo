@@ -25,23 +25,23 @@ class UsersRepositoryEloquentTest extends TestCase
     /**
      * @var UsersRepositoryEloquent|null
      */
-    protected $r_users = null;
+    protected $rUsers = null;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->r_users = app()->make(UsersRepositoryEloquent::class);
+        $this->rUsers = app()->make(UsersRepositoryEloquent::class);
     }
 
     public function testCheckIfRepositoryIsCorrectlyInstantiated()
     {
-        $this->assertTrue($this->r_users instanceof UsersRepositoryEloquent);
+        $this->assertTrue($this->rUsers instanceof UsersRepositoryEloquent);
     }
 
     public function testModel()
     {
-        $this->assertEquals(User::class, $this->r_users->model());
+        $this->assertEquals(User::class, $this->rUsers->model());
     }
 
     public function testCreate()
@@ -51,7 +51,7 @@ class UsersRepositoryEloquentTest extends TestCase
          */
         $rawUser = factory(User::class)->raw();
         Event::fake();
-        $user = $this->r_users->create($rawUser);
+        $user = $this->rUsers->create($rawUser);
         Event::assertDispatched(UserCreatedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
@@ -61,7 +61,7 @@ class UsersRepositoryEloquentTest extends TestCase
          */
         $rawUser = factory(User::class)->states(['password_null', 'uniqid_null'])->raw();
         Event::fake();
-        $user = $this->r_users->create($rawUser);
+        $user = $this->rUsers->create($rawUser);
         Event::assertDispatched(UserCreatedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
@@ -73,7 +73,7 @@ class UsersRepositoryEloquentTest extends TestCase
         $user = factory(User::class)->create();
         $rawUser = factory(User::class)->raw();
         Event::fake();
-        $user = $this->r_users->update($rawUser, $user->id);
+        $user = $this->rUsers->update($rawUser, $user->id);
         Event::assertDispatched(UserUpdatedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
@@ -87,7 +87,7 @@ class UsersRepositoryEloquentTest extends TestCase
     {
         $user = factory(User::class)->create();
         Event::fake();
-        $user = $this->r_users->delete($user->id);
+        $user = $this->rUsers->delete($user->id);
         Event::assertDispatched(UserDeletedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
@@ -103,7 +103,7 @@ class UsersRepositoryEloquentTest extends TestCase
 
         Event::fake();
         $this
-            ->r_users
+            ->rUsers
             ->refreshSession($user);
         Event::assertDispatched(UserRefreshSessionEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
@@ -117,23 +117,23 @@ class UsersRepositoryEloquentTest extends TestCase
                 User::ROLE_ADMINISTRATOR,
                 User::ROLE_CUSTOMER,
             ],
-            $this->r_users->getRoles()->toArray()
+            $this->rUsers->getRoles()->toArray()
         );
     }
 
     public function testCivilities()
     {
-        $this->assertEquals(User::CIVILITIES, $this->r_users->getCivilities()->toArray());
+        $this->assertEquals(User::CIVILITIES, $this->rUsers->getCivilities()->toArray());
     }
 
     public function testLocales()
     {
-        $this->assertEquals(User::LOCALES, $this->r_users->getLocales()->toArray());
+        $this->assertEquals(User::LOCALES, $this->rUsers->getLocales()->toArray());
     }
 
     public function testTimezones()
     {
-        $this->assertEquals(timezones(), $this->r_users->getTimezones()->toArray());
+        $this->assertEquals(timezones(), $this->rUsers->getTimezones()->toArray());
     }
 
     public function testAllWithTrashed()
@@ -142,7 +142,7 @@ class UsersRepositoryEloquentTest extends TestCase
         factory(User::class)->create();
         factory(User::class)->states('deleted')->create();
 
-        $this->assertEquals(3, $this->r_users->allWithTrashed()->count());
+        $this->assertEquals(3, $this->rUsers->allWithTrashed()->count());
     }
 
     public function testOnlyTrashed()
@@ -151,7 +151,7 @@ class UsersRepositoryEloquentTest extends TestCase
         factory(User::class)->create();
         factory(User::class)->states('deleted')->create();
 
-        $this->assertEquals(1, $this->r_users->onlyTrashed()->count());
+        $this->assertEquals(1, $this->rUsers->onlyTrashed()->count());
     }
 
     public function testFilterByUniqueId()
@@ -161,7 +161,7 @@ class UsersRepositoryEloquentTest extends TestCase
         factory(User::class)->states('deleted')->create();
 
         $repositoryUser = $this
-            ->r_users
+            ->rUsers
             ->skipPresenter()
             ->filterByUniqueId($user->uniqid)
             ->get();
@@ -177,7 +177,7 @@ class UsersRepositoryEloquentTest extends TestCase
         factory(User::class)->states('deleted')->create();
 
         $repositoryUser = $this
-            ->r_users
+            ->rUsers
             ->skipPresenter()
             ->filterByUniqueIdDifferentThan($user->uniqid)
             ->get();
@@ -193,7 +193,7 @@ class UsersRepositoryEloquentTest extends TestCase
         factory(User::class)->states('deleted')->create();
 
         $repositoryUser = $this
-            ->r_users
+            ->rUsers
             ->skipPresenter()
             ->filterByName($user->first_name)
             ->get();
@@ -209,7 +209,7 @@ class UsersRepositoryEloquentTest extends TestCase
         factory(User::class)->states('deleted')->create();
 
         $repositoryUser = $this
-            ->r_users
+            ->rUsers
             ->skipPresenter()
             ->filterByEmail($user->email)
             ->get();
@@ -226,7 +226,7 @@ class UsersRepositoryEloquentTest extends TestCase
          * Create new user without to specify the optionals parameters.
          */
         $rawUser = factory(User::class)->raw();
-        $user = $this->r_users->createUser(
+        $user = $this->rUsers->createUser(
             $rawUser['civility'],
             $rawUser['first_name'],
             $rawUser['last_name'],
@@ -242,7 +242,7 @@ class UsersRepositoryEloquentTest extends TestCase
          * Create new user with the optionals parameters.
          */
         $rawUser = factory(User::class)->raw();
-        $user = $this->r_users->createUser(
+        $user = $this->rUsers->createUser(
             $rawUser['civility'],
             $rawUser['first_name'],
             $rawUser['last_name'],
@@ -263,7 +263,7 @@ class UsersRepositoryEloquentTest extends TestCase
     {
         factory(User::class)->times(30)->create();
 
-        $users = $this->r_users->getPaginatedUsers();
+        $users = $this->rUsers->getPaginatedUsers();
         $this->assertEquals(12, $users['meta']['pagination']['per_page']);
         $this->assertEquals(30, $users['meta']['pagination']['total']);
         $this->assertEquals(12, count($users['data']));
@@ -273,7 +273,7 @@ class UsersRepositoryEloquentTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $repositoryUser = $this->r_users->getUser($user->id);
+        $repositoryUser = $this->rUsers->getUser($user->id);
         $this->assertEquals((new UsersListTransformer())->transform($user), $repositoryUser['data']);
     }
 
@@ -285,7 +285,7 @@ class UsersRepositoryEloquentTest extends TestCase
         /*
          * Administrator delete user.
          */
-        $isNotDeletinHisAccount = $this->r_users->isUserDeletingHisAccount($administrator, $user);
+        $isNotDeletinHisAccount = $this->rUsers->isUserDeletingHisAccount($administrator, $user);
         Event::assertNotDispatched(UserTriedToDeleteHisOwnAccountEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
@@ -293,7 +293,7 @@ class UsersRepositoryEloquentTest extends TestCase
         /*
          * Administrator delete his account.
          */
-        $isDeletinHisAccount = $this->r_users->isUserDeletingHisAccount($administrator, $administrator);
+        $isDeletinHisAccount = $this->rUsers->isUserDeletingHisAccount($administrator, $administrator);
         Event::assertDispatched(UserTriedToDeleteHisOwnAccountEvent::class, function ($event) use ($administrator) {
             return $event->user->id === $administrator->id;
         });

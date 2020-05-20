@@ -1,6 +1,6 @@
 @if ($trainers)
     <div class="row">
-        <div class="col-12"><h2 class="text-dark">{{ trans('users.trainers.title') }}</h2></div>
+        <div class="col-12"><h2 class="text-dark">{{ trans('users.trainers') }}</h2></div>
     </div>
     <div class="row">
         @foreach ($trainers['data'] as $trainer)

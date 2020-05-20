@@ -105,6 +105,12 @@ mix
           icons: {
             coast: false,
             yandex: false,
+            favicons: true,
+            android: mix.inProduction(),
+            appleIcon: mix.inProduction(),
+            appleStartup: mix.inProduction(),
+            firefox: mix.inProduction(),
+            windows: mix.inProduction(),
           },
         },
       }),

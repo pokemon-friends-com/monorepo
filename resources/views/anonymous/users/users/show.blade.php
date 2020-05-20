@@ -4,12 +4,15 @@
 @section('description', $metadata['description'])
 @section('image', $qr)
 @section('card', 'summary')
+@section('schema')
+    {!! $schema->toScript() !!}
+@endsection
 
 @section('content')
     <div class="card-body login-card-body text-center">
         <h1 class="text-primary">{{ $friend_code }}</h1>
         @if ($nickname)
-            <h3 class="text-primary">{{ $nickname }}</h3>
+            <h2 class="text-primary">{{ $nickname }}</h2>
         @endif
         <img class="img-fluid lazy" src="{{ asset_cdn('images/pokeball.jpg') }}" data-src="{{ $qr }}" alt="{{ $friend_code }}">
         @include('partials.row_amazon')
