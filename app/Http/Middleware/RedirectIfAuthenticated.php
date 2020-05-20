@@ -22,9 +22,9 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             if (Auth::user()->is_administrator) {
                 return redirect('/administrator/users/dashboard');
-            } else {
-                return redirect('/users/dashboard');
             }
+
+            return redirect('/users/dashboard');
         }
 
         return $next($request);

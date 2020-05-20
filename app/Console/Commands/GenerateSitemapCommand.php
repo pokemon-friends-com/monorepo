@@ -28,27 +28,27 @@ class GenerateSitemapCommand extends CommandAbstract
     /**
      * @var UsersRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * @var ProfilesRepositoryEloquent
      */
-    protected $r_profiles;
+    protected $rProfiles;
 
     /**
      * GenerateSitemapCommand constructor.
      *
-     * @param UsersRepositoryEloquent $r_users
-     * @param ProfilesRepositoryEloquent $r_profiles
+     * @param UsersRepositoryEloquent $rUsers
+     * @param ProfilesRepositoryEloquent $rProfiles
      */
     public function __construct(
-        UsersRepositoryEloquent $r_users,
-        ProfilesRepositoryEloquent $r_profiles
+        UsersRepositoryEloquent $rUsers,
+        ProfilesRepositoryEloquent $rProfiles
     ) {
         parent::__construct();
 
-        $this->r_users = $r_users;
-        $this->r_profiles = $r_profiles;
+        $this->rUsers = $rUsers;
+        $this->rProfiles = $rProfiles;
     }
 
     /**
@@ -91,7 +91,7 @@ class GenerateSitemapCommand extends CommandAbstract
             );
 
         $trainers = $this
-            ->r_users
+            ->rUsers
             ->getTrainers()
             ->paginate(config('repository.pagination.trainers'));
 
@@ -106,7 +106,7 @@ class GenerateSitemapCommand extends CommandAbstract
         }
 
         $this
-            ->r_profiles
+            ->rProfiles
             ->with(['user'])
             ->whereNotNull('friend_code')
             ->chunk(100, function ($profiles) use ($sitemap) {

@@ -39,20 +39,20 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
     /**
      * @var UsersRepositoryEloquent|null
      */
-    protected $r_users = null;
+    protected $rUsers = null;
 
     /**
      * ProfilesRepositoryEloquent constructor.
      *
      * @param Application $app
-     * @param UsersRepositoryEloquent $r_users
+     * @param UsersRepositoryEloquent $rUsers
      */
     public function __construct(
         Application $app,
-        UsersRepositoryEloquent $r_users
+        UsersRepositoryEloquent $rUsers
     ) {
         parent::__construct($app);
-        $this->r_users = $r_users;
+        $this->rUsers = $rUsers;
     }
 
     /**
@@ -157,7 +157,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      */
     public function getCivilities(): Collection
     {
-        return $this->r_users->getCivilities();
+        return $this->rUsers->getCivilities();
     }
 
     /**
@@ -165,7 +165,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      */
     public function getLocales(): Collection
     {
-        return $this->r_users->getLocales();
+        return $this->rUsers->getLocales();
     }
 
     /**
@@ -173,7 +173,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
      */
     public function getTimezones(): Collection
     {
-        return $this->r_users->getTimezones();
+        return $this->rUsers->getTimezones();
     }
 
     /**
@@ -256,8 +256,8 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
         );
 
         if ($data) {
-            $user = $this->r_users->update($data, $user->id);
-            $this->r_users->refreshSession($user);
+            $user = $this->rUsers->update($data, $user->id);
+            $this->rUsers->refreshSession($user);
         }
     }
 }

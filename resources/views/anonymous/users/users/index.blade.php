@@ -1,13 +1,14 @@
 @extends('anonymous.default')
 
 @section('title', $metadata['title'])
+@section('description', $metadata['description'])
 
 @section('content')
 <section class="content-header">
     <div class="container">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>{!! trans('users.trainers.title') !!}</h1>
+                <h1>{!! trans('users.trainers') !!}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -20,7 +21,7 @@
                             @endif
                         </a>
                     </li>
-                    <li class="breadcrumb-item active">{!! trans('users.trainers.title') !!}</li>
+                    <li class="breadcrumb-item active">{!! trans('users.trainers') !!}</li>
                 </ol>
             </div>
         </div>

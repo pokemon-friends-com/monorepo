@@ -11,16 +11,16 @@ class MediasController extends ControllerAbstract
     /**
      * @var MediasRepositoryEloquent|null
      */
-    public $r_medias = null;
+    public $rMedias = null;
 
     /**
      * MediasController constructor.
      *
-     * @param MediasRepositoryEloquent $r_medias
+     * @param MediasRepositoryEloquent $rMedias
      */
-    public function __construct(MediasRepositoryEloquent $r_medias)
+    public function __construct(MediasRepositoryEloquent $rMedias)
     {
-        $this->r_medias = $r_medias;
+        $this->rMedias = $rMedias;
     }
 
     /**
@@ -33,7 +33,7 @@ class MediasController extends ControllerAbstract
         $media = null;
 
         try {
-            $media = $this->r_medias->streamPrivateDocument($hash);
+            $media = $this->rMedias->streamPrivateDocument($hash);
         } catch (\Exception $exception) {
             abort(404);
         }

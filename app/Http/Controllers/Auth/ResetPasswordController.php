@@ -24,7 +24,7 @@ class ResetPasswordController extends ControllerAbstract
     /**
      * @var UsersResetPasswordRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * @var string
@@ -36,10 +36,10 @@ class ResetPasswordController extends ControllerAbstract
      *
      * @return void
      */
-    public function __construct(UsersResetPasswordRepositoryEloquent $r_users)
+    public function __construct(UsersResetPasswordRepositoryEloquent $rUsers)
     {
         $this->middleware('guest');
-        $this->r_users = $r_users;
+        $this->rUsers = $rUsers;
     }
 
     /**
@@ -49,6 +49,6 @@ class ResetPasswordController extends ControllerAbstract
      */
     protected function rules()
     {
-        return $this->r_users->getResetPasswordRules();
+        return $this->rUsers->getResetPasswordRules();
     }
 }

@@ -17,16 +17,16 @@ class RegisterController extends ControllerAbstract
     /**
      * @var UsersRegistrationsRepositoryEloquent|null
      */
-    protected $r_users = null;
+    protected $rUsers = null;
 
     /**
      * RegisterController constructor.
      *
-     * @param UsersRegistrationsRepositoryEloquent $r_users
+     * @param UsersRegistrationsRepositoryEloquent $rUsers
      */
-    public function __construct(UsersRegistrationsRepositoryEloquent $r_users)
+    public function __construct(UsersRegistrationsRepositoryEloquent $rUsers)
     {
-        $this->r_users = $r_users;
+        $this->rUsers = $rUsers;
     }
 
     /**
@@ -56,7 +56,7 @@ class RegisterController extends ControllerAbstract
      */
     protected function validator(array $data)
     {
-        return $this->r_users->registrationValidator($data);
+        return $this->rUsers->registrationValidator($data);
     }
 
     /**
@@ -70,7 +70,7 @@ class RegisterController extends ControllerAbstract
     protected function create(array $data)
     {
         $user = $this
-            ->r_users
+            ->rUsers
             ->registerUser(
                 $data['email'],
                 $data['password']

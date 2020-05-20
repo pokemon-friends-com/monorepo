@@ -11,16 +11,16 @@ class FilesController extends ControllerAbstract
     /**
      * @var null
      */
-    protected $r_files = null;
+    protected $rFiles = null;
 
     /**
      * FilesController constructor.
      *
-     * @param FilesRepository $r_files
+     * @param FilesRepository $rFiles
      */
-    public function __construct(FilesRepository $r_files)
+    public function __construct(FilesRepository $rFiles)
     {
-        $this->r_files = $r_files;
+        $this->rFiles = $rFiles;
     }
 
     /**
@@ -30,7 +30,7 @@ class FilesController extends ControllerAbstract
     {
         return view(
             'administrator.files.files.index',
-            $this->r_files->getViewVars()
+            $this->rFiles->getViewVars()
         );
     }
 
@@ -39,6 +39,6 @@ class FilesController extends ControllerAbstract
      */
     public function connector()
     {
-        return $this->r_files->connector();
+        return $this->rFiles->connector();
     }
 }

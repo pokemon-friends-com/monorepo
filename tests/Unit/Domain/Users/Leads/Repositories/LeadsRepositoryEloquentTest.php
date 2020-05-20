@@ -20,30 +20,30 @@ class LeadsRepositoryEloquentTest extends TestCase
     /**
      * @var LeadsRepositoryEloquent|null
      */
-    protected $r_leads = null;
+    protected $rLeads = null;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->r_leads = app()->make(LeadsRepositoryEloquent::class);
+        $this->rLeads = app()->make(LeadsRepositoryEloquent::class);
     }
 
     public function testCheckIfRepositoryIsCorrectlyInstantiated()
     {
-        $this->assertTrue($this->r_leads instanceof LeadsRepositoryEloquent);
+        $this->assertTrue($this->rLeads instanceof LeadsRepositoryEloquent);
     }
 
     public function testModel()
     {
-        $this->assertEquals(Lead::class, $this->r_leads->model());
+        $this->assertEquals(Lead::class, $this->rLeads->model());
     }
 
     public function testCreate()
     {
         $rawUser = factory(Lead::class)->raw();
         Event::fake();
-        $lead = $this->r_leads->create($rawUser);
+        $lead = $this->rLeads->create($rawUser);
         Event::assertDispatched(LeadCreatedEvent::class, function ($event) use ($lead) {
             return $event->lead->id === $lead->id;
         });
@@ -55,7 +55,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         $lead = factory(Lead::class)->create();
         $rawUser = factory(Lead::class)->raw();
         Event::fake();
-        $lead = $this->r_leads->update($rawUser, $lead->id);
+        $lead = $this->rLeads->update($rawUser, $lead->id);
         Event::assertDispatched(LeadUpdatedEvent::class, function ($event) use ($lead) {
             return $event->lead->id === $lead->id;
         });
@@ -66,7 +66,7 @@ class LeadsRepositoryEloquentTest extends TestCase
     {
         $lead = factory(Lead::class)->create();
         Event::fake();
-        $lead = $this->r_leads->delete($lead->id);
+        $lead = $this->rLeads->delete($lead->id);
         Event::assertDispatched(LeadDeletedEvent::class, function ($event) use ($lead) {
             return $event->lead->id === $lead->id;
         });
@@ -79,7 +79,7 @@ class LeadsRepositoryEloquentTest extends TestCase
 
     public function testGetCivilities()
     {
-        $this->assertEquals(User::CIVILITIES, $this->r_leads->getCivilities()->toArray());
+        $this->assertEquals(User::CIVILITIES, $this->rLeads->getCivilities()->toArray());
     }
 
     public function testAllWithTrashed()
@@ -89,7 +89,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         factory(Lead::class)->create();
         factory(Lead::class)->create();
         factory(Lead::class)->states('deleted')->create();
-        $this->assertEquals(3, $this->r_leads->allWithTrashed()->count());
+        $this->assertEquals(3, $this->rLeads->allWithTrashed()->count());
     }
 
     public function testOnlyTrashed()
@@ -99,7 +99,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         factory(Lead::class)->create();
         factory(Lead::class)->create();
         factory(Lead::class)->states('deleted')->create();
-        $this->assertEquals(1, $this->r_leads->onlyTrashed()->count());
+        $this->assertEquals(1, $this->rLeads->onlyTrashed()->count());
     }
 
     public function testFilterByName()
@@ -109,7 +109,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         // @todo xABE : Lead have to be soft deletable
 //        factory(Lead::class)->states('deleted')->create();
         $repositoryLead = $this
-            ->r_leads
+            ->rLeads
             ->skipPresenter()
             ->filterByName($lead->first_name)
             ->get();
@@ -124,7 +124,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         // @todo xABE : Lead have to be soft deletable
 //        factory(Lead::class)->states('deleted')->create();
         $repositoryLead = $this
-            ->r_leads
+            ->rLeads
             ->skipPresenter()
             ->filterByEmail($lead->email)
             ->get();
@@ -139,7 +139,7 @@ class LeadsRepositoryEloquentTest extends TestCase
          */
         $lead = factory(Lead::class)->raw();
         $repositoryLead = $this
-            ->r_leads
+            ->rLeads
             ->qualifyLead($lead['civility'], $lead['first_name'], $lead['last_name'], $lead['email']);
         $this->assertEquals($lead['email'], $repositoryLead->email);
         /*
@@ -150,7 +150,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         // @todo xABE : Lead have to be soft deletable
 //        factory(Lead::class)->states('deleted')->create();
         $repositoryLead = $this
-            ->r_leads
+            ->rLeads
             ->qualifyLead($lead->civility, $lead->first_name, $lead->last_name, $lead->email);
         $this->assertEquals($lead->id, $repositoryLead->id);
     }
@@ -158,7 +158,7 @@ class LeadsRepositoryEloquentTest extends TestCase
     public function testGetLeadsPaginated()
     {
         factory(Lead::class)->times(30)->create();
-        $leads = $this->r_leads->getLeadsPaginated();
+        $leads = $this->rLeads->getLeadsPaginated();
         $this->assertEquals(12, $leads['meta']['pagination']['per_page']);
         $this->assertEquals(30, $leads['meta']['pagination']['total']);
         $this->assertEquals(12, count($leads['data']));
@@ -170,7 +170,7 @@ class LeadsRepositoryEloquentTest extends TestCase
         $lead = factory(Lead::class)->create();
         // @todo xABE : Lead have to be soft deletable
 //        factory(Lead::class)->states('deleted')->create();
-        $user = $this->r_leads->createUserFromLead($lead);
+        $user = $this->rLeads->createUserFromLead($lead);
         $this->assertEquals($lead->email, $user->email);
     }
 }

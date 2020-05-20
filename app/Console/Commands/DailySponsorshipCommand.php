@@ -28,18 +28,18 @@ class DailySponsorshipCommand extends CommandAbstract
     /**
      * @var ProfilesRepositoryEloquent
      */
-    protected $r_profiles;
+    protected $rProfiles;
 
     /**
      * GenerateSitemapCommand constructor.
      *
-     * @param ProfilesRepositoryEloquent $r_profiles
+     * @param ProfilesRepositoryEloquent $rProfiles
      */
-    public function __construct(ProfilesRepositoryEloquent $r_profiles)
+    public function __construct(ProfilesRepositoryEloquent $rProfiles)
     {
         parent::__construct();
 
-        $this->r_profiles = $r_profiles;
+        $this->rProfiles = $rProfiles;
     }
 
     /**
@@ -50,7 +50,7 @@ class DailySponsorshipCommand extends CommandAbstract
     public function handle()
     {
         $this
-            ->r_profiles
+            ->rProfiles
             ->scopeQuery(function (Builder $model) {
                 // remove default `order by updated_at desc`
                 $model->getQuery()->orders = null;

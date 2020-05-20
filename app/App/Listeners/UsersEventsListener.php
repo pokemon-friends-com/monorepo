@@ -17,6 +17,7 @@ class UsersEventsListener
 
     /**
      * Register the listeners for the subscriber.
+     * @SuppressWarnings("unused")
      *
      * @param  \Illuminate\Events\Dispatcher $events
      */
@@ -46,6 +47,7 @@ class UsersEventsListener
 
     /**
      * Handle created event.
+     * @SuppressWarnings("unused")
      *
      * @param UserCreatedEvent $event
      */
@@ -56,6 +58,7 @@ class UsersEventsListener
 
     /**
      * Handle updated event.
+     * @SuppressWarnings("unused")
      *
      * @param UserUpdatedEvent $event
      */
@@ -66,6 +69,7 @@ class UsersEventsListener
 
     /**
      * Handle deleted event.
+     * @SuppressWarnings("unused")
      *
      * @param UserDeletedEvent $event
      */
@@ -76,6 +80,7 @@ class UsersEventsListener
 
     /**
      * Handle user that tried to delete his own user account event.
+     * @SuppressWarnings("unused")
      *
      * @param UserTriedToDeleteHisOwnAccountEvent $event
      */
@@ -87,6 +92,7 @@ class UsersEventsListener
 
     /**
      * Handle refresh the session of current.
+     * @SuppressWarnings("unused")
      *
      * @param UserRefreshSessionEvent $event
      */

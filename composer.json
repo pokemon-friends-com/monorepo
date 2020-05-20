@@ -14,6 +14,7 @@
         "ext-gd": "*",
         "ext-imagick": "*",
         "ext-json": "*",
+        "ext-dom": "*",
         "arubacao/asset-cdn": "^0.2.2",
         "barryvdh/laravel-elfinder": "^0.4.2",
         "fedeisas/laravel-mail-css-inliner": "^2.3",
@@ -41,6 +42,7 @@
         "spatie/laravel-honeypot": "^2.0",
         "spatie/laravel-medialibrary": "^7.10",
         "spatie/laravel-sitemap": "^5.3",
+        "spatie/schema-org": "^2.13",
         "yaquawa/laravel-email-reset": "dev-feat/configure-callback"
     },
     "require-dev": {
@@ -55,6 +57,7 @@
         "martinlindhe/laravel-vue-i18n-generator": "^0.1.46",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
+        "phpmd/phpmd": "^2.8",
         "phpstan/phpstan": "^0.12.19",
         "phpunit/phpunit": "^8.3",
         "sebastian/phpcpd": "^5.0",

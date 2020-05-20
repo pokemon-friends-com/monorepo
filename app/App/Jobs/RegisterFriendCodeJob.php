@@ -2,6 +2,7 @@
 
 namespace template\App\Jobs;
 
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -47,12 +48,12 @@ class RegisterFriendCodeJob implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @param UsersRegistrationsRepositoryEloquent $r_users
-     * @param ProfilesRepositoryEloquent $r_profiles
+     * @param UsersRegistrationsRepositoryEloquent $rUsers
+     * @param ProfilesRepositoryEloquent $rProfiles
      */
     public function handle(
-        UsersRegistrationsRepositoryEloquent $r_users,
-        ProfilesRepositoryEloquent $r_profiles
+        UsersRegistrationsRepositoryEloquent $rUsers,
+        ProfilesRepositoryEloquent $rProfiles
     ) {
         try {
             $validator = Validator::make(
@@ -71,17 +72,17 @@ class RegisterFriendCodeJob implements ShouldQueue
             );
 
             if ($validator->fails()) {
-                throw new \Exception($validator->errors());
+                throw new Exception($validator->errors());
             }
 
-            $profile = $r_profiles->findByField('friend_code', $this->friendCode);
+            $profile = $rProfiles->findByField('friend_code', $this->friendCode);
 
             if ($profile->count() && $profile->first()->is_claimable) {
                 $profile->first()->friend_code = $this->friendCode;
                 $profile->first()->team_color = $this->teamColor;
                 $profile->first()->save();
             } elseif (!$profile->count()) {
-                $user = $r_users
+                $user = $rUsers
                     ->registerUser(
                         Profile::claimableEmail($this->friendCode),
                         bcrypt($this->friendCode)

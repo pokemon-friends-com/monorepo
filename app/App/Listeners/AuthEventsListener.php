@@ -36,6 +36,7 @@ class AuthEventsListener
 
     /**
      * Handle Login events.
+     * @SuppressWarnings("unused")
      *
      * @param Login $event
      */
@@ -47,6 +48,7 @@ class AuthEventsListener
     /**
      * Handle Logout events.
      * @codeCoverageIgnore
+     * @SuppressWarnings("unused")
      *
      * @param Logout $event
      */
@@ -57,6 +59,7 @@ class AuthEventsListener
 
     /**
      * Handle PasswordReset events.
+     * @SuppressWarnings("unused")
      *
      * @param PasswordReset $event
      */

@@ -27,13 +27,14 @@ stages:
 
 jobs:
   fast_finish: true
+  allow_failures:
+      - name: "PHP mess detector"
   include:
   - stage: test
     name: PHP standard PSR12
     language: php
     php: 7.3
     env:
-      - CODECLIMATE=off
       - APP_ENV=testing
     before_install:
       - printf "\n" | pecl install imagick
@@ -45,7 +46,32 @@ jobs:
       - vendor/bin/phpcs --standard=PSR12 database/factories
       - vendor/bin/phpcs --standard=PSR12 routes
       - vendor/bin/phpcs --standard=PSR12 tests --extensions=php
+  - stage: test
+    name: PHP static analysis tool
+    language: php
+    php: 7.3
+    env:
+      - APP_ENV=testing
+    before_install:
+      - printf "\n" | pecl install imagick
+    install:
+      - composer install -o --no-interaction --prefer-dist --no-suggest
+    script:
       - vendor/bin/phpstan analyse -l 0 app components tests
+  - stage: test
+    name: PHP mess detector
+    language: php
+    php: 7.3
+    env:
+      - APP_ENV=testing
+    before_install:
+      - printf "\n" | pecl install imagick
+    install:
+      - composer install -o --no-interaction --prefer-dist --no-suggest
+    script:
+      - vendor/bin/phpmd app text phpmd.xml
+      - vendor/bin/phpmd components text phpmd.xml
+      - vendor/bin/phpmd tests text phpmd.xml
   - stage: test
     name: PHP tests
     language: php

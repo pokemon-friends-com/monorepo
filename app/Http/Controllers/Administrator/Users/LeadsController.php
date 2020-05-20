@@ -12,16 +12,16 @@ class LeadsController extends ControllerAbstract
     /**
      * @var null
      */
-    protected $r_leads = null;
+    protected $rLeads = null;
 
     /**
      * LeadsController constructor.
      *
-     * @param LeadsRepositoryEloquent $r_leads
+     * @param LeadsRepositoryEloquent $rLeads
      */
-    public function __construct(LeadsRepositoryEloquent $r_leads)
+    public function __construct(LeadsRepositoryEloquent $rLeads)
     {
-        $this->r_leads = $r_leads;
+        $this->rLeads = $rLeads;
     }
 
     /**
@@ -32,7 +32,7 @@ class LeadsController extends ControllerAbstract
      */
     public function index()
     {
-        $leads = $this->r_leads->getLeadsPaginated();
+        $leads = $this->rLeads->getLeadsPaginated();
 
         return view('administrator.users.leads.index', compact('leads'));
     }
@@ -47,7 +47,7 @@ class LeadsController extends ControllerAbstract
      */
     public function update(Lead $lead)
     {
-        $this->r_leads->createUserFromLead($lead);
+        $this->rLeads->createUserFromLead($lead);
 
         return redirect(route('administrator.users.leads.index'))
             ->with('message-success', trans('users.leads.lead_succefully_transformed_to_user'));

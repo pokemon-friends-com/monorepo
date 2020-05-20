@@ -58,7 +58,7 @@ return [
 </ul>",
 
     'terms' => 'Terms of Service',
-    'anonymous.meta.description_terms' => "www.pokemon-friends.com is a friend sharing code platform from the Pokemon Go game. The company is unrelated to the publisher of the game.",
+    'terms.description' => "www.pokemon-friends.com is a friend sharing code platform from the Pokemon Go game. The company is unrelated to the publisher of the game.",
     'terms-of-services' => '<h2>Introduction</h2>
 <p>
     <a href=":home_url">www.pokemon-friends.com</a> is a friend sharing code platform from the Pokemon Go game.
@@ -131,12 +131,14 @@ return [
     The entire source code of this website is available on <a href="https://github.com/pokemon-friends-com/www">Github.com</a>
 </p>',
 
-    'trainer.meta.title' => 'Let\'s be friends on Pokemon Go!',
-    'trainer.meta.description' => 'This trainer, :friend_code, is looking for new Pokemon Go friends!',
+    'trainer' => 'Let\'s be friends on Pokemon Go! :friend_code',
+    'trainer.description' => 'This trainer, :friend_code, is looking for new Pokemon Go friends!',
     'trainer.social_share_qr' => 'Share your QR code on your social networks',
 
     'title' => 'Users',
-    'trainers.title' => 'Trainers',
+    'trainers' => 'Trainers',
+    'trainers.title' => 'Trainers - page :page',
+    'trainers.description' => 'Trainers list - page :page',
     'create.title' => 'New user',
     'edit.title' => 'Edit user',
     'show.title' => 'User :username',

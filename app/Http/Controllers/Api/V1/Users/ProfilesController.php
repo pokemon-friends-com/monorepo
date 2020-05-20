@@ -19,16 +19,16 @@ class ProfilesController extends ControllerAbstract
     /**
      * @var ProfilesRepositoryEloquent|null
      */
-    protected $r_profiles = null;
+    protected $rProfiles = null;
 
     /**
      * UserController constructor.
      *
-     * @param ProfilesRepositoryEloquent $r_profiles
+     * @param ProfilesRepositoryEloquent $rProfiles
      */
-    public function __construct(ProfilesRepositoryEloquent $r_profiles)
+    public function __construct(ProfilesRepositoryEloquent $rProfiles)
     {
-        $this->r_profiles = $r_profiles;
+        $this->rProfiles = $rProfiles;
     }
 
     /**
@@ -38,13 +38,13 @@ class ProfilesController extends ControllerAbstract
     {
         if (!Auth::guard('api')->check()) {
             $this
-                ->r_profiles
+                ->rProfiles
                 ->pushCriteria(NotAuthenticatedLimitCriteria::class)
                 ->pushCriteria(WhereSponsoredCriteria::class);
         }
 
         $profiles = $this
-            ->r_profiles
+            ->rProfiles
             ->paginate();
 
         return response()->json($profiles);
@@ -62,7 +62,7 @@ class ProfilesController extends ControllerAbstract
     {
         try {
             $this
-                ->r_profiles
+                ->rProfiles
                 ->updateUserProfileWithRequest($request, $user);
 
             $user = (new UserTransformer())->transform($user->refresh());

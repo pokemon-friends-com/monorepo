@@ -12,14 +12,14 @@ class AuthenticatedUserHasRole
     /**
      * The authentication factory instance.
      *
-     * @var \Illuminate\Contracts\Auth\Factory
+     * @var Auth
      */
     protected $auth;
 
     /**
      * Create a new middleware instance.
      *
-     * @param  \Illuminate\Contracts\Auth\Factory $auth
+     * @param Auth $auth
      *
      * @return void
      */
@@ -39,17 +39,16 @@ class AuthenticatedUserHasRole
      */
     public function handle($request, Closure $next, ...$roles)
     {
-
-        $has_access = false;
+        $hasAccess = false;
 
         foreach ($roles as $role) {
             if (Gate::allows($role, $this->auth->user())) {
-                $has_access = true;
+                $hasAccess = true;
                 break;
             }
         }
 
-        if (false === $has_access) {
+        if (false === $hasAccess) {
             abort(403);
         }
 

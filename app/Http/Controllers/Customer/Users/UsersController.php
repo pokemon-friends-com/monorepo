@@ -22,24 +22,24 @@ class UsersController extends ControllerAbstract
     /**
      * @var UsersRepositoryEloquent
      */
-    protected $r_users;
+    protected $rUsers;
 
     /**
      * @var ProfilesRepositoryEloquent
      */
-    protected $r_profiles;
+    protected $rProfiles;
 
     /**
      * UsersController constructor.
      *
-     * @param UsersRepositoryEloquent $r_users
+     * @param UsersRepositoryEloquent $rUsers
      */
     public function __construct(
-        UsersRepositoryEloquent $r_users,
-        ProfilesRepositoryEloquent $r_profiles
+        UsersRepositoryEloquent $rUsers,
+        ProfilesRepositoryEloquent $rProfiles
     ) {
-        $this->r_users = $r_users;
-        $this->r_profiles = $r_profiles;
+        $this->rUsers = $rUsers;
+        $this->rProfiles = $rProfiles;
     }
 
     /**
@@ -50,18 +50,18 @@ class UsersController extends ControllerAbstract
      */
     public function edit(User $user)
     {
-        $profile = $this->r_profiles->getUserProfile($user);
-        $teams = $this->r_profiles->getTeamsColors();
+        $profile = $this->rProfiles->getUserProfile($user);
+        $teams = $this->rProfiles->getTeamsColors();
         $families_situations = $this
-            ->r_profiles
+            ->rProfiles
             ->getFamilySituations()
             ->mapWithKeys(function ($item) {
                 return [$item => trans("users.profiles.family_situation.{$item}")];
             });
-        $timezones = $this->r_users->getTimezones();
-        $locales = $this->r_users->getLocales();
+        $timezones = $this->rUsers->getTimezones();
+        $locales = $this->rUsers->getLocales();
         $civilities = $this
-            ->r_users
+            ->rUsers
             ->getCivilities()
             ->mapWithKeys(function ($item) {
                 return [$item => trans("users.civility.{$item}")];
@@ -88,7 +88,7 @@ class UsersController extends ControllerAbstract
      */
     public function update(User $user, ProfileFormRequest $request)
     {
-        $this->r_profiles->updateUserProfileWithRequest($request, $user);
+        $this->rProfiles->updateUserProfileWithRequest($request, $user);
 
         return redirect(route('customer.users.edit', ['user' => $user->uniqid]));
     }
@@ -100,7 +100,7 @@ class UsersController extends ControllerAbstract
      */
     public function dashboard(Request $request)
     {
-        $users = $this->r_users->getTrainers(false)->paginate(12);
+        $users = $this->rUsers->getTrainers(false)->paginate(12);
         $user = (new TrainerTransformer())->transform(Auth::user());
 
         return view('customer.users.users.dashboard', compact(

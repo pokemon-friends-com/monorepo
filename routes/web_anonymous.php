@@ -19,7 +19,7 @@ Route::group(
         'namespace' => 'Anonymous',
     ],
     function () {
-        Route::get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'SitemapController@index']);
+        Route::get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'SiteMapController@index']);
         Route::group(['namespace' => 'Files'], function () {
             Route::get('files/media/{hash}', ['as' => 'files.media', 'uses' => 'MediasController@media']);
             Route::get('files/document/{path}', [

@@ -9,6 +9,8 @@ use Spatie\MediaLibrary\
     HasMedia\HasMedia,
     HasMedia\HasMediaTrait
 };
+use Spatie\SchemaOrg\Barcode;
+use Spatie\SchemaOrg\Schema;
 use template\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
 use template\Infrastructure\Contracts\
 {
@@ -109,6 +111,19 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         $thirdPart = substr($this->friend_code, 8, 4);
 
         return "{$firstPart}-{$secondPart}-{$thirdPart}";
+    }
+
+    /**
+     * Friend_code_schema mutator.
+     *
+     * @return Barcode
+     * @throws \Exception
+     */
+    public function getFriendCodeSchemaAttribute(): Barcode
+    {
+        return Schema::barcode()
+            ->name($this->friend_code)
+            ->productionCompany(Schema::organization()->name('Niantic'));
     }
 
     /**

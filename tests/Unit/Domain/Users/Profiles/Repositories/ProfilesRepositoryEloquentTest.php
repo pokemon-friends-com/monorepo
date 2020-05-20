@@ -21,30 +21,30 @@ class ProfilesRepositoryEloquentTest extends TestCase
     /**
      * @var ProfilesRepositoryEloquent|null
      */
-    protected $r_profiles = null;
+    protected $rProfiles = null;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->r_profiles = app()->make(ProfilesRepositoryEloquent::class);
+        $this->rProfiles = app()->make(ProfilesRepositoryEloquent::class);
     }
 
     public function testCheckIfRepositoryIsCorrectlyInstantiated()
     {
-        $this->assertTrue($this->r_profiles instanceof ProfilesRepositoryEloquent);
+        $this->assertTrue($this->rProfiles instanceof ProfilesRepositoryEloquent);
     }
 
     public function testModel()
     {
-        $this->assertEquals(Profile::class, $this->r_profiles->model());
+        $this->assertEquals(Profile::class, $this->rProfiles->model());
     }
 
     public function testCreate()
     {
         $user = factory(User::class)->create();
         $profile = factory(Profile::class)->raw(['user_id' => $user->id]);
-        $profile = $this->r_profiles->create($profile);
+        $profile = $this->rProfiles->create($profile);
         $this->assertDatabaseHas('users_profiles', $profile->toArray());
     }
 
@@ -54,7 +54,7 @@ class ProfilesRepositoryEloquentTest extends TestCase
         $profile = factory(Profile::class)->create(['user_id' => $user->id]);
         $newProfile = factory(Profile::class)->raw(['user_id' => $user->id]);
         Event::fake();
-        $profile = $this->r_profiles->update($newProfile, $profile->id);
+        $profile = $this->rProfiles->update($newProfile, $profile->id);
         Event::assertDispatched(ProfileUpdatedEvent::class, function ($event) use ($profile) {
             return $event->profile->id === $profile->id;
         });
@@ -67,7 +67,7 @@ class ProfilesRepositoryEloquentTest extends TestCase
     {
         $user = factory(User::class)->create();
         $profile = factory(Profile::class)->create(['user_id' => $user->id]);
-        $profileId = $this->r_profiles->delete($profile->id);
+        $profileId = $this->rProfiles->delete($profile->id);
         $this->assertEquals($profile->id, $profileId);
     }
 
@@ -75,7 +75,7 @@ class ProfilesRepositoryEloquentTest extends TestCase
     {
         $this->assertEquals(
             new Collection(Profile::FAMILY_SITUATIONS),
-            $this->r_profiles->getFamilySituations()
+            $this->rProfiles->getFamilySituations()
         );
     }
 }
