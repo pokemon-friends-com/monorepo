@@ -20,6 +20,7 @@ cache:
     - $HOME/node_modules
 
 stages:
+  - codestyle
   - test
   - name: deploy
     if: (NOT type IN (pull_request)) AND (branch = master)
@@ -30,7 +31,7 @@ jobs:
   allow_failures:
       - name: "PHP mess detector"
   include:
-  - stage: test
+  - stage: codestyle
     name: PHP standard PSR12
     language: php
     php: 7.3
@@ -46,7 +47,7 @@ jobs:
       - vendor/bin/phpcs --standard=PSR12 database/factories
       - vendor/bin/phpcs --standard=PSR12 routes
       - vendor/bin/phpcs --standard=PSR12 tests --extensions=php
-  - stage: test
+  - stage: codestyle
     name: PHP static analysis tool
     language: php
     php: 7.3
@@ -58,7 +59,7 @@ jobs:
       - composer install -o --no-interaction --prefer-dist --no-suggest
     script:
       - vendor/bin/phpstan analyse -l 0 app components tests
-  - stage: test
+  - stage: codestyle
     name: PHP mess detector
     language: php
     php: 7.3
