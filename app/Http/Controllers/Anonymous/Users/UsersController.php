@@ -118,4 +118,23 @@ class UsersController extends ControllerAbstract
 
         return view('anonymous.users.users.terms', compact('metadata'));
     }
+
+    /**
+     * Get user QR code image in alert box.
+     *
+     * @param User $user
+     *
+     * @return \Illuminate\Http\Response|mixed
+     */
+    public function alert(User $user)
+    {
+        if (!$user || $user->deleted_at || !$user->profile->friend_code) {
+            abort(404);
+        }
+
+        $qr = route('v1.users.qr', ['user' => $user->uniqid]);
+        $friend_code = $user->profile->friend_code;
+
+        return view('anonymous.users.users.alert', compact('qr', 'friend_code'));
+    }
 }

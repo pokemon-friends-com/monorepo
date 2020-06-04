@@ -4,7 +4,7 @@
     </div>
     <div class="row">
         @foreach ($trainers['data'] as $trainer)
-            <div id="{{ $trainer['friend_code'] }}" class="col-6 col-lg-2">
+            <div id="{{ $trainer['friend_code']['default'] }}" class="col-12 col-md-4 col-lg-3">
                 @include('partials.card_trainer', ['trainer' => $trainer])
             </div>
         @endforeach
