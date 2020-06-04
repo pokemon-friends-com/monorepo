@@ -3,33 +3,6 @@
 @section('title', $metadata['title'])
 @section('description', $metadata['description'])
 
-@section('css')
-<style>
-    .ekko-lightbox-nav-overlay a>* {
-        color: var(--red);
-    }
-</style>
-@endsection
-
-@section('js')
-<script>
-  $(function () {
-    $(document).ready(function() {
-      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-        event.preventDefault();
-        $(this).ekkoLightbox({
-          alwaysShowClose: true
-        });
-      });
-      (new LazyLoad({
-        elements_selector: ".lazy"
-      }))
-      .update();
-    });
-  })
-</script>
-@endsection
-
 @section('content')
 <div class="content-header">
     <div class="container">
@@ -67,7 +40,7 @@
             <div class="col-12">
                 @include('partials.row_socials_news')
             </div>
-            <div class="col-8">
+            <div class="col-12 col-md-8">
                 <div class="card">
                     {!! Form::open(['route' => ['anonymous.contact.store'], 'method' => 'POST', 'data-user_identifier' => (Auth::check() ? Auth::user()->uniqid : 0)]) !!}
                     @honeypot
@@ -183,7 +156,7 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-            <div class="col-4">
+            <div class="d-none d-md-block col-md-4">
                 @include('partials.card_official_doc')
                 @include('partials.card_our_discord')
             </div>

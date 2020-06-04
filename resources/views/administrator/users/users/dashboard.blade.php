@@ -18,9 +18,8 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <example-component></example-component>
-            </div>
+            <div class="col-12"><example-component></example-component></div>
+            <div class="col-12"><passport-personal-access-tokens></passport-personal-access-tokens></div>
         </div>
     </div>
 </section>

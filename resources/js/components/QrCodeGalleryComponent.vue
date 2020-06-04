@@ -5,7 +5,7 @@
        data-toggle="lightbox"
        :data-title="friend_code"
        data-gallery="trainers"
-       v-ekko-lightbox></a>
+       @click="ekkoLightbox"></a>
   </div>
 </template>
 
@@ -38,6 +38,13 @@ export default {
       });
 
       return urlImg;
+    },
+  },
+  methods: {
+    ekkoLightbox: (e) => {
+      jQuery(e.target).ekkoLightbox({
+        alwaysShowClose: true,
+      });
     },
   },
 };

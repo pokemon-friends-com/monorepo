@@ -19,7 +19,10 @@ class TrainerTransformer extends TransformerAbstract
     {
         return [
             'identifier' => $model->uniqid,
-            'friend_code' => $model->profile->formated_friend_code,
+            'friend_code' => [
+                'default' => $model->profile->friend_code,
+                'formated' => $model->profile->formated_friend_code,
+            ],
             'team_color' => $model->profile->team_color,
             'qr' => route('v1.users.qr', ['user' => $model->uniqid]),
         ];
