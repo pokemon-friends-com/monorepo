@@ -5815,16 +5815,16 @@
         },
         {
             "name": "spatie/schema-org",
-            "version": "2.13.0",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/schema-org.git",
-                "reference": "1000009d7d25666b4c6a81312e6ebff24b46c644"
+                "reference": "42dccbb4986e9e98281f533f238bff4c2064aa6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/schema-org/zipball/1000009d7d25666b4c6a81312e6ebff24b46c644",
-                "reference": "1000009d7d25666b4c6a81312e6ebff24b46c644",
+                "url": "https://api.github.com/repos/spatie/schema-org/zipball/42dccbb4986e9e98281f533f238bff4c2064aa6f",
+                "reference": "42dccbb4986e9e98281f533f238bff4c2064aa6f",
                 "shasum": ""
             },
             "require": {
@@ -5832,7 +5832,7 @@
                 "php": "^7.3"
             },
             "require-dev": {
-                "graham-campbell/analyzer": "^2.1.1",
+                "graham-campbell/analyzer": "^2.3",
                 "league/flysystem": "^1.0",
                 "phpunit/phpunit": "^8.0",
                 "symfony/console": "^3.2",
@@ -5870,7 +5870,7 @@
                 "schema-org",
                 "spatie"
             ],
-            "time": "2020-04-17T11:50:06+00:00"
+            "time": "2020-06-03T14:01:07+00:00"
         },
         {
             "name": "spatie/temporary-directory",
