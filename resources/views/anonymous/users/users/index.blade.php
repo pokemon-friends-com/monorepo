@@ -32,9 +32,9 @@
         @if (!Auth::check())
         <div class="container-fluid">
             <div class="row pt-2 pb-2 align-items-center">
-                <div class="col-4">@include('partials.card_amazon')</div>
-                <div class="col-4">@include('partials.card_official_doc')</div>
-                <div class="col-4">
+                <div class="col-12 col-md-4">@include('partials.card_amazon')</div>
+                <div class="col-12 col-md-4 d-none d-md-block">@include('partials.card_official_doc')</div>
+                <div class="col-12 col-md-4">
                     <div class="alert alert-warning pt-2 pb-2 mb-1">Register to see more trainers friends codes!</div>
                     @include('partials.card_register')
                 </div>
@@ -43,7 +43,7 @@
         @endif
         <div class="row">
             @foreach ($users['data'] as $trainer)
-            <div id="{{ $trainer['friend_code'] }}" class="col-6 col-lg-2">
+            <div id="{{ $trainer['friend_code']['default'] }}" class="col-12 col-md-4 col-lg-3">
                 @include('partials.card_trainer', ['trainer' => $trainer])
             </div>
             @endforeach

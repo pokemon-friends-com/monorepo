@@ -6,6 +6,7 @@
 @import "~admin-lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4";
 @import "~admin-lte/plugins/ekko-lightbox/ekko-lightbox.css";
 @import "~admin-lte/build/scss/AdminLTE";
+//@import '~bootstrap-vue/src/index.scss';
 @import "~flatpickr/dist/flatpickr.css";
 @import "~flatpickr/dist/themes/airbnb.css";
 
@@ -26,4 +27,22 @@ $text-color: #fff;
 
 .ekko-lightbox-nav-overlay a>* {
   color: var(--red);
+}
+.input-guard {
+  margin-right: 0;
+  position: relative;
+  flex: 1;
+}
+.input-guard__text {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.input-guard .form-control {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  color: transparent;
 }

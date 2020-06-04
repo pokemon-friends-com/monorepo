@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         // @codeCoverageIgnoreStart
-        if ($this->shouldReport($exception)) {
+        if (app()->environment('production') && $this->shouldReport($exception)) {
             return response()
                 ->view(
                     'errors.500',

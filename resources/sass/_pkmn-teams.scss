@@ -25,6 +25,7 @@
 .bg-team-yellow,
 .bg-team-instinct {
   @extend .bg-warning !optional;
+  color: $white !important;
 }
 
 @font-face {
