@@ -34,55 +34,55 @@ class LoginControllerTest extends TestCase
             ->assertSeeText('Register');
     }
 
-    public function testToVisitLoginPageInFrench()
-    {
-        $this
-            ->get('/login?locale=fr')
-            ->assertSuccessful()
-            ->assertSeeText('Se connecter')
-            ->assertSeeText('Changer votre mot de passe')
-            ->assertSeeText(e('S\'inscrire'));
-    }
+    // public function testToVisitLoginPageInFrench()
+    // {
+    //     $this
+    //         ->get('/login?locale=fr')
+    //         ->assertSuccessful()
+    //         ->assertSeeText('Se connecter')
+    //         ->assertSeeText('Changer votre mot de passe')
+    //         ->assertSeeText(e('S\'inscrire'));
+    // }
 
-    public function testToVisitLoginPageInGerman()
-    {
-        $this
-            ->get('/login?locale=de')
-            ->assertSuccessful()
-            ->assertSeeText('Einloggen')
-            ->assertSeeText('Ändern Sie Ihr Passwort')
-            ->assertSeeText('Registrieren');
-    }
+    // public function testToVisitLoginPageInGerman()
+    // {
+    //     $this
+    //         ->get('/login?locale=de')
+    //         ->assertSuccessful()
+    //         ->assertSeeText('Einloggen')
+    //         ->assertSeeText('Ändern Sie Ihr Passwort')
+    //         ->assertSeeText('Registrieren');
+    // }
 
-    public function testToVisitLoginPageInSpanish()
-    {
-        $this
-            ->get('/login?locale=es')
-            ->assertSuccessful()
-            ->assertSeeText('Iniciar sesión')
-            ->assertSeeText('Cambia tu contraseña')
-            ->assertSeeText('Registrarse');
-    }
+    // public function testToVisitLoginPageInSpanish()
+    // {
+    //     $this
+    //         ->get('/login?locale=es')
+    //         ->assertSuccessful()
+    //         ->assertSeeText('Iniciar sesión')
+    //         ->assertSeeText('Cambia tu contraseña')
+    //         ->assertSeeText('Registrarse');
+    // }
 
-    public function testToVisitLoginPageInRussian()
-    {
-        $this
-            ->get('/login?locale=ru')
-            ->assertSuccessful()
-            ->assertSeeText('Авторизоваться')
-            ->assertSeeText('Изменить пароль')
-            ->assertSeeText('регистр');
-    }
+    // public function testToVisitLoginPageInRussian()
+    // {
+    //     $this
+    //         ->get('/login?locale=ru')
+    //         ->assertSuccessful()
+    //         ->assertSeeText('Авторизоваться')
+    //         ->assertSeeText('Изменить пароль')
+    //         ->assertSeeText('регистр');
+    // }
 
-    public function testToVisitLoginPageInChinese()
-    {
-        $this
-            ->get('/login?locale=zh-CN')
-            ->assertSuccessful()
-            ->assertSeeText('登录')
-            ->assertSeeText('更改您的密码')
-            ->assertSeeText('寄存器');
-    }
+    // public function testToVisitLoginPageInChinese()
+    // {
+    //     $this
+    //         ->get('/login?locale=zh-CN')
+    //         ->assertSuccessful()
+    //         ->assertSeeText('登录')
+    //         ->assertSeeText('更改您的密码')
+    //         ->assertSeeText('寄存器');
+    // }
 
     public function testToLogAsAdministrator()
     {

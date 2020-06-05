@@ -22,7 +22,11 @@ return [
     |
     */
 
-    'description' => 'Pokemon go "friends codes" sharing community',
+    'description' => 'Pokemon go "friends codes" sharing community.'
+        . ' Create your own qr code, with your Pokemon go friend code,'
+        . ' and share it on social networks easily with our app.'
+        . ' Get new friends by adding available friend code to'
+        . ' your Pokemon go account.',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +35,7 @@ return [
     |
     */
 
-    'keywords' => 'pokemon,pokemon go,community,friends,pokemon go friends,pokemon friends, friend code, pokemon go code',
+    'keywords' => 'pokemon,pokemon go,community,friends,pokemon go friends,pokemon friends,friend code,pokemon go code,qrcode,qr,qr code,code,sharing,community',
 
     /*
     |--------------------------------------------------------------------------
