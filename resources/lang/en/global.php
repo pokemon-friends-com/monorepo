@@ -32,6 +32,7 @@ return [
     'datetime_format' => 'm/d/Y H\hi',
     'today' => 'Today',
     'information' => 'Information',
+    'copied' => 'copied',
 
     'automated_requested_email' => 'This email is an automatic message sent following your request.',
 
