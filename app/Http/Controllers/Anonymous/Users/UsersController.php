@@ -58,7 +58,7 @@ class UsersController extends ControllerAbstract
      *
      * @param Request $request
      * @param User $user
-     * 
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Request $request, User $user)
