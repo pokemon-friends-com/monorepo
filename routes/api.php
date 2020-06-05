@@ -58,6 +58,22 @@ Route::group(
         'prefix' => 'v1',
         'as' => 'v1.',
         'namespace' => 'Api\V1',
+        'middleware' => ['api', 'client'],
+    ],
+    function () {
+        Route::group(['namespace' => 'Users'], function () {
+            Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+                Route::get('channels', ['as' => 'user', 'uses' => 'UsersController@channels']);
+            });
+        });
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'v1',
+        'as' => 'v1.',
+        'namespace' => 'Api\V1',
         'middleware' => ['api', 'auth:api'],
     ],
     function () {

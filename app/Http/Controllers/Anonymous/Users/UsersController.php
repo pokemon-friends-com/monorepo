@@ -56,9 +56,12 @@ class UsersController extends ControllerAbstract
     /**
      * Show the specified resource.
      *
+     * @param Request $request
+     * @param User $user
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(User $user)
+    public function show(Request $request, User $user)
     {
         if (!$user || $user->deleted_at || !$user->profile) {
             abort(404);
@@ -75,6 +78,10 @@ class UsersController extends ControllerAbstract
             ->profile
             ->friend_code_schema
             ->about($metadata['description']);
+
+        if ($request->has('view') && $request->get('view') === 'qrcode') {
+            return view('anonymous.users.users.stream', compact('qr', 'friend_code'));
+        }
 
         return view(
             'anonymous.users.users.show',
@@ -98,10 +105,7 @@ class UsersController extends ControllerAbstract
             ->getTrainers()
             ->paginate(config('repository.pagination.limit'));
 
-        return view('anonymous.users.users.dashboard', compact(
-            'metadata',
-            'users',
-        ));
+        return view('anonymous.users.users.dashboard', compact('metadata', 'users'));
     }
 
     /**
@@ -117,24 +121,5 @@ class UsersController extends ControllerAbstract
         ];
 
         return view('anonymous.users.users.terms', compact('metadata'));
-    }
-
-    /**
-     * Get user QR code image in alert box.
-     *
-     * @param User $user
-     *
-     * @return \Illuminate\Http\Response|mixed
-     */
-    public function alert(User $user)
-    {
-        if (!$user || $user->deleted_at || !$user->profile->friend_code) {
-            abort(404);
-        }
-
-        $qr = route('v1.users.qr', ['user' => $user->uniqid]);
-        $friend_code = $user->profile->friend_code;
-
-        return view('anonymous.users.users.alert', compact('qr', 'friend_code'));
     }
 }
