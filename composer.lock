@@ -123,16 +123,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.135.4",
+            "version": "3.140.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "fb6f4a12d9ad1b8fc1481aef61ed1f8a9fe2164b"
+                "reference": "52645498aea4dd2d090884322121270daf3e0f06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fb6f4a12d9ad1b8fc1481aef61ed1f8a9fe2164b",
-                "reference": "fb6f4a12d9ad1b8fc1481aef61ed1f8a9fe2164b",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/52645498aea4dd2d090884322121270daf3e0f06",
+                "reference": "52645498aea4dd2d090884322121270daf3e0f06",
                 "shasum": ""
             },
             "require": {
@@ -203,7 +203,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-04-24T18:14:04+00:00"
+            "time": "2020-06-04T18:19:47+00:00"
         },
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -1054,28 +1054,28 @@
         },
         {
             "name": "fortrabbit/laravel-object-storage",
-            "version": "1.0",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fortrabbit/laravel-object-storage.git",
-                "reference": "909f3109bdf282da53857af0465077cd6a1af2ea"
+                "reference": "109ff5780ac87b64fe863544c571cf7e576bb29f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fortrabbit/laravel-object-storage/zipball/909f3109bdf282da53857af0465077cd6a1af2ea",
-                "reference": "909f3109bdf282da53857af0465077cd6a1af2ea",
+                "url": "https://api.github.com/repos/fortrabbit/laravel-object-storage/zipball/109ff5780ac87b64fe863544c571cf7e576bb29f",
+                "reference": "109ff5780ac87b64fe863544c571cf7e576bb29f",
                 "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.0.0",
-                "illuminate/filesystem": "^5.5 | 6.0",
-                "illuminate/support": "^5.5 | 6.0",
+                "illuminate/filesystem": "^5.5|^6.0|^7.0",
+                "illuminate/support": "^5.5|^6.0|^7.0",
                 "league/flysystem": "^1.0.40",
-                "league/flysystem-aws-s3-v3": "^1.0",
+                "league/flysystem-aws-s3-v3": "^1.0.7",
                 "php": "^7.1"
             },
             "require-dev": {
-                "phpstan/phpstan": "^0.10.8"
+                "phpstan/phpstan": "^0.12"
             },
             "type": "library",
             "extra": {
@@ -1108,7 +1108,7 @@
                 "object-storage",
                 "s3"
             ],
-            "time": "2019-11-27T14:20:46+00:00"
+            "time": "2020-06-04T12:50:21+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2287,16 +2287,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.68",
+            "version": "1.0.69",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3e4198372276ec99ac3409a21d7c9d1ced9026e4"
+                "reference": "7106f78428a344bc4f643c233a94e48795f10967"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3e4198372276ec99ac3409a21d7c9d1ced9026e4",
-                "reference": "3e4198372276ec99ac3409a21d7c9d1ced9026e4",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7106f78428a344bc4f643c233a94e48795f10967",
+                "reference": "7106f78428a344bc4f643c233a94e48795f10967",
                 "shasum": ""
             },
             "require": {
@@ -2367,20 +2367,20 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-05-12T20:33:44+00:00"
+            "time": "2020-05-18T15:13:39+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
-            "version": "1.0.24",
+            "version": "1.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570"
+                "reference": "d409b97a50bf85fbde30cbc9fc10237475e696ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
-                "reference": "4382036bde5dc926f9b8b337e5bdb15e5ec7b570",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/d409b97a50bf85fbde30cbc9fc10237475e696ea",
+                "reference": "d409b97a50bf85fbde30cbc9fc10237475e696ea",
                 "shasum": ""
             },
             "require": {
@@ -2414,7 +2414,7 @@
                 }
             ],
             "description": "Flysystem adapter for the AWS S3 SDK v3.x",
-            "time": "2020-02-23T13:31:58+00:00"
+            "time": "2020-06-02T18:41:58+00:00"
         },
         {
             "name": "league/flysystem-cached-adapter",
