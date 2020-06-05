@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueInternationalization from 'vue-i18n';
+import Swal from 'admin-lte/plugins/sweetalert2/sweetalert2.all';
 import Locale from './vue-i18n-locales.generated';
 
 /**
@@ -94,5 +95,21 @@ const app = new Vue({
 });
 
 (new LazyLoad({ elements_selector: '.lazy' })).update();
-// eslint-disable-next-line
-new ClipboardJS('.btn-copy');
+(new ClipboardJS('.btn-copy'))
+  .on(
+    'success',
+    (event) => {
+      Swal
+        .mixin({
+          toast: true,
+          position: 'bottom-end',
+          showConfirmButton: false,
+          timer: 3000,
+        })
+        .fire({
+          type: 'success',
+          title: app.$t('global.copied'),
+        });
+      event.clearSelection();
+    },
+  );

@@ -37,7 +37,7 @@
                         <a href="{{ route('logout') }}" class="nav-link"><i class="fa fa-sign-out-alt mr-2"></i>{{ trans('auth.logout') }}</a>
                     </li>
                 @else
-                    @if (Route::currentRouteNamed(Route::currentRouteName()))
+                    <!-- @if (Route::currentRouteNamed(Route::currentRouteName()))
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#"><i class="fas fa-language"></i></a>
                         <div class="dropdown-menu dropdown-menu-sm-right dropdown-menu-right">
@@ -50,7 +50,7 @@
                         @endforeach
                         </div>
                     </li>
-                    @endif
+                    @endif -->
                     <li class="nav-item">
                         <a href="{{ route('login') }}" class="nav-link"><i class="fa fa-sign-in-alt mr-2"></i>{{ trans('auth.login') }}</a>
                     </li>

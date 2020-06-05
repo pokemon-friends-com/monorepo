@@ -13,10 +13,10 @@ interface LocalesInterface
     public const DEFAULT_LOCALE = self::ENGLISH;
     public const LOCALES = [
         self::ENGLISH,
-        self::CHINESE,
-        self::FRENCH,
-        self::GERMAN,
-        self::SPANISH,
-        self::RUSSIAN,
+        // self::CHINESE,
+        // self::FRENCH,
+        // self::GERMAN,
+        // self::SPANISH,
+        // self::RUSSIAN,
     ];
 }
