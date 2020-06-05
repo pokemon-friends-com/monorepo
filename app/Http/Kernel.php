@@ -45,6 +45,9 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'client_api' => [
+            'throttle:60,1',
+        ],
         UserRolesInterface::ROLE_ADMINISTRATOR => [
             \Illuminate\Auth\Middleware\Authenticate::class,
             'role:' => UserRolesInterface::ROLE_ADMINISTRATOR,
@@ -67,10 +70,13 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
         'guest' => \template\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \template\Http\Middleware\AuthenticatedUserHasRole::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
+        'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];

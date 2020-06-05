@@ -2,10 +2,7 @@
 
 namespace template\Http\Controllers\Api\V1\Users;
 
-use Carbon\Carbon;
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use template\Domain\Users\Users\Transformers\UserTransformer;
@@ -84,5 +81,10 @@ class UsersController extends ControllerAbstract
         }
 
         return $user->profile->getMedia('trainer')->first()->toResponse($request);
+    }
+
+    public function channels()
+    {
+        return response()->json(['blazed_css']);
     }
 }

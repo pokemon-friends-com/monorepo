@@ -11,7 +11,20 @@
 |
 */
 
+use Illuminate\Http\Request;
 use Spatie\Honeypot\ProtectAgainstSpam;
+use Spatie\Honeypot\SpamDetected;
+use Spatie\Honeypot\SpamResponder\SpamResponder;
+
+$redirectSpam = function (SpamResponder $spamResponder, Request $request) {
+    event(new SpamDetected($request));
+    // phpcs:ignore
+    return $spamResponder->respond($request, function () {});
+};
+
+Route::any('.env', $redirectSpam);
+Route::any('wp-login.php', $redirectSpam);
+Route::any('wp-admin', $redirectSpam);
 
 Route::group(
     [
@@ -33,9 +46,6 @@ Route::group(
         });
         Route::group(['namespace' => 'Users'], function () {
             Route::get('/', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard'])->middleware('guest');
-            Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-                Route::get('alert/{hash}', ['as' => 'alert', 'uses' => 'UsersController@alert']);
-            });
             Route::get('trainer/{user}', ['as' => 'trainer', 'uses' => 'UsersController@show']);
             Route::get('terms-of-services', ['as' => 'terms', 'uses' => 'UsersController@terms']);
             Route::resource('contact', 'LeadsController')->middleware(ProtectAgainstSpam::class);
