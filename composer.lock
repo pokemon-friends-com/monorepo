@@ -1628,16 +1628,16 @@
         },
         {
             "name": "laravel/cashier-mollie",
-            "version": "v1.13.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-mollie.git",
-                "reference": "a77b2111d21dba2cc29d65bebb8acbb98a4d703b"
+                "reference": "5a83f2ac63615f9654a3af188ddf78245dd4f3be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-mollie/zipball/a77b2111d21dba2cc29d65bebb8acbb98a4d703b",
-                "reference": "a77b2111d21dba2cc29d65bebb8acbb98a4d703b",
+                "url": "https://api.github.com/repos/laravel/cashier-mollie/zipball/5a83f2ac63615f9654a3af188ddf78245dd4f3be",
+                "reference": "5a83f2ac63615f9654a3af188ddf78245dd4f3be",
                 "shasum": ""
             },
             "require": {
@@ -1705,7 +1705,7 @@
                 "sepa",
                 "subscriptions"
             ],
-            "time": "2020-06-04T18:03:49+00:00"
+            "time": "2020-06-05T09:05:18+00:00"
         },
         {
             "name": "laravel/framework",
