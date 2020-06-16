@@ -102,7 +102,7 @@ interface UsersRepositoryInterface extends RepositoryInterface
      *
      * Filter users by name.
      *
-     * @param string|null $name The user last name or lead first name
+     * @param string|null $name The user last name
      *
      * @return UsersRepositoryEloquent
      */

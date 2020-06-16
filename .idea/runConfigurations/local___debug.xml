@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="local - debug" type="JavascriptDebugType" uri="https://www.pokemon-friends.com.local" useFirstLineBreakpoints="true">
-    <mapping url="https://www.pokemon-friends.com.local" local-file="$PROJECT_DIR$/public" />
+  <configuration default="false" name="local - debug" type="JavascriptDebugType" uri="http://127.0.0.1:8000" useFirstLineBreakpoints="true">
+    <mapping url="http://127.0.0.1:8000" local-file="$PROJECT_DIR$/public" />
     <method v="2" />
   </configuration>
 </component>

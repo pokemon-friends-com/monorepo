@@ -2,13 +2,13 @@
   <configuration default="false" name="app.spec.js" type="mocha-javascript-test-runner">
     <node-interpreter>$USER_HOME$/.nvm/versions/node/v12.13.1/bin/node</node-interpreter>
     <node-options />
-    <mocha-package>$PROJECT_DIR$/node_modules/mocha-webpack</mocha-package>
+    <mocha-package>$PROJECT_DIR$/node_modules/mochapack</mocha-package>
     <working-directory>$PROJECT_DIR$</working-directory>
     <pass-parent-env>true</pass-parent-env>
     <ui>bdd</ui>
     <extra-mocha-options>--webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require tests/bootstrap.js</extra-mocha-options>
     <test-kind>TEST_FILE</test-kind>
-    <test-file>$PROJECT_DIR$/tests/Unit/Vue/app.spec.js</test-file>
+    <test-file>$PROJECT_DIR$/tests/Unit/AppJS/app.spec.js</test-file>
     <method v="2" />
   </configuration>
 </component>

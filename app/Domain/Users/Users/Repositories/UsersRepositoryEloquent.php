@@ -241,7 +241,6 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     public function getPaginatedUsers(): array
     {
         return $this
-            ->with(['lead'])
             ->setPresenter(new UsersListPresenter())
             ->paginate();
     }
@@ -274,7 +273,6 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     public function getPaginatedAndFilteredUsers(RequestAbstract $request): array
     {
         return $this
-            ->with(['lead'])
             ->setPresenter(new UsersListPresenter())
             ->scopeQuery(function ($model) use ($request) {
                 return $model
@@ -319,7 +317,7 @@ class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements User
     public function getUser(int $id): array
     {
         return $this
-            ->with(['lead', 'profile'])
+            ->with(['profile'])
             ->setPresenter(new UsersListPresenter())
             ->find($id);
     }

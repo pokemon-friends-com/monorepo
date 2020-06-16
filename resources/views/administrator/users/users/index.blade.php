@@ -1,22 +1,13 @@
 @extends('administrator.default')
 
 @section('content')
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><i class="fa fa-users mr-2"></i>{!! trans('users.title') !!}</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item active">
-                        <i class="fa fa-users mr-2"></i>{!! trans('users.title') !!}
-                    </li>
-                </ol>
-            </div>
-        </div>
+<nav class="bg-white border-bottom" aria-label="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><i class="fa fa-users mr-2"></i>{{ trans('users.title') }}</li>
+        </ol>
     </div>
-</section>
+</nav>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -66,7 +57,6 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th class="text-center w-5"><i class="far fa-user-circle" title="{{ trans('users.leads.transformed_user') }}"></i></th>
                                 <th class="text-center w-25">{!! trans('users.civility_name') !!}</th>
                                 <th class="text-center w-30">{!! trans('users.email') !!}</th>
                                 <th class="text-center w-40">{!! trans('global.actions') !!}</th>
@@ -76,12 +66,7 @@
                             @foreach ($users['data'] as $user)
                             <tr>
                                 <td class="align-middle text-center">
-                                    @if ($user['lead']['is_lead'])
-                                    <i class="fa fa-user-circle-o" title="{{ trans('users.leads.transformed_user') }}"></i>
-                                    @endif
-                                </td>
-                                <td class="align-middle text-center">
-                                    <a href="{{ route('administrator.users.show', ['id' => $user['identifier']]) }}">{{ $user['civility_name'] }}</a>
+                                    <a href="{{ route('administrator.users.show', ['user' => $user['identifier']]) }}">{{ $user['civility_name'] }}</a>
                                 </td>
                                 <td class="align-middle text-center"><a href="mailto:{{ $user['email'] }}">{{ $user['email'] }}</a></td>
                                 <td class="align-middle text-right">
@@ -92,7 +77,7 @@
                                     </a>
                                     @endif
                                     @endCanImpersonate
-                                    <a href="{{ route('administrator.users.edit', ['id' => $user['identifier']]) }}"
+                                    <a href="{{ route('administrator.users.edit', ['user' => $user['identifier']]) }}"
                                        class="btn btn-primary btn-sm">
                                         <i class="fa fa-edit mr-2"></i>{!! trans('global.edit') !!}
                                     </a>

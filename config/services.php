@@ -27,6 +27,16 @@ return [
         ],
     ],
 
+    'youtube' => [
+        'backgrounds' => [
+            'https://www.youtube.com/watch?v=X2KHZtmcrVA',
+            'https://www.youtube.com/watch?v=3HU10cLg5xk',
+            'https://www.youtube.com/watch?v=EmhyG_d1QKU',
+            'https://www.youtube.com/watch?v=C461fBV-J7c',
+            'https://www.youtube.com/watch?v=MynNG2IRZDI',
+        ],
+    ],
+
     'discord' => [
         'url' => 'https://discord.gg/u95WvrN',
     ],

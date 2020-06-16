@@ -19,7 +19,7 @@ describe('PaginatorComponent.vue', () => {
     });
 
     await wrapper.vm.$nextTick();
-    // @todo xABE : why should i forced to call manually the `watch` event on `data` ?
+    // todo xABE : why should i forced to call manually the `watch` event on `data` ?
     wrapper.vm.$options.watch.data.call(wrapper.vm);
     await wrapper.vm.$nextTick();
 
@@ -34,7 +34,7 @@ describe('PaginatorComponent.vue', () => {
     expect(eventChanged).toBeTruthy();
     expect(eventChanged.length).toBe(1);
 
-    // @todo xABE : is watcher correctly dispatched ? why `page` do not change in emitted event ?
+    // todo xABE : is watcher correctly dispatched ? why `page` do not change in emitted event ?
     //expect(eventChanged[0]).toEqual([wrapper.vm.$data.page]);
   });
 });

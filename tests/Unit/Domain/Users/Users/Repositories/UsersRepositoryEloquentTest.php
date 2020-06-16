@@ -77,10 +77,7 @@ class UsersRepositoryEloquentTest extends TestCase
         Event::assertDispatched(UserUpdatedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
-        $userArr = $user->toArray();
-        Arr::forget($userArr, 'updated_at');
-        Arr::forget($userArr, 'profile');
-        $this->assertDatabaseHas('users', $userArr);
+        $this->assertDatabaseHas('users', $user->toArray());
     }
 
     public function testDelete()
@@ -91,10 +88,8 @@ class UsersRepositoryEloquentTest extends TestCase
         Event::assertDispatched(UserDeletedEvent::class, function ($event) use ($user) {
             return $event->user->id === $user->id;
         });
-        $userArr = $user->toArray();
-        Arr::forget($userArr, 'profile');
-        $this->assertDatabaseHas('users', $userArr);
-        $this->assertSoftDeleted('users', $userArr);
+        $this->assertDatabaseHas('users', $user->toArray());
+        $this->assertSoftDeleted('users', $user->toArray());
     }
 
     public function testRefreshSession()

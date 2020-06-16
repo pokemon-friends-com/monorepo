@@ -1,4 +1,4 @@
-@extends('emails.default')
+@extends('email')
 
 @section('title', trans('users.created_account_by_administrator_subject'))
 

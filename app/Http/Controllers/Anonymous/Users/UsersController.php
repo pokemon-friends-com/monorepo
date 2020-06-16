@@ -100,12 +100,16 @@ class UsersController extends ControllerAbstract
             'title' => config('app.name'),
             'description' => config('app.description'),
         ];
+        $nbTotalTrainers = $this
+            ->rUsers
+            ->getTrainers(false)
+            ->count();
         $users = $this
             ->rUsers
             ->getTrainers()
             ->paginate(config('repository.pagination.limit'));
 
-        return view('anonymous.users.users.dashboard', compact('metadata', 'users'));
+        return view('anonymous.users.users.dashboard', compact('metadata', 'users', 'nbTotalTrainers'));
     }
 
     /**

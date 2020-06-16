@@ -1,4 +1,4 @@
-@extends('emails.default')
+@extends('email')
 
 @section('title', trans('auth.password_reset_title'))
 

@@ -38,27 +38,20 @@
 @endsection
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1><i class="fa fa-folder-open"></i> {{ trans('files.title') }}</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active"><i class="fa fa-folder-open"></i> {{ trans('files.title') }}</li>
-                    </ol>
-                </div>
+<nav class="bg-white border-bottom" aria-label="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><i class="fa fa-folder-open mr-2"></i>{{ trans('files.title') }}</li>
+        </ol>
+    </div>
+</nav>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div id="elfinder"></div>
             </div>
         </div>
-    </section>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div id="elfinder"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 @endsection

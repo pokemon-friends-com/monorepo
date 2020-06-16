@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 use Spatie\Sitemap\{Sitemap, Tags\Url};
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
-class SiteMapController extends ControllerAbstract
+class SitemapController extends ControllerAbstract
 {
 
     /**

@@ -31,8 +31,8 @@ class AuthServiceProvider extends ServiceProvider
             'bot' => 'This client is a bot',
             'twitch' => 'This client is a twitch bot',
         ]);
-        Passport::routes();
         Passport::personalAccessClientId(config('passport.personal_access_client_id'));
+        Passport::routes();
 
         Gate::define(UserRolesInterface::ROLE_ADMINISTRATOR, function ($user) {
             return $user->is_administrator;

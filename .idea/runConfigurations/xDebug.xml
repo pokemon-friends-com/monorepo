@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="xDebug" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" filter_connections="FILTER" server_name="www.pokemon-friend.fr.local" session_id="PHPSTORM">
-    <method v="2" />
-  </configuration>
-</component>

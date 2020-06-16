@@ -60,9 +60,7 @@ class ProvidersTokensRepositoryEloquentTest extends TestCase
         Event::assertDispatched(ProviderTokenUpdatedEvent::class, function ($event) use ($providerToken) {
             return $event->provider_token->id === $providerToken->id;
         });
-        $providerTokenArr = $providerToken->toArray();
-        Arr::forget($providerTokenArr, 'updated_at');
-        $this->assertDatabaseHas('users_providers_tokens', $providerTokenArr);
+        $this->assertDatabaseHas('users_providers_tokens', $providerToken->toArray());
     }
 
     public function testDelete()

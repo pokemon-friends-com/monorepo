@@ -84,7 +84,7 @@ class ResetPasswordControllerTest extends TestCase
                 'password_confirmation' => $newPassword,
             ])
             ->assertSuccessful()
-            ->assertSee(e('We can\'t find a user with that e-mail address.'));
+            ->assertSee('We can\'t find a user with that e-mail address.');
         $user->refresh();
         $this->assertFalse(Hash::check($newPassword, $user->password));
         $this->assertTrue(Hash::check($this->getDefaultPassword(), $user->password));

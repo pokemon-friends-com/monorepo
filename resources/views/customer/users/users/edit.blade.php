@@ -20,27 +20,31 @@
 @endsection
 
 @section('content')
-<section class="content-header">
+<section class="overflow-hidden py-0" data-parallax="scroll" data-image-src="{{ asset_cdn('images/david-grandmougin-Am1io6KusFM-unsplash.jpg') }}">
+    <div class="overlay" ya-style="background-color: #36373a;opacity: .9"></div>
     <div class="container">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><i class="fa fa-user mr-2"></i>{{ trans('users.profiles.edit.title') }}</h1>
+        <div class="row">
+            <div class="col">
+                <h1 class="text-white py-7 mb-0 mt-3">Profile Settings</h1>
             </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('anonymous.dashboard') }}"><i class="fas fa-tachometer-alt mr-2"></i>{{ trans('users.dashboard') }}</a>
-                    </li>
-                    <li class="breadcrumb-item active"><i class="fa fa-user mr-2"></i>{{ trans('users.profiles.edit.title') }}</li>
-                </ol>
+        </div>
+        <div class="row">
+            <div class="col d-flex align-items-center">
+                <div class="nav-scroll">
+                    <div class="nav nav-list nav-light">
+                        <a class="nav-item nav-link active pl-0" href="javascript:void(0);">General</a>
+                    </div>
+                </div>
+                <a class="btn btn-outline-light btn-icon ml-auto mb-3 d-none d-md-inline" href="{{ route('customer.users.dashboard') }}">Back to profile</a>
             </div>
         </div>
     </div>
 </section>
-<section class="content">
+
+<section class="py-lg-5">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-8">
+            <div class="col-lg-8">
                 {!! Form::open(['route' => ['customer.users.update', $profile['data']['user']['identifier']], 'class' => 'form-horizontal', 'role' => 'form', 'autoprimary' => 'off', 'novalidate' => 'novalidate', 'method' => 'PUT']) !!}
                 <div class="card">
                     <div class="card-body">
@@ -144,22 +148,22 @@
                                 @endif
                             </div>
                         </div>
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="family_situation" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.family_situation') }}</label>--}}
-{{--                                <div class="col-sm-9">--}}
-{{--                                    <select name="family_situation" class="select2 w-100 form-control">--}}
-{{--                                        @foreach ($families_situations as $key => $trans)--}}
-{{--                                            <option value="{{ $key }}" @if ($key === $profile['data']['family_situation']['key']) selected="selected" @endif>{{ $trans }}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group row">--}}
-{{--                                <label for="maiden_name" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.maiden_name') }}</label>--}}
-{{--                                <div class="col-sm-9">--}}
-{{--                                    <input type="text" class="form-control" id="maiden_name" placeholder="{{ trans('users.profiles.maiden_name') }}" name="maiden_name" value="{{ $profile['data']['maiden_name'] }}">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                        {{--                            <div class="form-group row">--}}
+                        {{--                                <label for="family_situation" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.family_situation') }}</label>--}}
+                        {{--                                <div class="col-sm-9">--}}
+                        {{--                                    <select name="family_situation" class="select2 w-100 form-control">--}}
+                        {{--                                        @foreach ($families_situations as $key => $trans)--}}
+                        {{--                                            <option value="{{ $key }}" @if ($key === $profile['data']['family_situation']['key']) selected="selected" @endif>{{ $trans }}</option>--}}
+                        {{--                                        @endforeach--}}
+                        {{--                                    </select>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                            <div class="form-group row">--}}
+                        {{--                                <label for="maiden_name" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.maiden_name') }}</label>--}}
+                        {{--                                <div class="col-sm-9">--}}
+                        {{--                                    <input type="text" class="form-control" id="maiden_name" placeholder="{{ trans('users.profiles.maiden_name') }}" name="maiden_name" value="{{ $profile['data']['maiden_name'] }}">--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
                         <div class="form-group row">
                             <label for="birth_date" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.profiles.birth_date') }}</label>
                             <div class="col-sm-9">
@@ -178,7 +182,7 @@
                 </div>
                 {{ Form::close() }}
             </div>
-            <div class="d-none d-md-block col-md-4">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
                         {{ trans('users.profiles.providers_tokens') }}

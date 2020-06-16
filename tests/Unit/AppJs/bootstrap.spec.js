@@ -6,12 +6,7 @@ describe('bootstrap.js', () => {
   });
 
   it('validate initialization', () => {
-    assert.ok(window._);
-    assert.ok(window.Popper);
+    assert.ok(_);
     assert.strictEqual(window.jQuery, window.$);
-    // Test if Bootstrap Js is loaded.
-    assert.ok(typeof window.$().modal, 'function');
-    assert.ok(window.axios);
-    assert.ok(window.axios.defaults.headers.common['X-CSRF-TOKEN'], 'CSRF_TOKEN');
   });
 });
