@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Auth;
 
+use Illuminate\Notifications\AnonymousNotifiable;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -50,7 +51,7 @@ class ForgotPasswordControllerTest extends TestCase
             ->post('/password/email', ['email' => $email])
             ->assertStatus(302)
             ->assertRedirect('/password/reset');
-        Notification::assertNotSentTo([], ResetPassword::class);
+        Notification::assertNotSentTo(new AnonymousNotifiable(), ResetPassword::class);
     }
 
     public function testToSubmitForgotPasswordWithNotValidUserEmail()
@@ -63,6 +64,6 @@ class ForgotPasswordControllerTest extends TestCase
             ->assertStatus(302)
             ->assertRedirect('/password/reset')
             ->assertSessionHasErrors(['email' => 'We can\'t find a user with that e-mail address.']);
-        Notification::assertNotSentTo([], ResetPassword::class);
+        Notification::assertNotSentTo(new AnonymousNotifiable(), ResetPassword::class);
     }
 }

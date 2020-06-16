@@ -23,17 +23,7 @@ class UsersControllerTest extends TestCase
         $this
             ->get("/trainers/{$user->uniqid}")
             ->assertSuccessful()
-            ->assertSee(e("Let's be friends on Pokemon Go! {$user->formated_friend_code}"))
-            ->assertSee(
-                "This trainer, {$user->profile->formated_friend_code}, is looking for new Pokemon Go friends!"
-            );
-        $this
-            ->get("/trainer/{$user->uniqid}")
-            ->assertSuccessful()
-            ->assertSee(e("Let's be friends on Pokemon Go! {$user->formated_friend_code}"))
-            ->assertSee(
-                "This trainer, {$user->profile->formated_friend_code}, is looking for new Pokemon Go friends!"
-            );
+            ->assertSee($user->formated_friend_code);
     }
 
     // public function testToVisitTrainerProfileInFrench()
@@ -94,15 +84,14 @@ class UsersControllerTest extends TestCase
             ->assertNotFound();
     }
 
-    public function testToVisitDashboard()
+    public function testToVisitDashboard42()
     {
         $this
             ->get('/')
             ->assertSuccessful()
-            ->assertSeeText('Sign up to share your friend code and join your trainer community!')
-            ->assertSeeText(e('Now go share \'em all!'))
+            ->assertSeeText('Pokemon go "friends codes" sharing community')
+            ->assertSeeText('Now go share \'em all! Make new friends simply like a pic!')
             ->assertSeeText('Home')
-            ->assertSeeText('Contact')
             ->assertSeeText('Terms of Service')
             ->assertSeeText('Login')
             ->assertSeeText('Register');

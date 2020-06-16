@@ -3,13 +3,14 @@
 namespace template\Exceptions;
 
 use Exception;
+use Throwable;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
 
-    private $sentryID;
+    private $sentryId;
 
     /**
      * A list of the exception types that should not be reported.
@@ -40,17 +41,17 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param Exception $exception
+     * @param Throwable $exception
      *
      * @return mixed|void
      * @throws Exception
      */
-    public function report(Exception $exception)
+    public function report(Throwable $exception)
     {
         // @codeCoverageIgnoreStart
         if (app()->bound('sentry') && $this->shouldReport($exception)) {
             // bind the event ID for Feedback
-            $this->sentryID = app('sentry')->captureException($exception);
+            $this->sentryId = app('sentry')->captureException($exception);
         }
         // @codeCoverageIgnoreEnd
 
@@ -61,11 +62,11 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param \Illuminate\Http\Request $request
-     * @param Exception $exception
+     * @param Throwable $exception
      *
      * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Throwable $exception)
     {
         // @codeCoverageIgnoreStart
         if (app()->environment('production') && $this->shouldReport($exception)) {
@@ -73,7 +74,7 @@ class Handler extends ExceptionHandler
                 ->view(
                     'errors.500',
                     [
-                        'sentryID' => $this->sentryID,
+                        'sentryId' => $this->sentryId,
                     ],
                     500
                 );

@@ -5,7 +5,6 @@ namespace template\Domain\Users\Users\Transformers;
 use template\Domain\Users\Profiles\Profile;
 use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
 use template\Domain\Users\Users\User;
-use template\Domain\Users\Leads\Lead;
 
 class UsersListTransformer extends TransformerAbstract
 {
@@ -35,10 +34,6 @@ class UsersListTransformer extends TransformerAbstract
                 'key' => $model->role,
                 'trans' => trans('users.role.' . $model->role),
             ],
-            'lead' => [
-                'is_lead' => false,
-                'id' => 0,
-            ],
             'profile' => [],
             'locale' => [
                 'language' => $model->locale,
@@ -52,13 +47,6 @@ class UsersListTransformer extends TransformerAbstract
                 ->created_at_tz
                 ->format(trans('global.date_format')),
         ];
-
-        if ($model->lead instanceof Lead) {
-            $data['lead'] = [
-                'is_lead' => true,
-                'id' => $model->lead->id,
-            ];
-        }
 
         if ($model->profile instanceof Profile) {
             $data['profile'] = [

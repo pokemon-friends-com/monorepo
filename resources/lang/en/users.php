@@ -40,17 +40,8 @@ return [
     'dashboard' => 'Dashboard',
     'change_password' => 'Change your password',
     'change_email' => 'Change your email',
-    'baseline' => 'Sign up to share your friend code and join your trainer community!',
-    'welcome' => "Now go share 'em all!",
-    'anonymous.dashboard.share_gift' => 'Share gifts',
-    'anonymous.dashboard.fight_friend' => 'Fight your friends',
-    'anonymous.dashboard.boost_xp' => 'Boost your XP',
-    'anonymous.dashboard.features' => "<p><a href=\":home_url\">:app_name</a> is a community directory of Pokemon Go friend codes</p>
-<ul>
-    <li>Browse dozens of friend codes</li>
-    <li>Add new friends to your Pokemon Go game as a photo</li>
-    <li>Register and share your friend code</li>
-</ul>",
+    'welcome' => 'Pokemon go "friends codes" sharing community',
+    'baseline' => 'Now go share \'em all! Make new friends simply like a pic!',
     'anonymous.dashboard.to_come_up' => "<p>The <a href=\":home_url\">:app_name</a> team is actively working on the next features of your platform for your enjoyment</p>
 <ul>
     <li>Register or join teams made up of your friends</li>

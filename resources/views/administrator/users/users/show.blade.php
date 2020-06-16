@@ -1,27 +1,14 @@
 @extends('administrator.default')
 
 @section('content')
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1><i class="fa fa-users mr-2"></i>{{ trans('users.title') }}</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('administrator.users.index') }}">
-                            <i class="fa fa-users mr-2"></i>{{ trans('users.title') }}
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item active">
-                        {{ $user['data']['civility_name'] }}
-                    </li>
-                </ol>
-            </div>
-        </div>
+<nav class="bg-white border-bottom" aria-label="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('administrator.users.index') }}"><i class="fa fa-users mr-2"></i>{{ trans('users.title') }}</a></li>
+            <li class="breadcrumb-item active">{{ $user['data']['civility_name'] }}</li>
+        </ol>
     </div>
-</section>
+</nav>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -35,7 +22,7 @@
                             </ul>
                         </div>
                         <div class="card-tools">
-                            <a href="{{ route('administrator.users.edit', ['id' => $user['data']['identifier']]) }}" class="btn btn-tool"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('administrator.users.edit', ['user' => $user['data']['identifier']]) }}" class="btn btn-tool"><i class="fa fa-edit"></i></a>
                         </div>
                     </div>
                     <div class="card-body">

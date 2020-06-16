@@ -1,46 +1,26 @@
-@extends('anonymous.default')
+@extends('default')
 
 @section('title', $metadata['title'])
 @section('description', $metadata['description'])
 
 @section('content')
-<section class="content-header">
+<section class="py-md-6">
     <div class="container">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>{!! trans('users.trainers') !!}</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('anonymous.dashboard') }}">
-                            @if(Auth::check())
-                                <i class="fas fa-tachometer-alt mr-2"></i>{{ trans('users.dashboard') }}
-                            @else
-                                <i class="fas fa-home mr-2"></i>{{ trans('users.home') }}
-                            @endif
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item active">{!! trans('users.trainers') !!}</li>
-                </ol>
+        <div class="row">
+            <div class="col-11 col-md-8 text-center mx-auto mb-4">
+                <i class="fas fa-qrcode icon"></i>
+                <h2 class="font-weight-bold font-size-lg">{!! trans('users.trainers') !!}</h2>
+                @if (!Auth::check())
+                    <p class="lead">As unregistered user, you can see the daily selection of 96 trainers. Register to see all our trainers profiles!</p>
+                @endif
             </div>
         </div>
     </div>
 </section>
-<section class="content">
+
+<section>
     <div class="container">
-        @if (!Auth::check())
-        <div class="container-fluid">
-            <div class="row pt-2 pb-2 align-items-center">
-                <div class="col-12 col-md-4">@include('partials.card_amazon')</div>
-                <div class="col-12 col-md-4 d-none d-md-block">@include('partials.card_official_doc')</div>
-                <div class="col-12 col-md-4">
-                    <div class="alert alert-warning pt-2 pb-2 mb-1">Register to see more trainers friends codes!</div>
-                    @include('partials.card_register')
-                </div>
-            </div>
-        </div>
-        @endif
+
         <div class="row">
             @foreach ($users['data'] as $trainer)
             <div id="{{ $trainer['friend_code']['default'] }}" class="col-12 col-md-4 col-lg-3">

@@ -256,8 +256,7 @@ class UsersController extends ControllerAbstract
         $this
             ->rUsers
             ->filterByEmail($f_email)
-            ->filterByName($f_full_name)
-            ->with(['lead']);
+            ->filterByName($f_full_name);
 
         $csv = Writer::createFromFileObject(new \SplTempFileObject(128));
         $csv->setDelimiter(';');

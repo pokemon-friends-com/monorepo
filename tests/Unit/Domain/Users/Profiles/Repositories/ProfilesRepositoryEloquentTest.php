@@ -58,9 +58,7 @@ class ProfilesRepositoryEloquentTest extends TestCase
         Event::assertDispatched(ProfileUpdatedEvent::class, function ($event) use ($profile) {
             return $event->profile->id === $profile->id;
         });
-        $profileArr = $profile->toArray();
-        Arr::forget($profileArr, 'updated_at');
-        $this->assertDatabaseHas('users_profiles', $profileArr);
+        $this->assertDatabaseHas('users_profiles', $profile->toArray());
     }
 
     public function testDelete()

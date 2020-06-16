@@ -1,4 +1,4 @@
-@extends('auth.default')
+@extends('default')
 
 @section('content')
 

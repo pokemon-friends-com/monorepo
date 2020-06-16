@@ -26,10 +26,6 @@ use template\Infrastructure\Contracts\{
     Model\TimeStampsTz,
     Model\SoftDeletesTz
 };
-use template\Domain\Users\Leads\{
-    Lead,
-    Traits\HandshakeNotificationTrait
-};
 use template\Domain\Users\Profiles\Traits\ProfileableTrait;
 use template\Domain\Users\ProvidersTokens\ProviderToken;
 use template\Domain\Users\Users\{
@@ -53,7 +49,6 @@ class User extends AuthenticatableModelAbstract implements
     use Notifiable;
     use IdentifiableTrait;
     use SoftDeletes;
-    use HandshakeNotificationTrait;
     use NamableTrait;
     use GenrableTrait;
     use ProfileableTrait;
@@ -86,8 +81,9 @@ class User extends AuthenticatableModelAbstract implements
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     /**
@@ -96,11 +92,8 @@ class User extends AuthenticatableModelAbstract implements
      * @var array
      */
     protected $dates = [
-        'deleted_at',
-    ];
-
-    protected $with = [
-        'profile',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -210,14 +203,6 @@ class User extends AuthenticatableModelAbstract implements
             ucfirst(strtolower($this->first_name)),
             ucfirst(strtolower($this->last_name))
         ));
-    }
-
-    /**
-     * Get the lead that owns the user.
-     */
-    public function lead()
-    {
-        return $this->hasOne(Lead::class);
     }
 
     /**

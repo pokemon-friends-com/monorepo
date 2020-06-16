@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="profiles" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" environment="development" path="$PROJECT_DIR$/app/Http/Controllers/Api/V1/Users/profiles.http">
-    <method v="2" />
-  </configuration>
-</component>

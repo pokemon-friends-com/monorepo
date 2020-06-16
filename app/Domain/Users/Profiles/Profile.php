@@ -58,7 +58,8 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
      * @var array
      */
     protected $dates = [
-        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -67,6 +68,9 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
      * @var array
      */
     protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     public static function claimableEmail(string $friendCode): string

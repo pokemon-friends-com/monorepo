@@ -30,7 +30,6 @@ Route::group(
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
                 Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'UsersController@dashboard']);
                 Route::get('export', ['as' => 'export', 'uses' => 'UsersController@export']);
-                Route::resource('leads', 'LeadsController')->only(['index', 'update']);
             });
             Route::resource('users', 'UsersController');
         });

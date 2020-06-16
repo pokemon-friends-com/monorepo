@@ -1,33 +1,3 @@
-.card-team-red,
-.card-team-valor {
-  @extend .card-danger !optional;
-}
-.card-team-blue,
-.card-team-mystic {
-  @extend .card-primary !optional;
-}
-.card-team-yellow,
-.card-team-instinct {
-  @extend .card-warning !optional;
-}
-.bg-team-default {
-  background-color: $gray-x-light !important;
-  color: $yiq-text-dark !important;
-}
-.bg-team-red,
-.bg-team-valor {
-  @extend .bg-danger !optional;
-}
-.bg-team-blue,
-.bg-team-mystic {
-  @extend .bg-primary !optional;
-}
-.bg-team-yellow,
-.bg-team-instinct {
-  @extend .bg-warning !optional;
-  color: $white !important;
-}
-
 @font-face {
   font-family: 'icomoon';
   src:  url('../fonts/icomoon.eot?2wr7qv');

@@ -1,4 +1,4 @@
-@extends('anonymous.default')
+@extends('default')
 
 @section('title', trans('errors.405_title'))
 @section('robots', 'noindex')

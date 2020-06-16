@@ -42,20 +42,6 @@ return [
     'change_email' => 'Changer votre courriel',
     'baseline' => 'Inscrivez-vous pour partager votre code ami et rejoindre vote communauté de dresseurs!',
     'welcome' => "Maintenant, allez tous les partager !",
-    'anonymous.dashboard.share_gift' => 'Partagez des cadeaux',
-    'anonymous.dashboard.fight_friend' => 'Combattez vos amis',
-    'anonymous.dashboard.boost_xp' => 'Boostez votre XP',
-    'anonymous.dashboard.features' => "<p><a href=\":home_url\">:app_name</a> est un annuaire communautaire de codes amis Pokemon Go</p>
-<ul>
-    <li>Parcourez des dizaines de codes amis</li>
-    <li>Ajoutez, en une photo, de nouveaux amis sur votre jeu Pokemon Go</li>
-    <li>Inscrivez-vous et partagez votre code ami</li>
-</ul>",
-    'anonymous.dashboard.to_come_up' => "<p>L'équipe <a href=\":home_url\">:app_name</a> travail activement sur les prochaines fonctionnalités de votre plateforme pour votre plus grand plaisir</p>
-<ul>
-    <li>Enregistrez ou rejoingnez des équipes composées de vos amis</li>
-    <li>Organiser votre équipe, donnez-vous rendez-vous pour les raids, créez des événement qu'aucun membre de votre équipe ne pourra louper</li>
-</ul>",
 
     'terms' => "Conditions générales d'utilisation",
     'terms.description' => "www.pokemon-friends.com est une plateforme de partage de code ami du jeu Pokemon Go. La société n'est pas liée à la sociétè éditrice du jeu.",

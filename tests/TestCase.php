@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\{
     Testing\TestCase as BaseTestCase,
     Testing\WithFaker,
@@ -17,6 +18,9 @@ abstract class TestCase extends BaseTestCase
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
+
+        // Hold time.
+        Carbon::setTestNow();
 
         $this->hotfixSqlite();
     }

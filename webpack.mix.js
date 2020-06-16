@@ -32,8 +32,10 @@ mix
   .autoload({
     jquery: ['$', 'window.jQuery', 'jQuery', 'window.$'],
     moment: ['moment', 'window.moment'],
+    'popper.js': ['Popper', 'window.Popper'],
     'pusher-js': ['Pusher', 'window.Pusher'],
     'vanilla-lazyload': ['LazyLoad', 'window.LazyLoad'],
+    'owl.carousel': ['owlCarousel', 'window.owlCarousel'],
   })
   .webpackConfig({
     resolve: {
@@ -118,4 +120,6 @@ mix
   })
   .sourceMaps(false, 'eval')
   .js('resources/js/app.js', 'public/js')
-  .sass('resources/sass/app.scss', 'public/css');
+  .js('resources/js/theme.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css')
+  .sass('resources/sass/theme.scss', 'public/css');

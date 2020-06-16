@@ -1,12 +1,12 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="UTF-8">
-<!-- @if (Route::currentRouteNamed(Route::currentRouteName()))
-@foreach(\template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::LOCALES as $locale)
-    <link rel="alternate" hreflang="{{ $locale }}" href="{{ route(Route::currentRouteName(), ['locale' => $locale]) }}" />
-@endforeach
-@endif -->
+{{--    @if (Route::currentRouteNamed(Route::currentRouteName()))--}}
+{{--        @foreach(\template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::LOCALES as $locale)--}}
+{{--            <link rel="alternate" hreflang="{{ $locale }}" href="{{ route(Route::currentRouteName(), ['locale' => $locale]) }}" />--}}
+{{--        @endforeach--}}
+{{--    @endif--}}
 <title>@yield('title', config('app.name'))</title>
 <base href="{{ config('app.url') }}">
 <meta name="application-name" content="{{ config('app.name') }}">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="@yield('image', asset_cdn(config('services.facebook.og:image')))" />
 <meta property="og:description" content="@yield('description', config('app.description'))" />
 @section('type')
-<meta property="og:type" content="{{ config('services.facebook.og:type') }}" />
+    <meta property="og:type" content="{{ config('services.facebook.og:type') }}" />
 @show
 <meta property="og:url" content="{{ URL::current() }}"/>
 <meta name="twitter:title" content="@yield('title', config('app.name'))" />
@@ -70,7 +70,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{ asset_cdn('images/favicon-32x32.png') }}">
 <link rel="icon" type="image/png" sizes="48x48" href="{{ asset_cdn('images/favicon-48x48.png') }}">
 <link rel="manifest" href="{{ asset_cdn('images/manifest.json') }}">
-<link href="{{ asset_cdn('css/app.css?v=' . config('version.app_tag') ) }}" rel="stylesheet">
+<link href="{{ asset_cdn('css/theme.css?v=' . config('version.app_tag') ) }}" rel="stylesheet">
 <link rel="sitemap" type="application/xml" title="sitemap" href="{{ url('sitemap.xml') }}" />
 @yield('css')
 @include('partials.googletag-head')
