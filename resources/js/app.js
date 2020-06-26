@@ -89,7 +89,6 @@ files.keys().map((key) => Vue.component(key.split('/').pop().split('.')[0], file
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// eslint-disable-next-line
 const app = new Vue({
   el: '#app',
   i18n,

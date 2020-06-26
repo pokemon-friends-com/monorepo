@@ -44,6 +44,10 @@ class Kernel extends ConsoleKernel
             ->command('pkmn:daily-sponsor')
             ->daily()
             ->withoutOverlapping();
+        $schedule
+            ->command('cashier:run')
+            ->daily()
+            ->withoutOverlapping();
     }
 
     /**

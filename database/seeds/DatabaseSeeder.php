@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ->create([
                 'email' => 'customer@pokemon-friends.com',
                 'locale' => 'en',
+                'uniqid' => '5ed905c33039a',
             ])
             ->each(function ($user) {
                 factory(Profile::class)->create([

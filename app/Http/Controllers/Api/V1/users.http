@@ -1,0 +1,19 @@
+GET {{host}}/api/v1/users/qr/{{user_uniqid}}.png
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+GET {{host}}/api/v1/users/user
+Authorization: Bearer {{bearer}}
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+GET {{host}}/api/v1/users/channels
+Authorization: Bearer {{bearer}}
+Accept: application/json
+Cache-Control: no-cache
+
+###

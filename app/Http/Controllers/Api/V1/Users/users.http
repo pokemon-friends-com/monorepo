@@ -1,6 +1,0 @@
-GET {{host}}/api/v1/users/user?XDEBUG_SESSION_START=PHPSTORM
-Authorization: Bearer {{bearer}}
-Accept: application/json
-Cache-Control: no-cache
-
-###

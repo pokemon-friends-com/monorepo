@@ -1,0 +1,15 @@
+{
+    "phpcs.standard": "PSR12",
+    "phpcs.executablePath": "vendor/bin/phpcs",
+    "eslint.alwaysShowStatus": true,
+    "php.executablePath": "~/.phpbrew/php/php-7.3.12/bin/php",
+    "rest-client.fontFamily": "",
+    "rest-client.fontSize": 12,
+    "rest-client.environmentVariables": {
+        "$shared": {},
+        "development": {
+            "host": "http://127.0.0.1:8000",
+            "bearer": "93971e5b83d238a95fce8151132aa53bb3f08a73bdae2f44f804ee69ea66ad324bcff91db0f90046"
+        }
+    }
+}

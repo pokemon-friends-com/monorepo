@@ -3,6 +3,8 @@
 namespace template\Http\Controllers\Api\V1\Users;
 
 use Illuminate\Http\Request;
+use Laravel\Cashier\Subscription;
+use template\Domain\Users\Profiles\Profile;
 use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use template\Domain\Users\Users\Transformers\UserTransformer;
@@ -85,6 +87,14 @@ class UsersController extends ControllerAbstract
 
     public function channels()
     {
+
+//        $subscriptions = Profile::whith('subscription')
+//            ->addSelect([
+//                'subscription' => Subscription::whereColumn('ends_at', null)
+//                    ->whereColumn('trial_ends_at')
+//                    ->whereColumn('trial_ends_at')
+//            ]);
+
         return response()->json(['blazed_css']);
     }
 }

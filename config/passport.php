@@ -13,8 +13,13 @@ return [
     |
     */
 
+
     'private_key' => base64_decode(env('PASSPORT_PRIVATE_KEY')),
     'public_key' => base64_decode(env('PASSPORT_PUBLIC_KEY')),
-    'personal_access_client_id' => env('PASSPORT_PERSONAL_ACCESS_CLIENT_ID'),
+
+    'personal_access_client' => [
+        'id' => env('PASSPORT_PERSONAL_ACCESS_CLIENT_ID'),
+        'secret' => env('PASSPORT_PERSONNEAL_ACCESS_CLIENT_SECRET'),
+    ],
 
 ];

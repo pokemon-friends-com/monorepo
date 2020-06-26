@@ -25,13 +25,8 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Passport::tokensCan([
-            'trainer' => 'This client is a trainer',
-            'bot' => 'This client is a bot',
-            'twitch' => 'This client is a twitch bot',
-        ]);
-        Passport::personalAccessClientId(config('passport.personal_access_client_id'));
+        Passport::personalAccessClientId(config('passport.personal_access_client.id'));
+        Passport::personalAccessClientSecret(config('passport.personal_access_client.secret'));
         Passport::routes();
 
         Gate::define(UserRolesInterface::ROLE_ADMINISTRATOR, function ($user) {
