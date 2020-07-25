@@ -68,7 +68,7 @@
         "laravel-echo": "^1.8.0",
         "laravel-mix": "^5.0.4",
         "lazysizes": "^5.2.2",
-        "lodash": "^4.17.13",
+        "lodash": "^4.17.19",
         "mocha": "^5.2.0",
         "mochapack": "^1.1.15",
         "mock-echo": "^1.1.1",
