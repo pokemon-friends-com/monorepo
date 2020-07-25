@@ -16,7 +16,7 @@
     "lodash": "^4.17.15",
     "node-cron": "^2.0.3",
     "tmi.js": "^1.2.1",
-    "winston": "^3.2.1",
+    "winston": "^3.3.3",
     "winston-transport-sentry": "^1.0.0"
   },
   "engines": {
