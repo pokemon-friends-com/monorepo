@@ -1,6 +1,6 @@
 <?php
 
-namespace template\App\Jobs;
+namespace pkmnfriends\App\Jobs;
 
 use Exception;
 use Illuminate\Bus\Queueable;
@@ -9,10 +9,10 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Validator;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Profiles\ProfilesTeamsColors;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors;
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
 
 class RegisterFriendCodeJob implements ShouldQueue
 {

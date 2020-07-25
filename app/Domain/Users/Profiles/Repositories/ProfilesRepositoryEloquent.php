@@ -1,19 +1,19 @@
 <?php
 
-namespace template\Domain\Users\Profiles\Repositories;
+namespace pkmnfriends\Domain\Users\Profiles\Repositories;
 
 use Carbon\Carbon;
 use Illuminate\Container\Container as Application;
 use Illuminate\Support\Collection;
-use template\Infrastructure\Contracts\{
+use pkmnfriends\Infrastructure\Contracts\{
     Request\RequestAbstract,
     Repositories\RepositoryEloquentAbstract
 };
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     User,
     Repositories\UsersRepositoryEloquent
 };
-use template\Domain\Users\Profiles\{
+use pkmnfriends\Domain\Users\Profiles\{
     Criterias\NotAuthenticatedLimitCriteria,
     Criterias\OrderByUpdateAtCriteria,
     Criterias\WhereFriendCodeNotNullCriteria,

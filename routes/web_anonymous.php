@@ -49,7 +49,7 @@ Route::group(
             Route::get('subscribe/{plan}', ['as' => 'subscribe', 'uses' => 'CreateSubscriptionController']);
             Route::get('trainer/{user}', ['as' => 'trainer', 'uses' => 'UsersController@show']);
             Route::get('terms-of-services', ['as' => 'terms', 'uses' => 'UsersController@terms']);
-            Route::model('trainer', \template\Domain\Users\Users\User::class);
+            Route::model('trainer', \pkmnfriends\Domain\Users\Users\User::class);
             Route::resource('trainers', 'UsersController')->only(['index', 'show']);
         });
     }

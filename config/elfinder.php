@@ -26,7 +26,7 @@ return [
     |    ]
     */
     'disks' => [
-        \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR => [
+        \pkmnfriends\Domain\Users\Users\User::ROLE_ADMINISTRATOR => [
             'object-storage' => [
                 'alias' => 'Object storage',
                 'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',

@@ -1,10 +1,10 @@
 <?php
 
-namespace template\Http\Controllers\Auth;
+namespace pkmnfriends\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use template\Domain\Users\Users\Repositories\UsersResetPasswordRepositoryEloquent;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersResetPasswordRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class ResetPasswordController extends ControllerAbstract
 {

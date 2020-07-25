@@ -1,13 +1,13 @@
 <?php
 
-namespace template\Console\Commands;
+namespace pkmnfriends\Console\Commands;
 
 use Predis\Client as PredisClient;
 use Repat\CrawlQueue\RedisCrawlQueue;
 use Spatie\Crawler\Crawler;
 use Spatie\Crawler\CrawlInternalUrls;
-use template\App\Crawlers\Observers\PokemonGoFriendCodesCrawlObserver;
-use template\Infrastructure\Contracts\Commands\CommandAbstract;
+use pkmnfriends\App\Crawlers\Observers\PokemonGoFriendCodesCrawlObserver;
+use pkmnfriends\Infrastructure\Contracts\Commands\CommandAbstract;
 
 class CrawlPokemonGoFriendCodesCommand extends CommandAbstract
 {

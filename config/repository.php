@@ -228,7 +228,7 @@ return [
     */
     'generator'  => [
         'basePath'      => app()->path('Domain'),
-        'rootNamespace' => 'template\\Domain\\',
+        'rootNamespace' => 'pkmnfriends\\Domain\\',
         'stubsOverridePath' => app()->path('Domain'),
         'paths'         => [
             'models'       => 'Entities',

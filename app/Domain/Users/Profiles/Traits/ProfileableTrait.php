@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Profiles\Traits;
+namespace pkmnfriends\Domain\Users\Profiles\Traits;
 
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Domain\Users\
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\
 {
     Profiles\Profile
 };

@@ -1,9 +1,9 @@
 <?php
 
-namespace template\App\Providers;
+namespace pkmnfriends\App\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use template\App\Listeners\{
+use pkmnfriends\App\Listeners\{
     AuthEventsListener,
     UsersEventsListener
 };

@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Domain\Files\Medias;
+namespace pkmnfriends\Domain\Files\Medias;
 
 use Spatie\MediaLibrary\Models\Media as SpatieMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;

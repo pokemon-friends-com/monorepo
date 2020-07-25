@@ -1,15 +1,15 @@
 <?php
 
-namespace template\Http\Controllers\Auth;
+namespace pkmnfriends\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use template\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 
 class LoginController extends ControllerAbstract
 {

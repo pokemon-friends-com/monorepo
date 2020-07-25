@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\App\Notifications\Messages;
 
-use template\App\Notifications\Messages\MailableMessage;
+use pkmnfriends\App\Notifications\Messages\MailableMessage;
 use Tests\TestCase;
 
 class MailableMessageTest extends TestCase

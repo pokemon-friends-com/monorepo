@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Http;
+namespace pkmnfriends\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use template\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
+use pkmnfriends\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
 
 class Kernel extends HttpKernel
 {
@@ -18,9 +18,9 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \template\Http\Middleware\TrimStrings::class,
+        \pkmnfriends\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \template\Http\Middleware\TrustProxies::class,
+        \pkmnfriends\Http\Middleware\TrustProxies::class,
     ];
 
     /**
@@ -30,16 +30,16 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \template\Http\Middleware\EncryptCookies::class,
+            \pkmnfriends\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \template\Http\Middleware\VerifyCsrfToken::class,
+            \pkmnfriends\Http\Middleware\VerifyCsrfToken::class,
             \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \template\Http\Middleware\Locale::class,
-            \template\Http\Middleware\TimeZones::class,
+            \pkmnfriends\Http\Middleware\Locale::class,
+            \pkmnfriends\Http\Middleware\TimeZones::class,
         ],
         'api' => [
             'throttle:60,1',
@@ -71,9 +71,9 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
-        'guest' => \template\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \pkmnfriends\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'role' => \template\Http\Middleware\AuthenticatedUserHasRole::class,
+        'role' => \pkmnfriends\Http\Middleware\AuthenticatedUserHasRole::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
         'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,

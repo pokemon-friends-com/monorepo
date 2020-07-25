@@ -1,12 +1,12 @@
 <?php
 
-namespace template\Http\Controllers\OAuth;
+namespace pkmnfriends\Http\Controllers\OAuth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class LoginController extends ControllerAbstract
 {

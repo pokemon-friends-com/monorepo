@@ -1,12 +1,12 @@
 <?php
 
-namespace template\Http\Controllers\Anonymous;
+namespace pkmnfriends\Http\Controllers\Anonymous;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\{Cache, Storage};
 use Illuminate\Http\Response;
 use Spatie\Sitemap\{Sitemap, Tags\Url};
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class SitemapController extends ControllerAbstract
 {

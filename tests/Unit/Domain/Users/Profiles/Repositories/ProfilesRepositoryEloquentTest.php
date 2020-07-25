@@ -3,16 +3,16 @@
 namespace Tests\Unit\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Support\Collection;
-use template\Domain\Users\Profiles\Events\ProfileUpdatedEvent;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\Events\ProfileUpdatedEvent;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Users\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
 
 class ProfilesRepositoryEloquentTest extends TestCase
 {

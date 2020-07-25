@@ -2,18 +2,18 @@
 
 namespace Tests\Unit\Domain\Users\ProvidersTokens\Repositories;
 
-use template\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent;
-use template\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent;
-use template\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent;
-use template\Domain\Users\ProvidersTokens\ProviderToken;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent;
+use pkmnfriends\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent;
+use pkmnfriends\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent;
+use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
+use pkmnfriends\Domain\Users\Users\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use template\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
+use pkmnfriends\Domain\Users\ProvidersTokens\Repositories\ProvidersTokensRepositoryEloquent;
 
 class ProvidersTokensRepositoryEloquentTest extends TestCase
 {

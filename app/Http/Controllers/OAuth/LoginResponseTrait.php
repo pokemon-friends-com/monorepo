@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Http\Controllers\OAuth;
+namespace pkmnfriends\Http\Controllers\OAuth;
 
 use Carbon\Carbon;
 use Laravel\Passport\PersonalAccessTokenResult;

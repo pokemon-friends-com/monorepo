@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="users" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" environment="development" path="$PROJECT_DIR$/app/Http/Controllers/Api/V1/Users/users.http">
+  <configuration default="false" name="users" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" environment="development" path="$PROJECT_DIR$/app/Http/Controllers/Api/V1/users.http">
     <method v="2" />
   </configuration>
 </component>

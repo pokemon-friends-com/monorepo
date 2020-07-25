@@ -1,16 +1,16 @@
 <?php
 
-namespace template\Domain\Files\Medias\Repositories;
+namespace pkmnfriends\Domain\Files\Medias\Repositories;
 
 use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
-use template\Infrastructure\Contracts\
+use pkmnfriends\Infrastructure\Contracts\
 {
     Request\RequestAbstract,
     Repositories\RepositoryEloquentAbstract,
     Traits\SecurityHashTrait
 };
-use template\Domain\Files\Medias\{Media, Repositories\MediasRepository};
+use pkmnfriends\Domain\Files\Medias\{Media, Repositories\MediasRepository};
 
 class MediasRepositoryEloquent extends RepositoryEloquentAbstract implements MediasRepository
 {

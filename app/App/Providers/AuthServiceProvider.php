@@ -1,11 +1,11 @@
 <?php
 
-namespace template\App\Providers;
+namespace pkmnfriends\App\Providers;
 
 use Laravel\Passport\Passport;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use template\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
+use pkmnfriends\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
 
 class AuthServiceProvider extends ServiceProvider
 {

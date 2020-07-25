@@ -3,7 +3,7 @@
 namespace Tests\Feature\Console;
 
 use Illuminate\Support\Facades\Bus;
-use template\App\Jobs\RegisterFriendCodeJob;
+use pkmnfriends\App\Jobs\RegisterFriendCodeJob;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

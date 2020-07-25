@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Exceptions;
+namespace pkmnfriends\Exceptions;
 
 use Exception;
 use Throwable;

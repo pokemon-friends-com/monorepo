@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\ProvidersTokens\Events;
+namespace pkmnfriends\Domain\Users\ProvidersTokens\Events;
 
-use template\Infrastructure\Contracts\Events\EventAbstract;
-use template\Domain\Users\ProvidersTokens\ProviderToken;
+use pkmnfriends\Infrastructure\Contracts\Events\EventAbstract;
+use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
 
 class ProviderTokenUpdatedEvent extends EventAbstract
 {

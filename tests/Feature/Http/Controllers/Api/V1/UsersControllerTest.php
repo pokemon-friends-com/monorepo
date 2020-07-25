@@ -1,19 +1,19 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers\Api\V1\Users;
+namespace Tests\Feature\Http\Controllers\Api\V1;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
-use template\Domain\Files\Medias\Media;
+use pkmnfriends\Domain\Files\Medias\Media;
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laravel\Passport\Passport;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Users\User;
-use template\Domain\Users\Users\Transformers\UserTransformer;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\Transformers\UserTransformer;
 
 class UsersControllerTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Users\Criterias;
+namespace pkmnfriends\Domain\Users\Users\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
-use template\Infrastructure\Contracts\Criterias\CriteriaAbstract;
+use pkmnfriends\Infrastructure\Contracts\Criterias\CriteriaAbstract;
 
 class FullNameLikeCriteria extends CriteriaAbstract
 {

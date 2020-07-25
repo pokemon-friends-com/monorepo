@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Http\Middleware;
+namespace pkmnfriends\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 

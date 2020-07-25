@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Profiles\Transformers;
+namespace pkmnfriends\Domain\Users\Profiles\Transformers;
 
-use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
-use template\Domain\Users\Profiles\Profile;
+use pkmnfriends\Infrastructure\Contracts\Transformers\TransformerAbstract;
+use pkmnfriends\Domain\Users\Profiles\Profile;
 
 class ProfilesListTransformer extends TransformerAbstract
 {

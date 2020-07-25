@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Interfaces\Domain\Users\Users;
+namespace pkmnfriends\Infrastructure\Interfaces\Domain\Users\Users;
 
 interface UserGendersInterface
 {

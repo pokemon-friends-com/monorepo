@@ -1,11 +1,11 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Model;
+namespace pkmnfriends\Infrastructure\Contracts\Model;
 
 /**
  * Allows to load entity as route arguments from uniquid field.
  *
- * @package template\Infrastructure\Contracts\Model
+ * @package pkmnfriends\Infrastructure\Contracts\Model
  */
 trait RouteKeyNameUniquidTrait
 {

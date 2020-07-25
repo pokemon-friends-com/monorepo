@@ -1,20 +1,20 @@
 <?php
 
-namespace template\Domain\Users\ProvidersTokens\Repositories;
+namespace pkmnfriends\Domain\Users\ProvidersTokens\Repositories;
 
 use Illuminate\Container\Container as Application;
 use Illuminate\Support\Collection;
 use PhpParser\ErrorHandler\Collecting;
-use template\Infrastructure\Contracts\
+use pkmnfriends\Infrastructure\Contracts\
 {
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     User,
     Repositories\UsersRepositoryEloquent
 };
-use template\Domain\Users\ProvidersTokens\{
+use pkmnfriends\Domain\Users\ProvidersTokens\{
     Repositories\ProvidersTokensRepositoryInterface,
     ProviderToken,
     Criterias\TokenByProviderCriteria,

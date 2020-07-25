@@ -1,10 +1,10 @@
 <?php
 
-namespace template\App\Listeners;
+namespace pkmnfriends\App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     Events\UserCreatedEvent,
     Events\UserUpdatedEvent,
     Events\UserDeletedEvent,
@@ -24,24 +24,24 @@ class UsersEventsListener
     public function subscribe($events)
     {
         $events->listen(
-            'template\Domain\Users\Users\Events\UserCreatedEvent',
-            'template\App\Listeners\UsersEventsListener@handleUserCreatedEvent'
+            'pkmnfriends\Domain\Users\Users\Events\UserCreatedEvent',
+            'pkmnfriends\App\Listeners\UsersEventsListener@handleUserCreatedEvent'
         );
         $events->listen(
-            'template\Domain\Users\Users\Events\UserUpdatedEvent',
-            'template\App\Listeners\UsersEventsListener@handleUserUpdatedEvent'
+            'pkmnfriends\Domain\Users\Users\Events\UserUpdatedEvent',
+            'pkmnfriends\App\Listeners\UsersEventsListener@handleUserUpdatedEvent'
         );
         $events->listen(
-            'template\Domain\Users\Users\Events\UserDeletedEvent',
-            'template\App\Listeners\UsersEventsListener@handleUserDeletedEvent'
+            'pkmnfriends\Domain\Users\Users\Events\UserDeletedEvent',
+            'pkmnfriends\App\Listeners\UsersEventsListener@handleUserDeletedEvent'
         );
         $events->listen(
-            'template\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent',
-            'template\App\Listeners\UsersEventsListener@handleUserTriedToDeleteHisOwnAccountEvent'
+            'pkmnfriends\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent',
+            'pkmnfriends\App\Listeners\UsersEventsListener@handleUserTriedToDeleteHisOwnAccountEvent'
         );
         $events->listen(
-            'template\Domain\Users\Users\Events\UserRefreshSessionEvent',
-            'template\App\Listeners\UsersEventsListener@handleUserRefreshSessionEvent'
+            'pkmnfriends\Domain\Users\Users\Events\UserRefreshSessionEvent',
+            'pkmnfriends\App\Listeners\UsersEventsListener@handleUserRefreshSessionEvent'
         );
     }
 

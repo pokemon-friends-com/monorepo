@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Users\Events;
+namespace pkmnfriends\Domain\Users\Users\Events;
 
-use template\Infrastructure\Contracts\Events\EventAbstract;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Events\EventAbstract;
+use pkmnfriends\Domain\Users\Users\User;
 
 class UserRefreshSessionEvent extends EventAbstract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Interfaces\Repositories;
+namespace pkmnfriends\Infrastructure\Interfaces\Repositories;
 
 use Prettus\Repository\Contracts\RepositoryInterface as PrettusRepositoryInterface;
 

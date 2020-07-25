@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Profiles\Criterias;
+namespace pkmnfriends\Domain\Users\Profiles\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
-use template\Infrastructure\Contracts\Criterias\CriteriaAbstract;
+use pkmnfriends\Infrastructure\Contracts\Criterias\CriteriaAbstract;
 
 class WhereSponsoredCriteria extends CriteriaAbstract
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace template\Domain\Users\Users\Notifications;
+namespace pkmnfriends\Domain\Users\Users\Notifications;
 
-use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
-use template\Infrastructure\Contracts\{
+use pkmnfriends\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use pkmnfriends\Infrastructure\Contracts\{
     Queues\QueueableTrait,
     Notifications\Notification
 };
-use template\App\Notifications\Messages\CustomerMailMessage;
+use pkmnfriends\App\Notifications\Messages\CustomerMailMessage;
 
 class ResetPassword extends Notification
 {

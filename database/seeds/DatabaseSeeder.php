@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Users\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
                 factory(Profile::class)->create([
                     'user_id' => $user->id,
                     'friend_code' => '500161205617',
-                    'team_color' => \template\Domain\Users\Profiles\ProfilesTeamsColors::BLUE,
+                    'team_color' => \pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors::BLUE,
                     'sponsored' => \Carbon\Carbon::now()->format('Y-m-d'),
                 ]);
             });
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
                 factory(Profile::class)->create([
                     'user_id' => $user->id,
                     'friend_code' => '500161205617',
-                    'team_color' => \template\Domain\Users\Profiles\ProfilesTeamsColors::RED,
+                    'team_color' => \pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors::RED,
                     'sponsored' => \Carbon\Carbon::now()->format('Y-m-d'),
                 ]);
             });

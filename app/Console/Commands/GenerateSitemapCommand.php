@@ -1,12 +1,12 @@
 <?php
 
-namespace template\Console\Commands;
+namespace pkmnfriends\Console\Commands;
 
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
-use template\Infrastructure\Contracts\Commands\CommandAbstract;
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Commands\CommandAbstract;
 
 class GenerateSitemapCommand extends CommandAbstract
 {

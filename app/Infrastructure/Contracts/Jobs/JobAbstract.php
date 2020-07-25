@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Jobs;
+namespace pkmnfriends\Infrastructure\Contracts\Jobs;
 
 use Illuminate\Bus\Queueable;
 

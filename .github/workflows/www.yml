@@ -1,0 +1,164 @@
+name: www.pokemon-friends.com
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ develop ]
+  release:
+    types: [ published ]
+
+jobs:
+
+  codestyle-phpcs:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: [7.3]
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: composer validate --strict
+      - uses: actions/cache@v2
+        with:
+          path: ~/vendor
+          key: ${{ runner.os }}-node-php_${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-php_${{ matrix.php-version }}-
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          tools: pecl
+          extensions: gd, imagick
+      - if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install -o --no-interaction --prefer-dist --no-suggest
+      - run: vendor/bin/phpcs --standard=PSR12 app
+      - run: vendor/bin/phpcs --standard=PSR12 components
+      - run: vendor/bin/phpcs --standard=PSR12 database/factories
+      - run: vendor/bin/phpcs --standard=PSR12 routes
+      - run: vendor/bin/phpcs --standard=PSR12 tests --extensions=php
+
+  codestyle-phpstan:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: [7.3]
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: composer validate --strict
+      - uses: actions/cache@v2
+        with:
+          path: ~/vendor
+          key: ${{ runner.os }}-node-php_${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-php_${{ matrix.php-version }}-
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          tools: pecl
+          extensions: gd, imagick
+      - if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install -o --no-interaction --prefer-dist --no-suggest
+      - run: vendor/bin/phpstan analyse -l 0 app components tests
+
+  tests-js:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: composer validate --strict
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
+      - run: npm run dev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
+          MIX_PUSHER_APP_ID: ${{ secrets.DEV_PUSHER_APP_ID }}
+          MIX_PUSHER_APP_KEY: ${{ secrets.DEV_PUSHER_APP_KEY }}
+          MIX_PUSHER_APP_SECRET: ${{ secrets.DEV_PUSHER_APP_SECRET }}
+      - run: npm test
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
+          MIX_PUSHER_APP_ID: ${{ secrets.DEV_PUSHER_APP_ID }}
+          MIX_PUSHER_APP_KEY: ${{ secrets.DEV_PUSHER_APP_KEY }}
+          MIX_PUSHER_APP_SECRET: ${{ secrets.DEV_PUSHER_APP_SECRET }}
+      - if: ${{ matrix.node-version == '12.x'}}
+        run: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
+
+  tests-php:
+
+    needs: [codestyle-phpcs, codestyle-phpstan, tests-js]
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+        php-version: [7.3]
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: composer validate --strict
+      - uses: actions/cache@v2
+        with:
+          path: ~/vendor
+          key: ${{ runner.os }}-node-php_${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-php_${{ matrix.php-version }}-
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: |
+          npm install
+          npm run dev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
+          MIX_PUSHER_APP_ID: ${{ secrets.DEV_PUSHER_APP_ID }}
+          MIX_PUSHER_APP_KEY: ${{ secrets.DEV_PUSHER_APP_KEY }}
+          MIX_PUSHER_APP_SECRET: ${{ secrets.DEV_PUSHER_APP_SECRET }}
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          tools: pecl
+          extensions: gd, imagick
+      - if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install -o --no-interaction --prefer-dist --no-suggest
+      - run: cp .env.example .env
+      - run: php artisan key:generate
+        env:
+          MOLLIE_KEY: ${{ secrets.MOLLIE_KEY }}
+      - run: vendor/bin/phpunit
+        env:
+          MOLLIE_KEY: ${{ secrets.MOLLIE_KEY }}
+      - if: ${{ matrix.node-version == '12.x'}}
+        run: bash <(curl -s https://codecov.io/bash) -f coverage/clover.xml

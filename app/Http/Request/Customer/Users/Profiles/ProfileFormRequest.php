@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Http\Request\Customer\Users\Profiles;
+namespace pkmnfriends\Http\Request\Customer\Users\Profiles;
 
-use template\Infrastructure\Contracts\Request\RequestAbstract;
-use template\Domain\Users\{Profiles\ProfilesTeamsColors,
+use pkmnfriends\Infrastructure\Contracts\Request\RequestAbstract;
+use pkmnfriends\Domain\Users\{Profiles\ProfilesTeamsColors,
     Users\User,
     Profiles\Profile};
 

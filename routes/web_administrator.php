@@ -15,10 +15,10 @@ Route::group(
     [
         'as' => 'administrator.',
         'namespace' => 'Administrator',
-        'prefix' => \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR,
+        'prefix' => \pkmnfriends\Domain\Users\Users\User::ROLE_ADMINISTRATOR,
         'middleware' => [
             'auth',
-            'role:' . \template\Domain\Users\Users\User::ROLE_ADMINISTRATOR
+            'role:' . \pkmnfriends\Domain\Users\Users\User::ROLE_ADMINISTRATOR
         ],
     ],
     function () {

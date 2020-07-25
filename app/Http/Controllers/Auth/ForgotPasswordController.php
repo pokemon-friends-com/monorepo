@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Http\Controllers\Auth;
+namespace pkmnfriends\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class ForgotPasswordController extends ControllerAbstract
 {

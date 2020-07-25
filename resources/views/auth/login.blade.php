@@ -10,8 +10,8 @@
                 >
                     <div class="card-body p-3">
 
-                        <a href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}" class="btn btn-social btn-block btn-google-plus"><i class="fab fa-google mr-1"></i>{{ trans('auth.login_google') }}</a>
-                        <a href="{{ route('login_provider', ['provider' => \template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}" class="btn btn-social btn-block btn-twitter"><i class="fab fa-twitter mr-1"></i>{{ trans('auth.login_twitter') }}</a>
+                        <a href="{{ route('login_provider', ['provider' => \pkmnfriends\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}" class="btn btn-social btn-block btn-google-plus"><i class="fab fa-google mr-1"></i>{{ trans('auth.login_google') }}</a>
+                        <a href="{{ route('login_provider', ['provider' => \pkmnfriends\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::TWITTER]) }}" class="btn btn-social btn-block btn-twitter"><i class="fab fa-twitter mr-1"></i>{{ trans('auth.login_twitter') }}</a>
 
                         <div class="separator mt-4"><span>Sign in with your username/password</span></div>
 

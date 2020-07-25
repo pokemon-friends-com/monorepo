@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Interfaces\Queues;
+namespace pkmnfriends\Infrastructure\Interfaces\Queues;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 

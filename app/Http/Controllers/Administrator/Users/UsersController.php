@@ -1,19 +1,19 @@
 <?php
 
-namespace template\Http\Controllers\Administrator\Users;
+namespace pkmnfriends\Http\Controllers\Administrator\Users;
 
 use Carbon\Carbon;
 use League\Csv\Writer;
 use Illuminate\Support\Facades\Auth;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use template\Http\Request\Administrator\Users\Users\
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Http\Request\Administrator\Users\Users\
 {
     UserUpdateFormRequest,
     UsersFiltersFormRequest
 };
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 
 class UsersController extends ControllerAbstract
 {

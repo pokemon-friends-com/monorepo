@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Http\Controllers\OAuth;
 
-use template\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Profiles\Profile;
 use Tests\TestCase;
 use Tests\OAuthTestCaseTrait;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\User;
 
 class RegisterControllerTest extends TestCase
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace template\Infrastructure\Interfaces\App\Notifications\Channels;
+namespace pkmnfriends\Infrastructure\Interfaces\App\Notifications\Channels;
 
-use template\Infrastructure\Contracts\Notifications\Notification;
+use pkmnfriends\Infrastructure\Contracts\Notifications\Notification;
 
 interface MailableChannelInterface
 {

@@ -10,6 +10,26 @@ updates:
   labels:
   - dep:javascript
   - dependencies
+- package-ecosystem: npm
+  directory: "/bots/twitch"
+  schedule:
+    interval: monthly
+    time: '04:00'
+  open-pull-requests-limit: 10
+  target-branch: develop
+  labels:
+    - dep:javascript
+    - dependencies
+- package-ecosystem: npm
+  directory: "/phone"
+  schedule:
+    interval: monthly
+    time: '04:00'
+  open-pull-requests-limit: 10
+  target-branch: develop
+  labels:
+    - dep:javascript
+    - dependencies
 - package-ecosystem: composer
   directory: "/"
   schedule:

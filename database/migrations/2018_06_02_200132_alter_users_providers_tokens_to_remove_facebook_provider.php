@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
-use template\Domain\Users\ProvidersTokens\ProviderToken;
+use pkmnfriends\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
+use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
 
 class AlterUsersProvidersTokensToRemoveFacebookProvider extends Migration
 {

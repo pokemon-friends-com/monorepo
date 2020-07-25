@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\{
     Notification
 };
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     User,
     Notifications\ResetPassword
 };

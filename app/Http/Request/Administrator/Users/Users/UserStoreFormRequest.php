@@ -1,11 +1,11 @@
 <?php
 
-namespace template\Http\Request\Administrator\Users\Users;
+namespace pkmnfriends\Http\Request\Administrator\Users\Users;
 
 use Illuminate\Validation\Rule;
-use template\Domain\Users\Profiles\ProfilesTeamsColors;
-use template\Infrastructure\Contracts\Request\RequestAbstract;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors;
+use pkmnfriends\Infrastructure\Contracts\Request\RequestAbstract;
+use pkmnfriends\Domain\Users\Users\User;
 
 class UserStoreFormRequest extends RequestAbstract
 {

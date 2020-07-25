@@ -8,7 +8,7 @@
         "pokemongo",
         "community"
     ],
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-only",
     "require": {
         "php": "^7.3.0",
         "ext-dom": "*",
@@ -76,7 +76,7 @@
     },
     "autoload": {
         "psr-4": {
-            "template\\": "app/"
+            "pkmnfriends\\": "app/"
         },
         "classmap": [
             "database/seeds",

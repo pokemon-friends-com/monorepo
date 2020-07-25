@@ -2,15 +2,15 @@
 
 namespace Tests\Unit\Domain\Users\Users\Repositories;
 
-use template\Domain\Users\Users\Events\UserCreatedEvent;
-use template\Domain\Users\Users\Events\UserDeletedEvent;
-use template\Domain\Users\Users\Events\UserRefreshSessionEvent;
-use template\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent;
-use template\Domain\Users\Users\Events\UserUpdatedEvent;
-use template\Domain\Users\Users\Notifications\CreatedAccountByAdministrator;
-use template\Domain\Users\Users\Transformers\UsersListTransformer;
-use template\Domain\Users\Users\User;
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Events\UserCreatedEvent;
+use pkmnfriends\Domain\Users\Users\Events\UserDeletedEvent;
+use pkmnfriends\Domain\Users\Users\Events\UserRefreshSessionEvent;
+use pkmnfriends\Domain\Users\Users\Events\UserTriedToDeleteHisOwnAccountEvent;
+use pkmnfriends\Domain\Users\Users\Events\UserUpdatedEvent;
+use pkmnfriends\Domain\Users\Users\Notifications\CreatedAccountByAdministrator;
+use pkmnfriends\Domain\Users\Users\Transformers\UsersListTransformer;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Arr;

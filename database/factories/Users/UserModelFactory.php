@@ -11,7 +11,7 @@
 |
 */
 
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\User;
 
 /**
  * @var \Illuminate\Database\Eloquent\Factory $factory

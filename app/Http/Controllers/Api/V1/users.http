@@ -10,10 +10,3 @@ Accept: application/json
 Cache-Control: no-cache
 
 ###
-
-GET {{host}}/api/v1/users/channels
-Authorization: Bearer {{bearer}}
-Accept: application/json
-Cache-Control: no-cache
-
-###

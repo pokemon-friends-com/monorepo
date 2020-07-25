@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => template\Domain\Users\Users\User::class,
+            'model' => pkmnfriends\Domain\Users\Users\User::class,
         ],
     ],
 
@@ -99,7 +99,7 @@ return [
         'default' => [
             'table'  => 'email_resets',
             'expire' => 60,
-            'callback' => 'template\Http\Controllers\Auth\ResetEmailController@reset',
+            'callback' => 'pkmnfriends\Http\Controllers\Auth\ResetEmailController@reset',
             // 'ignore-migrations' => true,
             // 'route' => 'email/reset/{token}',
         ]

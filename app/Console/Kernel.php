@@ -1,10 +1,10 @@
 <?php
 
-namespace template\Console;
+namespace pkmnfriends\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use template\Console\Commands\{
+use pkmnfriends\Console\Commands\{
     GenerateSitemapCommand,
     TestLaravelEchoCommand,
     CrawlPokemonGoFriendCodesCommand,

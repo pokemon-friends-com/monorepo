@@ -1,14 +1,14 @@
 <?php
 
-namespace template\Http\Controllers\Api\V1\Users;
+namespace pkmnfriends\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 use Laravel\Cashier\Subscription;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use template\Domain\Users\Users\Transformers\UserTransformer;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\Users\Transformers\UserTransformer;
+use pkmnfriends\Domain\Users\Users\User;
 
 class UsersController extends ControllerAbstract
 {
@@ -26,6 +26,18 @@ class UsersController extends ControllerAbstract
     public function __construct(UsersRepositoryEloquent $rUsers)
     {
         $this->rUsers = $rUsers;
+    }
+
+    /**
+     * Get users list.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index()
+    {
+        $users = $this->rUsers->with(['profile'])->all();
+
+        return response()->json($users);
     }
 
     /**
@@ -83,18 +95,5 @@ class UsersController extends ControllerAbstract
         }
 
         return $user->profile->getMedia('trainer')->first()->toResponse($request);
-    }
-
-    public function channels()
-    {
-
-//        $subscriptions = Profile::whith('subscription')
-//            ->addSelect([
-//                'subscription' => Subscription::whereColumn('ends_at', null)
-//                    ->whereColumn('trial_ends_at')
-//                    ->whereColumn('trial_ends_at')
-//            ]);
-
-        return response()->json(['blazed_css']);
     }
 }

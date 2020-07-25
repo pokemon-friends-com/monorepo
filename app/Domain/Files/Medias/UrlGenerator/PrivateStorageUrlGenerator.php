@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Files\Medias\UrlGenerator;
+namespace pkmnfriends\Domain\Files\Medias\UrlGenerator;
 
 use Spatie\MediaLibrary\UrlGenerator\LocalUrlGenerator;
-use template\Infrastructure\Contracts\Traits\SecurityHashTrait;
+use pkmnfriends\Infrastructure\Contracts\Traits\SecurityHashTrait;
 
 class PrivateStorageUrlGenerator extends LocalUrlGenerator
 {

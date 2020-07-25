@@ -1,8 +1,8 @@
 <?php
 
-namespace template\Http\Controllers\Auth;
+namespace pkmnfriends\Http\Controllers\Auth;
 
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use Yaquawa\Laravel\EmailReset\ResetEmail;
 
 class ResetEmailController extends ControllerAbstract

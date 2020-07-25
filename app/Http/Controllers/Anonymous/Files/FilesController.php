@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Http\Controllers\Anonymous\Files;
+namespace pkmnfriends\Http\Controllers\Anonymous\Files;
 
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use template\Domain\Files\Files\Repositories\FilesRepository;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Files\Files\Repositories\FilesRepository;
 
 class FilesController extends ControllerAbstract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Queues;
+namespace pkmnfriends\Infrastructure\Contracts\Queues;
 
 use Illuminate\Bus\Queueable;
 

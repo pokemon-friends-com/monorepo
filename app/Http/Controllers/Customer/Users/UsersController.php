@@ -1,19 +1,19 @@
 <?php
 
-namespace template\Http\Controllers\Customer\Users;
+namespace pkmnfriends\Http\Controllers\Customer\Users;
 
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Support\Facades\Auth;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
-use template\Domain\Users\Users\Transformers\TrainerTransformer;
-use template\Domain\Users\Users\User;
-use template\Http\Request\Customer\Users\Profiles\ProfileFormRequest;
-use template\Http\Request\Customer\Users\Users\PasswordFormRequest;
-use template\Http\Request\Customer\Users\Users\ChangeEmailFormRequest;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Transformers\TrainerTransformer;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Http\Request\Customer\Users\Profiles\ProfileFormRequest;
+use pkmnfriends\Http\Request\Customer\Users\Users\PasswordFormRequest;
+use pkmnfriends\Http\Request\Customer\Users\Users\ChangeEmailFormRequest;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class UsersController extends ControllerAbstract
 {

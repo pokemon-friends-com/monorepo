@@ -115,7 +115,7 @@
                             shown so don't lose it! You may now use this token to make API requests.
                         </p>
 
-                        <textarea class="form-control" rows="10" :text="accessToken"></textarea>
+                        <textarea class="form-control" rows="10" :value="accessToken"></textarea>
                     </div>
 
                     <!-- Modal Actions -->
@@ -138,8 +138,8 @@ import {
 
 export default {
   /*
-         * The component's data.
-         */
+   * The component's data.
+   */
   data() {
     return {
       accessToken: null,

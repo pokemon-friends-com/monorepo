@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Domain\Users\Profiles;
+namespace pkmnfriends\Domain\Users\Profiles;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,18 +12,18 @@ use Spatie\MediaLibrary\
 };
 use Spatie\SchemaOrg\Barcode;
 use Spatie\SchemaOrg\Schema;
-use template\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
-use template\Infrastructure\Contracts\
+use pkmnfriends\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
+use pkmnfriends\Infrastructure\Contracts\
 {
     Model\ModelAbstract,
     Model\TimeStampsTz,
     Model\SoftDeletesTz
 };
-use template\Domain\Users\
+use pkmnfriends\Domain\Users\
 {
     Users\User
 };
-use template\Domain\Users\Profiles\ProfilesTeamsColors;
+use pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors;
 
 class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterface, HasMedia, ProfilesTeamsColors
 {

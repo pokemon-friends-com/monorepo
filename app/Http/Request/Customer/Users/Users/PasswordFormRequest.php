@@ -1,12 +1,12 @@
 <?php
 
-namespace template\Http\Request\Customer\Users\Users;
+namespace pkmnfriends\Http\Request\Customer\Users\Users;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use template\Infrastructure\Contracts\Request\RequestAbstract;
-use template\Domain\Users\Users\Repositories\UsersResetPasswordRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Request\RequestAbstract;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersResetPasswordRepositoryEloquent;
 
 class PasswordFormRequest extends RequestAbstract
 {

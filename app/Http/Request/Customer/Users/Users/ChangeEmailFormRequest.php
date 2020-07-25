@@ -1,8 +1,8 @@
 <?php
 
-namespace template\Http\Request\Customer\Users\Users;
+namespace pkmnfriends\Http\Request\Customer\Users\Users;
 
-use template\Infrastructure\Contracts\Request\RequestAbstract;
+use pkmnfriends\Infrastructure\Contracts\Request\RequestAbstract;
 
 class ChangeEmailFormRequest extends RequestAbstract
 {

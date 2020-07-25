@@ -1,12 +1,12 @@
 <?php
 
-namespace template\Console\Commands;
+namespace pkmnfriends\Console\Commands;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Infrastructure\Contracts\Commands\CommandAbstract;
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Commands\CommandAbstract;
 
 class DailySponsorshipCommand extends CommandAbstract
 {
