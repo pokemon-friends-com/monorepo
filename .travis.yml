@@ -25,6 +25,7 @@ stages:
   - name: deploy
     if: (NOT type IN (pull_request)) AND (branch = master)
   - tag
+  - live-test
 
 jobs:
   fast_finish: true
@@ -153,3 +154,15 @@ jobs:
     script:
       - git tag ${APP_TAG} -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
       - git push -q https://$GITHUBKEY@github.com/pokemon-friends-com/www.git ${APP_TAG}
+  - stage: live-test
+    if: (NOT type IN (pull_request)) AND (branch = master)
+    name: pokemon-friends-com/www test production with testim
+    language: node_js
+    node_js: 12
+    before_install:
+      - nvm install
+      - nvm use
+    install:
+      - npm install
+    script:
+      - npm run testim-prod
