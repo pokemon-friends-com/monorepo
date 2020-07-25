@@ -1,10 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="key:generate" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/artisan" scriptParameters="key:generate">
-    <CommandLine>
-      <PhpTestInterpreterSettings>
-        <option name="interpreterName" value="PHP 7.3" />
-      </PhpTestInterpreterSettings>
-    </CommandLine>
     <method v="2" />
   </configuration>
 </component>
