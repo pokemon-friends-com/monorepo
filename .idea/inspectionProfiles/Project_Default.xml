@@ -9,6 +9,10 @@
             <option name="name" value="TestMonitor PMD ruleset" />
             <option name="path" value="$PROJECT_DIR$/phpmd.xml" />
           </RulesetDescriptor>
+          <RulesetDescriptor>
+            <option name="name" value="TestMonitor PMD ruleset" />
+            <option name="path" value="$PROJECT_DIR$/phpmd.xml" />
+          </RulesetDescriptor>
         </list>
       </option>
     </inspection_tool>
