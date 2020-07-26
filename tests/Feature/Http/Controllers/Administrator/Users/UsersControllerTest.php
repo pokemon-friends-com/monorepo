@@ -8,11 +8,11 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     Events\UserTriedToDeleteHisOwnAccountEvent,
     User,
 };
-use template\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Profiles\Profile;
 
 class UsersControllerTest extends TestCase
 {

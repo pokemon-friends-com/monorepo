@@ -1,8 +1,8 @@
 <?php
 
-namespace template\Domain\Users\Users\Repositories;
+namespace pkmnfriends\Domain\Users\Users\Repositories;
 
-use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use pkmnfriends\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 
 interface UsersResetPasswordRepositoryInterface extends RepositoryInterface
 {

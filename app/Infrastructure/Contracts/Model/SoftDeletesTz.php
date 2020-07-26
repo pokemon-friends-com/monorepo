@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Model;
+namespace pkmnfriends\Infrastructure\Contracts\Model;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;

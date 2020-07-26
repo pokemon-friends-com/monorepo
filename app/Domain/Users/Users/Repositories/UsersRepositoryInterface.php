@@ -1,11 +1,11 @@
 <?php
 
-namespace template\Domain\Users\Users\Repositories;
+namespace pkmnfriends\Domain\Users\Users\Repositories;
 
 use Illuminate\Support\Collection;
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Contracts\Request\RequestAbstract;
-use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Request\RequestAbstract;
+use pkmnfriends\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 
 interface UsersRepositoryInterface extends RepositoryInterface
 {
@@ -15,8 +15,8 @@ interface UsersRepositoryInterface extends RepositoryInterface
      *
      * @param array $attributes
      *
-     * @event template\Domain\Users\Users\Events\UserCreatedEvent
-     * @return \template\Domain\Users\Users\User
+     * @event pkmnfriends\Domain\Users\Users\Events\UserCreatedEvent
+     * @return \pkmnfriends\Domain\Users\Users\User
      */
     public function create(array $attributes): User;
 
@@ -26,8 +26,8 @@ interface UsersRepositoryInterface extends RepositoryInterface
      * @param array $attributes
      * @param integer $id
      *
-     * @event template\Domain\Users\Users\Events\UserUpdatedEvent
-     * @return \template\Domain\Users\Users\User
+     * @event pkmnfriends\Domain\Users\Users\Events\UserUpdatedEvent
+     * @return \pkmnfriends\Domain\Users\Users\User
      */
     public function update(array $attributes, $id): User;
 
@@ -36,8 +36,8 @@ interface UsersRepositoryInterface extends RepositoryInterface
      *
      * @param integer $id
      *
-     * @event template\Domain\Users\Users\Events\UserDeletedEvent
-     * @return \template\Domain\Users\Users\User
+     * @event pkmnfriends\Domain\Users\Users\Events\UserDeletedEvent
+     * @return \pkmnfriends\Domain\Users\Users\User
      */
     public function delete($id): User;
 

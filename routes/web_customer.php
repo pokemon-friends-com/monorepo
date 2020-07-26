@@ -17,7 +17,7 @@ Route::group(
         'namespace' => 'Customer',
         'middleware' => [
             'auth',
-            'role:' . \template\Domain\Users\Users\User::ROLE_CUSTOMER
+            'role:' . \pkmnfriends\Domain\Users\Users\User::ROLE_CUSTOMER
         ],
     ],
     function () {

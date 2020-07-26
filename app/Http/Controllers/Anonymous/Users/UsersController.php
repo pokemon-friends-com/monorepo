@@ -1,13 +1,13 @@
 <?php
 
-namespace template\Http\Controllers\Anonymous\Users;
+namespace pkmnfriends\Http\Controllers\Anonymous\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Honeypot\ProtectAgainstSpam;
-use template\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class UsersController extends ControllerAbstract
 {

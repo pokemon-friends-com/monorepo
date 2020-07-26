@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Console\Commands;
+namespace pkmnfriends\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;

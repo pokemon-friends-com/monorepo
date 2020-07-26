@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\Passport;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\User;
 
 class LoginControllerTest extends TestCase
 {

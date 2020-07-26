@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\ProvidersTokens\Criterias;
+namespace pkmnfriends\Domain\Users\ProvidersTokens\Criterias;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
-use template\Infrastructure\Contracts\Criterias\CriteriaAbstract;
+use pkmnfriends\Infrastructure\Contracts\Criterias\CriteriaAbstract;
 
 class TokenByProviderCriteria extends CriteriaAbstract
 {

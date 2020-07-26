@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Notifications;
+namespace pkmnfriends\Infrastructure\Contracts\Notifications;
 
 use Illuminate\Notifications\Notification as IlluminateNotification;
 

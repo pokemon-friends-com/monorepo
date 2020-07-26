@@ -37,7 +37,7 @@
                       {{--                            <li class="nav-item dropdown">--}}
                       {{--                                <a class="nav-link" data-toggle="dropdown" href="#"><i class="fas fa-language"></i></a>--}}
                       {{--                                <div class="dropdown-menu dropdown-menu-sm-right dropdown-menu-right">--}}
-                      {{--                                    @foreach(\template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::LOCALES as $locale)--}}
+                      {{--                                    @foreach(\pkmnfriends\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::LOCALES as $locale)--}}
                       {{--                                        @if (Session::get('locale') !== $locale)--}}
                       {{--                                            <a href="{{ route(Route::currentRouteName(), ['locale' => $locale]) }}" class="dropdown-item">--}}
                       {{--                                                <i class="far fa-flag mr-2"></i>{{ trans("users.locale.${locale}") }}--}}

@@ -1,6 +1,6 @@
 <?php
 
-namespace template\App\Providers;
+namespace pkmnfriends\App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'template\Http\Controllers';
+    protected $namespace = 'pkmnfriends\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

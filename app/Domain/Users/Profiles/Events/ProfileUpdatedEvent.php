@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Profiles\Events;
+namespace pkmnfriends\Domain\Users\Profiles\Events;
 
-use template\Infrastructure\Contracts\Events\EventAbstract;
-use template\Domain\Users\Profiles\Profile;
+use pkmnfriends\Infrastructure\Contracts\Events\EventAbstract;
+use pkmnfriends\Domain\Users\Profiles\Profile;
 
 class ProfileUpdatedEvent extends EventAbstract
 {

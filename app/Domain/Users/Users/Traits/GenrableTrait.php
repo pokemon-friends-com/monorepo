@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Domain\Users\Users\Traits;
+namespace pkmnfriends\Domain\Users\Users\Traits;
 
 trait GenrableTrait
 {

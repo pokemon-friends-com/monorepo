@@ -4,7 +4,7 @@ namespace Tests\Unit\App\Events;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use template\App\Events\LaravelEchoEvent;
+use pkmnfriends\App\Events\LaravelEchoEvent;
 use Tests\TestCase;
 
 class LaravelEchoEventTest extends TestCase

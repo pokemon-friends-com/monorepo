@@ -1,6 +1,6 @@
 <?php
 
-namespace template\App\Events;
+namespace pkmnfriends\App\Events;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;

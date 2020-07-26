@@ -1,15 +1,15 @@
 <?php
 
-namespace template\Domain\Users\ProvidersTokens;
+namespace pkmnfriends\Domain\Users\ProvidersTokens;
 
-use template\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
-use template\Infrastructure\Contracts\{
+use pkmnfriends\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface;
+use pkmnfriends\Infrastructure\Contracts\{
     Model\ModelAbstract,
     Model\Notifiable,
     Model\IdentifiableTrait,
     Model\TimeStampsTz
 };
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\User;
 
 class ProviderToken extends ModelAbstract implements ProvidersInterface
 {

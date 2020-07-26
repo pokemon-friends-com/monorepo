@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Commands;
+namespace pkmnfriends\Infrastructure\Contracts\Commands;
 
 use Illuminate\Console\Command;
 

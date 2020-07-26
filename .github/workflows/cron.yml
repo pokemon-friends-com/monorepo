@@ -1,0 +1,47 @@
+name: cron
+
+on:
+  schedule:
+    - cron:  '0 6 * * *'
+
+jobs:
+
+  psi-home:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Page Speed Insights on home
+        uses: jakepartusch/psi-action@v1
+        id: psi-home
+        with:
+          url: "https://www.pokemon-friends.com"
+          threshold: 70
+
+  psi-trainers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Page Speed Insights on trainers list (page 1)
+        uses: jakepartusch/psi-action@v1
+        id: psi-trainers
+        with:
+          url: "https://www.pokemon-friends.com/trainers"
+          threshold: 70
+
+  psi-login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Page Speed Insights on login
+        uses: jakepartusch/psi-action@v1
+        id: psi-login
+        with:
+          url: "https://www.pokemon-friends.com/login"
+          threshold: 70
+
+  psi-register:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Page Speed Insights on register
+        uses: jakepartusch/psi-action@v1
+        id: psi-register
+        with:
+          url: "https://www.pokemon-friends.com/register"
+          threshold: 70

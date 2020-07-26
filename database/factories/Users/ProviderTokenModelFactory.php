@@ -11,13 +11,13 @@
 |
 */
 
-use template\Domain\Users\ProvidersTokens\ProviderToken;
+use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
 
 /**
  * @var \Illuminate\Database\Eloquent\Factory $factory
  */
 $factory
-    ->define(template\Domain\Users\ProvidersTokens\ProviderToken::class, function (Faker\Generator $faker) {
+    ->define(pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken::class, function (Faker\Generator $faker) {
         return [
             'user_id' => 0,
             'provider' => $faker->randomElement(ProviderToken::PROVIDERS),

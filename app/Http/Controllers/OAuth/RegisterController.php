@@ -1,13 +1,13 @@
 <?php
 
-namespace template\Http\Controllers\OAuth;
+namespace pkmnfriends\Http\Controllers\OAuth;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 
 class RegisterController extends ControllerAbstract
 {

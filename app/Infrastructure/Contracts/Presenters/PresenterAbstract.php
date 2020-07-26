@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Presenters;
+namespace pkmnfriends\Infrastructure\Contracts\Presenters;
 
 use Prettus\Repository\Presenter\FractalPresenter;
 

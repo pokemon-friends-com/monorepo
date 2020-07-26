@@ -1,15 +1,16 @@
 <?php
 
-namespace template\Domain\Users\Users\Repositories;
+namespace pkmnfriends\Domain\Users\Users\Repositories;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use template\Infrastructure\Contracts\
+use Prettus\Repository\Criteria\RequestCriteria;
+use pkmnfriends\Infrastructure\Contracts\
 {
     Repositories\RepositoryEloquentAbstract,
     Request\RequestAbstract
 };
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     Presenters\TrainerPresenter,
     User,
     Criterias\EmailLikeCriteria,
@@ -26,6 +27,17 @@ use template\Domain\Users\Users\{
 
 class UsersRepositoryEloquent extends RepositoryEloquentAbstract implements UsersRepositoryInterface
 {
+
+    protected $fieldSearchable = [
+        'uniqid',
+        'email' => 'like',
+        'profile.nickname' => 'like',
+    ];
+
+    public function boot()
+    {
+        $this->pushCriteria(app(RequestCriteria::class));
+    }
 
     /**
      * {@inheritdoc}

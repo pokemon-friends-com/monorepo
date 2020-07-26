@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use template\Domain\Users\Profiles\ProfilesTeamsColors;
+use pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors;
 
 class AlterUsersProfilesToAddDefaultTeamColor extends Migration
 {

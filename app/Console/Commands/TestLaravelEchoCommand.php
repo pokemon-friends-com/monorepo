@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Console\Commands;
+namespace pkmnfriends\Console\Commands;
 
-use template\Infrastructure\Contracts\Commands\CommandAbstract;
-use template\App\Events\LaravelEchoEvent;
+use pkmnfriends\Infrastructure\Contracts\Commands\CommandAbstract;
+use pkmnfriends\App\Events\LaravelEchoEvent;
 
 class TestLaravelEchoCommand extends CommandAbstract
 {

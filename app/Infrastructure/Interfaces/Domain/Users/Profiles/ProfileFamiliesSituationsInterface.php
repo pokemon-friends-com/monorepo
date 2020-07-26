@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Interfaces\Domain\Users\Profiles;
+namespace pkmnfriends\Infrastructure\Interfaces\Domain\Users\Profiles;
 
 interface ProfileFamiliesSituationsInterface
 {

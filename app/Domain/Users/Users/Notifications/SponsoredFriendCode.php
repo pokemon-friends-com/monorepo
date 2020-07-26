@@ -1,12 +1,12 @@
 <?php
 
-namespace template\Domain\Users\Users\Notifications;
+namespace pkmnfriends\Domain\Users\Users\Notifications;
 
 use NotificationChannels\Twitter\TwitterChannel;
 use NotificationChannels\Twitter\TwitterStatusUpdate;
-use template\App\Notifications\Messages\CustomerMailMessage;
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Contracts\Notifications\Notification;
+use pkmnfriends\App\Notifications\Messages\CustomerMailMessage;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Notifications\Notification;
 
 class SponsoredFriendCode extends Notification
 {

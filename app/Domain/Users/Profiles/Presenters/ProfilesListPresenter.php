@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Profiles\Presenters;
+namespace pkmnfriends\Domain\Users\Profiles\Presenters;
 
-use template\Infrastructure\Contracts\Presenters\PresenterAbstract;
-use template\Domain\Users\Profiles\Transformers\ProfilesListTransformer;
+use pkmnfriends\Infrastructure\Contracts\Presenters\PresenterAbstract;
+use pkmnfriends\Domain\Users\Profiles\Transformers\ProfilesListTransformer;
 
 class ProfilesListPresenter extends PresenterAbstract
 {

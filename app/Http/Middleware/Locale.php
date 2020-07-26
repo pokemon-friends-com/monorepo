@@ -1,11 +1,11 @@
 <?php
 
-namespace template\Http\Middleware;
+namespace pkmnfriends\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface;
+use pkmnfriends\Infrastructure\Interfaces\Domain\Locale\LocalesInterface;
 
 class Locale
 {

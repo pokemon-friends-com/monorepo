@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Model;
+namespace pkmnfriends\Infrastructure\Contracts\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Prettus\Repository\Contracts\Transformable;

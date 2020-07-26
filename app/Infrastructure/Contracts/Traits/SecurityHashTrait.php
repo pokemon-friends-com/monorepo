@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Traits;
+namespace pkmnfriends\Infrastructure\Contracts\Traits;
 
 use Illuminate\Support\Facades\Crypt;
 

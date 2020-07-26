@@ -3,8 +3,8 @@
 namespace Tests\Feature\Http\Controllers\Anonymous\Users;
 
 use Carbon\Carbon;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Users\User;
 use Tests\OAuthTestCaseTrait;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;

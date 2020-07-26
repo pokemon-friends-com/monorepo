@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Domain\Users\Profiles;
+namespace pkmnfriends\Domain\Users\Profiles;
 
 interface ProfilesTeamsColors
 {

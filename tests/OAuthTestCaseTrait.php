@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use template\Domain\Users\{
+use pkmnfriends\Domain\Users\{
     Users\User,
     Profiles\Profile
 };

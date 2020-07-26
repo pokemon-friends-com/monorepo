@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Events;
+namespace pkmnfriends\Infrastructure\Contracts\Events;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;

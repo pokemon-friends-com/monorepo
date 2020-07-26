@@ -1,10 +1,10 @@
 <?php
 
-namespace template\Console;
+namespace pkmnfriends\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use template\Console\Commands\{
+use pkmnfriends\Console\Commands\{
     GenerateSitemapCommand,
     TestLaravelEchoCommand,
     CrawlPokemonGoFriendCodesCommand,
@@ -42,6 +42,10 @@ class Kernel extends ConsoleKernel
             ->withoutOverlapping();
         $schedule
             ->command('pkmn:daily-sponsor')
+            ->daily()
+            ->withoutOverlapping();
+        $schedule
+            ->command('cashier:run')
             ->daily()
             ->withoutOverlapping();
     }

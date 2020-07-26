@@ -1,10 +1,10 @@
 <?php
 
-namespace template\Domain\Users\Users\Transformers;
+namespace pkmnfriends\Domain\Users\Users\Transformers;
 
-use template\Domain\Users\Profiles\Profile;
-use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Infrastructure\Contracts\Transformers\TransformerAbstract;
+use pkmnfriends\Domain\Users\Users\User;
 
 class UsersListTransformer extends TransformerAbstract
 {

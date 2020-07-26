@@ -1,8 +1,8 @@
 <?php
 
-namespace template\Http\Request\Administrator\Users\Users;
+namespace pkmnfriends\Http\Request\Administrator\Users\Users;
 
-use template\Infrastructure\Contracts\Request\RequestAbstract;
+use pkmnfriends\Infrastructure\Contracts\Request\RequestAbstract;
 
 class UsersFiltersFormRequest extends RequestAbstract
 {

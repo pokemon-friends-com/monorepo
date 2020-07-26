@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\App\Notifications\Messages;
 
-use template\App\Notifications\Messages\CustomerMailMessage;
+use pkmnfriends\App\Notifications\Messages\CustomerMailMessage;
 use Tests\TestCase;
 
 class CustomerMailMessageTest extends TestCase

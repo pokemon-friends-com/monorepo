@@ -4,12 +4,12 @@ namespace Tests\Unit\App\Jobs;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use template\App\Jobs\RegisterFriendCodeJob;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Profiles\ProfilesTeamsColors;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
-use template\Domain\Users\Users\User;
+use pkmnfriends\App\Jobs\RegisterFriendCodeJob;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors;
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\User;
 use Tests\TestCase;
 
 class RegisterFriendCodeJobTest extends TestCase

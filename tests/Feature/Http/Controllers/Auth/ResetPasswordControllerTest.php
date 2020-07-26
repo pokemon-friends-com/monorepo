@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\{
     Hash,
     Password
 };
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\User;
 
 class ResetPasswordControllerTest extends TestCase
 {

@@ -1,9 +1,10 @@
 <?php
 
-namespace template\Domain\Users\Profiles;
+namespace pkmnfriends\Domain\Users\Profiles;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Cashier\Billable;
 use Spatie\MediaLibrary\
 {
     HasMedia\HasMedia,
@@ -11,21 +12,22 @@ use Spatie\MediaLibrary\
 };
 use Spatie\SchemaOrg\Barcode;
 use Spatie\SchemaOrg\Schema;
-use template\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
-use template\Infrastructure\Contracts\
+use pkmnfriends\Infrastructure\Interfaces\Domain\Users\Profiles\ProfileFamiliesSituationsInterface;
+use pkmnfriends\Infrastructure\Contracts\
 {
     Model\ModelAbstract,
     Model\TimeStampsTz,
     Model\SoftDeletesTz
 };
-use template\Domain\Users\
+use pkmnfriends\Domain\Users\
 {
     Users\User
 };
-use template\Domain\Users\Profiles\ProfilesTeamsColors;
+use pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors;
 
 class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterface, HasMedia, ProfilesTeamsColors
 {
+    use Billable;
     use HasMediaTrait;
     use SoftDeletes;
     use TimeStampsTz;
@@ -72,6 +74,11 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         'updated_at',
         'deleted_at',
     ];
+
+    public function getLocale()
+    {
+        return $this->user->preferredLocale();
+    }
 
     public static function claimableEmail(string $friendCode): string
     {
@@ -128,6 +135,25 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         return Schema::barcode()
             ->name($this->friend_code)
             ->productionCompany(Schema::organization()->name('Niantic'));
+    }
+
+    public function mollieCustomerFields()
+    {
+        return [
+            'email' => $this->user->email,
+            'name' => $this->user->full_name,
+        ];
+    }
+
+    /**
+     * Get the receiver information for the invoice.
+     * Typically includes the name and some sort of (E-mail/physical) address.
+     *
+     * @return array An array of strings
+     */
+    public function getInvoiceInformation()
+    {
+        return [$this->user->full_name, $this->user->email];
     }
 
     /**

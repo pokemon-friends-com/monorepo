@@ -1,9 +1,9 @@
 <?php
 
-namespace template\Domain\Users\Users\Transformers;
+namespace pkmnfriends\Domain\Users\Users\Transformers;
 
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Contracts\Transformers\TransformerAbstract;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Transformers\TransformerAbstract;
 
 class UserTransformer extends TransformerAbstract
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace template\Domain\Users\Users\Repositories;
+namespace pkmnfriends\Domain\Users\Users\Repositories;
 
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     Repositories\UsersResetPasswordRepositoryInterface
 };
 

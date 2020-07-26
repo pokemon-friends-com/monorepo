@@ -1,9 +1,9 @@
 <?php
 
-namespace template\App\Notifications\Channels;
+namespace pkmnfriends\App\Notifications\Channels;
 
-use template\Infrastructure\Contracts\Notifications\Notification;
-use template\Infrastructure\Interfaces\App\Notifications\Channels\MailableChannelInterface;
+use pkmnfriends\Infrastructure\Contracts\Notifications\Notification;
+use pkmnfriends\Infrastructure\Interfaces\App\Notifications\Channels\MailableChannelInterface;
 
 class AdministratorMailableChannel implements MailableChannelInterface
 {

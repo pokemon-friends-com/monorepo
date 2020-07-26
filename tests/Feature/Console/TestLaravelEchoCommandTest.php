@@ -3,7 +3,7 @@
 namespace Tests\Feature\Console;
 
 use Illuminate\Support\Facades\Event;
-use template\App\Events\LaravelEchoEvent;
+use pkmnfriends\App\Events\LaravelEchoEvent;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

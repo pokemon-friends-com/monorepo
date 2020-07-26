@@ -1,6 +1,6 @@
 <?php
 
-namespace template\App\Notifications\Messages;
+namespace pkmnfriends\App\Notifications\Messages;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

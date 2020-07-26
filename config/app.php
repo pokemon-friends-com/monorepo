@@ -98,7 +98,7 @@ return [
     |
     */
 
-    'timezone' => \template\Infrastructure\Interfaces\Domain\Locale\TimeZonesInterface::DEFAULT_TZ,
+    'timezone' => \pkmnfriends\Infrastructure\Interfaces\Domain\Locale\TimeZonesInterface::DEFAULT_TZ,
 
     /*
     |--------------------------------------------------------------------------
@@ -111,7 +111,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', \template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE),
+    'locale' => env('APP_LOCALE', \pkmnfriends\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,7 +124,7 @@ return [
     |
     */
 
-    'fallback_locale' => \template\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE,
+    'fallback_locale' => \pkmnfriends\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::DEFAULT_LOCALE,
 
     /*
     |--------------------------------------------------------------------------
@@ -200,11 +200,11 @@ return [
         /*
          * Application Service Providers...
          */
-        template\App\Providers\AppServiceProvider::class,
-        template\App\Providers\AuthServiceProvider::class,
-        template\App\Providers\BroadcastServiceProvider::class,
-        template\App\Providers\EventServiceProvider::class,
-        template\App\Providers\RouteServiceProvider::class,
+        pkmnfriends\App\Providers\AppServiceProvider::class,
+        pkmnfriends\App\Providers\AuthServiceProvider::class,
+        pkmnfriends\App\Providers\BroadcastServiceProvider::class,
+        pkmnfriends\App\Providers\EventServiceProvider::class,
+        pkmnfriends\App\Providers\RouteServiceProvider::class,
 
     ],
 

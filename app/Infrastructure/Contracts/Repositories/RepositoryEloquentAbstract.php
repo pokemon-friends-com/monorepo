@@ -1,8 +1,8 @@
 <?php
 
-namespace template\Infrastructure\Contracts\Repositories;
+namespace pkmnfriends\Infrastructure\Contracts\Repositories;
 
-use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use pkmnfriends\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 use Illuminate\Container\Container as Application;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\Paginator;

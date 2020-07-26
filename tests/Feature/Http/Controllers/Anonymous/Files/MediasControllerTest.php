@@ -6,10 +6,10 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Storage;
-use template\Domain\Files\Medias\Media;
-use template\Domain\Users\Profiles\Profile;
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Contracts\Traits\SecurityHashTrait;
+use pkmnfriends\Domain\Files\Medias\Media;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Contracts\Traits\SecurityHashTrait;
 use Tests\OAuthTestCaseTrait;
 use Tests\TestCase;
 

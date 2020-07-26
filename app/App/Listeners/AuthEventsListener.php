@@ -1,6 +1,6 @@
 <?php
 
-namespace template\App\Listeners;
+namespace pkmnfriends\App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Auth\Events\{
@@ -8,7 +8,7 @@ use Illuminate\Auth\Events\{
     Logout,
     PasswordReset
 };
-use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use pkmnfriends\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
 
 class AuthEventsListener
 {
@@ -22,15 +22,15 @@ class AuthEventsListener
     {
         $events->listen(
             'Illuminate\Auth\Events\Login',
-            'template\App\Listeners\AuthEventsListener@handleLoginEvent'
+            'pkmnfriends\App\Listeners\AuthEventsListener@handleLoginEvent'
         );
         $events->listen(
             'Illuminate\Auth\Events\Logout',
-            'template\App\Listeners\AuthEventsListener@handleLogoutEvent'
+            'pkmnfriends\App\Listeners\AuthEventsListener@handleLogoutEvent'
         );
         $events->listen(
             'Illuminate\Auth\Events\PasswordReset',
-            'template\App\Listeners\AuthEventsListener@handlePasswordResetEvent'
+            'pkmnfriends\App\Listeners\AuthEventsListener@handlePasswordResetEvent'
         );
     }
 

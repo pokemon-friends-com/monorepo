@@ -11,7 +11,7 @@
 |
 */
 
-use template\Domain\Files\Medias\Media;
+use pkmnfriends\Domain\Files\Medias\Media;
 
 /**
  * @var \Illuminate\Database\Eloquent\Factory $factory

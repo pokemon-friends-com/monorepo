@@ -1,15 +1,15 @@
 <?php
 
-namespace template\Http\Controllers\Auth;
+namespace pkmnfriends\Http\Controllers\Auth;
 
 use GuzzleHttp\Client as GuzzleHttpClient;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use template\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
-use template\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
-use template\Infrastructure\Contracts\Controllers\ControllerAbstract;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\Repositories\ProfilesRepositoryEloquent;
+use pkmnfriends\Domain\Users\Users\Repositories\UsersRegistrationsRepositoryEloquent;
+use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
+use pkmnfriends\Domain\Users\Users\User;
 
 class RegisterController extends ControllerAbstract
 {

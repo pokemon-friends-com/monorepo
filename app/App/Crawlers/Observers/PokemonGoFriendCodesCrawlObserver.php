@@ -1,6 +1,6 @@
 <?php
 
-namespace template\App\Crawlers\Observers;
+namespace pkmnfriends\App\Crawlers\Observers;
 
 use DOMDocument;
 use Exception;
@@ -8,8 +8,8 @@ use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 use Spatie\Crawler\CrawlObserver;
-use template\App\Jobs\RegisterFriendCodeJob;
-use template\Domain\Users\Profiles\ProfilesTeamsColors;
+use pkmnfriends\App\Jobs\RegisterFriendCodeJob;
+use pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors;
 
 class PokemonGoFriendCodesCrawlObserver extends CrawlObserver
 {

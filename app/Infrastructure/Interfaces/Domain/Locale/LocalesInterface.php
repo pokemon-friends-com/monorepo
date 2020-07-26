@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Infrastructure\Interfaces\Domain\Locale;
+namespace pkmnfriends\Infrastructure\Interfaces\Domain\Locale;
 
 interface LocalesInterface
 {

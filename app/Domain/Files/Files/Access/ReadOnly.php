@@ -1,6 +1,6 @@
 <?php
 
-namespace template\Domain\Files\Files\Access;
+namespace pkmnfriends\Domain\Files\Files\Access;
 
 class ReadOnly
 {

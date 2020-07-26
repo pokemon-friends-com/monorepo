@@ -1,20 +1,20 @@
 <?php
 
-namespace template\Domain\Users\Users\Notifications;
+namespace pkmnfriends\Domain\Users\Users\Notifications;
 
-use template\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
-use template\Infrastructure\Contracts\
+use pkmnfriends\Infrastructure\Interfaces\Queues\ShouldQueueInterface;
+use pkmnfriends\Infrastructure\Contracts\
 {
     Queues\QueueableTrait,
     Notifications\Notification
 };
-use template\App\Notifications\
+use pkmnfriends\App\Notifications\
 {
     Channels\AdministratorMailableChannel,
     Messages\CustomerMailMessage,
     Messages\MailableMessage
 };
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\User;
 
 class CreatedAccountByAdministrator extends Notification
 {

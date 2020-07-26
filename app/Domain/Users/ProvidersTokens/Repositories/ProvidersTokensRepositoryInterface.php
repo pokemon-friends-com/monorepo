@@ -1,11 +1,11 @@
 <?php
 
-namespace template\Domain\Users\ProvidersTokens\Repositories;
+namespace pkmnfriends\Domain\Users\ProvidersTokens\Repositories;
 
 use Illuminate\Support\Collection;
-use template\Domain\Users\ProvidersTokens\ProviderToken;
-use template\Domain\Users\Users\User;
-use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
+use pkmnfriends\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Interfaces\Repositories\RepositoryInterface;
 
 interface ProvidersTokensRepositoryInterface extends RepositoryInterface
 {
@@ -15,8 +15,8 @@ interface ProvidersTokensRepositoryInterface extends RepositoryInterface
      *
      * @param array $attributes
      *
-     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent
-     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
+     * @event pkmnfriends\Domain\Users\ProvidersTokens\Events\ProviderTokenCreatedEvent
+     * @return \pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken
      */
     public function create(array $attributes): ProviderToken;
 
@@ -26,8 +26,8 @@ interface ProvidersTokensRepositoryInterface extends RepositoryInterface
      * @param array $attributes
      * @param integer $id
      *
-     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent
-     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
+     * @event pkmnfriends\Domain\Users\ProvidersTokens\Events\ProviderTokenUpdatedEvent
+     * @return \pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
@@ -38,8 +38,8 @@ interface ProvidersTokensRepositoryInterface extends RepositoryInterface
      *
      * @param integer $id
      *
-     * @event template\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent
-     * @return \template\Domain\Users\ProvidersTokens\ProviderToken
+     * @event pkmnfriends\Domain\Users\ProvidersTokens\Events\ProviderTokenDeletedEvent
+     * @return \pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken
      */
     public function delete($id): ProviderToken;
 

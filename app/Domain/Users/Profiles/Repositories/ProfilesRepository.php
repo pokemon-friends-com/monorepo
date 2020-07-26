@@ -1,13 +1,13 @@
 <?php
 
-namespace template\Domain\Users\Profiles\Repositories;
+namespace pkmnfriends\Domain\Users\Profiles\Repositories;
 
 use Illuminate\Support\Collection;
-use template\Domain\Users\Profiles\Criterias\WhereFriendCodeIsCriteria;
-use template\Domain\Users\Profiles\Profile;
-use template\Infrastructure\Contracts\Request\RequestAbstract;
-use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Profiles\Criterias\WhereFriendCodeIsCriteria;
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Infrastructure\Contracts\Request\RequestAbstract;
+use pkmnfriends\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use pkmnfriends\Domain\Users\Users\User;
 
 interface ProfilesRepository extends RepositoryInterface
 {

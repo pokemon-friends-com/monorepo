@@ -1,10 +1,10 @@
 <?php
 
-namespace template\Domain\Users\Users\Repositories;
+namespace pkmnfriends\Domain\Users\Users\Repositories;
 
 use Illuminate\Contracts\Validation\Validator as ContractsValidator;
-use template\Infrastructure\Interfaces\Repositories\RepositoryInterface;
-use template\Domain\Users\Users\User;
+use pkmnfriends\Infrastructure\Interfaces\Repositories\RepositoryInterface;
+use pkmnfriends\Domain\Users\Users\User;
 
 interface UsersRegistrationsRepositoryInterface extends RepositoryInterface
 {

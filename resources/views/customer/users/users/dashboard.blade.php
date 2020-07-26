@@ -87,6 +87,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group row mb-0">
+                            <div for="alert" class="col-12 col-form-label text-sm-center">
+                            Allows your viewers to share there pokemon friend qrcode <a type="button" class="btn btn-primary" href="{{ route('anonymous.subscribe', ['plan' => 'twitch']) }}"><i class="fa fa-shopping-cart mr-2"></i>Subscribe 5 EUR / month</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

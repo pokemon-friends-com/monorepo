@@ -1,6 +1,6 @@
 <?php
 
-namespace template\App\Providers;
+namespace pkmnfriends\App\Providers;
 
 use Illuminate\Support\{
     Facades\Broadcast,

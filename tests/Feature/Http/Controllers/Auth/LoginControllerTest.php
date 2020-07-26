@@ -8,14 +8,14 @@ use Laravel\Socialite\{
     One\User as SocialiteOAuthOneUser,
     Two\User as SocialiteOAuthTwoUser
 };
-use template\Domain\Users\ProvidersTokens\ProviderToken;
+use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Login as LoginEvent;
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Users\{
     Events\UserRefreshSessionEvent,
     User
 };

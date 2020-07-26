@@ -1,13 +1,13 @@
 <?php
 
-namespace template\Domain\Files\Files\Repositories;
+namespace pkmnfriends\Domain\Files\Files\Repositories;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 use League\Glide\{Responses\LaravelResponseFactory, ServerFactory};
 use Barryvdh\Elfinder\{Connector, Session\LaravelSession};
-use template\Domain\Users\Users\User;
+use pkmnfriends\Domain\Users\Users\User;
 
 define('ELFINDER_DROPBOX_CONSUMERKEY', '');
 define('ELFINDER_DROPBOX_CONSUMERSECRET', '');

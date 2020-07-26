@@ -1,23 +1,23 @@
 <?php
 
-namespace template\Domain\Users\Users;
+namespace pkmnfriends\Domain\Users\Users;
 
 use Illuminate\Contracts\Translation\HasLocalePreference;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Passport\HasApiTokens;
 use Yaquawa\Laravel\EmailReset\CanResetEmail;
-use template\Domain\Users\Profiles\Profile;
-use template\Infrastructure\Interfaces\Domain\Users\{
+use pkmnfriends\Domain\Users\Profiles\Profile;
+use pkmnfriends\Infrastructure\Interfaces\Domain\Users\{
     Users\HandshakableInterface,
     Users\UserCivilitiesInterface,
     Users\UserGendersInterface,
     Users\UserRolesInterface
 };
-use template\Infrastructure\Interfaces\Domain\{
+use pkmnfriends\Infrastructure\Interfaces\Domain\{
     Locale\LocalesInterface,
     Locale\TimeZonesInterface
 };
-use template\Infrastructure\Contracts\{
+use pkmnfriends\Infrastructure\Contracts\{
     Model\AuthenticatableModelAbstract,
     Model\IdentifiableTrait,
     Model\Notifiable,
@@ -26,9 +26,9 @@ use template\Infrastructure\Contracts\{
     Model\TimeStampsTz,
     Model\SoftDeletesTz
 };
-use template\Domain\Users\Profiles\Traits\ProfileableTrait;
-use template\Domain\Users\ProvidersTokens\ProviderToken;
-use template\Domain\Users\Users\{
+use pkmnfriends\Domain\Users\Profiles\Traits\ProfileableTrait;
+use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
+use pkmnfriends\Domain\Users\Users\{
     Notifications\CreatedAccountByAdministrator,
     Notifications\ResetPassword,
     Notifications\SponsoredFriendCode,
