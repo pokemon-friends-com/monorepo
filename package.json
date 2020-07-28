@@ -58,7 +58,7 @@
         "flatpickr": "^4.6.3",
         "holderjs": "^2.9.7",
         "imagehover.css": "^2.0.0",
-        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-mozjpeg": "^9.0.0",
         "imagemin-webpack-plugin": "^2.4.2",
         "jquery": "^3.5.1",
         "jquery-parallax.js": "^1.5.0",
