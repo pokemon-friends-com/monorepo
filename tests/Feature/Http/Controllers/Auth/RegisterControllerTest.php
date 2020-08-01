@@ -22,7 +22,6 @@ class RegisterControllerTest extends TestCase
             ->assertSee('Friend code')
             ->assertSee('Email')
             ->assertSee('Password')
-            ->assertSee('Confirm password')
             ->assertSeeText('Register');
     }
 
@@ -34,8 +33,7 @@ class RegisterControllerTest extends TestCase
             ->from('/register')
             ->post('/register', $profile->toArray() + [
                     'email' => $email,
-                    'password' => $this->getDefaultPassword(),
-                    'password_confirmation' => $this->getDefaultPassword()
+                    'password' => $this->getDefaultPassword()
                 ])
             ->assertStatus(302)
             ->assertRedirect('/');
@@ -53,8 +51,7 @@ class RegisterControllerTest extends TestCase
             ->from('/register')
             ->post('/register', $profile->toArray() + [
                     'email' => $email,
-                    'password' => $this->getDefaultPassword(),
-                    'password_confirmation' => $this->getDefaultPassword()
+                    'password' => $this->getDefaultPassword()
                 ])
             ->assertSuccessful()
             ->assertSeeText('The email must be a valid email address.');
@@ -79,8 +76,7 @@ class RegisterControllerTest extends TestCase
             ->post('/register', [
                 'friend_code' => $friend_code,
                 'email' => $email,
-                'password' => $this->getDefaultPassword(),
-                'password_confirmation' => $this->getDefaultPassword()
+                'password' => $this->getDefaultPassword()
             ])
             ->assertStatus(302)
             ->assertRedirect('/');
