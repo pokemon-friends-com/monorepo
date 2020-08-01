@@ -28,7 +28,7 @@
         "@sentry/browser": "^5.16.1",
         "@sentry/integrations": "^5.16.1",
         "@sentry/types": "^5.16.0",
-        "@testim/testim-cli": "^3.72.0",
+        "@testim/testim-cli": "^3.88.0",
         "@vue/babel-preset-app": "^3.11.0",
         "@vue/test-utils": "^1.0.3",
         "admin-lte": "^3.0.5",
