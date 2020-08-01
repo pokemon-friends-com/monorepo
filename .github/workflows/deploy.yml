@@ -1,0 +1,82 @@
+name: www.pokemon-friends.com
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+
+  fortrabbit:
+    needs: [tests-js, tests-php]
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node_12.x-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://npm.pkg.github.com
+      - run: npm install
+      - run: npm run prod
+      - uses: actions/cache@v2
+        with:
+          path: ~/vendor
+          key: ${{ runner.os }}-node-php_${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-php_${{ matrix.php-version }}-
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.3
+          coverage: xdebug
+          tools: pecl
+          extensions: gd, imagick
+      - if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install -o --no-interaction --prefer-dist --no-suggest
+      - run: php artisan elfinder:publish
+      - run: php artisan asset-cdn:sync --env=production
+        env:
+          OBJECT_STORAGE_KEY: ${{ secrets.OBJECT_STORAGE_KEY }}
+          OBJECT_STORAGE_SECRET: ${{ secrets.OBJECT_STORAGE_SECRET }}
+          OBJECT_STORAGE_REGION: ${{ secrets.OBJECT_STORAGE_REGION }}
+          OBJECT_STORAGE_BUCKET: ${{ secrets.OBJECT_STORAGE_BUCKET }}
+          OBJECT_STORAGE_SERVER: ${{ secrets.OBJECT_STORAGE_SERVER }}
+          OBJECT_STORAGE_URL: ${{ secrets.OBJECT_STORAGE_URL }}
+      - name: install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      - name: pre-deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: deploy.eu2.frbit.com
+          username: pkmn-friends
+          key: ${{ secrets.PRIVATE_KEY_FORTRABBIT}}
+          script: |
+            php artisan config:clear
+            php artisan route:clear
+      - name: deploy
+        run: |
+          git remote add fortrabbit pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
+          git config --global user.email "fortrabbit@pokemon-friends.com"
+          git config --global user.name "gh-pkmn-friends"
+          git checkout master
+          git push -u fortrabbit master
+      - name: post-deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: deploy.eu2.frbit.com
+          username: pkmn-friends
+          key: ${{ secrets.PRIVATE_KEY_FORTRABBIT}}
+          script: |
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:clear
+            php artisan migrate --force
