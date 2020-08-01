@@ -26,7 +26,7 @@
     "devDependencies": {
         "@abenevaut/gameforest": "^6.0.2",
         "@sentry/browser": "^5.16.1",
-        "@sentry/integrations": "^5.16.1",
+        "@sentry/integrations": "^5.20.1",
         "@sentry/types": "^5.16.0",
         "@testim/testim-cli": "^3.72.0",
         "@vue/babel-preset-app": "^3.11.0",
