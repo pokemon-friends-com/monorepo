@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-11 col-md-8 text-center mx-auto mb-4">
-                <h2 class="font-weight-bold font-size-lg">{{ trans('users.welcome') }}</h2>
+                <h1 class="font-weight-bold font-size-lg">{{ trans('users.welcome') }}</h1>
                 <p class="lead">{{ trans('users.baseline') }}</p>
             </div>
         </div>

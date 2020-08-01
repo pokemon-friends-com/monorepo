@@ -3,6 +3,10 @@ name: cron
 on:
   schedule:
     - cron:  '0 6 * * *'
+  pull_request:
+    branches: [ develop ]
+    paths:
+      - '.github/workflows/cron.yml'
 
 jobs:
 
@@ -14,7 +18,15 @@ jobs:
         id: psi-home
         with:
           url: "https://www.pokemon-friends.com"
-          threshold: 70
+          threshold: 50
+          strategy: desktop
+      - name: Running Page Speed Insights on home
+        uses: jakepartusch/psi-action@v1
+        id: psi-home
+        with:
+          url: "https://www.pokemon-friends.com"
+          threshold: 25
+          strategy: mobile
 
   psi-trainers:
     runs-on: ubuntu-latest
@@ -24,7 +36,8 @@ jobs:
         id: psi-trainers
         with:
           url: "https://www.pokemon-friends.com/trainers"
-          threshold: 70
+          threshold: 50
+          strategy: desktop
 
   psi-login:
     runs-on: ubuntu-latest
@@ -34,7 +47,8 @@ jobs:
         id: psi-login
         with:
           url: "https://www.pokemon-friends.com/login"
-          threshold: 70
+          threshold: 90
+          strategy: desktop
 
   psi-register:
     runs-on: ubuntu-latest
@@ -44,4 +58,5 @@ jobs:
         id: psi-register
         with:
           url: "https://www.pokemon-friends.com/register"
-          threshold: 70
+          threshold: 90
+          strategy: desktop

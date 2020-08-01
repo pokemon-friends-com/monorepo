@@ -224,11 +224,10 @@ jobs:
             php artisan route:clear
       - name: deploy
         run: |
+          git config --global user.email "deploy@pokemon-friends.com"
+          git config --global user.name "deploy-pkmn-friends"
           git remote add fortrabbit pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
-          git config --global user.email "fortrabbit@pokemon-friends.com"
-          git config --global user.name "gh-pkmn-friends"
-          git checkout master
-          git push -u fortrabbit master
+          git push fortrabbit master
       - name: post-deploy
         uses: appleboy/ssh-action@master
         with:
