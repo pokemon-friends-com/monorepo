@@ -54,11 +54,6 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI', '/login/google/callback'),
     ],
 
-    'google_recaptcha' => [
-        'sitekey' => env('GOOGLE_RECAPTCHA_SITEKEY', ''),
-        'serverkey' => env('GOOGLE_RECAPTCHA_SERVERKEY', ''),
-    ],
-
     'google_tag_manager' => [
         'id' => env('GOOGLE_TM_ID', ''),
         'auth' => env('GOOGLE_TM_AUTH', ''),

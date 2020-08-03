@@ -37,7 +37,6 @@
             </div>
         </div>
 
-
         <div class="modal fade show" id="modal-create-token" aria-modal="true" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
