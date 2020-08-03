@@ -1,4 +1,4 @@
-name: www.pokemon-friends.com
+name: deploy
 
 on:
   release:
@@ -7,7 +7,6 @@ on:
 jobs:
 
   fortrabbit:
-    needs: [tests-js, tests-php]
     runs-on: ubuntu-latest
     if: contains(github.ref, 'refs/tags/')
     steps:
@@ -25,6 +24,13 @@ jobs:
           registry-url: https://npm.pkg.github.com
       - run: npm install
       - run: npm run prod
+        env:
+          MIX_APP_ENV: production
+          MIX_APP_DEBUG: false
+          MIX_APP_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
+          MIX_PUSHER_APP_KEY: ${{ secrets.PROD_PUSHER_APP_KEY }}
+          MIX_PUSHER_APP_CLUSTER: ${{ secrets.PROD_PUSHER_APP_CLUSTER }}
+          MIX_SENTRY_PUBLIC_DSN: ${{ secrets.PROD_SENTRY_PUBLIC_DSN }}
       - uses: actions/cache@v2
         with:
           path: ~/vendor
