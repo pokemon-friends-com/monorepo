@@ -2,7 +2,7 @@
 
 namespace pkmnfriends\App\Providers;
 
-use Illuminate\Support\{Facades\Config, Facades\URL, ServiceProvider};
+use Illuminate\Support\{Facades\Config, Facades\Schema, Facades\URL, ServiceProvider};
 use Barryvdh\{
     Debugbar\ServiceProvider as DebugbarServiceProvider,
     LaravelIdeHelper\IdeHelperServiceProvider
@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
+        // https://laravel-news.com/laravel-5-4-key-too-long-error - mysql 5.6 @fortrabbit
+        Schema::defaultStringLength(191);
         Config::set('sentry.release', Config::get('version.app_tag'));
         EmailResetNotification::toMailUsing(function ($user, $token, $resetLink) {
             return (new MailMessage())
