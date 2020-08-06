@@ -82,6 +82,8 @@ jobs:
     if: contains(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: master
       - name: install SSH key
         uses: shimataro/ssh-key-action@v2
         with:
@@ -90,7 +92,6 @@ jobs:
       - run: |
           git config --global user.email "deploy@pokemon-friends.com"
           git config --global user.name "deploy"
-          git checkout master
           git remote add fortrabbit pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
           git push fortrabbit master
 
