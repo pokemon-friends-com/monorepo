@@ -35,6 +35,7 @@ jobs:
           npm install
           npm run prod
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
           MIX_APP_ENV: production
           MIX_APP_DEBUG: false
           MIX_APP_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
@@ -87,11 +88,11 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       - run: |
+          git config --global user.email "deploy@pokemon-friends.com"
+          git config --global user.name "deploy"
           git checkout master
           git remote add fortrabbit pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
-          git config --global user.email "fortrabbit@pokemon-friends.com"
-          git config --global user.name "gh-pkmn-friends"
-          git push -u fortrabbit master
+          git push fortrabbit master
 
   fortrabbit-post-deploy:
     needs: [ fortrabbit-deploy ]
@@ -108,3 +109,4 @@ jobs:
             php artisan route:cache
             php artisan view:clear
             php artisan migrate --force
+
