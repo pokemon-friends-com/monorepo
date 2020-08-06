@@ -2040,16 +2040,16 @@
         },
         {
             "name": "laravel-notification-channels/twitter",
-            "version": "v4.0.0",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-notification-channels/twitter.git",
-                "reference": "c5e78cb5d3a2e632e49162db2cb0e537759b0cbc"
+                "reference": "a9490fa02a572992baddef6f231b2d4d2d98af5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/twitter/zipball/c5e78cb5d3a2e632e49162db2cb0e537759b0cbc",
-                "reference": "c5e78cb5d3a2e632e49162db2cb0e537759b0cbc",
+                "url": "https://api.github.com/repos/laravel-notification-channels/twitter/zipball/a9490fa02a572992baddef6f231b2d4d2d98af5d",
+                "reference": "a9490fa02a572992baddef6f231b2d4d2d98af5d",
                 "shasum": ""
             },
             "require": {
@@ -2091,7 +2091,7 @@
             ],
             "description": "This package makes it easy to send notifications via Twitter with Laravel",
             "homepage": "https://github.com/laravel-notification-channels/twitter",
-            "time": "2020-03-04T06:12:03+00:00"
+            "time": "2020-08-05T06:15:26+00:00"
         },
         {
             "name": "laravel/cashier-mollie",
