@@ -205,7 +205,7 @@
                         {{ trans('users.change_email') }}
                     </div>
                     <div class="card-body">
-                        <div class="form-group row">
+                        <div class="form-group">
                             <div class="input-group">
                                 <input
                                         type="text"
@@ -231,7 +231,7 @@
                         {{ trans('users.change_password') }}
                     </div>
                     <div class="card-body">
-                        <div class="form-group row">
+                        <div class="form-group">
                             <div class="input-group">
                                 <input
                                         type="password"
@@ -249,7 +249,7 @@
                                 <div class="text-danger text-sm">{{ $errors->first('password_current') }}</div>
                             @endif
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group">
                             <div class="input-group">
                                 <input
                                         type="password"
@@ -267,7 +267,7 @@
                                 <div class="text-danger text-sm">{{ $errors->first('password') }}</div>
                             @endif
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group">
                             <div class="input-group">
                                 <input
                                         type="password"
