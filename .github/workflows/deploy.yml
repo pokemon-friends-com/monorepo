@@ -31,9 +31,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          - run: |
-              npm install
-              npm run prod
+      - run: |
+          npm install
+          npm run prod
         env:
           MIX_APP_ENV: production
           MIX_APP_DEBUG: false
