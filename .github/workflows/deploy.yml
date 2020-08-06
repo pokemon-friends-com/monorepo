@@ -56,6 +56,7 @@ jobs:
           php artisan elfinder:publish
           php artisan asset-cdn:sync --env=production
         env:
+          MOLLIE_KEY: ${{ secrets.MOLLIE_KEY }}
           OBJECT_STORAGE_KEY: ${{ secrets.OBJECT_STORAGE_KEY }}
           OBJECT_STORAGE_SECRET: ${{ secrets.OBJECT_STORAGE_SECRET }}
           OBJECT_STORAGE_REGION: ${{ secrets.OBJECT_STORAGE_REGION }}
