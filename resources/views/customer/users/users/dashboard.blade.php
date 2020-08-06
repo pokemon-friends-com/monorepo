@@ -58,7 +58,10 @@
                     <div class="widget-body">
 {{--                        <p>I am a frontend developer &amp; web designer. I love to work on creative and standalone projects like gameforest.</p>--}}
 {{--                        <p class="font-size-sm font-weight-semibold mb-1"><i class="ya ya-pin mr-1"></i> Budapest</p>--}}
-                        <p class="font-size-sm font-weight-semibold mb-1"><i class="ya ya-calendar mr-1"></i> Joined December 2009</p>
+                        @if ($user['birth_date'])
+                            <p class="font-size-sm font-weight-semibold mb-1"><i class="ya ya-calendar mr-1"></i>Birthday {{ $user['birth_date']->format('d F Y') }}</p>
+                        @endif
+                        <p class="font-size-sm font-weight-semibold mb-1"><i class="ya ya-calendar mr-1"></i>Joined {{ $user['created_at']->format('F Y') }}</p>
                     </div>
                 </div>
             </div>

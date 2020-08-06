@@ -188,7 +188,7 @@
                         {{ trans('users.profiles.providers_tokens') }}
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-block btn-default btn-google" href="{{ route('login_provider', ['provider' => \pkmnfriends\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}">
+                        <a class="btn btn-block btn-default btn-google-plus" href="{{ route('login_provider', ['provider' => \pkmnfriends\Infrastructure\Interfaces\Domain\Users\ProvidersTokens\ProvidersInterface::GOOGLE]) }}">
                             <span class="pull-left"><i class="fab fa-google"></i></span>
                             <span class="bold">{{ trans('auth.link_google') }}</span>
                         </a>
