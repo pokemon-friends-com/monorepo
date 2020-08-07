@@ -65,6 +65,7 @@ jobs:
           OBJECT_STORAGE_URL: ${{ secrets.OBJECT_STORAGE_URL }}
 
   fortrabbit-pre-deploy:
+    needs: [ fortrabbit-object-storage ]
     runs-on: ubuntu-latest
     if: contains(github.ref, 'refs/tags/')
     steps:

@@ -11,21 +11,6 @@
 |
 */
 
-use Illuminate\Http\Request;
-use Spatie\Honeypot\ProtectAgainstSpam;
-use Spatie\Honeypot\SpamDetected;
-use Spatie\Honeypot\SpamResponder\SpamResponder;
-
-//$redirectSpam = function (SpamResponder $spamResponder, Request $request) {
-//    event(new SpamDetected($request));
-//    // phpcs:ignore
-//    return $spamResponder->respond($request, function () {});
-//};
-//
-//Route::any('.env', $redirectSpam);
-//Route::any('wp-login.php', $redirectSpam);
-//Route::any('wp-admin', $redirectSpam);
-
 Route::group(
     [
         'as' => 'anonymous.',
