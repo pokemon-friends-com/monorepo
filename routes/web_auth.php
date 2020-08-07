@@ -22,10 +22,7 @@ Route::group(
         Route::group(['namespace' => 'Auth'], function () {
             // Registration routes.
             Route::get('register', ['as' => 'register', 'uses' => 'RegisterController@showRegistrationForm']);
-            Route::post('register', [
-                'as' => 'register',
-                'uses' => 'RegisterController@register'
-            ])->middleware(ProtectAgainstSpam::class);
+            Route::post('register', ['uses' => 'RegisterController@register'])->middleware(ProtectAgainstSpam::class);
             // Authentication routes
             Route::get('login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
             Route::post('login', 'LoginController@login')->middleware(ProtectAgainstSpam::class);
