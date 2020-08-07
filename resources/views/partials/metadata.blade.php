@@ -70,7 +70,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{ asset_cdn('images/favicon-32x32.png') }}">
 <link rel="icon" type="image/png" sizes="48x48" href="{{ asset_cdn('images/favicon-48x48.png') }}">
 <link rel="manifest" href="{{ asset_cdn('images/manifest.json') }}">
-<link href="{{ asset_cdn('css/theme.css?v=' . config('version.app_tag') ) }}" rel="stylesheet">
+<link href="{{ asset_cdn('css/app.css?v=' . config('version.app_tag') ) }}" rel="stylesheet">
 <link rel="sitemap" type="application/xml" title="sitemap" href="{{ url('sitemap.xml') }}" />
 @yield('css')
 @include('partials.googletag-head')

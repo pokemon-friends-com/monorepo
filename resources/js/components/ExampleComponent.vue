@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Swal from 'admin-lte/plugins/sweetalert2/sweetalert2.all';
+import Swal from 'sweetalert2';
 import AppComponent from './AppComponent.vue';
 
 export default {
