@@ -26,7 +26,7 @@ if (mix.inProduction() && process.env.USE_CDN) {
   mix
     .version()
     .setResourceRoot('/assets/')
-    .setPublicPath(publicPath);
+    .setPublicPath('/assets/');
 }
 
 mix
