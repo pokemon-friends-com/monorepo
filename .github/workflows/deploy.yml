@@ -56,13 +56,14 @@ jobs:
           php artisan elfinder:publish
           php artisan asset-cdn:sync --env=production
         env:
-          MOLLIE_KEY: ${{ secrets.MOLLIE_KEY }}
-          OBJECT_STORAGE_KEY: ${{ secrets.OBJECT_STORAGE_KEY }}
-          OBJECT_STORAGE_SECRET: ${{ secrets.OBJECT_STORAGE_SECRET }}
-          OBJECT_STORAGE_REGION: ${{ secrets.OBJECT_STORAGE_REGION }}
-          OBJECT_STORAGE_BUCKET: ${{ secrets.OBJECT_STORAGE_BUCKET }}
-          OBJECT_STORAGE_SERVER: ${{ secrets.OBJECT_STORAGE_SERVER }}
-          OBJECT_STORAGE_URL: ${{ secrets.OBJECT_STORAGE_URL }}
+          MOLLIE_KEY: ${{ secrets.DEV_MOLLIE_KEY }}
+          USE_CDN: true
+          OBJECT_STORAGE_KEY: ${{ secrets.PROD_OBJECT_STORAGE_KEY }}
+          OBJECT_STORAGE_SECRET: ${{ secrets.PROD_OBJECT_STORAGE_SECRET }}
+          OBJECT_STORAGE_REGION: ${{ secrets.PROD_OBJECT_STORAGE_REGION }}
+          OBJECT_STORAGE_BUCKET: ${{ secrets.PROD_OBJECT_STORAGE_BUCKET }}
+          OBJECT_STORAGE_SERVER: ${{ secrets.PROD_OBJECT_STORAGE_SERVER }}
+          OBJECT_STORAGE_URL: ${{ secrets.PROD_OBJECT_STORAGE_URL }}
 
   fortrabbit-pre-deploy:
     needs: [ fortrabbit-object-storage ]
@@ -113,3 +114,29 @@ jobs:
             php artisan view:clear
             php artisan migrate --force
 
+  testim-production:
+    needs: [ fortrabbit-post-deploy ]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    if: contains(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: |
+          npm install
+          npm run prod:testim
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
+          TESTIM_PROJECT: ${{ secrets.PROD_TESTIM_PROJECT }}
+          TESTIM_TOKEN: ${{ secrets.PROD_TESTIM_TOKEN }}

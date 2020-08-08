@@ -20,8 +20,8 @@
         "mocha": "cross-env NODE_ENV=testing mochapack --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require tests/bootstrap.js tests/Unit/AppJs/\\\\*.spec.js",
         "mocha-watch": "cross-env NODE_ENV=testing mochapack --watch --webpack-config=node_modules/laravel-mix/setup/webpack.config.js --require tests/bootstrap.js tests/Unit/AppJs/\\\\*.spec.js",
         "test": "cross-env NODE_ENV=testing nyc npm run mocha",
-        "testim-prod": "node_modules/@testim/testim-cli/cli.js --token \"${TESTIM_TOKEN}\" --project \"${TESTIM_PROJECT}\" --grid \"Testim-Grid\" --report-file testim-report.xml",
-        "testim-dev": "node_modules/@testim/testim-cli/cli.js --token \"${TESTIM_TOKEN}\" --project \"${TESTIM_PROJECT}\" --use-local-chrome-driver --base-url 127.0.0.1:8000"
+        "prod:testim": "node_modules/@testim/testim-cli/cli.js --token \"${TESTIM_TOKEN}\" --project \"${TESTIM_PROJECT}\" --grid \"Testim-Grid\" --report-file testim-report.xml",
+        "dev:testim": "node_modules/@testim/testim-cli/cli.js --token \"${TESTIM_TOKEN}\" --project \"${TESTIM_PROJECT}\" --use-local-chrome-driver --base-url 127.0.0.1:8000"
     },
     "devDependencies": {
         "@abenevaut/gameforest": "^6.0.2",
