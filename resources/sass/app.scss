@@ -1,14 +1,5 @@
-@import "~admin-lte/plugins/fontawesome-free/css/all.css";
-@import "~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css";
-@import "~admin-lte/plugins/select2/css/select2.css";
-@import "~admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.css";
-@import "~admin-lte/plugins/sweetalert2/sweetalert2.css";
-@import "~admin-lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4";
-@import "~admin-lte/plugins/ekko-lightbox/ekko-lightbox.css";
-@import "~admin-lte/build/scss/AdminLTE";
-//@import '~bootstrap-vue/src/index.scss';
-@import "~flatpickr/dist/flatpickr.css";
-@import "~flatpickr/dist/themes/airbnb.css";
+@import "~ekko-lightbox";
+@import "~@abenevaut/gameforest/src/sass/theme";
 
 $figcaption-bg: $blue;
 $text-color: #fff;
@@ -17,14 +8,8 @@ $text-color: #fff;
   cursor: pointer;
 }
 
-// Google Fonts
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700);
-
 @import 'pkmn-teams';
 @import 'cookie-consent';
-@import 'buttons/twitter';
-@import 'buttons/google';
-
 .ekko-lightbox-nav-overlay a>* {
   color: var(--red);
 }
@@ -48,30 +33,32 @@ $text-color: #fff;
 }
 .card-team-red,
 .card-team-valor {
-  @extend .card-danger !optional;
+  border-top: 3px solid #dc3545!important;
 }
 .card-team-blue,
 .card-team-mystic {
-  @extend .card-primary !optional;
+  border-top: 3px solid #007bff!important;
 }
 .card-team-yellow,
 .card-team-instinct {
-  @extend .card-warning !optional;
+  border-top: 3px solid #ffc107!important;
 }
 .bg-team-default {
-  background-color: $gray-x-light !important;
-  color: $yiq-text-dark !important;
+  background-color: #d2d6de!important;
+  color: white!important;
 }
 .bg-team-red,
 .bg-team-valor {
-  @extend .bg-danger !optional;
+  background-color: #dc3545!important;
+  color: white;
 }
 .bg-team-blue,
 .bg-team-mystic {
-  @extend .bg-primary !optional;
+  background-color: #007bff!important;
+  color: white;
 }
 .bg-team-yellow,
 .bg-team-instinct {
-  @extend .bg-warning !optional;
-  color: $white !important;
+  background: #ffc107!important;
+  color: white;
 }

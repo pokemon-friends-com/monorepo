@@ -31,11 +31,11 @@
         "@testim/testim-cli": "^3.88.0",
         "@vue/babel-preset-app": "^3.11.0",
         "@vue/test-utils": "^1.0.3",
-        "admin-lte": "^3.0.5",
         "axios": "^0.19",
         "babel-plugin-istanbul": "^6.0.0",
         "bootstrap": "^4.5.0",
         "bootstrap-select": "^1.13.17",
+        "canvas": "^2.6.1",
         "clipboard": "^2.0.6",
         "copy-webpack-plugin": "^5.1.1",
         "cross-env": "^7.0.2",
@@ -93,5 +93,7 @@
         "vue-i18n": "^8.18.2",
         "vue-template-compiler": "^2.6.11"
     },
-    "dependencies": {}
+    "dependencies": {
+        "sweetalert2": "^9.17.1"
+    }
 }
