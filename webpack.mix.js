@@ -25,8 +25,7 @@ if (mix.inProduction() && process.env.USE_CDN) {
     : 'https://pkmn-friends.objects.frb.io/assets/';
   mix
     .version()
-    .setResourceRoot('/assets/')
-    .setPublicPath(publicPath);
+    .setResourceRoot('/assets/');
 }
 
 mix

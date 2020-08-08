@@ -95,6 +95,8 @@ jobs:
           MIX_SENTRY_PUBLIC_DSN: ${{ secrets.PROD_SENTRY_PUBLIC_DSN }}
       - if: ${{ matrix.node-version == '12.x'}}
         run: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   tests-php:
     needs: [codestyle-phpcs, codestyle-phpstan, tests-js]
@@ -148,6 +150,8 @@ jobs:
           php artisan key:generate
           vendor/bin/phpunit
         env:
-          MOLLIE_KEY: ${{ secrets.MOLLIE_KEY }}
+          MOLLIE_KEY: ${{ secrets.DEV_MOLLIE_KEY }}
       - if: ${{ matrix.php-version == '7.3' }}
         run: bash <(curl -s https://codecov.io/bash) -f coverage/clover.xml
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
