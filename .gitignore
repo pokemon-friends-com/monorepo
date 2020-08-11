@@ -29,3 +29,5 @@ public/sitemap.xml
 http-client.env.json
 testim-headless.zip
 testim-report.xml
+.env.local
+.env.prod
