@@ -34,6 +34,7 @@
         "league/fractal": "^0.19",
         "league/glide": "^1.5",
         "league/glide-laravel": "^1.0",
+        "league/pipeline": "^1.0",
         "predis/predis": "^1.1",
         "prettus/l5-repository": "^2.6",
         "pusher/pusher-php-server": "^4.1",

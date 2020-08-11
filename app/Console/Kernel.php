@@ -37,8 +37,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule
+            ->command('crawler:pokemongofriendcodes', ['maximum-crawl' => 30])
+            ->hourly()
+            ->withoutOverlapping();
+        $schedule
             ->command('sitemap:generate')
-            ->everyFiveMinutes()
+            ->everyThreeHours()
             ->withoutOverlapping();
         $schedule
             ->command('pkmn:daily-sponsor')
