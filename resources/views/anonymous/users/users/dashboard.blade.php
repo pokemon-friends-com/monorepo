@@ -88,44 +88,50 @@
     </div>
 </section>
 
-<section class="bg-white border-bottom border-top py-0">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 img-cover py-7" style="min-height: 300px;">
-                <img src="{{ asset_cdn('images/qrcode-sharing.jpg') }}" alt="">
-            </div>
-            <div class="col-md-4 py-5 m-auto text-left">
-                <div class="px-1 px-md-0">
-                    <h2 class="display-5 font-weight-normal text-dark mb-5 mt-4">Share your profile on social networks</h2>
-                    <p class="mb-4">Share your pkmn-friends profile easily on all your social networks, the sharing is focused to allow others trainers to add you as fast as possible, just a pic and play together!</p>
-                    <div class="text-center">
-                        <a class="btn btn-secondary btn-lg" href="{{ route('register') }}" role="button">Register</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 py-5 m-auto order-2 order-md-1 text-left">
-                <div class="px-1 px-md-0">
-                    <h2 class="display-5 font-weight-normal text-dark mb-5 mt-4">Integrate your profile in your lives</h2>
-                    <p class="mb-4">Integrate your pkmn-friends profile easily on your live streams, once again, others trainers could add you as fast as possible, just a pic and play together!</p>
-                    <div class="text-center">
-                        <a class="btn btn-secondary btn-lg" href="{{ route('register') }}" role="button">Register</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 img-cover order-1 order-md-2 py-7" style="min-height: 300px;">
-                <img src="{{ asset_cdn('images/qrcode-stream-2.jpg') }}" alt="">
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="py-md-6">
     <div class="container">
         @include('partials.row_trainers', ['trainers' => $users])
         <div class="text-center mt-2 mb-3">
             <a class="btn btn-secondary btn-lg" href="{{ route('anonymous.trainers.index') }}" role="button">View all trainers</a>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white border-top border-bottom py-0 py-md-4">
+    <div class="container-fluid">
+        <div class="row justify-content-around align-items-center">
+            <div class="col-lg-6 px-xs-0">
+                <div class="img-cover" style="min-height: 600px;">
+                    <img src="{{ asset_cdn('images/qrcode-sharing.jpg') }}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-5 pl-md-5 pb-4 pb-md-0 mr-auto mt-4 mt-md-0 mb-2 mb-md-0">
+                <div class="px-1 px-md-0">
+                    <h2 class="display-5 font-weight-normal text-dark mb-5 mt-4">Share your profile on social networks</h2>
+                    <p class="mb-4">Share your pkmn-friends profile easily on all your social networks, the sharing is focused to allow others trainers to add you as fast as possible, just a pic and play together!</p>
+                    <div class="text-center">
+                        <a class="btn btn-secondary btn-lg" href="{{ route('register') }}" role="button">Register now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-around align-items-center">
+            <div class="col-lg-5 pl-md-5 pb-4 pb-md-0 mr-auto mt-4 mt-md-0 mb-2 mb-md-0">
+                <div class="px-1 px-md-0">
+                    <h2 class="display-5 font-weight-normal text-dark mb-5 mt-4">Integrate your profile in your lives</h2>
+                    <p class="mb-4">Integrate your pkmn-friends profile easily on your live streams, once again, others trainers could add you as fast as possible, just a pic and play together!</p>
+                    <div class="text-center">
+                        <a class="btn btn-secondary btn-lg" href="{{ route('register') }}" role="button">Register now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 px-xs-0">
+                <div class="img-cover" style="min-height: 600px;">
+                    <img src="{{ asset_cdn('images/qrcode-stream-2.jpg') }}" alt="">
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -142,20 +148,4 @@
         </div>
     </div>
 </section>
-
-{{--<section class="bg-primary py-0">--}}
-{{--    <div class="container">--}}
-{{--        <div class="promo">--}}
-{{--            <h2 class="promo-title h4">How to add friends ? Easy, looks the Pokemon GO</h2>--}}
-{{--            <a class="btn btn-outline-light mt-4 mt-lg-0 ml-md-4"--}}
-{{--               target="_blank"--}}
-{{--               rel="noopener noreferrer nofollow"--}}
-{{--               href="https://niantic.helpshift.com/a/pokemon-go/?p=web&l={{ Session::get('locale') }}&s=friends-gifting-and-trading&f=friend-list-friendship-levels"--}}
-{{--               role="button"--}}
-{{--            >--}}
-{{--                {{ trans('global.official_documentation') }}--}}
-{{--            </a>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
 @endsection

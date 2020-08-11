@@ -60,3 +60,30 @@ jobs:
           url: "https://www.pokemon-friends.com/register"
           threshold: 90
           strategy: desktop
+
+  testim-production:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+        ref: 'master'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Running testim on production
+        run: |
+          npm install
+          npm run prod:testim
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
+          TESTIM_PROJECT: ${{ secrets.PROD_TESTIM_PROJECT }}
+          TESTIM_TOKEN: ${{ secrets.PROD_TESTIM_TOKEN }}

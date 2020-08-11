@@ -4,7 +4,7 @@
             <i class="fas fa-qrcode icon"></i>
             <h2 class="font-weight-bold font-size-lg">Trainers friends codes & qRcode</h2>
             @if (!Auth::check())
-                <p class="lead">As unregistered user, you can see the daily selection of 96 trainers. Register to see all our trainers profiles!</p>
+                <p class="lead"><strong>As unregistered user</strong>, you can see the daily selection of 96 trainers. <strong><a href="{{ route('register') }}">Register</a></strong> to see all our trainers profiles!</p>
             @endif
         </div>
     </div>
