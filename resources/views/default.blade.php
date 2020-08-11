@@ -29,33 +29,33 @@
                 <ul class="navbar-nav navbar-right flex-row d-flex align-items-center">
                     @section('header-right')
                     @if(Auth::check())
-                      <li class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link">{{ trans('auth.logout') }}</a>
-                      </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">{{ trans('auth.logout') }}</a>
+                        </li>
                     @else
-                      {{--                        @if (Route::currentRouteNamed(Route::currentRouteName()))--}}
-                      {{--                            <li class="nav-item dropdown">--}}
-                      {{--                                <a class="nav-link" data-toggle="dropdown" href="#"><i class="fas fa-language"></i></a>--}}
-                      {{--                                <div class="dropdown-menu dropdown-menu-sm-right dropdown-menu-right">--}}
-                      {{--                                    @foreach(\pkmnfriends\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::LOCALES as $locale)--}}
-                      {{--                                        @if (Session::get('locale') !== $locale)--}}
-                      {{--                                            <a href="{{ route(Route::currentRouteName(), ['locale' => $locale]) }}" class="dropdown-item">--}}
-                      {{--                                                <i class="far fa-flag mr-2"></i>{{ trans("users.locale.${locale}") }}--}}
-                      {{--                                            </a>--}}
-                      {{--                                        @endif--}}
-                      {{--                                    @endforeach--}}
-                      {{--                                </div>--}}
-                      {{--                            </li>--}}
-                      {{--                        @endif--}}
-                      <li class="nav-item d-none d-md-inline-block">
-                        <a href="{{ route('register') }}" class="nav-link @if (Route::currentRouteNamed('register')) active @endif">{{ trans('auth.register') }}</a>
-                      </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if (Route::currentRouteNamed('login')) active @endif" href="{{ route('login') }}">
-                            <span class="d-none d-md-inline-block">{{ trans('auth.login') }}</span>
-                            <span class="d-inline-block d-md-none"><i class="fas fa-user"></i></span>
-                        </a>
-                    </li>
+                        {{--                        @if (Route::currentRouteNamed(Route::currentRouteName()))--}}
+                        {{--                            <li class="nav-item dropdown">--}}
+                        {{--                                <a class="nav-link" data-toggle="dropdown" href="#"><i class="fas fa-language"></i></a>--}}
+                        {{--                                <div class="dropdown-menu dropdown-menu-sm-right dropdown-menu-right">--}}
+                        {{--                                    @foreach(\pkmnfriends\Infrastructure\Interfaces\Domain\Locale\LocalesInterface::LOCALES as $locale)--}}
+                        {{--                                        @if (Session::get('locale') !== $locale)--}}
+                        {{--                                            <a href="{{ route(Route::currentRouteName(), ['locale' => $locale]) }}" class="dropdown-item">--}}
+                        {{--                                                <i class="far fa-flag mr-2"></i>{{ trans("users.locale.${locale}") }}--}}
+                        {{--                                            </a>--}}
+                        {{--                                        @endif--}}
+                        {{--                                    @endforeach--}}
+                        {{--                                </div>--}}
+                        {{--                            </li>--}}
+                        {{--                        @endif--}}
+                        <li class="nav-item d-none d-md-inline-block">
+                            <a href="{{ route('register') }}" class="nav-link @if (Route::currentRouteNamed('register')) active @endif">{{ trans('auth.register') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if (Route::currentRouteNamed('login')) active @endif" href="{{ route('login') }}">
+                                <span class="d-none d-md-inline-block">{{ trans('auth.login') }}</span>
+                                <span class="d-inline-block d-md-none"><i class="fas fa-user"></i></span>
+                            </a>
+                        </li>
                     @endif
                     @show
                 </ul>
