@@ -55,7 +55,7 @@
         "expose-loader": "^0.7.5",
         "false": "^0.0.4",
         "favicons-webpack-plugin": "^4.2.0",
-        "flatpickr": "^4.6.3",
+        "flatpickr": "^4.6.6",
         "holderjs": "^2.9.7",
         "imagehover.css": "^2.0.0",
         "imagemin-mozjpeg": "^9.0.0",
