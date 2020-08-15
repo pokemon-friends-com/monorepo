@@ -224,6 +224,7 @@ class ProfilesRepositoryEloquent extends RepositoryEloquentAbstract implements P
                 )->format('Y-m-d')
                 : null,
             'nickname' => $request->get('nickname'),
+            'twitch_channel' => $request->get('twitch_channel'),
             'family_situation' => $request->get('family_situation'),
             'maiden_name' => $request->get('maiden_name'),
             'friend_code' => $request->get('friend_code'),

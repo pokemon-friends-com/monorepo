@@ -126,4 +126,17 @@ class UsersController extends ControllerAbstract
 
         return view('anonymous.users.users.terms', compact('metadata'));
     }
+
+    /**
+     * Show the specified resource.
+     *
+     * @param Request $request
+     * @param User $user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function feed(Request $request, User $user)
+    {
+        return view('anonymous.users.users.streamfeed', compact('user'));
+    }
 }

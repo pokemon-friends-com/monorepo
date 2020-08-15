@@ -2,9 +2,12 @@
 
 namespace pkmnfriends\Http\Controllers\Api\V1;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Laravel\Cashier\Subscription;
-use pkmnfriends\Domain\Users\Profiles\Profile;
+use Illuminate\Support\Facades\Notification;
+use pkmnfriends\App\Events\DispatchFriendCodeOnStreamEvent;
+use pkmnfriends\Domain\Users\Users\Notifications\DispatchFriendCodeOnStream;
+use pkmnfriends\Domain\Users\Users\Presenters\TrainerChannelPresenter;
 use pkmnfriends\Domain\Users\Users\Repositories\UsersRepositoryEloquent;
 use pkmnfriends\Infrastructure\Contracts\Controllers\ControllerAbstract;
 use pkmnfriends\Domain\Users\Users\Transformers\UserTransformer;
@@ -85,7 +88,7 @@ class UsersController extends ControllerAbstract
             return $user
                 ->profile
                 ->addMediaFromUrl(
-                    'https://api.qrserver.com/v1/create-qr-code/'
+                    "https://api.qrserver.com/v1/create-qr-code/"
                     . "?size=300x300&format=png&data={$user->profile->friend_code}"
                 )
                 ->setName($user->profile->friend_code)
@@ -95,5 +98,36 @@ class UsersController extends ControllerAbstract
         }
 
         return $user->profile->getMedia('trainer')->first()->toResponse($request);
+    }
+
+    /**
+     * Get users twitch channels list.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function channels()
+    {
+        $users = $this
+            ->rUsers
+            ->with(['profile'])
+            ->whereHas('profile', function (Builder $query) {
+                $query->whereNotNull('twitch_channel');
+            })
+            ->setPresenter(new TrainerChannelPresenter())
+            ->paginate();
+
+        return response()->json($users);
+    }
+
+    /**
+     * Transmit friend code to a specific stream as qrcode image.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stream($channel, $friendCode)
+    {
+        broadcast(new DispatchFriendCodeOnStreamEvent($channel, $friendCode));
+
+        return response()->noContent();
     }
 }

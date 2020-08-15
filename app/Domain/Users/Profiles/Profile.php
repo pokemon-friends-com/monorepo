@@ -52,6 +52,7 @@ class Profile extends ModelAbstract implements ProfileFamiliesSituationsInterfac
         'friend_code',
         'team_color',
         'nickname',
+        'twitch_channel',
     ];
 
     /**

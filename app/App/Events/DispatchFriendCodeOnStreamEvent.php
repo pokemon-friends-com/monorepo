@@ -2,32 +2,34 @@
 
 namespace pkmnfriends\App\Events;
 
-use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class LaravelEchoEvent implements ShouldBroadcast
+class DispatchFriendCodeOnStreamEvent implements ShouldBroadcast
 {
     use Dispatchable;
     use InteractsWithSockets;
     use SerializesModels;
 
-    public $message;
+    public $streamChannel;
+    public $friendCode;
 
-    public function __construct($message)
+    public function __construct($streamChannel, $friendCode)
     {
-        $this->message = $message;
+        $this->streamChannel = $streamChannel;
+        $this->friendCode = $friendCode;
     }
 
     public function broadcastOn()
     {
-        return new Channel('my-channel');
+        return new PrivateChannel("stream.{$this->streamChannel}");
     }
 
     public function broadcastAs()
     {
-        return 'my-event';
+        return 'add-qrcode';
     }
 }
