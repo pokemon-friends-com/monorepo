@@ -34,6 +34,7 @@ Route::group(
             Route::get('subscribe/{plan}', ['as' => 'subscribe', 'uses' => 'CreateSubscriptionController']);
             Route::get('trainer/{user}', ['as' => 'trainer', 'uses' => 'UsersController@show']);
             Route::get('terms-of-services', ['as' => 'terms', 'uses' => 'UsersController@terms']);
+            Route::get('streamfeed', ['as' => 'terms', 'uses' => 'UsersController@feed']);
             Route::model('trainer', \pkmnfriends\Domain\Users\Users\User::class);
             Route::resource('trainers', 'UsersController')->only(['index', 'show']);
         });

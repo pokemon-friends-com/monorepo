@@ -148,7 +148,7 @@ jobs:
       - run: |
           cp .env.example .env
           php artisan key:generate
-          vendor/bin/phpunit
+          vendor/bin/paratest
         env:
           MOLLIE_KEY: ${{ secrets.DEV_MOLLIE_KEY }}
       - if: ${{ matrix.php-version == '7.3' }}

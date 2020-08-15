@@ -10,3 +10,24 @@ Accept: application/json
 Cache-Control: no-cache
 
 ###
+
+GET {{host}}/api/v1/users
+Authorization: Bearer {{bearer}}
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+GET {{host}}/api/v1/users/channels?page=1
+Authorization: Bearer {{bearer}}
+Accept: application/json
+Cache-Control: no-cache
+
+###
+
+GET {{host}}/api/v1/users/stream/blazed_css/111122223333
+Authorization: Bearer {{bearer}}
+Accept: application/json
+Cache-Control: no-cache
+
+###

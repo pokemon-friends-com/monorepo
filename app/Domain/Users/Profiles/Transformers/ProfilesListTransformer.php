@@ -22,6 +22,7 @@ class ProfilesListTransformer extends TransformerAbstract
             'team_color' => $model->team_color,
             'sponsored' => $model->sponsored,
             'nickname' => $model->nickname,
+            'twitch_channel' => $model->twitch_channel,
             'family_situation' => [
                 'key' => $model->family_situation,
                 'trans' => trans('profiles.family_situation.' . $model->family_situation),

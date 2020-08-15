@@ -29,6 +29,7 @@ class ProfileFormRequest extends RequestAbstract
     {
         $rules = [
             'nickname' => 'required|string|max:35',
+            'twitch_channel' => 'string|max:25',
             'friend_code' => 'required|string|numeric|digits:12',
             'team_color' => 'required|in:'
                 . ProfilesTeamsColors::DEFAULT . ','

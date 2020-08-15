@@ -44,7 +44,7 @@ Route::group(
         Route::group([
             'prefix' => 'users',
             'as' => 'users.',
-            'middleware' => 'cache.headers:public;max_age=2628000;etag'
+            'middleware' => 'cache.headers:public;max_age=2628000;etag',
         ], function () {
             Route::get('qr/{user}.png', ['as' => 'qr', 'uses' => 'UsersController@qr']);
         });
@@ -59,6 +59,13 @@ Route::group(
          'middleware' => ['api', 'client'],
     ],
     function () {
+        Route::group([
+            'prefix' => 'users',
+            'as' => 'users.',
+        ], function () {
+            Route::get('channels', ['as' => 'channels', 'uses' => 'UsersController@channels']);
+            Route::get('stream/{channel}/{friendCode}', ['as' => 'stream', 'uses' => 'UsersController@stream']);
+        });
         Route::resource('users', 'UsersController', ['only' => ['index']]);
     }
 );
