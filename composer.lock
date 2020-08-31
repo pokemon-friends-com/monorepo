@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "308f91b2c6d92e42e12e77d4e86e692f",
+    "content-hash": "b7b2c0b1b0e8765f935cd0a70453b433",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -6941,16 +6941,16 @@
         },
         {
             "name": "spatie/schema-org",
-            "version": "2.14.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/schema-org.git",
-                "reference": "a17c65150f97caf81cea490294b376fd37bee660"
+                "reference": "1e60fc79a5407e8df57329b9fcd890fe06fddb8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/schema-org/zipball/a17c65150f97caf81cea490294b376fd37bee660",
-                "reference": "a17c65150f97caf81cea490294b376fd37bee660",
+                "url": "https://api.github.com/repos/spatie/schema-org/zipball/1e60fc79a5407e8df57329b9fcd890fe06fddb8a",
+                "reference": "1e60fc79a5407e8df57329b9fcd890fe06fddb8a",
                 "shasum": ""
             },
             "require": {
@@ -6962,8 +6962,7 @@
                 "league/flysystem": "^1.0",
                 "phpunit/phpunit": "^8.0",
                 "symfony/console": "^3.2",
-                "symfony/css-selector": "^3.2",
-                "symfony/dom-crawler": "^3.2",
+                "tightenco/collect": "^7.25",
                 "twig/twig": "^1.28"
             },
             "type": "library",
@@ -7002,11 +7001,11 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://www.patreon.com/spatie",
-                    "type": "patreon"
+                    "url": "https://github.com/spatie",
+                    "type": "github"
                 }
             ],
-            "time": "2020-06-10T17:06:18+00:00"
+            "time": "2020-08-27T20:05:21+00:00"
         },
         {
             "name": "spatie/temporary-directory",

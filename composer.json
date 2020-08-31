@@ -45,7 +45,7 @@
         "spatie/laravel-honeypot": "^2.2",
         "spatie/laravel-medialibrary": "^7.19",
         "spatie/laravel-sitemap": "^5.7",
-        "spatie/schema-org": "^2.14",
+        "spatie/schema-org": "^3.0",
         "yaquawa/laravel-email-reset": "dev-feat/configure-callback"
     },
     "require-dev": {
