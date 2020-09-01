@@ -69,7 +69,7 @@
         "laravel-mix": "^5.0.4",
         "lazysizes": "^5.2.2",
         "lodash": "^4.17.19",
-        "mocha": "^8.0.1",
+        "mocha": "^8.1.3",
         "mochapack": "^2.0.3",
         "mock-echo": "^1.1.1",
         "moment": "^2.27.0",
