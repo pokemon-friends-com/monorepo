@@ -1,6 +1,6 @@
 {
   "name": "bot-twitch.tv",
-  "version": "0.0.1",
+  "version": "1.2.9",
   "description": "pokemon-friends.com twitch.tv chatbot.",
   "main": "bot.js",
   "scripts": {

@@ -10,8 +10,9 @@ const oauth = require('axios-oauth-client');
 const tokenProvider = require('axios-token-interceptor');
 const chatBase = require('@google/chatbase')
   .setApiKey(process.env.CHATBASE_KEY)
-  .setPlatform('twitch.tv')
-  .setVersion('0.0.1');
+  .setPlatform('twitch.tv');
+const { version } = require('./package.json');
+
 const logger = winston.createLogger({
   level: 'info',
   transports: [
@@ -20,7 +21,7 @@ const logger = winston.createLogger({
       level: 'warn',
       dsn: process.env.SENTRY_DSN,
       environment: process.env.NODE_ENV,
-      release: '0.0.1',
+      release: version,
       tags: { host: 'glitch.com' },
     }),
   ],
@@ -51,6 +52,8 @@ const getAuthorizationCode = oauth.client(axios.create(axiosOpts), {
 });
 const axiosInstance = axios.create(axiosOpts);
 axiosInstance.interceptors.request.use(oauth.interceptor(tokenProvider, getAuthorizationCode));
+
+chatBase.setVersion(version);
 
 client.on('connected', (addr, port) => {
   logger.info(`connected to ${addr}:${port}`);
