@@ -88,6 +88,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header">
+                        allow your viewers to share them QrCode on your stream with command <i>!pkmn-friends 123456781234</i>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row mb-0">
+                            <div class="col-9">
+
+
+                                <!-- <div class="input-guard">
+                                    <div class="input-guard__text"><i class="fas fa-lock mr-2" aria-hidden="true"></i>Click to show</div> -->
+                                <input type="text" id="alert" class="form-control" readonly="readonly" value="{{ route('anonymous.streamfeed', ['user' => $user['identifier'], 'token' => $user['streamfeed_token']]) }}"/>
+                                <!-- </div> -->
+
+
+                            </div>
+                            <div class="col-3">
+                                <button type="button" class="btn btn-primary btn-block btn-copy" data-clipboard-target="#alert"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 {{--        <div class="row">--}}

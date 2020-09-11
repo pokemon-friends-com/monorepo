@@ -31,6 +31,6 @@ $factory
             'friend_code' => $faker->numberBetween(100000000000, 999999999999),
             'team_color' => $faker->randomElement(\pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors::COLORS),
             'nickname' => $faker->name,
-            'twitch_channel' => $faker->name,
+            'twitch_channel' => null,
         ];
     });

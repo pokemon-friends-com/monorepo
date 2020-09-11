@@ -112,19 +112,19 @@
                         </div>
                     </div>
                 </div>
-{{--                <div class="card">--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div class="form-group row">--}}
-{{--                            <label for="twitch_channel" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.twitch_channel') }}</label>--}}
-{{--                            <div class="col-sm-9">--}}
-{{--                                <input type="text" class="form-control {{ $errors && $errors->has('twitch_channel') ? 'is-invalid' : '' }}" id="twitch_channel" placeholder="{{ trans('users.twitch_channel') }}" name="twitch_channel" value="{{ old('twitch_channel', $profile['data']['twitch_channel']) }}">--}}
-{{--                                @if ($errors && $errors->has('twitch_channel'))--}}
-{{--                                    <div class="text-danger text-sm">{{ $errors->first('twitch_channel') }}</div>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="twitch_channel" class="col-sm-3 col-form-label text-sm-right">{{ trans('users.twitch_channel') }}</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control {{ $errors && $errors->has('twitch_channel') ? 'is-invalid' : '' }}" id="twitch_channel" placeholder="{{ trans('users.twitch_channel') }}" name="twitch_channel" value="{{ old('twitch_channel', $profile['data']['twitch_channel']) }}">
+                                @if ($errors && $errors->has('twitch_channel'))
+                                    <div class="text-danger text-sm">{{ $errors->first('twitch_channel') }}</div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card card-info">
                     <div class="card-header">{{ trans('users.profile.info.only_admin_can_view_following_data') }}</div>
                     <div class="card-body">

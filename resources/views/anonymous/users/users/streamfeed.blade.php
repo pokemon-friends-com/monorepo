@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <qr-code-stream-feed-component></qr-code-stream-feed-component>
+        <qr-code-stream-feed-component channel="{{ $user->profile->twitch_channel }}"></qr-code-stream-feed-component>
     </div>
     @include('partials.scripts')
 </body>
