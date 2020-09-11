@@ -33,6 +33,7 @@ class UsersController extends ControllerAbstract
      * UsersController constructor.
      *
      * @param UsersRepositoryEloquent $rUsers
+     * @param ProfilesRepositoryEloquent $rProfiles
      */
     public function __construct(
         UsersRepositoryEloquent $rUsers,

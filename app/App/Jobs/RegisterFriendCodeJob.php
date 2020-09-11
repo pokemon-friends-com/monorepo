@@ -41,6 +41,7 @@ class RegisterFriendCodeJob implements ShouldQueue
         string $friendCode,
         string $teamColor = ProfilesTeamsColors::DEFAULT
     ) {
+        $this->queue = 'low';
         $this->friendCode = $friendCode;
         $this->teamColor = $teamColor;
     }

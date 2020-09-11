@@ -17,6 +17,9 @@ export default {
   components: {
     QrCodeComponent,
   },
+  props: [
+    'channel',
+  ],
   data() {
     return {
       class_name: QrCodeComponent,
@@ -24,11 +27,12 @@ export default {
     };
   },
   mounted() {
+    const vm = this;
     window
       .Echo
-      .private('stream.blazed_css')
+      .private(`stream.${this.channel}`)
       .listen('.add-qrcode', (data) => {
-        this.friendsCodes.push(data.friendCode);
+        vm.friendsCodes.push(data.friendCode);
       });
     this.scrollToElement();
   },

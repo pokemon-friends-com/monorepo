@@ -17,6 +17,13 @@ class DispatchFriendCodeOnStreamEvent implements ShouldBroadcast
     public $streamChannel;
     public $friendCode;
 
+    /**
+     * The name of the queue on which to place the event.
+     *
+     * @var string
+     */
+    public $broadcastQueue = 'high';
+
     public function __construct($streamChannel, $friendCode)
     {
         $this->streamChannel = $streamChannel;

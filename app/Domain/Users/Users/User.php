@@ -17,15 +17,14 @@ use pkmnfriends\Infrastructure\Interfaces\Domain\{
     Locale\LocalesInterface,
     Locale\TimeZonesInterface
 };
-use pkmnfriends\Infrastructure\Contracts\{
-    Model\AuthenticatableModelAbstract,
+use pkmnfriends\Infrastructure\Contracts\{Model\AuthenticatableModelAbstract,
     Model\IdentifiableTrait,
     Model\Notifiable,
     Model\RouteKeyNameUniquidTrait,
     Model\SoftDeletes,
     Model\TimeStampsTz,
-    Model\SoftDeletesTz
-};
+    Model\SoftDeletesTz,
+    Traits\SecurityHashTrait};
 use pkmnfriends\Domain\Users\Profiles\Traits\ProfileableTrait;
 use pkmnfriends\Domain\Users\ProvidersTokens\ProviderToken;
 use pkmnfriends\Domain\Users\Users\{
@@ -57,6 +56,7 @@ class User extends AuthenticatableModelAbstract implements
     use SoftDeletesTz;
     use Impersonate;
     use CanResetEmail;
+    use SecurityHashTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -183,6 +183,18 @@ class User extends AuthenticatableModelAbstract implements
     public function getIsCustomerAttribute()
     {
         return self::ROLE_CUSTOMER === $this->role;
+    }
+
+
+    public function validateStreamfeedTokenAttribute($token): bool
+    {
+        $data = $this->readHash($token);
+        return $this->uniqid === $data['id'];
+    }
+
+    public function getStreamfeedTokenAttribute(): string
+    {
+        return $this->createHash(['id' => $this->uniqid]);
     }
 
     /**

@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
                     'friend_code' => '500161205617',
                     'team_color' => \pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors::BLUE,
                     'sponsored' => \Carbon\Carbon::now()->format('Y-m-d'),
+                    'twitch_channel' => 'blazed_css',
                 ]);
             });
 
@@ -42,6 +43,7 @@ class DatabaseSeeder extends Seeder
                     'friend_code' => '500161205617',
                     'team_color' => \pkmnfriends\Domain\Users\Profiles\ProfilesTeamsColors::RED,
                     'sponsored' => \Carbon\Carbon::now()->format('Y-m-d'),
+                    'twitch_channel' => 'pkmn_friends',
                 ]);
             });
 
@@ -49,7 +51,9 @@ class DatabaseSeeder extends Seeder
             ->states(User::ROLE_CUSTOMER)
             ->create()
             ->each(function ($user) {
-                factory(Profile::class)->create(['user_id' => $user->id]);
+                factory(Profile::class)->create([
+                    'user_id' => $user->id,
+                ]);
             });
     }
 }

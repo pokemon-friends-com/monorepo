@@ -21,6 +21,7 @@ class TrainerTransformer extends TransformerAbstract
         return [
             'identifier' => $model->uniqid,
             'username' => $model->profile->username,
+            'streamfeed_token' => $model->streamfeed_token,
             'friend_code' => [
                 'default' => $model->profile->friend_code,
                 'formated' => $model->profile->formated_friend_code,
