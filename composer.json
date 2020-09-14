@@ -27,7 +27,7 @@
         "laravel/framework": "^7.15",
         "laravel/helpers": "^1.2",
         "laravel/passport": "^9.2",
-        "laravel/socialite": "^4.4",
+        "laravel/socialite": "^5.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
         "league/csv": "^9.6",
