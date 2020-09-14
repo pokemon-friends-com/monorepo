@@ -6358,16 +6358,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.37.1",
+            "version": "3.37.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "7d526a458ce870a07669bd2416313a4d62f3f15d"
+                "reference": "32d2984079ed8fe690f4dc5b7b6c205ae0a7b0fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/7d526a458ce870a07669bd2416313a4d62f3f15d",
-                "reference": "7d526a458ce870a07669bd2416313a4d62f3f15d",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/32d2984079ed8fe690f4dc5b7b6c205ae0a7b0fd",
+                "reference": "32d2984079ed8fe690f4dc5b7b6c205ae0a7b0fd",
                 "shasum": ""
             },
             "require": {
@@ -6416,20 +6416,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-08T07:20:45+00:00"
+            "time": "2020-07-21T22:40:58+00:00"
         },
         {
             "name": "spatie/crawler",
-            "version": "4.7.4",
+            "version": "4.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "c714a8550ce6bbed74d59d63893f3fd862bcceee"
+                "reference": "1f954a5d55ada0f83a91418a79978f435017463b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/c714a8550ce6bbed74d59d63893f3fd862bcceee",
-                "reference": "c714a8550ce6bbed74d59d63893f3fd862bcceee",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/1f954a5d55ada0f83a91418a79978f435017463b",
+                "reference": "1f954a5d55ada0f83a91418a79978f435017463b",
                 "shasum": ""
             },
             "require": {
@@ -6476,7 +6476,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-15T20:51:31+00:00"
+            "time": "2020-09-13T00:23:53+00:00"
         },
         {
             "name": "spatie/image",
@@ -7052,16 +7052,16 @@
         },
         {
             "name": "spatie/temporary-directory",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/temporary-directory.git",
-                "reference": "eeb84a7a3543e90759cd852ccb468e3d3340d99d"
+                "reference": "8efe8e61e0ca943d84341f10e51ef3a9606af932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/eeb84a7a3543e90759cd852ccb468e3d3340d99d",
-                "reference": "eeb84a7a3543e90759cd852ccb468e3d3340d99d",
+                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/8efe8e61e0ca943d84341f10e51ef3a9606af932",
+                "reference": "8efe8e61e0ca943d84341f10e51ef3a9606af932",
                 "shasum": ""
             },
             "require": {
@@ -7094,7 +7094,7 @@
                 "spatie",
                 "temporary-directory"
             ],
-            "time": "2020-06-08T08:58:45+00:00"
+            "time": "2020-09-07T20:41:15+00:00"
         },
         {
             "name": "studio-42/elfinder",
@@ -7442,16 +7442,16 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v5.1.2",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "907187782c465a564f9030a0c6ace59e8821106f"
+                "reference": "3ac31ffbc596e41ca081037b7d78fc7a853c0315"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/907187782c465a564f9030a0c6ace59e8821106f",
-                "reference": "907187782c465a564f9030a0c6ace59e8821106f",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/3ac31ffbc596e41ca081037b7d78fc7a853c0315",
+                "reference": "3ac31ffbc596e41ca081037b7d78fc7a853c0315",
                 "shasum": ""
             },
             "require": {
@@ -7514,7 +7514,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-23T13:08:13+00:00"
+            "time": "2020-08-12T08:45:47+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -9658,16 +9658,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v7.19.1",
+            "version": "v7.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tighten/collect.git",
-                "reference": "e070bf74564f311bb3c97e673e97ea036b38a449"
+                "reference": "5e460929279ad806e59fc731e649e9b25fc8774a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tighten/collect/zipball/e070bf74564f311bb3c97e673e97ea036b38a449",
-                "reference": "e070bf74564f311bb3c97e673e97ea036b38a449",
+                "url": "https://api.github.com/repos/tighten/collect/zipball/5e460929279ad806e59fc731e649e9b25fc8774a",
+                "reference": "5e460929279ad806e59fc731e649e9b25fc8774a",
                 "shasum": ""
             },
             "require": {
@@ -9704,7 +9704,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2020-07-10T22:08:24+00:00"
+            "time": "2020-09-05T00:05:48+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
