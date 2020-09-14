@@ -6815,28 +6815,28 @@
         },
         {
             "name": "spatie/laravel-sitemap",
-            "version": "5.7.0",
+            "version": "5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-sitemap.git",
-                "reference": "b2ce1f09f222fa9b79284b8952f967356a3ae0af"
+                "reference": "90c4dd061ba251c2bff9edf83d5e1d38d17f1529"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/b2ce1f09f222fa9b79284b8952f967356a3ae0af",
-                "reference": "b2ce1f09f222fa9b79284b8952f967356a3ae0af",
+                "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/90c4dd061ba251c2bff9edf83d5e1d38d17f1529",
+                "reference": "90c4dd061ba251c2bff9edf83d5e1d38d17f1529",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.8.0|^6.0|^7.0",
+                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0",
                 "nesbot/carbon": "^1.21|^2.0",
                 "php": "^7.2",
                 "spatie/crawler": "^4.1.0"
             },
             "require-dev": {
-                "mockery/mockery": "^1.3",
-                "orchestra/testbench": "~3.8.8|^4.0|^5.0",
-                "phpunit/phpunit": "^8.3|^9.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "~3.8.8|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.3|^9.0|^9.3",
                 "spatie/phpunit-snapshot-assertions": "^3.0.0",
                 "spatie/temporary-directory": "^1.1"
             },
@@ -6877,7 +6877,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-03-03T07:05:15+00:00"
+            "time": "2020-09-09T09:29:31+00:00"
         },
         {
             "name": "spatie/pdf-to-image",
