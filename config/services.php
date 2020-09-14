@@ -37,10 +37,6 @@ return [
         ],
     ],
 
-    'discord' => [
-        'url' => 'https://discord.gg/u95WvrN',
-    ],
-
     'github' => [
         'url' => 'https://github.com/pokemon-friends-com/www',
         'nextgen' => 'https://github.com/pokemon-friends-com/www/milestones',
