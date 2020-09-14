@@ -6584,27 +6584,27 @@
         },
         {
             "name": "spatie/laravel-cookie-consent",
-            "version": "2.12.8",
+            "version": "2.12.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-cookie-consent.git",
-                "reference": "917986a07313bd4390cc2fc37c35d8417b3f0987"
+                "reference": "423f17b60aaca47431414d0a0ef07614711f73d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-cookie-consent/zipball/917986a07313bd4390cc2fc37c35d8417b3f0987",
-                "reference": "917986a07313bd4390cc2fc37c35d8417b3f0987",
+                "url": "https://api.github.com/repos/spatie/laravel-cookie-consent/zipball/423f17b60aaca47431414d0a0ef07614711f73d0",
+                "reference": "423f17b60aaca47431414d0a0ef07614711f73d0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/cookie": "~5.8.0|^6.0|^7.0",
-                "illuminate/support": "~5.8.0|^6.0|^7.0",
-                "illuminate/view": "~5.8.0|^6.0|^7.0",
+                "illuminate/cookie": "~5.8.0|^6.0|^7.0|^8.0",
+                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0",
+                "illuminate/view": "~5.8.0|^6.0|^7.0|^8.0",
                 "php": "^7.2"
             },
             "require-dev": {
                 "fzaninotto/faker": "~1.4",
-                "orchestra/testbench": "~3.8.0|^4.0|^5.0"
+                "orchestra/testbench": "~3.8.0|^4.0|^5.0|^6.0"
             },
             "type": "library",
             "extra": {
@@ -6653,7 +6653,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-08-23T09:31:31+00:00"
+            "time": "2020-09-09T07:21:51+00:00"
         },
         {
             "name": "spatie/laravel-honeypot",
