@@ -41,7 +41,7 @@
         "copy-webpack-plugin": "^5.1.2",
         "cross-env": "^7.0.2",
         "datatables": "^1.10.18",
-        "datatables.net-bs4": "^1.10.21",
+        "datatables.net-bs4": "^1.10.22",
         "dotenv": "^8.2.0",
         "easy-pie-chart": "^2.1.7",
         "ekko-lightbox": "^5.3.0",
