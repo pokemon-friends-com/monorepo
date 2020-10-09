@@ -73,7 +73,7 @@
         "mocha": "^8.1.3",
         "mochapack": "^2.0.3",
         "mock-echo": "^1.1.1",
-        "moment": "^2.27.0",
+        "moment": "^2.29.0",
         "nouislider": "^14.6.1",
         "nyc": "^15.1.0",
         "owl.carousel": "^2.3.4",
