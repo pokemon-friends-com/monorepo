@@ -32,7 +32,7 @@
         "@testim/testim-cli": "^3.94.0",
         "@vue/babel-preset-app": "^3.11.0",
         "@vue/test-utils": "^1.0.5",
-        "axios": "^0.19",
+        "axios": "^0.20",
         "babel-plugin-istanbul": "^6.0.0",
         "bootstrap": "^4.5.2",
         "bootstrap-select": "^1.13.18",
