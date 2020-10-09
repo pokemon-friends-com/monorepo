@@ -48,7 +48,7 @@
         "eslint": "^7.8.1",
         "eslint-config-airbnb-base": "^14.2.0",
         "eslint-loader": "^4.0.2",
-        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-lodash": "^7.1.0",
         "eslint-plugin-no-jquery": "^2.5.0",
         "eslint-plugin-vue": "^6.2.2",
