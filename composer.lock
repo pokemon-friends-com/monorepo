@@ -1496,23 +1496,23 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.1.1",
+            "version": "7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "7427d6f99df41cc01f33cd59832f721c150ffdf3"
+                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/7427d6f99df41cc01f33cd59832f721c150ffdf3",
-                "reference": "7427d6f99df41cc01f33cd59832f721c150ffdf3",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0aa74dfb41ae110835923ef10a9d803a22d50e79",
+                "reference": "0aa74dfb41ae110835923ef10a9d803a22d50e79",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.6.1",
-                "php": "^7.2.5",
+                "guzzlehttp/promises": "^1.4",
+                "guzzlehttp/psr7": "^1.7",
+                "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0"
             },
             "provide": {
@@ -1520,8 +1520,8 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "php-http/client-integration-tests": "dev-phpunit8",
-                "phpunit/phpunit": "^8.5.5",
+                "php-http/client-integration-tests": "^3.0",
+                "phpunit/phpunit": "^8.5.5 || ^9.3.5",
                 "psr/log": "^1.1"
             },
             "suggest": {
@@ -1590,7 +1590,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-30T08:51:17+00:00"
+            "time": "2020-10-10T11:47:56+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2554,16 +2554,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v5.0.1",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "61ad2b5f98e28f8e4e479851f8744b43ebbb9b46"
+                "reference": "87dfaaa0e0a85b707582e4f9bc8dab9664dcb0a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/61ad2b5f98e28f8e4e479851f8744b43ebbb9b46",
-                "reference": "61ad2b5f98e28f8e4e479851f8744b43ebbb9b46",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/87dfaaa0e0a85b707582e4f9bc8dab9664dcb0a4",
+                "reference": "87dfaaa0e0a85b707582e4f9bc8dab9664dcb0a4",
                 "shasum": ""
             },
             "require": {
@@ -2615,7 +2615,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2020-09-12T14:40:16+00:00"
+            "time": "2020-10-20T18:53:05+00:00"
         },
         {
             "name": "laravel/ui",
@@ -3476,16 +3476,16 @@
         },
         {
             "name": "league/oauth1-client",
-            "version": "v1.8.1",
+            "version": "v1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth1-client.git",
-                "reference": "3a68155c3f27a91f4b66a2dc03996cd6f3281c9f"
+                "reference": "159c3d2bf27568f9af87d6c3f4bb616a251eb12b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/3a68155c3f27a91f4b66a2dc03996cd6f3281c9f",
-                "reference": "3a68155c3f27a91f4b66a2dc03996cd6f3281c9f",
+                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/159c3d2bf27568f9af87d6c3f4bb616a251eb12b",
+                "reference": "159c3d2bf27568f9af87d6c3f4bb616a251eb12b",
                 "shasum": ""
             },
             "require": {
@@ -3543,7 +3543,7 @@
                 "tumblr",
                 "twitter"
             ],
-            "time": "2020-09-04T11:07:03+00:00"
+            "time": "2020-09-28T09:39:08+00:00"
         },
         {
             "name": "league/oauth2-server",
