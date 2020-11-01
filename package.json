@@ -51,7 +51,7 @@
         "eslint-plugin-import": "^2.22.1",
         "eslint-plugin-lodash": "^7.1.0",
         "eslint-plugin-no-jquery": "^2.5.0",
-        "eslint-plugin-vue": "^6.2.2",
+        "eslint-plugin-vue": "^7.1.0",
         "expect": "^26.4.2",
         "expose-loader": "^0.7.5",
         "false": "^0.0.4",
