@@ -67,7 +67,7 @@
         "jsdom": "^16.4.0",
         "jsdom-global": "^3.0.2",
         "laravel-echo": "^1.8.1",
-        "laravel-mix": "^5.0.5",
+        "laravel-mix": "^5.0.7",
         "lazysizes": "^5.2.2",
         "lodash": "^4.17.20",
         "mocha": "^8.1.3",
