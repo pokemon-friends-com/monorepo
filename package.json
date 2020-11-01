@@ -95,6 +95,6 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "sweetalert2": "^9.17.2"
+        "sweetalert2": "^10.9.0"
     }
 }
