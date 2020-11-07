@@ -6993,16 +6993,16 @@
         },
         {
             "name": "spatie/schema-org",
-            "version": "3.1.1",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/schema-org.git",
-                "reference": "00c70fe3c156d9711a5a878efead5d91fe82591c"
+                "reference": "a9aff51a891058d8d58f8bb4b4b425d1382dba00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/schema-org/zipball/00c70fe3c156d9711a5a878efead5d91fe82591c",
-                "reference": "00c70fe3c156d9711a5a878efead5d91fe82591c",
+                "url": "https://api.github.com/repos/spatie/schema-org/zipball/a9aff51a891058d8d58f8bb4b4b425d1382dba00",
+                "reference": "a9aff51a891058d8d58f8bb4b4b425d1382dba00",
                 "shasum": ""
             },
             "require": {
@@ -7057,7 +7057,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-22T10:56:43+00:00"
+            "time": "2020-11-05T15:56:26+00:00"
         },
         {
             "name": "spatie/temporary-directory",
