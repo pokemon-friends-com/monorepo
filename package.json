@@ -31,7 +31,7 @@
         "@sentry/types": "^5.22.3",
         "@testim/testim-cli": "^3.94.0",
         "@vue/babel-preset-app": "^3.11.0",
-        "@vue/test-utils": "^1.0.5",
+        "@vue/test-utils": "^1.1.1",
         "axios": "^0.20",
         "babel-plugin-istanbul": "^6.0.0",
         "bootstrap": "^4.5.2",
