@@ -34,7 +34,7 @@
         "@vue/test-utils": "^1.0.5",
         "axios": "^0.20",
         "babel-plugin-istanbul": "^6.0.0",
-        "bootstrap": "^4.5.2",
+        "bootstrap": "^4.5.3",
         "bootstrap-select": "^1.13.18",
         "canvas": "^2.6.1",
         "clipboard": "^2.0.6",
