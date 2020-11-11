@@ -6,7 +6,7 @@ updates:
     interval: monthly
     time: '04:00'
   open-pull-requests-limit: 10
-  target-branch: develop
+  target-branch: master
   labels:
   - dep:javascript
   - dependencies
@@ -16,7 +16,7 @@ updates:
     interval: monthly
     time: '04:00'
   open-pull-requests-limit: 10
-  target-branch: develop
+  target-branch: master
   labels:
     - dep:javascript
     - dependencies
@@ -26,7 +26,7 @@ updates:
     interval: daily
     time: '04:00'
   open-pull-requests-limit: 10
-  target-branch: develop
+  target-branch: master
   labels:
   - dependencies
   - dep:php
