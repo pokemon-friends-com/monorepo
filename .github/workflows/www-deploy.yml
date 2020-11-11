@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
-        php-version: [7.3]
+        node-version: [ 14.x ]
+        php-version: [ 7.4 ]
     if: contains(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2
@@ -126,7 +126,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [ 14.x ]
     if: contains(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2

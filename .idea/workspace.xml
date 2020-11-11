@@ -268,4 +268,10 @@
   <component name="TaskManager">
     <servers />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="605" y="380" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605101162979">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="605" y="380" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1097@0.23.1792.1097" timestamp="1605101162979" />
+  </component>
 </project>

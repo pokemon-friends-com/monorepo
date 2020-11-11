@@ -112,6 +112,8 @@
                         </div>
                     </div>
                 </div>
+
+                @impersonating
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group row">
@@ -125,6 +127,8 @@
                         </div>
                     </div>
                 </div>
+                @endImpersonating
+
                 <div class="card card-info">
                     <div class="card-header">{{ trans('users.profile.info.only_admin_can_view_following_data') }}</div>
                     <div class="card-body">

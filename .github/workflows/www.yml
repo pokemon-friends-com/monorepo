@@ -1,6 +1,10 @@
 name: www.pokemon-friends.com
 
 on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'www/**'
   pull_request:
     branches: [ master ]
     paths:
@@ -16,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: [7.3]
+        php-version: [ 7.4 ]
     steps:
       - uses: actions/checkout@v2
       - run: composer validate --strict
@@ -36,7 +40,6 @@ jobs:
         run: composer install -o --no-interaction --prefer-dist --no-suggest
       - run: |
           vendor/bin/phpcs --standard=PSR12 app
-          vendor/bin/phpcs --standard=PSR12 components
           vendor/bin/phpcs --standard=PSR12 database/factories
           vendor/bin/phpcs --standard=PSR12 routes
           vendor/bin/phpcs --standard=PSR12 tests --extensions=php
@@ -45,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: [7.3]
+        php-version: [ 7.4 ]
     steps:
       - uses: actions/checkout@v2
       - run: composer validate --strict
@@ -64,14 +67,14 @@ jobs:
       - if: steps.composer-cache.outputs.cache-hit != 'true'
         run: composer install -o --no-interaction --prefer-dist --no-suggest
       - run: |
-          vendor/bin/phpstan analyse -l 0 app components tests
+          vendor/bin/phpstan analyse
 
   tests-js:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
-    continue-on-error: ${{ matrix.node-version == '14.x' }}
+        node-version: [ 14.x ]
+    #continue-on-error: ${{ matrix.node-version == '14.x' }}
     steps:
       - uses: actions/checkout@v2
       - run: composer validate --strict
@@ -105,13 +108,13 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   tests-php:
-    needs: [codestyle-phpcs, codestyle-phpstan, tests-js]
+    needs: [ codestyle-phpcs, codestyle-phpstan, tests-js ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
-        php-version: [7.3, 7.4]
-    continue-on-error: ${{ matrix.php-version == '7.4' }}
+        node-version: [ 14.x ]
+        php-version: [ 7.4 ]
+    #continue-on-error: ${{ matrix.php-version == '7.4' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
@@ -160,7 +163,7 @@ jobs:
           php artisan view:clear
         env:
           MOLLIE_KEY: ${{ secrets.DEV_MOLLIE_KEY }}
-      - if: ${{ matrix.php-version == '7.3' }}
+      - if: ${{ matrix.php-version == '7.4' }}
         run: bash <(curl -s https://codecov.io/bash) -f coverage/clover.xml
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

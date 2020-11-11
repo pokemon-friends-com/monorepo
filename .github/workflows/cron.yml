@@ -2,7 +2,7 @@ name: cron
 
 on:
   schedule:
-    - cron:  '0 0 1 * *'
+    - cron: '0 0 1 * *'
 
 jobs:
 
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [ 14.x ]
     steps:
       - uses: actions/checkout@v2
         ref: 'master'
