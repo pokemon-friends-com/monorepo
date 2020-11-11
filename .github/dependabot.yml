@@ -1,31 +1,31 @@
 version: 2
 updates:
 - package-ecosystem: npm
-  directory: "/"
+  directory: "/www"
   schedule:
     interval: monthly
     time: '04:00'
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 5
   target-branch: master
   labels:
   - dep:javascript
   - dependencies
 - package-ecosystem: npm
-  directory: "/bots/twitch"
+  directory: "/bot-twitch"
   schedule:
     interval: monthly
     time: '04:00'
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 5
   target-branch: master
   labels:
     - dep:javascript
     - dependencies
 - package-ecosystem: composer
-  directory: "/"
+  directory: "/www"
   schedule:
     interval: daily
     time: '04:00'
-  open-pull-requests-limit: 10
+  open-pull-requests-limit: 5
   target-branch: master
   labels:
   - dependencies

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="pkmn:daily-sponsor" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/artisan" scriptParameters="pkmn:daily-sponsor">
+  <configuration default="false" name="pkmn:daily-sponsor" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/www/artisan" scriptParameters="pkmn:daily-sponsor">
     <method v="2" />
   </configuration>
 </component>

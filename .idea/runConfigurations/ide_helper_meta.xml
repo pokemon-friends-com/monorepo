@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="ide-helper:meta" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/artisan" scriptParameters="ide-helper:meta">
+  <configuration default="false" name="ide-helper:meta" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/www/artisan" scriptParameters="ide-helper:meta">
     <method v="2" />
   </configuration>
 </component>

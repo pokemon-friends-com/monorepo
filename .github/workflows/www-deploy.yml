@@ -3,6 +3,12 @@ name: deploy
 on:
   release:
     types: [ published ]
+    paths:
+      - 'www/**'
+
+defaults:
+  run:
+    working-directory: ./www
 
 jobs:
 

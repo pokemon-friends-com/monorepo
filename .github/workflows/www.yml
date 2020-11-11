@@ -3,6 +3,12 @@ name: www.pokemon-friends.com
 on:
   pull_request:
     branches: [ master ]
+    paths:
+      - 'www/**'
+
+defaults:
+  run:
+    working-directory: ./www
 
 jobs:
 

@@ -50,23 +50,6 @@ mix
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         exclude: /(node_modules|tests)/,
-      }, {
-        // Exposes jQuery for use outside Webpack build
-        test: require.resolve('jquery'),
-        use: [{
-          loader: 'expose-loader',
-          options: 'jQuery',
-        }, {
-          loader: 'expose-loader',
-          options: '$',
-        }],
-      }, {
-        // Exposes LazyLoad for use outside Webpack build
-        test: require.resolve('vanilla-lazyload'),
-        use: [{
-          loader: 'expose-loader',
-          options: 'LazyLoad',
-        }],
       }],
     },
     plugins: [
