@@ -2,11 +2,7 @@ name: cron
 
 on:
   schedule:
-    - cron:  '0 6 * * *'
-  pull_request:
-    branches: [ develop ]
-    paths:
-      - '.github/workflows/cron.yml'
+    - cron:  '0 0 1 * *'
 
 jobs:
 
