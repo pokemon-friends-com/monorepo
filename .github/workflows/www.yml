@@ -102,7 +102,7 @@ jobs:
           MIX_PUSHER_APP_SECRET: ${{ secrets.DEV_PUSHER_APP_SECRET }}
           MIX_PUSHER_APP_CLUSTER: ${{ secrets.PROD_PUSHER_APP_CLUSTER }}
           MIX_SENTRY_PUBLIC_DSN: ${{ secrets.PROD_SENTRY_PUBLIC_DSN }}
-      - if: ${{ matrix.node-version == '12.x'}}
+      - if: ${{ matrix.node-version == '14.x'}}
         run: bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

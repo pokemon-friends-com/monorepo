@@ -8,8 +8,8 @@
       <excludeFolder url="file://$MODULE_DIR$/.nyc_output" />
       <excludeFolder url="file://$MODULE_DIR$/.tmb" />
       <excludeFolder url="file://$MODULE_DIR$/bin" />
-      <excludeFolder url="file://$MODULE_DIR$/www/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/www/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/www/public" />
       <excludeFolder url="file://$MODULE_DIR$/www/routes" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/abraham/twitteroauth" />
@@ -186,6 +186,8 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/event-dispatcher-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/http-client-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/mime" />
