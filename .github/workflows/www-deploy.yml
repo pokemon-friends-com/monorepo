@@ -100,7 +100,7 @@ jobs:
         env:
           REPO: pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
           BRANCH: master
-          FOLDER: ${{ github.workspace }}
+          FOLDER: ${{ github.workspace }}/www
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
           KNOWN_HOSTS_FILE: ${{ github.workspace }}/known_hosts
 
