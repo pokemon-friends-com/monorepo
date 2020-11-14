@@ -18,8 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Publish bot-twitch
-        uses: s0/git-publish-subdir-action@develop
+        uses: glitch-tools/sync-glitch-github-action@master
         env:
-          REPO: ${{ secrets.GLITCH_REPOSITORY_PKMN_FRIENDS }}
-          BRANCH: master
-          FOLDER: ${{ github.workspace }}/bot-twitch
+          GLITCH_PROJECT_ID: ${{ secrets.GLITCH_PROJECT_ID }}
+          GLITCH_TOKEN: ${{ secrets.GLITCH_TOKEN }}
