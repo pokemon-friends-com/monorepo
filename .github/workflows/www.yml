@@ -155,7 +155,7 @@ jobs:
       - run: |
           cp .env.example .env
           php artisan key:generate
-          vendor/bin/paratest
+          vendor/bin/phpunit
           php artisan config:cache
           php artisan route:cache
           php artisan view:clear

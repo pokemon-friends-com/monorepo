@@ -21,8 +21,6 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/beyondcode/laravel-dump-server" />
-      <excludeFolder url="file://$MODULE_DIR$/www/vendor/brianium/habitat" />
-      <excludeFolder url="file://$MODULE_DIR$/www/vendor/brianium/paratest" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/clue/stream-filter" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/composer" />

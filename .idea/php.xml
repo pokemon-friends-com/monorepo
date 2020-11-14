@@ -251,8 +251,6 @@
       <path value="$PROJECT_DIR$/www/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/www/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/www/vendor/doctrine/cache" />
-      <path value="$PROJECT_DIR$/www/vendor/brianium/paratest" />
-      <path value="$PROJECT_DIR$/www/vendor/brianium/habitat" />
       <path value="$PROJECT_DIR$/www/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/www/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/www/vendor/doctrine/inflector" />
