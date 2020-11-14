@@ -51,7 +51,6 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          coverage: xdebug
           tools: pecl
           extensions: gd, imagick
       - if: steps.composer-cache.outputs.cache-hit != 'true'
@@ -90,20 +89,14 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.ref, 'refs/tags/')
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: master
-      - name: install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      - run: |
-          git config --global user.email "deploy@pokemon-friends.com"
-          git config --global user.name "deploy"
-          git remote add fortrabbit pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
-          git pull origin master
-          git push -u fortrabbit master
+      - uses: actions/checkout@master
+      - name: Publish laravel-settings
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
+          BRANCH: master
+          FOLDER: .
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
 
   fortrabbit-post-deploy:
     needs: [ fortrabbit-deploy ]
