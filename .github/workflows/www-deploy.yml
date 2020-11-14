@@ -90,6 +90,10 @@ jobs:
     if: contains(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@master
+      - run: |
+          echo $KNOWN_HOSTS > known_hosts
+        env:
+          KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
       - name: Publish laravel-settings
         uses: s0/git-publish-subdir-action@develop
         env:
@@ -97,6 +101,7 @@ jobs:
           BRANCH: master
           FOLDER: .
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
+          KNOWN_HOSTS_FILE: ./known_hosts
 
   fortrabbit-post-deploy:
     needs: [ fortrabbit-deploy ]
