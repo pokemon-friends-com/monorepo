@@ -91,7 +91,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: |
-          echo $KNOWN_HOSTS > known_hosts
+          echo ${KNOWN_HOSTS} > ${HOME}/known_hosts
         env:
           KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
       - name: Publish laravel-settings
@@ -101,7 +101,7 @@ jobs:
           BRANCH: master
           FOLDER: .
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
-          KNOWN_HOSTS_FILE: ./known_hosts
+          KNOWN_HOSTS_FILE: ${HOME}/known_hosts
 
   fortrabbit-post-deploy:
     needs: [ fortrabbit-deploy ]
