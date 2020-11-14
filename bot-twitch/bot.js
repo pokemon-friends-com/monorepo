@@ -11,7 +11,6 @@ const chatBase = require('@google/chatbase')
   .setApiKey(process.env.CHATBASE_KEY)
   .setPlatform('twitch.tv');
 const { version } = require('./package.json');
-
 const logger = winston.createLogger({
   level: 'info',
   transports: [

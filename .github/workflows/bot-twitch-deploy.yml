@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  release:
+    types: [ published ]
+    paths:
+      - 'bot-twitch/**'
+
+defaults:
+  run:
+    working-directory: ./bot-twitch
+
+jobs:
+
+  glitch-deploy:
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'refs/heads/master')
+    steps:
+      - uses: actions/checkout@master
+      - name: Publish bot-twitch
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: ${{ secrets.GLITCH_REPOSITORY_PKMN_FRIENDS }}
+          BRANCH: master
+          FOLDER: ${{ github.workspace }}/bot-twitch
