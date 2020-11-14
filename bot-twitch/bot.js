@@ -54,7 +54,10 @@ const helpMessage = (target) => {
 };
 const axiosInstance = axios.create(axiosOpts);
 
-axiosInstance.interceptors.request.use(oauth.interceptor(tokenProvider, getAuthorizationCode));
+axiosInstance
+  .interceptors
+  .request
+  .use(oauth.interceptor(tokenProvider, getAuthorizationCode));
 
 chatBase.setVersion(version);
 
