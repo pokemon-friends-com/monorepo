@@ -91,16 +91,18 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: |
-          echo ${KNOWN_HOSTS} > ${HOME}/.ssh/known_hosts
+          echo ${KNOWN_HOSTS} > ${WORKING_DIRECTORY}/known_hosts
         env:
           KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
+          WORKING_DIRECTORY: ${{ env.working-directory }}
       - name: Publish www.pokemon-friends.com
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: pkmn-friends@deploy.eu2.frbit.com:pkmn-friends.git
           BRANCH: master
-          FOLDER: .
+          FOLDER: ${{ env.working-directory }}
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY_FORTRABBIT }}
+          KNOWN_HOSTS_FILE: ${{ env.working-directory }}/known_hosts
 
   fortrabbit-post-deploy:
     needs: [ fortrabbit-deploy ]
