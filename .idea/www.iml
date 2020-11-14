@@ -91,6 +91,7 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/myclabs/php-enum" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/nicmart/tree" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/nunomaduro/collision" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/nyholm/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/opis/closure" />
@@ -118,9 +119,9 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpstan/phpstan" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpunit/php-code-coverage" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpunit/php-invoker" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpunit/php-text-template" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpunit/php-timer" />
-      <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpunit/php-token-stream" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/phpunit/phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/predis/predis" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/prettus/l5-repository" />
@@ -137,15 +138,19 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/ramsey/collection" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/react/promise" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/repat/spatie-crawler-redis" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/code-unit" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/complexity" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/diff" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/environment" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/exporter" />
-      <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/finder-facade" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/lines-of-code" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/object-enumerator" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/object-reflector" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/sebastian/phpcpd" />
@@ -161,7 +166,6 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/spatie/crawler" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/spatie/image" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/spatie/image-optimizer" />
-      <excludeFolder url="file://$MODULE_DIR$/www/vendor/spatie/laravel-cookie-consent" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/spatie/laravel-honeypot" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/spatie/laravel-medialibrary" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/spatie/laravel-sitemap" />
@@ -209,7 +213,6 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/translation-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/var-dumper" />
-      <excludeFolder url="file://$MODULE_DIR$/www/vendor/theseer/fdomdocument" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/tightenco/collect" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/tijsverkoyen/css-to-inline-styles" />

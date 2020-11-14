@@ -341,12 +341,10 @@
       <path value="$PROJECT_DIR$/www/vendor/seld/phar-utils" />
       <path value="$PROJECT_DIR$/www/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/www/vendor/psr/event-dispatcher" />
-      <path value="$PROJECT_DIR$/www/vendor/sebastian/finder-facade" />
       <path value="$PROJECT_DIR$/www/vendor/sebastian/phpcpd" />
       <path value="$PROJECT_DIR$/www/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/www/vendor/pdepend/pdepend" />
       <path value="$PROJECT_DIR$/www/vendor/squizlabs/php_codesniffer" />
-      <path value="$PROJECT_DIR$/www/vendor/theseer/fdomdocument" />
       <path value="$PROJECT_DIR$/www/vendor/josiasmontag/laravel-redis-mock" />
       <path value="$PROJECT_DIR$/www/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/www/vendor/laravel/ui" />
@@ -358,7 +356,6 @@
       <path value="$PROJECT_DIR$/www/vendor/spatie/pdf-to-image" />
       <path value="$PROJECT_DIR$/www/vendor/spatie/crawler" />
       <path value="$PROJECT_DIR$/www/vendor/spatie/temporary-directory" />
-      <path value="$PROJECT_DIR$/www/vendor/spatie/laravel-cookie-consent" />
       <path value="$PROJECT_DIR$/www/vendor/spatie/laravel-medialibrary" />
       <path value="$PROJECT_DIR$/www/vendor/spatie/image" />
       <path value="$PROJECT_DIR$/www/vendor/vlucas/phpdotenv" />
@@ -397,7 +394,6 @@
       <path value="$PROJECT_DIR$/www/vendor/laravelcollective/html" />
       <path value="$PROJECT_DIR$/www/vendor/phpstan/phpstan" />
       <path value="$PROJECT_DIR$/www/vendor/phpmd/phpmd" />
-      <path value="$PROJECT_DIR$/www/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/www/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/www/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/www/vendor/sebastian/environment" />
@@ -443,6 +439,13 @@
       <path value="$PROJECT_DIR$/www/vendor/laravel/socialite" />
       <path value="$PROJECT_DIR$/www/vendor/aws/aws-sdk-php" />
       <path value="$PROJECT_DIR$/www/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/www/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/www/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/www/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/www/vendor/react/promise" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">

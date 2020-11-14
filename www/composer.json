@@ -41,7 +41,6 @@
         "repat/spatie-crawler-redis": "^0.1.1",
         "sentry/sentry-laravel": "^2.1",
         "spatie/crawler": "^4.7",
-        "spatie/laravel-cookie-consent": "^2.12",
         "spatie/laravel-honeypot": "^2.2",
         "spatie/laravel-medialibrary": "^7.19",
         "spatie/laravel-sitemap": "^5.7",
