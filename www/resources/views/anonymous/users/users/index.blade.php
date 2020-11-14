@@ -28,7 +28,6 @@
             </div>
             @endforeach
         </div>
-        @include('partials.row_amazon')
         @if ($users['meta']['pagination']['total'] > $users['meta']['pagination']['count'])
         <div class="row">
             <div class="col-12">

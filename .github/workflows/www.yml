@@ -1,4 +1,4 @@
-name: www.pokemon-friends.com
+name: www
 
 on:
   push:
@@ -74,7 +74,6 @@ jobs:
     strategy:
       matrix:
         node-version: [ 14.x ]
-    #continue-on-error: ${{ matrix.node-version == '14.x' }}
     steps:
       - uses: actions/checkout@v2
       - run: composer validate --strict
@@ -114,7 +113,6 @@ jobs:
       matrix:
         node-version: [ 14.x ]
         php-version: [ 7.4 ]
-    #continue-on-error: ${{ matrix.php-version == '7.4' }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2

@@ -32,7 +32,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12">@include('partials.row_amazon')</div>
             </div>
         </div>
     </section>

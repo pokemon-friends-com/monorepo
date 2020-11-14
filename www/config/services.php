@@ -14,19 +14,6 @@ return [
     |
     */
 
-    'amazon' => [
-        'keywords' => [
-            'Nintendo Pokemon',
-            'Nintendo Pokemon Go Plus',
-            'Controller Gear Officially Licensed Nintendo Switch Skin & Screen Protector Set - Pokemon',
-            'Pokemon T-Shirts',
-            'Pokemon Mug',
-            'Pokemon Hat',
-            'Pokemon Bags',
-            'Pokemon Cards',
-        ],
-    ],
-
     'youtube' => [
         'backgrounds' => [
             'https://www.youtube.com/watch?v=X2KHZtmcrVA',
