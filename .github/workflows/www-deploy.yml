@@ -12,80 +12,80 @@ defaults:
 
 jobs:
 
-#  fortrabbit-object-storage:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        node-version: [ 14.x ]
-#        php-version: [ 7.4 ]
-#    if: contains(github.ref, 'refs/tags/')
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/cache@v2
-#        with:
-#          path: ~/vendor
-#          key: ${{ runner.os }}-node-php_${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
-#          restore-keys: |
-#            ${{ runner.os }}-node-php_${{ matrix.php-version }}-
-#      - uses: actions/cache@v2
-#        with:
-#          path: ~/.npm
-#          key: ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
-#          restore-keys: |
-#            ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-
-#      - name: Use Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: ${{ matrix.node-version }}
-#      - run: |
-#          npm install
-#          npm run prod
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
-#          MIX_APP_ENV: production
-#          MIX_APP_DEBUG: false
-#          MIX_APP_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
-#          MIX_PUSHER_APP_KEY: ${{ secrets.PROD_PUSHER_APP_KEY }}
-#          MIX_PUSHER_APP_CLUSTER: ${{ secrets.PROD_PUSHER_APP_CLUSTER }}
-#          MIX_SENTRY_PUBLIC_DSN: ${{ secrets.PROD_SENTRY_PUBLIC_DSN }}
-#      - uses: shivammathur/setup-php@v2
-#        with:
-#          php-version: ${{ matrix.php-version }}
-#          tools: pecl
-#          extensions: gd, imagick
-#      - if: steps.composer-cache.outputs.cache-hit != 'true'
-#        run: composer install -o --no-interaction --prefer-dist --no-suggest
-#      - run: |
-#          cp .env.example .env
-#          php artisan key:generate
-#          php artisan elfinder:publish
-#          php artisan asset-cdn:sync --env=production
-#        env:
-#          MOLLIE_KEY: ${{ secrets.DEV_MOLLIE_KEY }}
-#          USE_CDN: true
-#          OBJECT_STORAGE_KEY: ${{ secrets.PROD_OBJECT_STORAGE_KEY }}
-#          OBJECT_STORAGE_SECRET: ${{ secrets.PROD_OBJECT_STORAGE_SECRET }}
-#          OBJECT_STORAGE_REGION: ${{ secrets.PROD_OBJECT_STORAGE_REGION }}
-#          OBJECT_STORAGE_BUCKET: ${{ secrets.PROD_OBJECT_STORAGE_BUCKET }}
-#          OBJECT_STORAGE_SERVER: ${{ secrets.PROD_OBJECT_STORAGE_SERVER }}
-#          OBJECT_STORAGE_URL: ${{ secrets.PROD_OBJECT_STORAGE_URL }}
-#
-#  fortrabbit-pre-deploy:
-#    needs: [ fortrabbit-object-storage ]
-#    runs-on: ubuntu-latest
-#    if: contains(github.ref, 'refs/tags/')
-#    steps:
-#      - uses: appleboy/ssh-action@master
-#        with:
-#          host: deploy.eu2.frbit.com
-#          username: pkmn-friends
-#          key: ${{ secrets.PRIVATE_KEY_FORTRABBIT}}
-#          script: |
-#            php artisan config:clear
-#            php artisan route:clear
+  fortrabbit-object-storage:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+        php-version: [ 7.4 ]
+    if: contains(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/vendor
+          key: ${{ runner.os }}-node-php_${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-php_${{ matrix.php-version }}-
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-nodejs_${{ matrix.node-version }}-
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: |
+          npm install
+          npm run prod
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ABENEVAUT_GITHUB_TOKEN }}
+          MIX_APP_ENV: production
+          MIX_APP_DEBUG: false
+          MIX_APP_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
+          MIX_PUSHER_APP_KEY: ${{ secrets.PROD_PUSHER_APP_KEY }}
+          MIX_PUSHER_APP_CLUSTER: ${{ secrets.PROD_PUSHER_APP_CLUSTER }}
+          MIX_SENTRY_PUBLIC_DSN: ${{ secrets.PROD_SENTRY_PUBLIC_DSN }}
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: pecl
+          extensions: gd, imagick
+      - if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install -o --no-interaction --prefer-dist --no-suggest
+      - run: |
+          cp .env.example .env
+          php artisan key:generate
+          php artisan elfinder:publish
+          php artisan asset-cdn:sync --env=production
+        env:
+          MOLLIE_KEY: ${{ secrets.DEV_MOLLIE_KEY }}
+          USE_CDN: true
+          OBJECT_STORAGE_KEY: ${{ secrets.PROD_OBJECT_STORAGE_KEY }}
+          OBJECT_STORAGE_SECRET: ${{ secrets.PROD_OBJECT_STORAGE_SECRET }}
+          OBJECT_STORAGE_REGION: ${{ secrets.PROD_OBJECT_STORAGE_REGION }}
+          OBJECT_STORAGE_BUCKET: ${{ secrets.PROD_OBJECT_STORAGE_BUCKET }}
+          OBJECT_STORAGE_SERVER: ${{ secrets.PROD_OBJECT_STORAGE_SERVER }}
+          OBJECT_STORAGE_URL: ${{ secrets.PROD_OBJECT_STORAGE_URL }}
+
+  fortrabbit-pre-deploy:
+    needs: [ fortrabbit-object-storage ]
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'refs/tags/')
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: deploy.eu2.frbit.com
+          username: pkmn-friends
+          key: ${{ secrets.PRIVATE_KEY_FORTRABBIT}}
+          script: |
+            php artisan config:clear
+            php artisan route:clear
 
   fortrabbit-deploy:
-#    needs: [ fortrabbit-pre-deploy ]
+    needs: [ fortrabbit-pre-deploy ]
     runs-on: ubuntu-latest
     if: contains(github.ref, 'refs/tags/')
     steps:
