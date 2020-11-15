@@ -3,7 +3,9 @@
 [![codecov](https://codecov.io/gh/abenevaut/pokemon-friends.com/branch/master/graph/badge.svg)](https://codecov.io/gh/abenevaut/pokemon-friends.com)
 ![www-deploy](https://github.com/abenevaut/pokemon-friends.com/workflows/www-deploy/badge.svg)
 
-[Pokemon Go friends](https://www.pokemon-friends.com) - [Roadmap](https://github.com/users/abenevaut/projects/1)
+# www.pokemon-friends.com
+
+[Website](https://www.pokemon-friends.com) - [Roadmap](https://github.com/users/abenevaut/projects/1)
 
 ### Photos credits
 
