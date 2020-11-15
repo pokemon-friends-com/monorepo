@@ -1,6 +1,9 @@
-![www.pokemon-friends.com](https://github.com/abenevaut/pokemon-friends.com/workflows/www.pokemon-friends.com/badge.svg?branch=master) [![codecov](https://codecov.io/gh/pokemon-friends-com/www/branch/master/graph/badge.svg)](https://codecov.io/gh/pokemon-friends-com/www)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/abenevaut/pokemon-friends.com)
+![www](https://github.com/abenevaut/pokemon-friends.com/workflows/www/badge.svg)
+[![codecov](https://codecov.io/gh/abenevaut/pokemon-friends.com/branch/master/graph/badge.svg)](https://codecov.io/gh/abenevaut/pokemon-friends.com)
+![www-deploy](https://github.com/abenevaut/pokemon-friends.com/workflows/www-deploy/badge.svg)
 
-[Pokemon Go friends](https://www.pokemon-friends.com)
+[Pokemon Go friends](https://www.pokemon-friends.com) - [Roadmap](https://github.com/users/abenevaut/projects/1)
 
 ### Photos credits
 
