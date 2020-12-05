@@ -95,7 +95,6 @@ return [
     Voici la liste des cookies utilisées et leur objectif :
     <ul>
         <li>Cookies Google Analytics (<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">liste exhaustive</a>) : Web analytics, un service d’analyse de site internet fourni par Google Inc. (« Google ») (<a href="https://www.google.com/policies/privacy/partners/" target="_blank" rel="noopener">plus d\'information ici</a>).</li>
-        <li>"laravel_cookie_consent" : Permet de garder en mémoire le fait que vous acceptez les cookies afin de ne plus vous importuner lors de votre prochaine visite.</li>
     </ul>
 </p>
 <h2>Vos droits concernant les données personnelles</h2>

@@ -100,7 +100,6 @@ return [
     Here is the list of cookies used and their purpose:
     <ul>
         <li>Cookies Google Analytics (<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">exhaustive list</a>) : Web analytics, a website analysis service provided by Google Inc. (« Google ») (<a href="https://www.google.com/policies/privacy/partners/" target="_blank" rel="noopener">more information here</a>).</li>
-        <li>"laravel_cookie_consent" : Keep in mind that you accept cookies so as not to annoy you during your next visit.</li>
     </ul>
 </p>
 <h2>Your rights regarding personal data</h2>
