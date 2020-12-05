@@ -221,6 +221,7 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/yaquawa/laravel-email-reset" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/yaquawa/laravel-token-repository" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/lcobucci/clock" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

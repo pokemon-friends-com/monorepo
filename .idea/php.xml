@@ -450,6 +450,7 @@
       <path value="$PROJECT_DIR$/www/vendor/theseer/fdomdocument" />
       <path value="$PROJECT_DIR$/www/vendor/spatie/laravel-cookie-consent" />
       <path value="$PROJECT_DIR$/www/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/www/vendor/lcobucci/clock" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">
