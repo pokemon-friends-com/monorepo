@@ -1,10 +1,6 @@
 name: www
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - 'www/**'
   pull_request:
     branches: [ master ]
     paths:
