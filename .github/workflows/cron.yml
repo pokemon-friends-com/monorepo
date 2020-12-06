@@ -77,6 +77,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Running testim on production
         run: |
+          npm config set "@abenevaut:registry" https://npm.pkg.github.com/
+          npm config set "//npm.pkg.github.com/:_authToken" $NODE_AUTH_TOKEN
           npm install
           npm run prod:testim
         env:
