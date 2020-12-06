@@ -38,6 +38,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: |
+          npm config set "@abenevaut:registry" https://npm.pkg.github.com/
+          npm config set "//npm.pkg.github.com/:_authToken" $NODE_AUTH_TOKEN
           npm install
           npm run prod
         env:
@@ -140,6 +142,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: |
+          npm config set "@abenevaut:registry" https://npm.pkg.github.com/
+          npm config set "//npm.pkg.github.com/:_authToken" $NODE_AUTH_TOKEN
           npm install
           npm run prod:testim
         env:
