@@ -2202,16 +2202,16 @@
         },
         {
             "name": "laravel/cashier-mollie",
-            "version": "v1.14.0",
+            "version": "v1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-mollie.git",
-                "reference": "2520a057a99c98752fb0812714d1ea50597558d4"
+                "reference": "40f4884402d622bd9b1e7cfcb797dc9b884c6275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-mollie/zipball/2520a057a99c98752fb0812714d1ea50597558d4",
-                "reference": "2520a057a99c98752fb0812714d1ea50597558d4",
+                "url": "https://api.github.com/repos/laravel/cashier-mollie/zipball/40f4884402d622bd9b1e7cfcb797dc9b884c6275",
+                "reference": "40f4884402d622bd9b1e7cfcb797dc9b884c6275",
                 "shasum": ""
             },
             "require": {
@@ -2226,6 +2226,7 @@
                 "php": "^7.2"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v2.17",
                 "laravel/legacy-factories": "^1.0",
                 "mockery/mockery": "^1.0",
                 "orchestra/testbench": "^4.0|^5.0|^6.0",
@@ -2280,7 +2281,7 @@
                 "sepa",
                 "subscriptions"
             ],
-            "time": "2020-09-09T13:18:09+00:00"
+            "time": "2020-12-09T12:36:53+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3768,23 +3769,23 @@
         },
         {
             "name": "mollie/laravel-mollie",
-            "version": "v2.11.0",
+            "version": "v2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mollie/laravel-mollie.git",
-                "reference": "8c59786f7724e38cf7666315144efa5d8a1ea972"
+                "reference": "2387a0e9f6603a49c9de0655eab13d20c6a9d8c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mollie/laravel-mollie/zipball/8c59786f7724e38cf7666315144efa5d8a1ea972",
-                "reference": "8c59786f7724e38cf7666315144efa5d8a1ea972",
+                "url": "https://api.github.com/repos/mollie/laravel-mollie/zipball/2387a0e9f6603a49c9de0655eab13d20c6a9d8c3",
+                "reference": "2387a0e9f6603a49c9de0655eab13d20c6a9d8c3",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "illuminate/support": "^6.0|^7.0|^8.0",
-                "mollie/mollie-api-php": "^2.11",
-                "php": "^7.2"
+                "mollie/mollie-api-php": "^2.26",
+                "php": "^7.2|^8.0"
             },
             "require-dev": {
                 "graham-campbell/testbench": "^5.5",
@@ -3857,20 +3858,20 @@
                 "sofortbanking",
                 "subscriptions"
             ],
-            "time": "2020-09-08T17:00:21+00:00"
+            "time": "2020-12-03T09:53:55+00:00"
         },
         {
             "name": "mollie/mollie-api-php",
-            "version": "v2.24.0",
+            "version": "v2.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mollie/mollie-api-php.git",
-                "reference": "52bd606724109906d61226698c8b031ccae9e637"
+                "reference": "eed0a326bba2bf198cd8bff0c4cf7ba2f7a2395a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mollie/mollie-api-php/zipball/52bd606724109906d61226698c8b031ccae9e637",
-                "reference": "52bd606724109906d61226698c8b031ccae9e637",
+                "url": "https://api.github.com/repos/mollie/mollie-api-php/zipball/eed0a326bba2bf198cd8bff0c4cf7ba2f7a2395a",
+                "reference": "eed0a326bba2bf198cd8bff0c4cf7ba2f7a2395a",
                 "shasum": ""
             },
             "require": {
@@ -3883,7 +3884,7 @@
             },
             "require-dev": {
                 "eloquent/liberator": "^2.0",
-                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.1"
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.1 || ^8.5"
             },
             "suggest": {
                 "mollie/oauth2-mollie-php": "Use OAuth to authenticate with the Mollie API. This is needed for some endpoints. Visit https://docs.mollie.com/ for more information."
@@ -3943,7 +3944,7 @@
                 "sofortbanking",
                 "subscriptions"
             ],
-            "time": "2020-10-15T12:55:48+00:00"
+            "time": "2020-12-03T09:47:21+00:00"
         },
         {
             "name": "moneyphp/money",
