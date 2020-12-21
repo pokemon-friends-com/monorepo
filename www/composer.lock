@@ -211,16 +211,16 @@
         },
         {
             "name": "barryvdh/elfinder-flysystem-driver",
-            "version": "v0.2.1",
+            "version": "v0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/elfinder-flysystem-driver.git",
-                "reference": "1f323056495fdce019b6ef1621be697f2945c609"
+                "reference": "5a6c893dfb97e9848d7b1e5e990e943af7bc3550"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/elfinder-flysystem-driver/zipball/1f323056495fdce019b6ef1621be697f2945c609",
-                "reference": "1f323056495fdce019b6ef1621be697f2945c609",
+                "url": "https://api.github.com/repos/barryvdh/elfinder-flysystem-driver/zipball/5a6c893dfb97e9848d7b1e5e990e943af7bc3550",
+                "reference": "5a6c893dfb97e9848d7b1e5e990e943af7bc3550",
                 "shasum": ""
             },
             "require": {
@@ -263,24 +263,24 @@
                 "elfinder",
                 "filesystem"
             ],
-            "time": "2017-07-08T17:59:38+00:00"
+            "time": "2019-08-31T17:57:43+00:00"
         },
         {
             "name": "barryvdh/laravel-elfinder",
-            "version": "v0.4.6",
+            "version": "v0.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-elfinder.git",
-                "reference": "d3bc80dfa61d7bf8e76747ea26615b3f51bc0780"
+                "reference": "f2a5f7d2b69b7c2f5419b0b02874b91b6d480c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/d3bc80dfa61d7bf8e76747ea26615b3f51bc0780",
-                "reference": "d3bc80dfa61d7bf8e76747ea26615b3f51bc0780",
+                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/f2a5f7d2b69b7c2f5419b0b02874b91b6d480c6c",
+                "reference": "f2a5f7d2b69b7c2f5419b0b02874b91b6d480c6c",
                 "shasum": ""
             },
             "require": {
-                "barryvdh/elfinder-flysystem-driver": "^0.2",
+                "barryvdh/elfinder-flysystem-driver": "^0.3",
                 "illuminate/support": "^5.5|^6|^7|^8",
                 "league/flysystem": "^1.0",
                 "league/flysystem-cached-adapter": "^1.0",
@@ -320,7 +320,7 @@
                 "laravel",
                 "tinymce"
             ],
-            "time": "2020-09-11T14:36:09+00:00"
+            "time": "2020-12-18T16:57:01+00:00"
         },
         {
             "name": "brick/math",
