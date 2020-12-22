@@ -18,7 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Publish bot-twitch
-        uses: glitch-tools/sync-glitch-github-action@master
+        uses: kanadgupta/glitch-sync@v1.1
+        with:
+          project-id: $GLITCH_PROJECT_ID
+          auth-token: $GLITCH_TOKEN
+          path: 'bot-twitch'
         env:
           GLITCH_PROJECT_ID: ${{ secrets.GLITCH_PROJECT_ID }}
           GLITCH_TOKEN: ${{ secrets.GLITCH_TOKEN }}
