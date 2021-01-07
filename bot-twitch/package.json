@@ -9,7 +9,7 @@
   "dependencies": {
     "@google/chatbase": "^1.1.2",
     "axios": "^0.21.1",
-    "axios-oauth-client": "^1.3.0",
+    "axios-oauth-client": "^1.4.0",
     "axios-token-interceptor": "^0.2.0",
     "chatcommand-parser": "^0.1.3",
     "dotenv": "^8.2.0",
