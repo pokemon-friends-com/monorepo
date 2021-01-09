@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }
+        // Make sure the directory for compiled views exist #serverless
+        if (!is_dir(config('view.compiled'))) {
+            mkdir(config('view.compiled'), 0755, true);
+        }
         // https://laravel-news.com/laravel-5-4-key-too-long-error - mysql 5.6 @fortrabbit
         Schema::defaultStringLength(191);
         Config::set('sentry.release', Config::get('version.app_tag'));

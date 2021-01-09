@@ -221,6 +221,16 @@
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/yaquawa/laravel-email-reset" />
       <excludeFolder url="file://$MODULE_DIR$/www/vendor/yaquawa/laravel-token-repository" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/async-aws/core" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/async-aws/lambda" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/hollodotme/fast-cgi-client" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/psr/http-server-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/php-di/invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/bref/bref" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/bref/laravel-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/riverline/multipart-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/www/vendor/mnapoli/silly" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

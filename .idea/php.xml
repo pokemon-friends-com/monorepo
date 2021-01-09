@@ -450,7 +450,16 @@
       <path value="$PROJECT_DIR$/www/vendor/theseer/fdomdocument" />
       <path value="$PROJECT_DIR$/www/vendor/spatie/laravel-cookie-consent" />
       <path value="$PROJECT_DIR$/www/vendor/phpunit/php-token-stream" />
-      <path value="$PROJECT_DIR$/www/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/www/vendor/async-aws/core" />
+      <path value="$PROJECT_DIR$/www/vendor/async-aws/lambda" />
+      <path value="$PROJECT_DIR$/www/vendor/hollodotme/fast-cgi-client" />
+      <path value="$PROJECT_DIR$/www/vendor/psr/http-server-handler" />
+      <path value="$PROJECT_DIR$/www/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/www/vendor/php-di/invoker" />
+      <path value="$PROJECT_DIR$/www/vendor/bref/bref" />
+      <path value="$PROJECT_DIR$/www/vendor/bref/laravel-bridge" />
+      <path value="$PROJECT_DIR$/www/vendor/riverline/multipart-parser" />
+      <path value="$PROJECT_DIR$/www/vendor/mnapoli/silly" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">

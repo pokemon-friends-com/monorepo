@@ -1,0 +1,41 @@
+service: pokemon-friends
+
+provider:
+    name: aws
+    region: eu-west-3
+    runtime: provided.al2
+
+plugins:
+    - ./vendor/bref/bref
+
+package:
+    exclude:
+        - node_modules/**
+        - public/storage
+        - public/app/**
+        - public/css/**
+        - public/fonts/**
+        - public/images/**
+        - public/js/**
+        - resources/fonts/**
+        - resources/images/**
+        - resources/js/**
+        - resources/sass/**
+        - storage/**
+        - tests/**
+
+functions:
+    website:
+        handler: public/index.php
+        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+        layers:
+            - ${bref:layer.php-74-fpm}
+        events:
+            - http: 'ANY /'
+            - http: 'ANY /{proxy+}'
+    artisan:
+        handler: artisan
+        timeout: 120 # in seconds
+        layers:
+            - ${bref:layer.php-74}
+            - ${bref:layer.console}
