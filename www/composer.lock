@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c74e8cd8c3b80dc7486ec5cc352d7a67",
+    "content-hash": "b83004948531da58eac65549e3fd95b1",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1292,23 +1292,23 @@
         },
         {
             "name": "fedeisas/laravel-mail-css-inliner",
-            "version": "3.1",
+            "version": "4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fedeisas/laravel-mail-css-inliner.git",
-                "reference": "263f395b46ef9666151ac78daf429632b0b2e2c3"
+                "reference": "285036b484f0f7642150388f68f00f93798ac7cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fedeisas/laravel-mail-css-inliner/zipball/263f395b46ef9666151ac78daf429632b0b2e2c3",
-                "reference": "263f395b46ef9666151ac78daf429632b0b2e2c3",
+                "url": "https://api.github.com/repos/fedeisas/laravel-mail-css-inliner/zipball/285036b484f0f7642150388f68f00f93798ac7cb",
+                "reference": "285036b484f0f7642150388f68f00f93798ac7cb",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "illuminate/mail": "^7.4 || ^8.0",
                 "illuminate/support": "^7.4 || ^8.0",
-                "php": "^7.2.5",
+                "php": "^7.2|^8.0",
                 "tijsverkoyen/css-to-inline-styles": "~2.0"
             },
             "require-dev": {
@@ -1344,7 +1344,7 @@
                 "laravel",
                 "mailer"
             ],
-            "time": "2020-09-12T05:00:14+00:00"
+            "time": "2020-12-17T15:30:15+00:00"
         },
         {
             "name": "fideloper/proxy",

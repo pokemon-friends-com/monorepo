@@ -18,7 +18,7 @@
         "arubacao/asset-cdn": "^0.2.2",
         "barryvdh/laravel-elfinder": "^0.4.2",
         "doctrine/dbal": "^2.10",
-        "fedeisas/laravel-mail-css-inliner": "^3.0",
+        "fedeisas/laravel-mail-css-inliner": "^4.0",
         "fideloper/proxy": "^4.0",
         "fortrabbit/laravel-object-storage": "^1.0",
         "lab404/laravel-impersonate": "^1.4",
